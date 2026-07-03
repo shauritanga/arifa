@@ -34,7 +34,15 @@ const navItems = [
       { label: "Annual Calendar", href: "/calendar" },
     ],
   },
-  { label: "Events", href: "/events" },
+  {
+    label: "Events",
+    children: [
+      { label: "AI Conference", href: "https://aiconference.arifa.org", external: true },
+      { label: "AI Dinner", href: "/events/ai-dinner" },
+      { label: "AI Marathon", href: "/events/ai-marathon" },
+      { label: "Engagements", href: "/events/engagements" },
+    ],
+  },
   {
     label: "Opportunities",
     children: [

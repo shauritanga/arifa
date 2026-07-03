@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import SponsorMarquee from "../../components/SponsorMarquee";
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -63,99 +64,136 @@ export default function IndustryEngagement() {
         </div>
       </section>
 
+      {/* ====== Sponsor Marquee ====== */}
+      <SponsorMarquee />
+
       {/* ====== Engagement Models ====== */}
       <section className="py-24 bg-[var(--color-surface)] min-h-[60vh]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center max-w-[700px] mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-dark font-[var(--font-heading)] mb-6">Partnership Tiers</h2>
+            <h2 className="text-3xl font-bold text-dark font-[var(--font-heading)] mb-6">Sponsorship Packages</h2>
             <p className="text-[var(--color-text-muted)] text-lg">
-              We work closely with telecom companies, banks, agricultural enterprises, and tech startups to translate AI research into scalable business solutions.
+              Pricing plans for Digital Transformation. Choose a partnership tier that best aligns with your organizational goals.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             
-            {/* Tier 1 */}
+            {/* Basic Package */}
             <RevealOnScroll delay={100} className="bg-white rounded-2xl p-10 border border-border-light shadow-[0_4px_20px_rgba(26,26,46,0.03)] hover:shadow-[0_20px_40px_rgba(26,26,46,0.08)] transition-all flex flex-col relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-surface)] rounded-bl-full -z-10" />
               <div className="w-14 h-14 rounded-full bg-[var(--color-surface-alt)] text-primary flex items-center justify-center text-xl mb-6">
                 <i className="fas fa-handshake" />
               </div>
-              <h3 className="text-2xl font-bold text-dark font-[var(--font-heading)] mb-2">Corporate Sponsor</h3>
-              <p className="text-[var(--color-text-muted)] mb-8 flex-grow">
-                Ideal for companies looking to support the African AI ecosystem while gaining visibility and early access to our talent pool.
+              <h3 className="text-2xl font-bold text-dark font-[var(--font-heading)] mb-2">Basic Package</h3>
+              <div className="mb-6">
+                <span className="text-3xl font-extrabold text-dark">$25,000</span>
+                <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider ml-1">/ Annually</span>
+              </div>
+              <p className="text-[var(--color-text-muted)] mb-8 font-medium">
+                Pricing plan for Digital Transformation
               </p>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 flex-grow">
                 <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Brand placement at ARIFA events
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Publications & Newspaper</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Priority recruitment access to our graduates
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Invitation to ARIFA events</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Invitations to exclusive industry roundtables
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Donor recognition on the ARIFA website</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Fellowship and Internship recruiting opportunities</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Opportunities to provide guest lectures and to sponsor networking events.</span>
                 </li>
               </ul>
               <Link href="/contact-us" className="w-full py-4 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition-all">
-                Inquire Now
+                Choose Basic
               </Link>
             </RevealOnScroll>
 
-            {/* Tier 2 - Highlighted */}
+            {/* Standard Package */}
             <RevealOnScroll delay={200} className="bg-dark rounded-2xl p-10 border border-primary shadow-[0_20px_40px_rgba(107,29,42,0.15)] transition-all flex flex-col relative overflow-hidden lg:-translate-y-4">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-secondary to-[#FDE68A]" />
               <div className="absolute top-4 right-4 bg-primary/30 text-secondary text-xs font-bold px-3 py-1 rounded-full border border-secondary/30">
                 RECOMMENDED
               </div>
               <div className="w-14 h-14 rounded-full bg-primary/20 text-secondary flex items-center justify-center text-xl mb-6">
-                <i className="fas fa-flask" />
+                <i className="fas fa-star" />
               </div>
-              <h3 className="text-2xl font-bold text-white font-[var(--font-heading)] mb-2">Research Partner</h3>
-              <p className="text-white/70 mb-8 flex-grow">
-                Collaborate directly with our researchers to solve specific business problems using custom AI and machine learning models.
+              <h3 className="text-2xl font-bold text-white font-[var(--font-heading)] mb-2">Standard Package</h3>
+              <div className="mb-6">
+                <span className="text-3xl font-extrabold text-white">$50,000</span>
+                <span className="text-sm font-bold text-white/50 uppercase tracking-wider ml-1">/ Annually</span>
+              </div>
+              <p className="text-white/70 mb-8 font-medium">
+                All ARIFA Level 1 Partner opportunities, plus:
               </p>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 flex-grow">
                 <li className="flex items-start gap-3 text-sm font-medium text-white/90">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Everything in Corporate Sponsor
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Contract Research & Project Management</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-white/90">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Dedicated research team assignment
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Personnel Exchange: Research & Advisory</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-white/90">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Co-authorship on resulting publications
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Shared Workload & Joint Projects</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-white/90">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Intellectual Property (IP) sharing agreements
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Full access to ARIFA collected data</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm font-medium text-white/90">
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Generic/collaborative driven research oriented toward creating new knowledge and tools valuable to the greater community and general public.</span>
                 </li>
               </ul>
               <Link href="/contact-us" className="w-full py-4 bg-primary text-white rounded-xl font-bold text-center hover:bg-primary-light transition-all">
-                Become a Partner
+                Choose Standard
               </Link>
             </RevealOnScroll>
 
-            {/* Tier 3 */}
+            {/* Premium Package */}
             <RevealOnScroll delay={300} className="bg-white rounded-2xl p-10 border border-border-light shadow-[0_4px_20px_rgba(26,26,46,0.03)] hover:shadow-[0_20px_40px_rgba(26,26,46,0.08)] transition-all flex flex-col relative overflow-hidden">
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-[var(--color-surface)] rounded-tr-full -z-10" />
               <div className="w-14 h-14 rounded-full bg-[var(--color-surface-alt)] text-primary flex items-center justify-center text-xl mb-6">
-                <i className="fas fa-building" />
+                <i className="fas fa-crown" />
               </div>
-              <h3 className="text-2xl font-bold text-dark font-[var(--font-heading)] mb-2">Innovation Hub</h3>
-              <p className="text-[var(--color-text-muted)] mb-8 flex-grow">
-                Establish a joint lab or innovation center within ARIFA to incubate products and drive long-term strategic technology goals.
+              <h3 className="text-2xl font-bold text-dark font-[var(--font-heading)] mb-2">Premium Package</h3>
+              <div className="mb-6">
+                <span className="text-3xl font-extrabold text-dark">$100,000</span>
+                <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider ml-1">/ Annually</span>
+              </div>
+              <p className="text-[var(--color-text-muted)] mb-8 font-medium">
+                All ARIFA Level 2 Partner opportunities, plus:
               </p>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 flex-grow">
                 <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Physical lab space on campus
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Partnership guided by the ARIFA Director</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Exclusive access to proprietary datasets
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>An assigned, dedicated research liaison within the ARIFA group</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm font-medium text-[var(--color-text-body)]">
-                  <i className="fas fa-check-circle text-secondary mt-0.5" /> Custom training programs for your staff
+                  <i className="fas fa-check-circle text-secondary mt-0.5 min-w-[16px]" /> 
+                  <span>Pre-Access to papers before publication.</span>
                 </li>
               </ul>
               <Link href="/contact-us" className="w-full py-4 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition-all">
-                Inquire Now
+                Choose Premium
               </Link>
             </RevealOnScroll>
 
