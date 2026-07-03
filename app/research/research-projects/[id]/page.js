@@ -54,11 +54,11 @@ export default async function ResearchProjectDetails({ params }) {
             src={data.image}
             alt={data.title}
             fill
-            className="object-cover object-center opacity-70"
+            className="object-cover object-center opacity-75"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/80" />{" "}
-          <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-primary/80" />{" "}
+          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-primary/70" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
           {" "}

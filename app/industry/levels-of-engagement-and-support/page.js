@@ -43,10 +43,10 @@ export default function IndustryEngagement() {
             src="/about-img.png"
             alt="Industry Engagement Background"
             fill
-            className="object-cover object-center opacity-20"
+            className="object-cover object-center opacity-35"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/85" />{" "}
+          <div className="absolute inset-0 bg-primary/70" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SponsorMarquee from "./components/SponsorMarquee";
+import { ParticleCanvas } from "@/components/ui/particle-canvas-1";
 const heroImages = [
   "/hero-bg.png",
   "/who-we-are-office.png",
@@ -107,7 +108,9 @@ export default function Home() {
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)] [text-shadow:0_3px_20px_rgba(0,0,0,0.35)]">
               {" "}
               Advancing{" "}
-              <span className="text-secondary">Artificial Intelligence</span>{" "}
+              <span className="text-secondary">
+                Artificial Intelligence
+              </span>{" "}
               Research for Africa{" "}
             </h1>{" "}
             <p className="text-lg md:text-xl text-white leading-relaxed mb-10 max-w-[620px] mx-auto animate-fadeInUp animate-delay-200 [text-shadow:0_2px_12px_rgba(0,0,0,0.35)]">
@@ -287,9 +290,19 @@ export default function Home() {
         </div>{" "}
       </section>{" "}
       {/* ====== Research Focus Areas ====== */}{" "}
-      <section className="py-24 md:py-32 bg-white">
+      <section
+        id="our-focus"
+        className="relative overflow-hidden py-24 md:py-32 bg-white"
+      >
         {" "}
-        <div className="max-w-[1200px] mx-auto px-6">
+        <ParticleCanvas
+          maxParticles={220}
+          particleSizeMin={1.8}
+          particleSizeMax={4.5}
+          speedScale={0.9}
+          className="opacity-100"
+        />
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
           {" "}
           <div className="text-center max-w-[600px] mx-auto mb-16">
             {" "}

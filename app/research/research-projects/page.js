@@ -39,12 +39,12 @@ export default function ResearchProjects() {
         {/* Background elements */}{" "}
         <div className="absolute inset-0 z-0">
           {" "}
-          <div className="absolute inset-0 bg-primary opacity-90 z-10" />{" "}
+          <div className="absolute inset-0 bg-primary/70 z-10" />{" "}
           <Image
-            src="/hero-img.jpg"
+            src="/hero-bg.png"
             alt="Research Projects"
             fill
-            className="object-cover object-center opacity-40 grayscale"
+            className="object-cover object-center opacity-40"
             priority
           />{" "}
         </div>{" "}

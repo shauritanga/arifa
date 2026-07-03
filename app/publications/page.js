@@ -84,7 +84,14 @@ export default function Publications() {
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
-          <div className="absolute inset-0 bg-primary/85" />{" "}
+          <Image
+            src="/hero-bg.png"
+            alt="Publications Background"
+            fill
+            className="object-cover object-center opacity-35"
+            priority
+          />{" "}
+          <div className="absolute inset-0 bg-primary/70" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}

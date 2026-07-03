@@ -69,8 +69,8 @@ export default async function CertificationDetails({ params }) {
             className="object-cover object-center scale-105"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/85 " />{" "}
-          <div className="absolute inset-0 bg-primary/80 opacity-80" />{" "}
+          <div className="absolute inset-0 bg-primary/70 " />{" "}
+          <div className="absolute inset-0 bg-primary/60 opacity-60" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
           {" "}

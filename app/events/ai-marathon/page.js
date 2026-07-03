@@ -6,7 +6,7 @@ export default function AIMarathon() {
   return (
     <>
       {" "}
-      <section className="relative min-h-[85vh] bg-primary flex flex-col items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[58vh] bg-primary flex flex-col items-center justify-center overflow-hidden pt-20">
         {" "}
         {/* Background Elements */}{" "}
         <div className="absolute inset-0 z-0">
@@ -15,10 +15,10 @@ export default function AIMarathon() {
             src="/about-img.png"
             alt="AI Marathon Background"
             fill
-            className="object-cover object-center opacity-10"
+            className="object-cover object-center opacity-35"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/85" />{" "}
+          <div className="absolute inset-0 bg-primary/70" />{" "}
         </div>{" "}
         <div className="max-w-[800px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
@@ -36,7 +36,13 @@ export default function AIMarathon() {
             <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />{" "}
             Website Under Construction{" "}
           </div>{" "}
-          <p className="text-lg md:text-xl text-white/70 max-w-[600px] mx-auto animate-fadeInUp animate-delay-200 leading-relaxed mb-10">
+        </div>{" "}
+      </section>{" "}
+      <section className="bg-white py-20 md:py-24">
+        {" "}
+        <div className="max-w-[800px] w-full mx-auto px-6 text-center">
+          {" "}
+          <p className="text-lg md:text-xl text-black/70 max-w-[600px] mx-auto animate-fadeInUp animate-delay-200 leading-relaxed mb-10">
             {" "}
             We are working hard to build an amazing digital experience for the
             upcoming AI Marathon. Stay tuned for exciting updates, registration
@@ -46,14 +52,14 @@ export default function AIMarathon() {
             {" "}
             <Link
               href="/"
-              className="px-8 py-3.5 bg-white/10 hover:bg-white/15 border border-white/10 text-white rounded-xl font-bold transition-all hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+              className="px-8 py-3.5 bg-primary hover:bg-primary text-white rounded-xl font-bold transition-all hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
             >
               {" "}
               Return Home{" "}
             </Link>{" "}
             <Link
               href="/contact-us"
-              className="px-8 py-3.5 bg-primary hover:bg-primary text-white rounded-xl font-bold transition-all hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+              className="px-8 py-3.5 bg-white hover:bg-white border border-black/10 text-black rounded-xl font-bold transition-all hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
             >
               {" "}
               Contact Us for Inquiries{" "}

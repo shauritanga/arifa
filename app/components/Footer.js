@@ -52,23 +52,23 @@ const socials = [
 ];
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white/70 pt-20">
+    <footer className="bg-primary text-white/85 pt-20">
       {" "}
       <div className="max-w-[1200px] mx-auto px-6">
         {" "}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-white/8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-white/15">
           {" "}
           {/* About Column */}{" "}
-          <div className="max-w-[320px]">
+          <div className="max-w-[360px]">
             {" "}
             <Image
               src="https://arifa.org/assets/img/black-logo3.png"
               alt="ARIFA Logo"
-              width={140}
-              height={40}
-              className="h-10 w-auto mb-6 brightness-0 invert"
+              width={280}
+              height={84}
+              className="h-20 w-auto mb-6 brightness-0 invert"
             />{" "}
-            <p className="text-sm leading-relaxed mb-6">
+            <p className="text-sm leading-relaxed mb-6 text-white/80">
               {" "}
               The Africa Research Institute for AI is dedicated to advancing
               artificial intelligence research, training, and innovation across
@@ -83,7 +83,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/8 text-white/60 text-sm hover:bg-primary hover:text-white transition-all"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/12 text-white/80 text-sm hover:bg-secondary hover:text-white transition-all"
                 >
                   {" "}
                   <i className={s.icon} />{" "}
@@ -102,7 +102,7 @@ export default function Footer() {
                   {" "}
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-secondary hover:pl-1 transition-all"
+                    className="text-sm text-white/80 hover:text-secondary hover:pl-1 transition-all"
                   >
                     {" "}
                     {link.label}{" "}
@@ -122,7 +122,7 @@ export default function Footer() {
                   {" "}
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-secondary hover:pl-1 transition-all"
+                    className="text-sm text-white/80 hover:text-secondary hover:pl-1 transition-all"
                   >
                     {" "}
                     {link.label}{" "}
@@ -135,15 +135,15 @@ export default function Footer() {
           <div>
             {" "}
             <h4 className="text-white font-bold mb-6">Contact Us</h4>{" "}
-            <div className="space-y-5 text-white/90">
+            <div className="space-y-5 text-white/95">
               {" "}
               <div className="flex gap-3">
                 {" "}
-                <div className="w-9 h-9 rounded-md flex items-center justify-center bg-white/10 text-secondary shrink-0 text-sm">
+                <div className="w-9 h-9 rounded-md flex items-center justify-center bg-white/15 text-white shrink-0 text-sm">
                   {" "}
                   <i className="fas fa-map-marker-alt" />{" "}
                 </div>{" "}
-                <p className="text-sm leading-relaxed">
+                <p className="text-sm leading-relaxed text-white/85">
                   {" "}
                   Old Bagamoyo Road, Brown Street, <br /> Box 2512, Mbezi Beach,
                   Kinondoni, <br /> Dar es Salaam, Tanzania{" "}
@@ -151,7 +151,7 @@ export default function Footer() {
               </div>{" "}
               <div className="flex gap-3">
                 {" "}
-                <div className="w-9 h-9 rounded-md flex items-center justify-center bg-white/10 text-secondary shrink-0 text-sm">
+                <div className="w-9 h-9 rounded-md flex items-center justify-center bg-white/15 text-white shrink-0 text-sm">
                   {" "}
                   <i className="fas fa-envelope" />{" "}
                 </div>{" "}
@@ -168,11 +168,11 @@ export default function Footer() {
               </div>{" "}
               <div className="flex gap-3">
                 {" "}
-                <div className="w-9 h-9 rounded-md flex items-center justify-center bg-white/10 text-secondary shrink-0 text-sm">
+                <div className="w-9 h-9 rounded-md flex items-center justify-center bg-white/15 text-white shrink-0 text-sm">
                   {" "}
                   <i className="fas fa-clock" />{" "}
                 </div>{" "}
-                <p className="text-sm leading-relaxed">
+                <p className="text-sm leading-relaxed text-white/85">
                   Mon – Sat: 8:00 AM – 7:00 PM
                 </p>{" "}
               </div>{" "}
@@ -180,7 +180,7 @@ export default function Footer() {
           </div>{" "}
         </div>{" "}
         {/* Bottom Bar */}{" "}
-        <div className="flex flex-col md:flex-row justify-between items-center py-6 text-xs text-white/40 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center py-6 text-xs text-white/60 gap-4">
           {" "}
           <p>
             {" "}
@@ -189,11 +189,11 @@ export default function Footer() {
           </p>{" "}
           <div className="flex gap-6">
             {" "}
-            <Link href="#" className="hover:text-secondary">
+            <Link href="#" className="text-white/70 hover:text-secondary">
               {" "}
               Privacy Policy{" "}
             </Link>{" "}
-            <Link href="#" className="hover:text-secondary">
+            <Link href="#" className="text-white/70 hover:text-secondary">
               {" "}
               Terms of Service{" "}
             </Link>{" "}

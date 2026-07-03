@@ -23,13 +23,8 @@ const navItems = [
     ],
   },
   {
-    label: "Industry",
-    children: [
-      {
-        label: "Engagement & Support",
-        href: "/industry/levels-of-engagement-and-support",
-      },
-    ],
+    label: "Sponsorship",
+    href: "/industry/levels-of-engagement-and-support",
   },
   {
     label: "Training",
@@ -92,9 +87,9 @@ export default function Header() {
             <Image
               src="https://arifa.org/assets/img/black-logo3.png"
               alt="ARIFA Logo"
-              width={140}
-              height={44}
-              className={`h-11 w-auto transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
+              width={210}
+              height={66}
+              className={`h-16 w-auto transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
               priority
             />{" "}
           </Link>{" "}
@@ -124,7 +119,7 @@ export default function Header() {
                     <i className="fas fa-chevron-down text-[0.6em] transition-transform group-hover:rotate-180" />{" "}
                   </button>
                 )}{" "}
-                {/* Dropdown */}{" "}
+                {" "}
                 {item.children && (
                   <ul className="absolute top-full left-0 min-w-[220px] py-2 bg-white rounded-lg shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-250 z-10">
                     {" "}
@@ -162,7 +157,7 @@ export default function Header() {
             {" "}
             <Link
               href="/support-us"
-              className="hidden xl:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-primary rounded-full shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary hover:shadow-[0_6px_20px_rgba(0,0,0,0.35)] hover:-translate-y-0.5 transition-all"
+              className={`hidden xl:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full shadow-[0_4px_14px_rgba(153,0,0,0.15)] hover:-translate-y-0.5 transition-all ${scrolled ? "text-primary bg-white border border-primary/20 hover:bg-primary hover:text-white hover:border-primary hover:shadow-[0_6px_20px_rgba(153,0,0,0.25)]" : "text-white bg-primary border border-primary hover:bg-white hover:text-primary hover:border-white/20 hover:shadow-[0_6px_20px_rgba(153,0,0,0.28)]"}`}
             >
               {" "}
               Support Us{" "}
@@ -232,7 +227,6 @@ export default function Header() {
                       {" "}
                       {item.children.map((child) => (
                         <li key={child.label}>
-                          {" "}
                           <Link
                             href={child.href || "#"}
                             className="block py-2 text-sm text-black/70 hover:text-primary"
@@ -240,7 +234,7 @@ export default function Header() {
                           >
                             {" "}
                             {child.label}{" "}
-                          </Link>{" "}
+                          </Link>
                         </li>
                       ))}{" "}
                     </ul>
