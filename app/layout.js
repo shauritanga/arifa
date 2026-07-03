@@ -2,19 +2,16 @@ import { Plus_Jakarta_Sans, Nunito } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-heading",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
 });
-
 const nunito = Nunito({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
-
 export const metadata = {
   title: "ARIFA — Africa Research Institute for AI",
   description:
@@ -30,10 +27,12 @@ export const metadata = {
     type: "website",
   },
 };
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${jakartaSans.variable} ${nunito.variable} scroll-smooth`}>
+    <html
+      lang="en"
+      className={`${jakartaSans.variable} ${nunito.variable} scroll-smooth`}
+    >
       <head>
         <link
           rel="stylesheet"

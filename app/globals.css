@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Brand Colors */
-  --color-primary: #6B1D2A;
-  --color-primary-light: #8B2E3E;
-  --color-primary-dark: #4A0E1A;
-  --color-secondary: #C8A14E;
-  --color-secondary-light: #DAB96A;
+  /* Logo Colors */
+  --color-primary: #990000;
+  --color-primary-light: #990000;
+  --color-primary-dark: #000000;
+  --color-secondary: #00803d;
+  --color-secondary-light: #00803d;
 
   /* Neutrals */
-  --color-dark: #1A1A2E;
-  --color-surface: #F8F6F3;
-  --color-surface-alt: #F0EDE8;
-  --color-border-custom: #E5E2DD;
-  --color-border-light: #F0EDE8;
-  --color-text-body: #2D2D3A;
-  --color-text-muted: #6B7280;
+  --color-dark: #000000;
+  --color-surface: #ffffff;
+  --color-surface-alt: #ffffff;
+  --color-border-custom: #000000;
+  --color-border-light: #000000;
+  --color-text-body: #000000;
+  --color-text-muted: #000000;
 
   /* Fonts */
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Nunito', sans-serif;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Nunito", sans-serif;
 }
 
 /* Base Resets */
@@ -29,18 +29,24 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-text-body);
+  color: #000000;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
 
 /* Smooth transitions for interactive elements */
-a, button {
+a,
+button {
   transition: all 0.25s ease;
 }
 
@@ -73,23 +79,39 @@ a, button {
     transform: translateY(0);
   }
 }
-
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
-
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(3deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg);
+  }
 }
-
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease both;
 }
-
-.animate-delay-100 { animation-delay: 100ms; }
-.animate-delay-200 { animation-delay: 200ms; }
-.animate-delay-300 { animation-delay: 300ms; }
-.animate-delay-400 { animation-delay: 400ms; }
-.animate-delay-500 { animation-delay: 500ms; }
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+.animate-delay-500 {
+  animation-delay: 500ms;
+}

@@ -1,40 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-export default function ApplicationModal({ isOpen, onClose, courseTitle, courseImage }) {
-  const [mounted, setMounted] = useState(false);
+export default function ApplicationModal({
+  isOpen,
+  onClose,
+  courseTitle,
+  courseImage,
+}) {
+  const mounted = typeof document !== "undefined";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Prevent background scrolling when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    if (!mounted) return;
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isOpen]);
+  }, [isOpen, mounted]);
 
   if (!isOpen || !mounted) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      // Auto close after 3 seconds
+
       setTimeout(() => {
         setIsSuccess(false);
         onClose();
@@ -43,115 +40,154 @@ export default function ApplicationModal({ isOpen, onClose, courseTitle, courseI
   };
 
   const modalContent = (
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-dark/80 backdrop-blur-sm transition-all duration-300">
-      
-      {/* Click outside to close */}
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center overflow-y-auto bg-primary/85 p-4 transition-all duration-300 sm:p-6">
       <div className="absolute inset-0" onClick={onClose} />
-
-      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row transform transition-all animate-in fade-in zoom-in-95 duration-300 my-auto">
-        
-        {/* Close Button */}
-        <button 
+      <div className="relative my-auto flex w-full max-w-4xl transform flex-col overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-300 md:flex-row">
+        <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 hover:bg-white/40 md:bg-dark/5 md:hover:bg-dark/10 rounded-full flex items-center justify-center transition-colors text-white md:text-dark"
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/40 md:bg-primary/5 md:text-black md:hover:bg-primary/10"
           aria-label="Close modal"
         >
           <i className="fas fa-times text-xl" />
         </button>
 
-        {/* Sidebar Image Area */}
-        <div className="md:w-1/3 relative h-48 md:h-auto bg-dark flex-shrink-0">
+        <div className="relative h-48 flex-shrink-0 bg-primary md:h-auto md:w-1/3">
           <Image
             src={courseImage || "/program-certification.png"}
             alt={courseTitle || "Certification"}
             fill
-            className="object-cover opacity-60 mix-blend-overlay"
+            className="object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary/90 to-dark/90" />
-          
-          <div className="absolute inset-0 p-8 flex flex-col justify-end md:justify-center">
-            <span className="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold rounded-full mb-4 uppercase tracking-wider w-fit backdrop-blur-md">
+          <div className="absolute inset-0 bg-primary/80" />
+          <div className="absolute inset-0 flex flex-col justify-end p-8 md:justify-center">
+            <span className="mb-4 inline-block w-fit rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
               Application
             </span>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-white font-[var(--font-heading)] leading-tight mb-4 shadow-sm">
+            <h3 className="mb-4 font-[var(--font-heading)] text-2xl font-extrabold leading-tight text-white md:text-3xl">
               {courseTitle}
             </h3>
-            <p className="text-white/80 text-sm hidden md:block leading-relaxed">
-              Take the next step in your career. Submit your application and our admissions team will contact you within 24 hours.
+            <p className="hidden text-sm leading-relaxed text-white/80 md:block">
+              Take the next step in your career. Submit your application and our
+              admissions team will contact you within 24 hours.
             </p>
           </div>
         </div>
 
-        {/* Form Area */}
-        <div className="md:w-2/3 p-8 md:p-10 max-h-[80vh] overflow-y-auto custom-scrollbar bg-white">
+        <div className="max-h-[80vh] bg-white p-8 md:w-2/3 md:p-10">
           {isSuccess ? (
-            <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12 animate-in fade-in duration-500">
-              <div className="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-4">
+            <div className="flex h-full flex-col items-center justify-center space-y-4 py-12 text-center">
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-secondary/10 text-secondary">
                 <i className="fas fa-check text-4xl" />
               </div>
-              <h3 className="text-2xl font-bold text-dark">Application Received!</h3>
-              <p className="text-[var(--color-text-muted)] max-w-sm">
-                Thank you for applying. We have sent a confirmation email and will be in touch shortly.
+              <h3 className="text-2xl font-bold text-black">
+                Application Received!
+              </h3>
+              <p className="max-w-sm text-black/70">
+                Thank you for applying. We have sent a confirmation email and
+                will be in touch shortly.
               </p>
             </div>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-dark mb-6 font-[var(--font-heading)]">Personal Details</h2>
+              <h2 className="mb-6 font-[var(--font-heading)] text-2xl font-bold text-black">
+                Personal Details
+              </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="block text-sm font-bold text-dark mb-2">First Name <span className="text-red-500">*</span></label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-dark" required />
+                    <label className="mb-2 block text-sm font-bold text-black">
+                      First Name <span className="text-primary">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      required
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-dark mb-2">Last Name <span className="text-red-500">*</span></label>
-                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-dark" required />
+                    <label className="mb-2 block text-sm font-bold text-black">
+                      Last Name <span className="text-primary">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      required
+                    />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="block text-sm font-bold text-dark mb-2">Email Address <span className="text-red-500">*</span></label>
-                    <input type="email" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-dark" required />
+                    <label className="mb-2 block text-sm font-bold text-black">
+                      Email Address <span className="text-primary">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      required
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-dark mb-2">Phone Number <span className="text-red-500">*</span></label>
-                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-dark" required />
+                    <label className="mb-2 block text-sm font-bold text-black">
+                      Phone Number <span className="text-primary">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      required
+                    />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">Why are you interested in this certification? <span className="text-red-500">*</span></label>
-                  <textarea rows={3} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-dark resize-none" required />
+                  <label className="mb-2 block text-sm font-bold text-black">
+                    Why are you interested in this certification?{" "}
+                    <span className="text-primary">*</span>
+                  </label>
+                  <textarea
+                    rows={3}
+                    className="w-full resize-none rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                    required
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">Resume / CV (Optional)</label>
-                  <div className="w-full border-2 border-dashed border-slate-200 rounded-xl p-6 text-center hover:border-primary hover:bg-slate-50 transition-all cursor-pointer group">
-                    <i className="fas fa-cloud-upload-alt text-2xl text-slate-400 group-hover:text-primary mb-2 transition-colors" />
-                    <p className="text-sm font-medium text-dark">Click to upload or drag and drop</p>
-                    <p className="text-xs text-slate-500 mt-1">PDF, DOC up to 5MB</p>
+                  <label className="mb-2 block text-sm font-bold text-black">
+                    Resume / CV (Optional)
+                  </label>
+                  <div className="w-full cursor-pointer rounded-xl border-2 border-dashed border-black/10 p-6 text-center transition-all hover:border-primary hover:bg-primary/5">
+                    <i className="fas fa-cloud-upload-alt mb-2 text-2xl text-black/50 transition-colors" />
+                    <p className="text-sm font-medium text-black">
+                      Click to upload or drag and drop
+                    </p>
+                    <p className="mt-1 text-xs text-black/60">
+                      PDF, DOC up to 5MB
+                    </p>
                   </div>
                 </div>
 
-                <div className="pt-4 flex items-center justify-end gap-4 border-t border-slate-100">
-                  <button 
-                    type="button" 
+                <div className="flex items-center justify-end gap-4 border-t border-black/10 pt-4">
+                  <button
+                    type="button"
                     onClick={onClose}
-                    className="px-6 py-3 text-sm font-bold text-dark hover:bg-slate-100 rounded-xl transition-colors"
+                    className="rounded-xl px-6 py-3 text-sm font-bold text-black transition-colors hover:bg-primary/10"
                   >
                     Cancel
                   </button>
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     disabled={isSubmitting}
-                    className="px-8 py-3 bg-primary text-white text-sm font-bold rounded-xl shadow-lg hover:shadow-primary/30 hover:bg-primary-light hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:pointer-events-none flex items-center gap-2"
+                    className="flex items-center gap-2 rounded-xl bg-primary px-8 py-3 text-sm font-bold text-white shadow-lg transition-all hover:bg-primary hover:shadow-primary/30 hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-70"
                   >
                     {isSubmitting ? (
-                      <><i className="fas fa-circle-notch fa-spin" /> Submitting...</>
+                      <>
+                        <i className="fas fa-circle-notch fa-spin" />{" "}
+                        Submitting...
+                      </>
                     ) : (
-                      <><i className="fas fa-paper-plane" /> Submit Application</>
+                      <>
+                        <i className="fas fa-paper-plane" /> Submit Application
+                      </>
                     )}
                   </button>
                 </div>
