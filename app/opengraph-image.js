@@ -69,8 +69,8 @@ export default async function Image() {
               src={logo}
               alt="ARIFA logo"
               style={{
-                width: 180,
-                height: 180,
+                width: 320,
+                height: 140,
                 objectFit: "contain",
                 objectPosition: "left center",
               }}
@@ -78,9 +78,9 @@ export default async function Image() {
           </div>
           <div
             style={{
-              marginTop: 42,
-              maxWidth: 840,
-              fontSize: 34,
+              marginTop: 30,
+              maxWidth: 760,
+              fontSize: 30,
               lineHeight: 1.25,
               fontWeight: 700,
               color: "#111111",
@@ -91,7 +91,7 @@ export default async function Image() {
           </div>
           <div
             style={{
-              marginTop: 28,
+              marginTop: 20,
               fontSize: 22,
               lineHeight: 1.2,
               color: "#4b4b4b",
