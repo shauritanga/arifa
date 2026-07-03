@@ -13,7 +13,7 @@ const nunito = Nunito({
   weight: ["400", "500", "600", "700"],
 });
 export const metadata = {
-  title: "ARIFA — Africa Research Institute for AI",
+  title: "ARIFA | Africa Research Institute for AI",
   description:
     "ARIFA is advancing artificial intelligence research, training, and innovation across Africa. Explore our research projects, certification programs, and industry partnerships.",
   keywords:
@@ -23,7 +23,7 @@ export const metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://arifa.org",
   ),
   openGraph: {
-    title: "ARIFA — Africa Research Institute for AI",
+    title: "ARIFA | Africa Research Institute for AI",
     description:
       "Advancing artificial intelligence research, training, and innovation across Africa.",
     url: "/",
@@ -40,7 +40,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ARIFA — Africa Research Institute for AI",
+    title: "ARIFA | Africa Research Institute for AI",
     description:
       "Advancing artificial intelligence research, training, and innovation across Africa.",
     images: [

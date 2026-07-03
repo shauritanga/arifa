@@ -7,9 +7,23 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default function Image() {
+const LOGO_URL = "https://arifa.org/assets/img/black-logo3.png";
+const SITE_HOSTNAME = new URL(
+  process.env.NEXT_PUBLIC_SITE_URL || "https://arifa.org",
+).hostname;
+
+async function loadLogoDataUri() {
+  const response = await fetch(LOGO_URL);
+  const buffer = await response.arrayBuffer();
+  const base64 = Buffer.from(buffer).toString("base64");
+  return `data:image/png;base64,${base64}`;
+}
+
+export default async function Image() {
+  const logo = await loadLogoDataUri();
+
   return new ImageResponse(
-    (
+      (
       <div
         style={{
           width: "100%",
@@ -51,24 +65,16 @@ export default function Image() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-            <div
+            <img
+              src={logo}
+              alt="ARIFA logo"
               style={{
                 width: 112,
                 height: 112,
-                borderRadius: 28,
-                background:
-                  "linear-gradient(135deg, rgba(153,0,0,1) 0%, rgba(153,0,0,1) 58%, rgba(0,128,61,1) 58%, rgba(0,128,61,1) 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#ffffff",
-                fontSize: 52,
-                fontWeight: 800,
-                letterSpacing: -3,
+                objectFit: "contain",
+                objectPosition: "left center",
               }}
-            >
-              A
-            </div>
+            />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div
                 style={{
@@ -79,7 +85,7 @@ export default function Image() {
                   letterSpacing: -3,
                 }}
               >
-                ARIFA
+                ARIFA |
               </div>
               <div
                 style={{
@@ -116,7 +122,7 @@ export default function Image() {
               color: "#4b4b4b",
             }}
           >
-            arifa.org
+            {SITE_HOSTNAME}
           </div>
         </div>
       </div>
