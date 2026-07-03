@@ -19,21 +19,36 @@ export const metadata = {
   keywords:
     "AI research Africa, artificial intelligence Tanzania, ARIFA, machine learning Africa, data science training",
   authors: [{ name: "ARIFA" }],
-  metadataBase: new URL("https://arifa.org"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://arifa.org",
+  ),
   openGraph: {
     title: "ARIFA — Africa Research Institute for AI",
     description:
       "Advancing artificial intelligence research, training, and innovation across Africa.",
-    url: "https://arifa.org",
+    url: "/",
     type: "website",
-    images: ["/opengraph-image"],
+    siteName: "ARIFA",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "ARIFA social preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "ARIFA — Africa Research Institute for AI",
     description:
       "Advancing artificial intelligence research, training, and innovation across Africa.",
-    images: ["/twitter-image"],
+    images: [
+      {
+        url: "/twitter-image",
+        alt: "ARIFA social preview",
+      },
+    ],
   },
 };
 export default function RootLayout({ children }) {
