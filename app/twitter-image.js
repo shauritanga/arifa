@@ -64,42 +64,17 @@ export default async function Image() {
             padding: "72px 84px",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <img
               src={logo}
               alt="ARIFA logo"
               style={{
-                width: 112,
-                height: 112,
+                width: 180,
+                height: 180,
                 objectFit: "contain",
                 objectPosition: "left center",
               }}
             />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div
-                style={{
-                  fontSize: 84,
-                  lineHeight: 1,
-                  fontWeight: 800,
-                  color: "#990000",
-                  letterSpacing: -3,
-                }}
-              >
-                ARIFA |
-              </div>
-              <div
-                style={{
-                  marginTop: 10,
-                  fontSize: 26,
-                  lineHeight: 1.2,
-                  fontWeight: 700,
-                  color: "#00803d",
-                  maxWidth: 700,
-                }}
-              >
-                Africa Research Institute for AI
-              </div>
-            </div>
           </div>
           <div
             style={{
