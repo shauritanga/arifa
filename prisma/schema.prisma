@@ -71,6 +71,23 @@ model Donation {
   @@index([email])
 }
 
+/// Admin / staff users for the dashboard (NextAuth credentials).
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String
+  role         String   @default("admin") // admin | viewer
+  createdAt    DateTime @default(now())
+}
+
+/// Global dynamic configuration (contact details, socials).
+model SiteSetting {
+  id        String   @id @default("global")
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
 /// Append-only audit of every status transition: real-money forensics for what
 /// moved a donation, and from where (browser redirect / webhook / reconcile
 /// sweep / foreground poll).
