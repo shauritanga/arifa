@@ -1,43 +1,21 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
+import { getBySlug } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-  const id = resolvedParams.id;
-  const dataPath = path.join(
-    process.cwd(),
-    "app",
-    "data",
-    "research_projects.json",
-  );
-  let title = "Research Project - ARIFA";
-  try {
-    const fileContent = fs.readFileSync(dataPath, "utf-8");
-    const projects = JSON.parse(fileContent);
-    const p = projects.find((p) => p.id === id);
-    if (p) title = `${p.title} - ARIFA Research`;
-  } catch (error) {}
-  return { title };
+  const { id } = await params;
+  const project = await getBySlug("RESEARCH_PROJECT", id);
+
+  return {
+    title: project ? `${project.title} - ARIFA Research` : "Research Project - ARIFA",
+  };
 }
 export default async function ResearchProjectDetails({ params }) {
-  const resolvedParams = await params;
-  const id = resolvedParams.id;
-  const dataPath = path.join(
-    process.cwd(),
-    "app",
-    "data",
-    "research_projects.json",
-  );
-  let data = null;
-  try {
-    const fileContent = fs.readFileSync(dataPath, "utf-8");
-    const projects = JSON.parse(fileContent);
-    data = projects.find((p) => p.id === id);
-  } catch (error) {
-    console.error("Failed to read research project data:", error);
-  }
+  const { id } = await params;
+  const data = await getBySlug("RESEARCH_PROJECT", id);
+
   if (!data) {
     notFound();
   }

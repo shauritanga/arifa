@@ -1,45 +1,20 @@
 import { notFound } from "next/navigation";
+import { getBySlug } from "@/lib/content";
 import ApplyForm from "./apply-form";
 import Image from "next/image";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-  const id = resolvedParams.id;
-  const dataPath = path.join(
-    process.cwd(),
-    "app",
-    "data",
-    "certifications.json",
-  );
-  let title = "Apply for Certification - ARIFA";
-  try {
-    const fileContent = fs.readFileSync(dataPath, "utf-8");
-    const certs = JSON.parse(fileContent);
-    if (certs[id]) {
-      title = `Apply: ${certs[id].title} - ARIFA`;
-    }
-  } catch (error) {}
-  return { title };
+  const { id } = await params;
+  const cert = await getBySlug("CERTIFICATION", id);
+
+  return { title: cert ? `Apply: ${cert.title} - ARIFA` : "Certification - ARIFA" };
 }
 export default async function ApplyCertification({ params }) {
-  const resolvedParams = await params;
-  const id = resolvedParams.id;
-  const dataPath = path.join(
-    process.cwd(),
-    "app",
-    "data",
-    "certifications.json",
-  );
-  let data = null;
-  try {
-    const fileContent = fs.readFileSync(dataPath, "utf-8");
-    const certs = JSON.parse(fileContent);
-    data = certs[id];
-  } catch (error) {
-    console.error("Failed to read certification data:", error);
-  }
+  const { id } = await params;
+  const data = await getBySlug("CERTIFICATION", id);
+
   if (!data) {
     notFound();
   }

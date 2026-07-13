@@ -71,6 +71,38 @@ model Donation {
   @@index([email])
 }
 
+/// Editable site content, previously hardcoded in JSON files and inline arrays
+/// inside the page files. Shipped content is seeded from prisma/content-seed.json.
+///
+/// One table rather than seven: the collections (research projects, team,
+/// certifications, publications, courses, jobs, events) share no fields beyond a
+/// title and an image, so the type-specific parts live in `data` and the shape
+/// of each is declared once in lib/content.js. Seven near-identical CRUD screens
+/// would be a lot more code for no gain.
+model ContentItem {
+  id         String  @id @default(cuid())
+  collection String
+  /// The identifier the old data used, where it appeared in a URL — keeping it
+  /// means /research/research-projects/101 and the certification pages do not
+  /// break. Null for collections that were never addressable.
+  slug       String?
+  title      String
+  image      String?
+  /// Sub-grouping within a collection: team section, publication year,
+  /// certification category, Upcoming/Past for events.
+  group      String?
+  /// Type-specific fields; see COLLECTIONS in lib/content.js.
+  data       Json    @default("{}")
+  position   Int     @default(0)
+  published  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([collection, slug])
+  @@index([collection, published, position])
+}
+
 enum SubmissionStatus {
   NEW
   READ
