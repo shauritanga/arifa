@@ -147,7 +147,7 @@ export default function IndustryEngagement() {
                 </li>{" "}
               </ul>{" "}
               <Link
-                href="/contact-us"
+                href="/support-us?package=basic#pledge-form"
                 className="w-full py-4 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition-all"
               >
                 {" "}
@@ -218,7 +218,7 @@ export default function IndustryEngagement() {
                 </li>{" "}
               </ul>{" "}
               <Link
-                href="/contact-us"
+                href="/support-us?package=standard#pledge-form"
                 className="w-full py-4 bg-primary text-white rounded-xl font-bold text-center hover:bg-primary transition-all"
               >
                 {" "}
@@ -274,7 +274,7 @@ export default function IndustryEngagement() {
                 </li>{" "}
               </ul>{" "}
               <Link
-                href="/contact-us"
+                href="/support-us?package=premium#pledge-form"
                 className="w-full py-4 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition-all"
               >
                 {" "}

@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { startPayment } from "../../lib/client/start-payment";
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -29,23 +29,51 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
     </div>
   );
 }
-export default function SupportUsPage() {
+export default function SupportUsPage({ searchParams }) {
+  const params = use(searchParams);
+  const selectedPackage = params?.package || "";
+  const selectedPackageLabel = selectedPackage
+    ? `${selectedPackage.charAt(0).toUpperCase()}${selectedPackage.slice(1)} Package`
+    : "";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     organization: "",
-    supportType: "financial",
+    supportType: selectedPackage ? "sponsorship" : "financial",
     amount: "",
-    message: "",
+    packageName: selectedPackageLabel,
+    message: selectedPackageLabel
+      ? `I would like to sponsor ARIFA through the ${selectedPackageLabel}.`
+      : "",
   });
+  const isPayment = ["financial", "sponsorship"].includes(formData.supportType);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     setIsSubmitting(true);
-    setTimeout(() => {
-      alert("Redirecting to Selcom Secure Payment Gateway...");
+
+    if (!isPayment) {
+      setTimeout(() => {
+        alert("Thank you. ARIFA will contact you about this partnership inquiry.");
+        setIsSubmitting(false);
+      }, 1500);
+      return;
+    }
+
+    try {
+      // Navigates away to AirPay on success, so isSubmitting stays true.
+      await startPayment({
+        ...formData,
+        paymentType:
+          formData.supportType === "sponsorship" ? "sponsorship" : "donation",
+      });
+    } catch (err) {
+      setError(err.message);
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   return (
     <div className="min-h-screen bg-white">
@@ -377,8 +405,8 @@ export default function SupportUsPage() {
               <p className="text-lg text-black/70 leading-relaxed">
                 {" "}
                 Fill out the form below to process your financial contribution
-                via the secure Selcom Payment Gateway, or to initiate a
-                corporate partnership discussion.{" "}
+                or sponsorship via AirPay, or to initiate a corporate
+                partnership discussion.{" "}
               </p>{" "}
             </div>{" "}
             <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-black/10 p-8 md:p-12">
@@ -394,6 +422,7 @@ export default function SupportUsPage() {
                     </label>{" "}
                     <input
                       type="text"
+                      name="name"
                       required
                       value={formData.name}
                       onChange={(e) =>
@@ -410,6 +439,7 @@ export default function SupportUsPage() {
                     </label>{" "}
                     <input
                       type="email"
+                      name="email"
                       required
                       value={formData.email}
                       onChange={(e) =>
@@ -425,10 +455,28 @@ export default function SupportUsPage() {
                   <div>
                     {" "}
                     <label className="block text-sm font-bold text-black mb-2 uppercase tracking-wide">
+                      Phone Number
+                    </label>{" "}
+                    <input
+                      type="tel"
+                      name="phone"
+                      required={isPayment}
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
+                      placeholder="+255 700 000 000"
+                    />{" "}
+                  </div>{" "}
+                  <div>
+                    {" "}
+                    <label className="block text-sm font-bold text-black mb-2 uppercase tracking-wide">
                       Organization (Optional)
                     </label>{" "}
                     <input
                       type="text"
+                      name="organization"
                       value={formData.organization}
                       onChange={(e) =>
                         setFormData({
@@ -440,12 +488,14 @@ export default function SupportUsPage() {
                       placeholder="Company or Foundation"
                     />{" "}
                   </div>{" "}
-                  <div>
+                </div>{" "}
+                <div>
                     {" "}
                     <label className="block text-sm font-bold text-black mb-2 uppercase tracking-wide">
                       Type of Support
                     </label>{" "}
                     <select
+                      name="supportType"
                       value={formData.supportType}
                       onChange={(e) =>
                         setFormData({
@@ -457,18 +507,18 @@ export default function SupportUsPage() {
                     >
                       {" "}
                       <option value="financial">Financial Donation</option>{" "}
+                      <option value="sponsorship">Sponsorship Payment</option>{" "}
                       <option value="corporate">Corporate Partnership</option>{" "}
                       <option value="academic">
                         Academic Collaboration
                       </option>{" "}
                     </select>{" "}
-                  </div>{" "}
                 </div>{" "}
-                {formData.supportType === "financial" && (
+                {isPayment && (
                   <div className="animate-fadeInUp">
                     {" "}
                     <label className="block text-sm font-bold text-black mb-2 uppercase tracking-wide">
-                      Contribution Amount (TZS)
+                      Payment Amount (TZS)
                     </label>{" "}
                     <div className="relative">
                       {" "}
@@ -477,7 +527,10 @@ export default function SupportUsPage() {
                       </span>{" "}
                       <input
                         type="number"
+                        name="amount"
                         required
+                        min="1000"
+                        step="1"
                         value={formData.amount}
                         onChange={(e) =>
                           setFormData({ ...formData, amount: e.target.value })
@@ -486,6 +539,13 @@ export default function SupportUsPage() {
                         placeholder="1,000,000"
                       />{" "}
                     </div>{" "}
+                    {formData.supportType === "sponsorship" && (
+                      <p className="mt-3 text-sm text-black/60">
+                        Enter the agreed sponsorship amount in Tanzanian
+                        shillings. USD package prices are shown for planning and
+                        should be confirmed with ARIFA before payment.
+                      </p>
+                    )}
                   </div>
                 )}{" "}
                 <div>
@@ -494,6 +554,7 @@ export default function SupportUsPage() {
                     Message or Specific Intent
                   </label>{" "}
                   <textarea
+                    name="message"
                     rows="4"
                     value={formData.message}
                     onChange={(e) =>
@@ -505,7 +566,15 @@ export default function SupportUsPage() {
                 </div>{" "}
                 <div className="pt-6">
                   {" "}
-                  {formData.supportType === "financial" ? (
+                  {error && (
+                    <div
+                      role="alert"
+                      className="mb-4 rounded-xl bg-red-50 px-5 py-4 font-medium text-red-700"
+                    >
+                      {error}
+                    </div>
+                  )}{" "}
+                  {isPayment ? (
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -518,7 +587,7 @@ export default function SupportUsPage() {
                         <>
                           {" "}
                           <i className="fas fa-lock opacity-70" /> Proceed to
-                          Selcom Secure Payment{" "}
+                          AirPay Secure Payment{" "}
                           <i className="fas fa-arrow-right opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all absolute right-8" />{" "}
                         </>
                       )}{" "}
@@ -533,7 +602,7 @@ export default function SupportUsPage() {
                       {isSubmitting ? "Submitting..." : "Submit Inquiry"}{" "}
                     </button>
                   )}{" "}
-                  {formData.supportType === "financial" && (
+                  {isPayment && (
                     <div className="text-center mt-4 flex items-center justify-center gap-4 text-sm text-black/70 font-medium">
                       {" "}
                       <span>
@@ -541,7 +610,7 @@ export default function SupportUsPage() {
                         Encrypted
                       </span>{" "}
                       <span>
-                        <i className="fas fa-bolt text-secondary mr-1" /> Selcom
+                        <i className="fas fa-bolt text-secondary mr-1" /> AirPay
                         Powered
                       </span>{" "}
                     </div>

@@ -1,0 +1,89 @@
+// ARIFA — donation / sponsorship payments via the Airpay Tanzania gateway.
+//
+// A donation IS the payment: unlike a conference registration there is nothing
+// to fulfil afterwards, so the donor's details and the gateway attempt live on
+// one row. `reference` is the stable key the donor sees and the status page
+// looks up; `gatewayOrderId` changes on every retry attempt.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DonationType {
+  DONATION
+  SPONSORSHIP
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CARD
+  MOBILE_MONEY
+  UNSET
+}
+
+/// One row per donation/sponsorship intent.
+model Donation {
+  id        String        @id @default(cuid())
+  reference String        @unique // e.g. ARF-7F3K9Q — shown to the donor
+  type      DonationType  @default(DONATION)
+  status    PaymentStatus @default(PENDING)
+  method    PaymentMethod @default(UNSET)
+
+  donorName    String
+  email        String
+  phone        String
+  organization String?
+  packageName  String?
+  message      String?
+
+  /// Whole Tanzanian shillings. Airpay bills TZS and the donor enters TZS, so
+  /// this is both the pledge and the exact charge sent to the gateway — it is
+  /// what the callback's reported amount is verified against before settling.
+  amount   Int
+  currency String @default("TZS")
+
+  /// Retry counter → a fresh, unique gateway orderid per attempt.
+  attempt        Int     @default(0)
+  gatewayOrderId String? @unique // per-attempt orderid sent to Airpay
+  gatewayTransId String? // Airpay's own transaction id (APTRANSACTIONID)
+  gatewayPayload Json? // raw callback / verify response, for audit
+  failureReason  String?
+
+  paidAt    DateTime?
+  events    DonationEvent[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  @@index([status])
+  @@index([email])
+}
+
+/// Append-only audit of every status transition: real-money forensics for what
+/// moved a donation, and from where (browser redirect / webhook / reconcile
+/// sweep / foreground poll).
+model DonationEvent {
+  id         String         @id @default(cuid())
+  donationId String
+  donation   Donation       @relation(fields: [donationId], references: [id], onDelete: Cascade)
+  fromStatus PaymentStatus?
+  toStatus   PaymentStatus
+  source     String // REDIRECT | CALLBACK | RECONCILE | POLL | INITIATE | SYSTEM
+  amount     Int? // gateway-reported amount at the time, if any
+  message    String?
+  createdAt  DateTime       @default(now())
+
+  @@index([donationId])
+}
