@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import ApplyForm from "./apply-form";
 import Image from "next/image";
 import Link from "next/link";
 import fs from "fs";
@@ -69,125 +70,7 @@ export default async function ApplyCertification({ params }) {
                 Fill out the form below to apply for the{" "}
                 <strong className="text-primary">{data.title}</strong>.
               </p>{" "}
-              <form className="space-y-6">
-                {" "}
-                <div className="grid md:grid-cols-2 gap-6">
-                  {" "}
-                  <div>
-                    {" "}
-                    <label className="block text-sm font-bold text-black mb-2">
-                      First Name <span className="text-primary">*</span>
-                    </label>{" "}
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                      placeholder="John"
-                      required
-                    />{" "}
-                  </div>{" "}
-                  <div>
-                    {" "}
-                    <label className="block text-sm font-bold text-black mb-2">
-                      Last Name <span className="text-primary">*</span>
-                    </label>{" "}
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                      placeholder="Doe"
-                      required
-                    />{" "}
-                  </div>{" "}
-                </div>{" "}
-                <div className="grid md:grid-cols-2 gap-6">
-                  {" "}
-                  <div>
-                    {" "}
-                    <label className="block text-sm font-bold text-black mb-2">
-                      Email Address <span className="text-primary">*</span>
-                    </label>{" "}
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                      placeholder="john@example.com"
-                      required
-                    />{" "}
-                  </div>{" "}
-                  <div>
-                    {" "}
-                    <label className="block text-sm font-bold text-black mb-2">
-                      Phone Number <span className="text-primary">*</span>
-                    </label>{" "}
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                      placeholder="+1 (555) 000-0000"
-                      required
-                    />{" "}
-                  </div>{" "}
-                </div>{" "}
-                <div>
-                  {" "}
-                  <label className="block text-sm font-bold text-black mb-2">
-                    Current Job Title / Profession
-                  </label>{" "}
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                    placeholder="e.g. Data Analyst"
-                  />{" "}
-                </div>{" "}
-                <div>
-                  {" "}
-                  <label className="block text-sm font-bold text-black mb-2">
-                    Why are you interested in this certification?{" "}
-                    <span className="text-primary">*</span>
-                  </label>{" "}
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-                    placeholder="Briefly describe your goals..."
-                    required
-                  />{" "}
-                </div>{" "}
-                <div>
-                  {" "}
-                  <label className="block text-sm font-bold text-black mb-2">
-                    Upload Resume / CV (Optional)
-                  </label>{" "}
-                  <div className="border-2 border-dashed border-black/10 rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer bg-primary/5">
-                    {" "}
-                    <i className="fas fa-cloud-upload-alt text-3xl text-primary/50 mb-2" />{" "}
-                    <p className="text-sm text-black/70">
-                      Click to upload or drag and drop
-                    </p>{" "}
-                    <p className="text-xs text-black/50 mt-1">
-                      PDF, DOC, or DOCX (Max 5MB)
-                    </p>{" "}
-                  </div>{" "}
-                </div>{" "}
-                <div className="pt-6 border-t border-black/10">
-                  {" "}
-                  <button
-                    type="button"
-                    className="w-full py-4 bg-primary text-white rounded-lg font-bold text-lg shadow-lg hover:bg-primary hover:-translate-y-0.5 transition-all"
-                  >
-                    {" "}
-                    Submit Application{" "}
-                  </button>{" "}
-                  <p className="text-xs text-center text-black/70 mt-4">
-                    {" "}
-                    By submitting this form, you agree to our{" "}
-                    <Link href="#" className="text-primary hover:underline">
-                      Terms & Conditions
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="#" className="text-primary hover:underline">
-                      Privacy Policy
-                    </Link>
-                    .{" "}
-                  </p>{" "}
-                </div>{" "}
-              </form>{" "}
+              <ApplyForm programme={data.title} programmeId={id} />{" "}
             </div>{" "}
           </div>{" "}
           {/* Sidebar Area */}{" "}

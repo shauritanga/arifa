@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { submitApplication } from "@/lib/client/submit-application";
 
 export default function ApplicationModal({
   isOpen,
@@ -13,6 +14,8 @@ export default function ApplicationModal({
   const mounted = typeof document !== "undefined";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [cvName, setCvName] = useState("");
 
   useEffect(() => {
     if (!mounted) return;
@@ -24,11 +27,14 @@ export default function ApplicationModal({
 
   if (!isOpen || !mounted) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    setError("");
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      await submitApplication(form, { programme: courseTitle });
       setIsSubmitting(false);
       setIsSuccess(true);
 
@@ -36,7 +42,10 @@ export default function ApplicationModal({
         setIsSuccess(false);
         onClose();
       }, 3000);
-    }, 1500);
+    } catch (err) {
+      setError(err.message);
+      setIsSubmitting(false);
+    }
   };
 
   const modalContent = (
@@ -83,8 +92,8 @@ export default function ApplicationModal({
                 Application Received!
               </h3>
               <p className="max-w-sm text-black/70">
-                Thank you for applying. We have sent a confirmation email and
-                will be in touch shortly.
+                Thank you for applying. Our admissions team will be in touch
+                shortly.
               </p>
             </div>
           ) : (
@@ -100,6 +109,7 @@ export default function ApplicationModal({
                     </label>
                     <input
                       type="text"
+                      name="firstName"
                       className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
@@ -110,6 +120,7 @@ export default function ApplicationModal({
                     </label>
                     <input
                       type="text"
+                      name="lastName"
                       className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
@@ -123,6 +134,7 @@ export default function ApplicationModal({
                     </label>
                     <input
                       type="email"
+                      name="email"
                       className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
@@ -133,6 +145,7 @@ export default function ApplicationModal({
                     </label>
                     <input
                       type="tel"
+                      name="phone"
                       className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
@@ -145,6 +158,7 @@ export default function ApplicationModal({
                     <span className="text-primary">*</span>
                   </label>
                   <textarea
+                    name="motivation"
                     rows={3}
                     className="w-full resize-none rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                     required
@@ -152,19 +166,42 @@ export default function ApplicationModal({
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-black">
+                  <label
+                    htmlFor="cv-modal"
+                    className="mb-2 block text-sm font-bold text-black"
+                  >
                     Resume / CV (Optional)
                   </label>
-                  <div className="w-full cursor-pointer rounded-xl border-2 border-dashed border-black/10 p-6 text-center transition-all hover:border-primary hover:bg-primary/5">
+                  <label
+                    htmlFor="cv-modal"
+                    className="block w-full cursor-pointer rounded-xl border-2 border-dashed border-black/10 p-6 text-center transition-all hover:border-primary hover:bg-primary/5"
+                  >
                     <i className="fas fa-cloud-upload-alt mb-2 text-2xl text-black/50 transition-colors" />
                     <p className="text-sm font-medium text-black">
-                      Click to upload or drag and drop
+                      {cvName || "Click to upload"}
                     </p>
                     <p className="mt-1 text-xs text-black/60">
-                      PDF, DOC up to 5MB
+                      PDF, DOC or DOCX up to 5MB
                     </p>
-                  </div>
+                  </label>
+                  <input
+                    id="cv-modal"
+                    name="cv"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    onChange={(e) => setCvName(e.target.files?.[0]?.name || "")}
+                    className="sr-only"
+                  />
                 </div>
+
+                {error && (
+                  <div
+                    role="alert"
+                    className="rounded-xl bg-red-50 px-5 py-4 text-sm font-medium text-red-700"
+                  >
+                    {error}
+                  </div>
+                )}
 
                 <div className="flex items-center justify-end gap-4 border-t border-black/10 pt-4">
                   <button

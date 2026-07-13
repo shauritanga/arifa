@@ -71,6 +71,56 @@ model Donation {
   @@index([email])
 }
 
+enum SubmissionStatus {
+  NEW
+  READ
+  ARCHIVED
+}
+
+/// Enquiries from the public contact form.
+model ContactMessage {
+  id        String           @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    SubmissionStatus @default(NEW)
+  createdAt DateTime         @default(now())
+
+  @@index([status])
+}
+
+/// Applications for a certification or short course. Both the standalone apply
+/// page and the "Apply Now" modal submit here — they are the same application,
+/// only presented differently, so `programme` records what was applied for.
+model Application {
+  id         String           @id @default(cuid())
+  firstName  String
+  lastName   String
+  email      String
+  phone      String
+  /// Title of the certification / course applied for.
+  programme  String
+  /// Certification id from the source data, when the apply page supplied one.
+  programmeId String?
+  occupation String?
+  motivation String
+
+  /// CVs are held in the database rather than on disk: volumes are low, and it
+  /// keeps the file atomic with the record (and inside the same backup).
+  cvName String?
+  cvType String?
+  cvData Bytes?
+
+  status    SubmissionStatus @default(NEW)
+  createdAt DateTime         @default(now())
+
+  @@index([status])
+  @@index([email])
+}
+
 /// Admin / staff users for the dashboard (NextAuth credentials).
 model AdminUser {
   id           String   @id @default(cuid())

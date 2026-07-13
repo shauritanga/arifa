@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -29,9 +29,31 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
   );
 }
 export default function Contact() {
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState({ state: "idle", error: "" });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for your message. We will get back to you shortly.");
+    const form = e.currentTarget;
+    setStatus({ state: "sending", error: "" });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setStatus({ state: "idle", error: data.error || "Could not send your message." });
+        return;
+      }
+
+      form.reset();
+      setStatus({ state: "sent", error: "" });
+    } catch {
+      setStatus({ state: "idle", error: "Could not send your message." });
+    }
   };
   return (
     <>
@@ -247,6 +269,7 @@ export default function Contact() {
                       <input
                         type="text"
                         id="firstName"
+                        name="firstName"
                         required
                         className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="John"
@@ -263,6 +286,7 @@ export default function Contact() {
                       <input
                         type="text"
                         id="lastName"
+                        name="lastName"
                         required
                         className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="Doe"
@@ -282,6 +306,7 @@ export default function Contact() {
                       <input
                         type="email"
                         id="email"
+                        name="email"
                         required
                         className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="john@example.com"
@@ -298,6 +323,7 @@ export default function Contact() {
                       <input
                         type="tel"
                         id="phone"
+                        name="phone"
                         className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="+255 123 456 789"
                       />{" "}
@@ -313,11 +339,13 @@ export default function Contact() {
                     </label>{" "}
                     <select
                       id="subject"
+                      name="subject"
+                      defaultValue=""
                       required
                       className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
                     >
                       {" "}
-                      <option value="" disabled selected>
+                      <option value="" disabled>
                         Select a subject...
                       </option>{" "}
                       <option value="General Inquiry">General Inquiry</option>{" "}
@@ -340,18 +368,37 @@ export default function Contact() {
                     </label>{" "}
                     <textarea
                       id="message"
+                      name="message"
                       rows="5"
                       required
                       className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
                       placeholder="How can we help you?"
                     ></textarea>{" "}
                   </div>{" "}
+                  {status.error && (
+                    <div
+                      role="alert"
+                      className="rounded-xl bg-red-50 px-5 py-4 font-medium text-red-700"
+                    >
+                      {status.error}
+                    </div>
+                  )}{" "}
+                  {status.state === "sent" && (
+                    <div
+                      role="status"
+                      className="rounded-xl bg-green-50 px-5 py-4 font-medium text-green-700"
+                    >
+                      Thank you for your message. We will get back to you
+                      shortly.
+                    </div>
+                  )}{" "}
                   <button
                     type="submit"
-                    className="w-full py-4 bg-primary text-white rounded-xl font-bold shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary hover:-translate-y-0.5 transition-all"
+                    disabled={status.state === "sending"}
+                    className="w-full py-4 bg-primary text-white rounded-xl font-bold shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:hover:translate-y-0"
                   >
                     {" "}
-                    Send Message{" "}
+                    {status.state === "sending" ? "Sending…" : "Send Message"}{" "}
                     <i className="fas fa-paper-plane ml-2 text-sm" />{" "}
                   </button>{" "}
                 </form>{" "}
