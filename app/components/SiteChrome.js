@@ -13,7 +13,9 @@ export default function SiteChrome({ header, footer, children }) {
   return (
     <>
       {!isAdmin && header}
-      <main className="flex-grow">{children}</main>
+      <main className={`flex-grow ${isAdmin ? "" : "site-copy"}`}>
+        {children}
+      </main>
       {!isAdmin && footer}
     </>
   );

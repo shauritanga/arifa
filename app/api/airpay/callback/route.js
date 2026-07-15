@@ -36,7 +36,7 @@ export async function POST(request) {
   );
 
   // Airpay POSTs the browser here, so redirect with 303 to turn it into a GET.
-  return Response.redirect(statusUrl(donation.reference), 303);
+  return Response.redirect(statusUrl(donation), 303);
 }
 
 /**
@@ -56,14 +56,20 @@ export async function GET(request) {
 
   await verifyDonation(donation.reference, "REDIRECT").catch(() => null);
 
-  return Response.redirect(statusUrl(donation.reference), 303);
+  return Response.redirect(statusUrl(donation), 303);
 }
 
-function statusUrl(reference) {
-  return new URL(
-    `/support-us/payment/${encodeURIComponent(reference)}`,
-    airpayConfig.siteUrl,
-  ).toString();
+/**
+ * Airpay returns every payer to this one registered URL, so the landing page is
+ * chosen here: a Master Class registrant is following a training journey and
+ * should not be dropped on the donation status page.
+ */
+function statusUrl(donation) {
+  const path =
+    donation.type === "TRAINING"
+      ? `/training/masterclass/payment/${encodeURIComponent(donation.reference)}`
+      : `/support-us/payment/${encodeURIComponent(donation.reference)}`;
+  return new URL(path, airpayConfig.siteUrl).toString();
 }
 
 function redirectHome() {

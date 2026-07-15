@@ -11,6 +11,19 @@ const POLL_TIMEOUT_MS = 3 * 60 * 1000;
 
 const OPEN = ["PENDING", "PROCESSING"];
 
+/**
+ * The settled-copy differs by what was bought — a gift is thanked for, a seat is
+ * confirmed — but every other state (waiting, failed, cancelled, refunded) reads
+ * the same, so only PAID is overridden.
+ */
+const PAID_BY_KIND = {
+  training: {
+    title: "Your seat is confirmed.",
+    body: "AirPay has confirmed your payment. We have emailed you a receipt, and our team will follow up with joining details before the session.",
+    tone: "bg-green-50 text-green-700",
+  },
+};
+
 const COPY = {
   PAID: {
     title: "Thank you — your gift is confirmed.",
@@ -44,7 +57,7 @@ const COPY = {
   },
 };
 
-export default function PaymentStatus({ donation }) {
+export default function PaymentStatus({ donation, kind = "donation" }) {
   const [status, setStatus] = useState(donation.status);
   const [retrying, setRetrying] = useState(false);
   const [error, setError] = useState("");
@@ -93,7 +106,8 @@ export default function PaymentStatus({ donation }) {
     }
   }, [donation.reference]);
 
-  const copy = COPY[status] ?? COPY.PENDING;
+  const copy =
+    (status === "PAID" && PAID_BY_KIND[kind]) || COPY[status] || COPY.PENDING;
   const isOpen = OPEN.includes(status);
   const canRetry = status === "FAILED" || status === "CANCELLED";
 
@@ -145,10 +159,10 @@ export default function PaymentStatus({ donation }) {
           </button>
         )}
         <Link
-          href="/support-us#pledge-form"
+          href={kind === "training" ? "/training/masterclass" : "/support-us#pledge-form"}
           className="inline-flex justify-center rounded-xl border border-primary px-6 py-3 font-bold text-primary"
         >
-          Make Another Gift
+          {kind === "training" ? "Back to Master Class" : "Make Another Gift"}
         </Link>
         <Link
           href="/contact-us"

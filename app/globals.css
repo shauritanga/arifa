@@ -44,6 +44,24 @@ h6 {
   font-family: var(--font-heading);
 }
 
+/* Justified body copy on the public site. Paragraphs that opt into an explicit
+   alignment, or sit inside a container that does, keep it — an element rule on
+   `p` would otherwise beat the alignment they inherit from that container. */
+.site-copy
+  p:not(
+    [class*="text-center"],
+    [class*="text-left"],
+    [class*="text-right"],
+    [class*="text-justify"]
+  ):not(
+    [class*="text-center"] *,
+    [class*="text-left"] *,
+    [class*="text-right"] *
+  ) {
+  text-align: justify;
+  hyphens: auto;
+}
+
 /* Smooth transitions for interactive elements */
 a,
 button {

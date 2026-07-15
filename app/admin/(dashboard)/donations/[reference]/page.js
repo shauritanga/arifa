@@ -8,6 +8,12 @@ export const dynamic = "force-dynamic";
 
 const TZS = new Intl.NumberFormat("en-TZ");
 
+const TYPE_LABELS = {
+  DONATION: "Donation",
+  SPONSORSHIP: "Sponsorship",
+  TRAINING: "Master Class",
+};
+
 export default async function DonationDetailPage({ params }) {
   const { reference } = await params;
 
@@ -41,12 +47,12 @@ export default async function DonationDetailPage({ params }) {
         <div className="space-y-6 lg:col-span-2">
           <Card title="Donation">
             <Row label="Amount" value={`TSh ${TZS.format(donation.amount)}`} strong />
-            <Row
-              label="Type"
-              value={donation.type === "SPONSORSHIP" ? "Sponsorship" : "Donation"}
-            />
+            <Row label="Type" value={TYPE_LABELS[donation.type] ?? "Donation"} />
             {donation.packageName && (
-              <Row label="Package" value={donation.packageName} />
+              <Row
+                label={donation.type === "TRAINING" ? "Session" : "Package"}
+                value={donation.packageName}
+              />
             )}
             {donation.message && <Row label="Message" value={donation.message} />}
             <Row
@@ -58,13 +64,14 @@ export default async function DonationDetailPage({ params }) {
             )}
           </Card>
 
-          <Card title="Donor">
+          <Card title={donation.type === "TRAINING" ? "Registrant" : "Donor"}>
             <Row label="Name" value={donation.donorName} />
             <Row label="Email" value={donation.email} />
             <Row label="Phone" value={donation.phone} />
             {donation.organization && (
               <Row label="Organisation" value={donation.organization} />
             )}
+            {donation.position && <Row label="Job title" value={donation.position} />}
           </Card>
 
           <Card title="History">

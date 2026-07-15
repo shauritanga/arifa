@@ -31,6 +31,7 @@ const navItems = [
     children: [
       { label: "Certifications", href: "/training/certifications" },
       { label: "Short Courses", href: "/training/short-courses" },
+      { label: "Master Class", href: "/training/masterclass" },
       { label: "Annual Calendar", href: "/calendar" },
     ],
   },

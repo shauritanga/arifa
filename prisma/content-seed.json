@@ -29,7 +29,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<div class=\"module\">\r\n      <h6>Module 1: Advanced Machine Learning and Model Optimization</h6>\r\n      <ul>\r\n        <li>Hyperparameter tuning, ensemble techniques</li>\r\n        <li>Feature reduction (PCA, t-SNE), regularization</li>\r\n        <li><strong>Hands-on:</strong> Predictive model optimization</li>\r\n        <li><strong>Case Study:</strong> Credit Risk Scoring</li>\r\n      </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Advanced Machine Learning and Model Optimization</h6><ul><li>Hyperparameter tuning, ensemble techniques</li><li>Feature reduction (PCA, t-SNE), regularization</li><li><strong>Hands-on:</strong> Predictive model optimization</li><li><strong>Case Study:</strong> Credit Risk Scoring</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -69,7 +69,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: AI Software Engineering and Tools</h6>\r\n    <ul>\r\n      <li>Version control, unit testing, CI/CD with Docker</li>\r\n      <li>Hands-on: Build a clean, testable AI codebase</li>\r\n      <li>Case Study: CI/CD in Retail Analytics</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Deep Learning and Optimization</h6>\r\n    <ul>\r\n      <li>Custom models with PyTorch/TensorFlow</li>\r\n      <li>LSTMs, GRUs, Transformers, distributed training</li>\r\n      <li>Hands-on: Image Captioning Model</li>\r\n      <li>Case Study: Satellite Image Classification</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Computer Vision Engineering</h6>\r\n    <ul>\r\n      <li>YOLO, SSD, segmentation, model compression</li>\r\n      <li>Hands-on: Real-time object detection on Jetson Nano</li>\r\n      <li>Case Study: Vision AI for Quality Control</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Natural Language Engineering and LLMs</h6>\r\n    <ul>\r\n      <li>Custom embeddings, GPT/T5 fine-tuning</li>\r\n      <li>Deploying chatbots and Q&A APIs</li>\r\n      <li>Hands-on: Retrieval-augmented Q&A app</li>\r\n      <li>Case Study: NLP for Legal Documents</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: MLOps, Deployment, and System Reliability</h6>\r\n    <ul>\r\n      <li>Airflow, MLflow, Kubeflow, Kubernetes orchestration</li>\r\n      <li>Monitoring, logging, model drift detection</li>\r\n      <li>Hands-on: Deploy scalable inference system</li>\r\n      <li>Case Study: Real-Time Fraud Detection in FinTech</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: AI Software Engineering and Tools</h6><ul><li>Version control, unit testing, CI/CD with Docker</li><li>Hands-on: Build a clean, testable AI codebase</li><li>Case Study: CI/CD in Retail Analytics</li></ul></div>\n<div class=\"module\"><h6>Module 2: Deep Learning and Optimization</h6><ul><li>Custom models with PyTorch/TensorFlow</li><li>LSTMs, GRUs, Transformers, distributed training</li><li>Hands-on: Image Captioning Model</li><li>Case Study: Satellite Image Classification</li></ul></div>\n<div class=\"module\"><h6>Module 3: Computer Vision Engineering</h6><ul><li>YOLO, SSD, segmentation, model compression</li><li>Hands-on: Real-time object detection on Jetson Nano</li><li>Case Study: Vision AI for Quality Control</li></ul></div>\n<div class=\"module\"><h6>Module 4: Natural Language Engineering and LLMs</h6><ul><li>Custom embeddings, GPT/T5 fine-tuning</li><li>Deploying chatbots and Q&A APIs</li><li>Hands-on: Retrieval-augmented Q&A app</li><li>Case Study: NLP for Legal Documents</li></ul></div>\n<div class=\"module\"><h6>Module 5: MLOps, Deployment, and System Reliability</h6><ul><li>Airflow, MLflow, Kubeflow, Kubernetes orchestration</li><li>Monitoring, logging, model drift detection</li><li>Hands-on: Deploy scalable inference system</li><li>Case Study: Real-Time Fraud Detection in FinTech</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -113,7 +113,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Architecting Advanced AI Systems</h6>\r\n    <ul>\r\n      <li>System architecture, API gateways, model pipelines</li>\r\n      <li>Hands-on: Architect an AI product</li>\r\n      <li>Case Study: AI Personalization in E-Commerce</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Generative AI and Multimodal Models</h6>\r\n    <ul>\r\n      <li>GANs, diffusion models, LLMs (GPT, LLaMA, Claude)</li>\r\n      <li>Multimodal models (CLIP, DALL·E, Gemini)</li>\r\n      <li>Prompt engineering, RAG, fine-tuning</li>\r\n      <li>Hands-on: Build a multimodal GenAI assistant</li>\r\n      <li>Case Study: AI in Creative Media</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Reinforcement Learning and Decision Intelligence</h6>\r\n    <ul>\r\n      <li>Q-learning, Policy Gradients, Deep RL with PyTorch</li>\r\n      <li>Simulation: OpenAI Gym, Unity ML-Agents</li>\r\n      <li>Hands-on: Train agent in simulated environment</li>\r\n      <li>Case Study: Smart Energy Management</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: MLOps and Scalable Deployment</h6>\r\n    <ul>\r\n      <li>MLOps pipelines (Kubeflow, Airflow), Kubernetes</li>\r\n      <li>Cloud-native deployment (AWS, GCP, Azure)</li>\r\n      <li>Monitoring, drift detection, rollback strategies</li>\r\n      <li>Hands-on: Deploy CI/CD AI pipeline</li>\r\n      <li>Case Study: AI at Scale in Finance</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Responsible AI Leadership and Policy Integration</h6>\r\n    <ul>\r\n      <li>Fair, safe, inclusive AI design</li>\r\n      <li>Compliance: EU AI Act, AI RMF, ISO/IEC 42001</li>\r\n      <li>AI for ESG & public good</li>\r\n      <li>Hands-on: Build a Responsible AI Framework</li>\r\n      <li>Case Study: AI Policy in Government</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Architecting Advanced AI Systems</h6><ul><li>System architecture, API gateways, model pipelines</li><li>Hands-on: Architect an AI product</li><li>Case Study: AI Personalization in E-Commerce</li></ul></div>\n<div class=\"module\"><h6>Module 2: Generative AI and Multimodal Models</h6><ul><li>GANs, diffusion models, LLMs (GPT, LLaMA, Claude)</li><li>Multimodal models (CLIP, DALL·E, Gemini)</li><li>Prompt engineering, RAG, fine-tuning</li><li>Hands-on: Build a multimodal GenAI assistant</li><li>Case Study: AI in Creative Media</li></ul></div>\n<div class=\"module\"><h6>Module 3: Reinforcement Learning and Decision Intelligence</h6><ul><li>Q-learning, Policy Gradients, Deep RL with PyTorch</li><li>Simulation: OpenAI Gym, Unity ML-Agents</li><li>Hands-on: Train agent in simulated environment</li><li>Case Study: Smart Energy Management</li></ul></div>\n<div class=\"module\"><h6>Module 4: MLOps and Scalable Deployment</h6><ul><li>MLOps pipelines (Kubeflow, Airflow), Kubernetes</li><li>Cloud-native deployment (AWS, GCP, Azure)</li><li>Monitoring, drift detection, rollback strategies</li><li>Hands-on: Deploy CI/CD AI pipeline</li><li>Case Study: AI at Scale in Finance</li></ul></div>\n<div class=\"module\"><h6>Module 5: Responsible AI Leadership and Policy Integration</h6><ul><li>Fair, safe, inclusive AI design</li><li>Compliance: EU AI Act, AI RMF, ISO/IEC 42001</li><li>AI for ESG & public good</li><li>Hands-on: Build a Responsible AI Framework</li><li>Case Study: AI Policy in Government</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -157,7 +157,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: AI Readiness and Maturity Assessment</h6>\r\n    <ul>\r\n      <li>Frameworks: OECD, WEF, ITU, AI4D</li>\r\n      <li>Technical/data readiness, skills gap analysis</li>\r\n      <li>Hands-on: AI readiness audit</li>\r\n      <li>Case Study: National AI Readiness (Global South)</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: AI Strategy Design and Implementation</h6>\r\n    <ul>\r\n      <li>Aligning AI with business goals and policies</li>\r\n      <li>Design thinking, vendor evaluation, ROI mapping</li>\r\n      <li>Hands-on: 3-Year AI Roadmap for SME</li>\r\n      <li>Case Study: Smart City AI Strategy</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Governance, Policy, and Regulation</h6>\r\n    <ul>\r\n      <li>Global policy (EU AI Act, AU Agenda, IP & data protection)</li>\r\n      <li>Ethics boards, risk assessment, compliance</li>\r\n      <li>Hands-on: AI Governance Toolkit</li>\r\n      <li>Case Study: Financial Services Regulation</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Leading AI Change and Stakeholder Engagement</h6>\r\n    <ul>\r\n      <li>Change management in AI adoption</li>\r\n      <li>Stakeholder consultation & awareness</li>\r\n      <li>Hands-on: AI Transformation Workshop Design</li>\r\n      <li>Case Study: Change Program in NGO</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: AI for Development and Impact Consulting</h6>\r\n    <ul>\r\n      <li>AI for SDGs, inclusive AI, gender & indigenous data</li>\r\n      <li>Monitoring & evaluation in AI projects</li>\r\n      <li>Hands-on: AI for Good Program Design</li>\r\n      <li>Case Study: Agriculture AI for Smallholders</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: AI Readiness and Maturity Assessment</h6><ul><li>Frameworks: OECD, WEF, ITU, AI4D</li><li>Technical/data readiness, skills gap analysis</li><li>Hands-on: AI readiness audit</li><li>Case Study: National AI Readiness (Global South)</li></ul></div>\n<div class=\"module\"><h6>Module 2: AI Strategy Design and Implementation</h6><ul><li>Aligning AI with business goals and policies</li><li>Design thinking, vendor evaluation, ROI mapping</li><li>Hands-on: 3-Year AI Roadmap for SME</li><li>Case Study: Smart City AI Strategy</li></ul></div>\n<div class=\"module\"><h6>Module 3: Governance, Policy, and Regulation</h6><ul><li>Global policy (EU AI Act, AU Agenda, IP & data protection)</li><li>Ethics boards, risk assessment, compliance</li><li>Hands-on: AI Governance Toolkit</li><li>Case Study: Financial Services Regulation</li></ul></div>\n<div class=\"module\"><h6>Module 4: Leading AI Change and Stakeholder Engagement</h6><ul><li>Change management in AI adoption</li><li>Stakeholder consultation & awareness</li><li>Hands-on: AI Transformation Workshop Design</li><li>Case Study: Change Program in NGO</li></ul></div>\n<div class=\"module\"><h6>Module 5: AI for Development and Impact Consulting</h6><ul><li>AI for SDGs, inclusive AI, gender & indigenous data</li><li>Monitoring & evaluation in AI projects</li><li>Hands-on: AI for Good Program Design</li><li>Case Study: Agriculture AI for Smallholders</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -201,7 +201,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Introduction to Data Science and Python</h6>\r\n    <ul>\r\n      <li>Roles, tools, and the data science workflow</li>\r\n      <li>Python basics, Jupyter, pandas, NumPy</li>\r\n      <li>Hands-on: Analyze sales data with pandas</li>\r\n      <li>Case Study: Retail Performance Dashboard</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Statistics and Data Exploration</h6>\r\n    <ul>\r\n      <li>Descriptive stats, probability, distributions</li>\r\n      <li>Hypothesis testing, handling outliers</li>\r\n      <li>Hands-on: Customer Behavior Analysis</li>\r\n      <li>Case Study: Heart Disease Risk Factors</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Data Visualization and Storytelling</h6>\r\n    <ul>\r\n      <li>Matplotlib, Seaborn, Plotly for charting</li>\r\n      <li>Interactive dashboards, visual storytelling</li>\r\n      <li>Hands-on: Build executive report in Jupyter</li>\r\n      <li>Case Study: COVID-19 Global Trends</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Introduction to Predictive Modeling</h6>\r\n    <ul>\r\n      <li>Regression, classification, model metrics</li>\r\n      <li>Train/test split, preprocessing, confusion matrix</li>\r\n      <li>Hands-on: Predict exam performance</li>\r\n      <li>Case Study: Loan Approval System</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Capstone Project and Career Prep</h6>\r\n    <ul>\r\n      <li>Complete end-to-end data science project</li>\r\n      <li>Present results and communicate insights</li>\r\n      <li>Build GitHub portfolio + interview coaching</li>\r\n      <li>Capstone Examples: Churn Prediction, Sales Forecasting</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Introduction to Data Science and Python</h6><ul><li>Roles, tools, and the data science workflow</li><li>Python basics, Jupyter, pandas, NumPy</li><li>Hands-on: Analyze sales data with pandas</li><li>Case Study: Retail Performance Dashboard</li></ul></div>\n<div class=\"module\"><h6>Module 2: Statistics and Data Exploration</h6><ul><li>Descriptive stats, probability, distributions</li><li>Hypothesis testing, handling outliers</li><li>Hands-on: Customer Behavior Analysis</li><li>Case Study: Heart Disease Risk Factors</li></ul></div>\n<div class=\"module\"><h6>Module 3: Data Visualization and Storytelling</h6><ul><li>Matplotlib, Seaborn, Plotly for charting</li><li>Interactive dashboards, visual storytelling</li><li>Hands-on: Build executive report in Jupyter</li><li>Case Study: COVID-19 Global Trends</li></ul></div>\n<div class=\"module\"><h6>Module 4: Introduction to Predictive Modeling</h6><ul><li>Regression, classification, model metrics</li><li>Train/test split, preprocessing, confusion matrix</li><li>Hands-on: Predict exam performance</li><li>Case Study: Loan Approval System</li></ul></div>\n<div class=\"module\"><h6>Module 5: Capstone Project and Career Prep</h6><ul><li>Complete end-to-end data science project</li><li>Present results and communicate insights</li><li>Build GitHub portfolio + interview coaching</li><li>Capstone Examples: Churn Prediction, Sales Forecasting</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -245,7 +245,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Advanced Statistical Modeling & Machine Learning</h6>\r\n    <ul>\r\n      <li>Topics: Regression, Forecasting, Ensemble Methods</li>\r\n      <li>Tools: Python, scikit-learn</li>\r\n      <li><strong>Exercise:</strong> Build a multi-model predictive system</li>\r\n      <li><strong>Case Study:</strong> Customer Lifetime Value in Retail</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Data Engineering & Workflow Automation</h6>\r\n    <ul>\r\n      <li>Topics: SQL, Airflow pipelines, APIs, real-time data</li>\r\n      <li>Tools: SQL, Airflow, cloud storage</li>\r\n      <li><strong>Exercise:</strong> Automate data-to-dashboard workflow</li>\r\n      <li><strong>Case Study:</strong> Energy Consumption Forecasting Pipeline</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Data Visualization & Business Intelligence</h6>\r\n    <ul>\r\n      <li>Topics: Storytelling, dashboards, KPI tracking</li>\r\n      <li>Tools: Tableau, Power BI, Plotly Dash, Streamlit</li>\r\n      <li><strong>Exercise:</strong> Executive Dashboard for Sales</li>\r\n      <li><strong>Case Study:</strong> Government Budget Monitoring BI</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Applied ML & MLOps</h6>\r\n    <ul>\r\n      <li>Topics: Feature engineering, tuning, versioning, Docker</li>\r\n      <li>Tools: MLflow, DVC, scikit-learn, Docker</li>\r\n      <li><strong>Exercise:</strong> Deploy and monitor an ML model</li>\r\n      <li><strong>Case Study:</strong> Predictive Maintenance in Manufacturing</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Strategic Analytics & Domain Applications</h6>\r\n    <ul>\r\n      <li>Topics: A/B testing, risk modeling, personalization, causal inference</li>\r\n      <li>Domains: Finance, public health, development</li>\r\n      <li><strong>Exercise:</strong> Solve a real domain-specific analytics challenge</li>\r\n      <li><strong>Case Study:</strong> Public Health Targeted Interventions</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Advanced Statistical Modeling & Machine Learning</h6><ul><li>Topics: Regression, Forecasting, Ensemble Methods</li><li>Tools: Python, scikit-learn</li><li><strong>Exercise:</strong> Build a multi-model predictive system</li><li><strong>Case Study:</strong> Customer Lifetime Value in Retail</li></ul></div>\n<div class=\"module\"><h6>Module 2: Data Engineering & Workflow Automation</h6><ul><li>Topics: SQL, Airflow pipelines, APIs, real-time data</li><li>Tools: SQL, Airflow, cloud storage</li><li><strong>Exercise:</strong> Automate data-to-dashboard workflow</li><li><strong>Case Study:</strong> Energy Consumption Forecasting Pipeline</li></ul></div>\n<div class=\"module\"><h6>Module 3: Data Visualization & Business Intelligence</h6><ul><li>Topics: Storytelling, dashboards, KPI tracking</li><li>Tools: Tableau, Power BI, Plotly Dash, Streamlit</li><li><strong>Exercise:</strong> Executive Dashboard for Sales</li><li><strong>Case Study:</strong> Government Budget Monitoring BI</li></ul></div>\n<div class=\"module\"><h6>Module 4: Applied ML & MLOps</h6><ul><li>Topics: Feature engineering, tuning, versioning, Docker</li><li>Tools: MLflow, DVC, scikit-learn, Docker</li><li><strong>Exercise:</strong> Deploy and monitor an ML model</li><li><strong>Case Study:</strong> Predictive Maintenance in Manufacturing</li></ul></div>\n<div class=\"module\"><h6>Module 5: Strategic Analytics & Domain Applications</h6><ul><li>Topics: A/B testing, risk modeling, personalization, causal inference</li><li>Domains: Finance, public health, development</li><li><strong>Exercise:</strong> Solve a real domain-specific analytics challenge</li><li><strong>Case Study:</strong> Public Health Targeted Interventions</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -289,7 +289,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Data Maturity Models and Diagnostic Frameworks</h6>\r\n    <ul>\r\n      <li>Assessing data infrastructure, architecture, and analytics capabilities</li>\r\n      <li>People, process, and technology alignment in data strategy</li>\r\n      <li>Tools: DAMA-DMBOK, WEF Data Readiness, Data Maturity Models</li>\r\n      <li><strong>Hands-on Exercise:</strong> Perform a full data maturity diagnostic</li>\r\n      <li><strong>Case Study:</strong> Readiness Assessment for a Public Sector Agency</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Data Strategy and Analytics Transformation Planning</h6>\r\n    <ul>\r\n      <li>Structuring and scoping a consulting engagement</li>\r\n      <li>Formulating 1–3 year data science roadmaps</li>\r\n      <li>Building business cases and analytics investment portfolios</li>\r\n      <li>KPI frameworks and data ROI tracking</li>\r\n      <li><strong>Hands-on Exercise:</strong> Draft a Data Strategy for an SME</li>\r\n      <li><strong>Case Study:</strong> Analytics Roadmap for a Financial Cooperative</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Governance, Risk, and Ethics in Data Consulting</h6>\r\n    <ul>\r\n      <li>Data protection, algorithmic accountability, and risk frameworks</li>\r\n      <li>Responsible AI/Data principles (OECD, EU AI Act, African Union Policy)</li>\r\n      <li>Inclusion, fairness, and bias mitigation in data science projects</li>\r\n      <li>Organizational governance structures for data oversight</li>\r\n      <li><strong>Hands-on Exercise:</strong> Draft a Data Governance Policy</li>\r\n      <li><strong>Case Study:</strong> Data Ethics in Health Analytics for NGOs</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Leading Stakeholder Engagement and Data Culture</h6>\r\n    <ul>\r\n      <li>Stakeholder mapping and executive alignment</li>\r\n      <li>Cross-functional collaboration: IT, data, operations, legal</li>\r\n      <li>Designing data literacy and change management initiatives</li>\r\n      <li>Facilitating workshops and data strategy sessions</li>\r\n      <li><strong>Hands-on Exercise:</strong> Design a Stakeholder Engagement Plan</li>\r\n      <li><strong>Case Study:</strong> Data Culture Change in a Regional Utility Company</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Sectoral Analytics Consulting and Policy Integration</h6>\r\n    <ul>\r\n      <li>Data consulting in development, agriculture, health, education, and finance</li>\r\n      <li>Working with donors, multilateral institutions, and regulators</li>\r\n      <li>Data-for-development (D4D), MEL, and impact measurement</li>\r\n      <li>Integrating data science into national digital transformation agendas</li>\r\n      <li><strong>Hands-on Exercise:</strong> Draft a Proposal for a Data for Good Program</li>\r\n      <li><strong>Case Study:</strong> Data Science for SDG Monitoring in Local Government</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Data Maturity Models and Diagnostic Frameworks</h6><ul><li>Assessing data infrastructure, architecture, and analytics capabilities</li><li>People, process, and technology alignment in data strategy</li><li>Tools: DAMA-DMBOK, WEF Data Readiness, Data Maturity Models</li><li><strong>Hands-on Exercise:</strong> Perform a full data maturity diagnostic</li><li><strong>Case Study:</strong> Readiness Assessment for a Public Sector Agency</li></ul></div>\n<div class=\"module\"><h6>Module 2: Data Strategy and Analytics Transformation Planning</h6><ul><li>Structuring and scoping a consulting engagement</li><li>Formulating 1–3 year data science roadmaps</li><li>Building business cases and analytics investment portfolios</li><li>KPI frameworks and data ROI tracking</li><li><strong>Hands-on Exercise:</strong> Draft a Data Strategy for an SME</li><li><strong>Case Study:</strong> Analytics Roadmap for a Financial Cooperative</li></ul></div>\n<div class=\"module\"><h6>Module 3: Governance, Risk, and Ethics in Data Consulting</h6><ul><li>Data protection, algorithmic accountability, and risk frameworks</li><li>Responsible AI/Data principles (OECD, EU AI Act, African Union Policy)</li><li>Inclusion, fairness, and bias mitigation in data science projects</li><li>Organizational governance structures for data oversight</li><li><strong>Hands-on Exercise:</strong> Draft a Data Governance Policy</li><li><strong>Case Study:</strong> Data Ethics in Health Analytics for NGOs</li></ul></div>\n<div class=\"module\"><h6>Module 4: Leading Stakeholder Engagement and Data Culture</h6><ul><li>Stakeholder mapping and executive alignment</li><li>Cross-functional collaboration: IT, data, operations, legal</li><li>Designing data literacy and change management initiatives</li><li>Facilitating workshops and data strategy sessions</li><li><strong>Hands-on Exercise:</strong> Design a Stakeholder Engagement Plan</li><li><strong>Case Study:</strong> Data Culture Change in a Regional Utility Company</li></ul></div>\n<div class=\"module\"><h6>Module 5: Sectoral Analytics Consulting and Policy Integration</h6><ul><li>Data consulting in development, agriculture, health, education, and finance</li><li>Working with donors, multilateral institutions, and regulators</li><li>Data-for-development (D4D), MEL, and impact measurement</li><li>Integrating data science into national digital transformation agendas</li><li><strong>Hands-on Exercise:</strong> Draft a Proposal for a Data for Good Program</li><li><strong>Case Study:</strong> Data Science for SDG Monitoring in Local Government</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -337,7 +337,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Fundamentals of Data Analysis and Excel for Analytics</h6>\r\n    <ul>\r\n      <li>What is data analysis? Key roles and concepts</li>\r\n      <li>Excel functions for analysis: VLOOKUP, IF, INDEX/MATCH, pivot tables</li>\r\n      <li>Cleaning and formatting data in Excel</li>\r\n      <li>Creating reports and charts</li>\r\n      <li><strong>Hands-on Exercise:</strong> Analyze a Sales Dataset in Excel</li>\r\n      <li><strong>Case Study:</strong> Regional Sales Reporting for FMCG Company</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: SQL for Data Analysts</h6>\r\n    <ul>\r\n      <li>Database concepts and structure</li>\r\n      <li>SQL queries: SELECT, WHERE, JOIN, GROUP BY, HAVING</li>\r\n      <li>Aggregation and filtering for business reporting</li>\r\n      <li>Creating views and basic stored procedures</li>\r\n      <li><strong>Hands-on Exercise:</strong> Query an Orders and Customers Database</li>\r\n      <li><strong>Case Study:</strong> Customer Retention Report for E-Commerce</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Python for Data Wrangling and Analysis</h6>\r\n    <ul>\r\n      <li>Introduction to Python for analytics (pandas, numpy)</li>\r\n      <li>Importing data (CSV, Excel, APIs)</li>\r\n      <li>Cleaning, transforming, and summarizing datasets</li>\r\n      <li>Basic visualizations with matplotlib and seaborn</li>\r\n      <li><strong>Hands-on Exercise:</strong> Analyze HR Attrition Data with Pandas</li>\r\n      <li><strong>Case Study:</strong> Monthly Employee Retention Analytics</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Data Visualization and Dashboards</h6>\r\n    <ul>\r\n      <li>Principles of effective visual communication</li>\r\n      <li>Power BI/Tableau basics: data import, calculated fields, filters</li>\r\n      <li>Interactive visuals, slicers, and storytelling dashboards</li>\r\n      <li>Sharing and publishing reports</li>\r\n      <li><strong>Hands-on Exercise:</strong> Build a Sales Dashboard in Power BI</li>\r\n      <li><strong>Case Study:</strong> Budget Monitoring Dashboard for NGO Program</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Business Insights and Communication</h6>\r\n    <ul>\r\n      <li>Framing business questions and KPIs</li>\r\n      <li>Insight generation and recommendation writing</li>\r\n      <li>Presenting findings to technical and non-technical audiences</li>\r\n      <li>Creating executive summaries and visual reports</li>\r\n      <li><strong>Hands-on Exercise:</strong> Draft a Business Insights Report</li>\r\n      <li><strong>Case Study:</strong> Campaign Performance Analysis for Marketing Team</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Fundamentals of Data Analysis and Excel for Analytics</h6><ul><li>What is data analysis? Key roles and concepts</li><li>Excel functions for analysis: VLOOKUP, IF, INDEX/MATCH, pivot tables</li><li>Cleaning and formatting data in Excel</li><li>Creating reports and charts</li><li><strong>Hands-on Exercise:</strong> Analyze a Sales Dataset in Excel</li><li><strong>Case Study:</strong> Regional Sales Reporting for FMCG Company</li></ul></div>\n<div class=\"module\"><h6>Module 2: SQL for Data Analysts</h6><ul><li>Database concepts and structure</li><li>SQL queries: SELECT, WHERE, JOIN, GROUP BY, HAVING</li><li>Aggregation and filtering for business reporting</li><li>Creating views and basic stored procedures</li><li><strong>Hands-on Exercise:</strong> Query an Orders and Customers Database</li><li><strong>Case Study:</strong> Customer Retention Report for E-Commerce</li></ul></div>\n<div class=\"module\"><h6>Module 3: Python for Data Wrangling and Analysis</h6><ul><li>Introduction to Python for analytics (pandas, numpy)</li><li>Importing data (CSV, Excel, APIs)</li><li>Cleaning, transforming, and summarizing datasets</li><li>Basic visualizations with matplotlib and seaborn</li><li><strong>Hands-on Exercise:</strong> Analyze HR Attrition Data with Pandas</li><li><strong>Case Study:</strong> Monthly Employee Retention Analytics</li></ul></div>\n<div class=\"module\"><h6>Module 4: Data Visualization and Dashboards</h6><ul><li>Principles of effective visual communication</li><li>Power BI/Tableau basics: data import, calculated fields, filters</li><li>Interactive visuals, slicers, and storytelling dashboards</li><li>Sharing and publishing reports</li><li><strong>Hands-on Exercise:</strong> Build a Sales Dashboard in Power BI</li><li><strong>Case Study:</strong> Budget Monitoring Dashboard for NGO Program</li></ul></div>\n<div class=\"module\"><h6>Module 5: Business Insights and Communication</h6><ul><li>Framing business questions and KPIs</li><li>Insight generation and recommendation writing</li><li>Presenting findings to technical and non-technical audiences</li><li>Creating executive summaries and visual reports</li><li><strong>Hands-on Exercise:</strong> Draft a Business Insights Report</li><li><strong>Case Study:</strong> Campaign Performance Analysis for Marketing Team</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -381,7 +381,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Introduction to Machine Learning</h6>\r\n    <ul>\r\n      <li>What is machine learning? Overview and taxonomy</li>\r\n      <li>Supervised vs. unsupervised learning</li>\r\n      <li>ML workflow: data → features → model → metrics</li>\r\n      <li>Use cases: classification, regression, clustering</li>\r\n      <li><strong>Hands-on Exercise:</strong> Train your first ML model with scikit-learn</li>\r\n      <li><strong>Case Study:</strong> Predicting Housing Prices</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Data Preprocessing and Feature Engineering</h6>\r\n    <ul>\r\n      <li>Handling missing data, outliers, and imbalanced classes</li>\r\n      <li>Encoding techniques (one-hot, label encoding)</li>\r\n      <li>Scaling and normalization (MinMax, StandardScaler)</li>\r\n      <li>Feature selection and dimensionality reduction (PCA)</li>\r\n      <li><strong>Hands-on Exercise:</strong> Clean and transform a messy dataset</li>\r\n      <li><strong>Case Study:</strong> Preparing Data for a Credit Risk Model</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Core Algorithms and Evaluation</h6>\r\n    <ul>\r\n      <li>Regression: Linear, Ridge, Lasso</li>\r\n      <li>Classification: Logistic, k-NN, Decision Trees</li>\r\n      <li>Ensemble methods: Random Forest, XGBoost, LightGBM</li>\r\n      <li>Metrics: accuracy, precision, recall, ROC-AUC, RMSE</li>\r\n      <li><strong>Hands-on Exercise:</strong> Compare multiple ML models</li>\r\n      <li><strong>Case Study:</strong> Churn Prediction for Telecom Company</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Model Optimization and Tuning</h6>\r\n    <ul>\r\n      <li>Train/test/validation splitting</li>\r\n      <li>Cross-validation strategies</li>\r\n      <li>Hyperparameter tuning: GridSearchCV, RandomizedSearchCV</li>\r\n      <li>Avoiding overfitting: regularization and model complexity</li>\r\n      <li><strong>Hands-on Exercise:</strong> Tune an XGBoost model</li>\r\n      <li><strong>Case Study:</strong> Tuning a Model for E-Commerce Sales Forecasting</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Deployment Basics and ML Project Presentation</h6>\r\n    <ul>\r\n      <li>Model persistence (Pickle, Joblib)</li>\r\n      <li>Basic deployment with Streamlit or FastAPI</li>\r\n      <li>Communicating results: visualizations and reporting</li>\r\n      <li>Project packaging and GitHub portfolio tips</li>\r\n      <li><strong>Hands-on Exercise:</strong> Build a mini ML app</li>\r\n      <li><strong>Capstone Project:</strong> Predictive Model for Your Chosen Use Case (e.g., health, education, finance, agriculture)</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Introduction to Machine Learning</h6><ul><li>What is machine learning? Overview and taxonomy</li><li>Supervised vs. unsupervised learning</li><li>ML workflow: data → features → model → metrics</li><li>Use cases: classification, regression, clustering</li><li><strong>Hands-on Exercise:</strong> Train your first ML model with scikit-learn</li><li><strong>Case Study:</strong> Predicting Housing Prices</li></ul></div>\n<div class=\"module\"><h6>Module 2: Data Preprocessing and Feature Engineering</h6><ul><li>Handling missing data, outliers, and imbalanced classes</li><li>Encoding techniques (one-hot, label encoding)</li><li>Scaling and normalization (MinMax, StandardScaler)</li><li>Feature selection and dimensionality reduction (PCA)</li><li><strong>Hands-on Exercise:</strong> Clean and transform a messy dataset</li><li><strong>Case Study:</strong> Preparing Data for a Credit Risk Model</li></ul></div>\n<div class=\"module\"><h6>Module 3: Core Algorithms and Evaluation</h6><ul><li>Regression: Linear, Ridge, Lasso</li><li>Classification: Logistic, k-NN, Decision Trees</li><li>Ensemble methods: Random Forest, XGBoost, LightGBM</li><li>Metrics: accuracy, precision, recall, ROC-AUC, RMSE</li><li><strong>Hands-on Exercise:</strong> Compare multiple ML models</li><li><strong>Case Study:</strong> Churn Prediction for Telecom Company</li></ul></div>\n<div class=\"module\"><h6>Module 4: Model Optimization and Tuning</h6><ul><li>Train/test/validation splitting</li><li>Cross-validation strategies</li><li>Hyperparameter tuning: GridSearchCV, RandomizedSearchCV</li><li>Avoiding overfitting: regularization and model complexity</li><li><strong>Hands-on Exercise:</strong> Tune an XGBoost model</li><li><strong>Case Study:</strong> Tuning a Model for E-Commerce Sales Forecasting</li></ul></div>\n<div class=\"module\"><h6>Module 5: Deployment Basics and ML Project Presentation</h6><ul><li>Model persistence (Pickle, Joblib)</li><li>Basic deployment with Streamlit or FastAPI</li><li>Communicating results: visualizations and reporting</li><li>Project packaging and GitHub portfolio tips</li><li><strong>Hands-on Exercise:</strong> Build a mini ML app</li><li><strong>Capstone Project:</strong> Predictive Model for Your Chosen Use Case (e.g., health, education, finance, agriculture)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -425,7 +425,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Theoretical Foundations of Machine Learning</h6>\r\n    <ul>\r\n      <li>Convexity, optimization, and gradient-based learning</li>\r\n      <li>Loss functions, regularization, and generalization theory</li>\r\n      <li>Bias-variance tradeoff, VC dimension, and PAC learning</li>\r\n      <li><strong>Hands-on Exercise:</strong> Implement logistic regression and analyze convergence</li>\r\n      <li><strong>Case Study:</strong> Comparing generalization across regularized models</li>\r\n    </ul>\r\n\r\n    <h6>Module 2: Probabilistic Models and Bayesian Learning</h6>\r\n    <ul>\r\n      <li>Probabilistic graphical models (PGMs)</li>\r\n      <li>Naive Bayes, Hidden Markov Models, Bayesian Networks</li>\r\n      <li>Bayesian inference: MAP, MCMC, Variational Inference</li>\r\n      <li><strong>Hands-on Exercise:</strong> Implement a variational autoencoder (VAE)</li>\r\n      <li><strong>Case Study:</strong> Probabilistic modeling for disease outbreak prediction</li>\r\n    </ul>\r\n\r\n    <h6>Module 3: Representation Learning and Deep Architectures</h6>\r\n    <ul>\r\n      <li>Autoencoders, embeddings, Siamese networks</li>\r\n      <li>Transformer architectures and attention mechanisms</li>\r\n      <li>Transfer learning and contrastive learning</li>\r\n      <li><strong>Hands-on Exercise:</strong> Fine-tune a transformer on a domain-specific task</li>\r\n      <li><strong>Case Study:</strong> Embedding-based similarity model for legal documents</li>\r\n    </ul>\r\n\r\n    <h6>Module 4: Reinforcement Learning and Decision Making</h6>\r\n    <ul>\r\n      <li>Markov Decision Processes (MDPs), policies, value functions</li>\r\n      <li>Q-learning, Policy Gradient methods, Actor-Critic models</li>\r\n      <li>Exploration-exploitation trade-offs</li>\r\n      <li><strong>Hands-on Exercise:</strong> Train an RL agent in a custom OpenAI Gym environment</li>\r\n      <li><strong>Case Study:</strong> RL for Energy Resource Optimization</li>\r\n    </ul>\r\n\r\n    <h6>Module 5: Experimental Design, Reproducibility, and Scientific Writing</h6>\r\n    <ul>\r\n      <li>Scientific method in ML research: hypothesis, experimentation, replication</li>\r\n      <li>Using MLflow, Weights & Biases, and Git for reproducible pipelines</li>\r\n      <li>Evaluation metrics for scientific rigor (e.g., ablation studies, error analysis)</li>\r\n      <li>Research writing and documentation best practices</li>\r\n      <li><strong>Hands-on Exercise:</strong> Replicate a published ML paper</li>\r\n      <li><strong>Capstone Thesis/Project:</strong> Propose, implement, and defend a novel ML approach</li>\r\n    </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Theoretical Foundations of Machine Learning</h6><ul><li>Convexity, optimization, and gradient-based learning</li><li>Loss functions, regularization, and generalization theory</li><li>Bias-variance tradeoff, VC dimension, and PAC learning</li><li><strong>Hands-on Exercise:</strong> Implement logistic regression and analyze convergence</li><li><strong>Case Study:</strong> Comparing generalization across regularized models</li></ul></div>\n<div class=\"module\"><h6>Module 2: Probabilistic Models and Bayesian Learning</h6><ul><li>Probabilistic graphical models (PGMs)</li><li>Naive Bayes, Hidden Markov Models, Bayesian Networks</li><li>Bayesian inference: MAP, MCMC, Variational Inference</li><li><strong>Hands-on Exercise:</strong> Implement a variational autoencoder (VAE)</li><li><strong>Case Study:</strong> Probabilistic modeling for disease outbreak prediction</li></ul></div>\n<div class=\"module\"><h6>Module 3: Representation Learning and Deep Architectures</h6><ul><li>Autoencoders, embeddings, Siamese networks</li><li>Transformer architectures and attention mechanisms</li><li>Transfer learning and contrastive learning</li><li><strong>Hands-on Exercise:</strong> Fine-tune a transformer on a domain-specific task</li><li><strong>Case Study:</strong> Embedding-based similarity model for legal documents</li></ul></div>\n<div class=\"module\"><h6>Module 4: Reinforcement Learning and Decision Making</h6><ul><li>Markov Decision Processes (MDPs), policies, value functions</li><li>Q-learning, Policy Gradient methods, Actor-Critic models</li><li>Exploration-exploitation trade-offs</li><li><strong>Hands-on Exercise:</strong> Train an RL agent in a custom OpenAI Gym environment</li><li><strong>Case Study:</strong> RL for Energy Resource Optimization</li></ul></div>\n<div class=\"module\"><h6>Module 5: Experimental Design, Reproducibility, and Scientific Writing</h6><ul><li>Scientific method in ML research: hypothesis, experimentation, replication</li><li>Using MLflow, Weights & Biases, and Git for reproducible pipelines</li><li>Evaluation metrics for scientific rigor (e.g., ablation studies, error analysis)</li><li>Research writing and documentation best practices</li><li><strong>Hands-on Exercise:</strong> Replicate a published ML paper</li><li><strong>Capstone Thesis/Project:</strong> Propose, implement, and defend a novel ML approach</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -473,7 +473,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Machine Learning Engineering Foundations</h6>\r\n  <ul>\r\n    <li>ML vs. ML Engineering: Differences in focus and workflows</li>\r\n    <li>ML system design principles</li>\r\n    <li>Code modularization, logging, testing, and debugging in ML</li>\r\n    <li>Using Git and version control for ML projects</li>\r\n    <li><strong>Hands-on Exercise:</strong> Structure a production-ready ML project</li>\r\n    <li><strong>Case Study:</strong> ML Engineering for Credit Risk Classification</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Model Packaging and Serving</h6>\r\n  <ul>\r\n    <li>Model serialization: Pickle, Joblib, ONNX, TensorFlow SavedModel</li>\r\n    <li>Building REST APIs with FastAPI or Flask</li>\r\n    <li>Serving models with TensorFlow Serving and TorchServe</li>\r\n    <li>Handling batch vs. real-time inference</li>\r\n    <li><strong>Hands-on Exercise:</strong> Deploy an ML model as a REST API</li>\r\n    <li><strong>Case Study:</strong> Image Classification API for E-Commerce Platform</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: Scalable Deployment with Docker and Kubernetes</h6>\r\n  <ul>\r\n    <li>Introduction to Docker: images, containers, Dockerfiles</li>\r\n    <li>Containerizing ML models</li>\r\n    <li>Basics of Kubernetes: pods, services, deployments</li>\r\n    <li>Auto-scaling and resource management for ML workloads</li>\r\n    <li><strong>Hands-on Exercise:</strong> Deploy a containerized ML model on Kubernetes</li>\r\n    <li><strong>Case Study:</strong> Scalable Inference for Video Surveillance Models</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: MLOps and Workflow Automation</h6>\r\n  <ul>\r\n    <li>ML lifecycle management (data versioning, model tracking, reproducibility)</li>\r\n    <li>Tools: MLflow, DVC, Airflow, Prefect</li>\r\n    <li>Experiment tracking, model registry, and pipeline automation</li>\r\n    <li>CI/CD pipelines for ML (GitHub Actions, Jenkins)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build an automated ML pipeline using MLflow</li>\r\n    <li><strong>Case Study:</strong> MLOps for Predictive Maintenance in Manufacturing</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: Monitoring, Testing, and Responsible Deployment</h6>\r\n  <ul>\r\n    <li>Performance monitoring (latency, throughput, accuracy drift)</li>\r\n    <li>A/B testing and model rollout strategies</li>\r\n    <li>Data drift and concept drift detection</li>\r\n    <li>Fairness, explainability (SHAP, LIME), and audit readiness</li>\r\n    <li><strong>Hands-on Exercise:</strong> Set up model monitoring with Prometheus + Grafana</li>\r\n    <li><strong>Case Study:</strong> Responsible ML Deployment in Healthcare System</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Machine Learning Engineering Foundations</h6><ul><li>ML vs. ML Engineering: Differences in focus and workflows</li><li>ML system design principles</li><li>Code modularization, logging, testing, and debugging in ML</li><li>Using Git and version control for ML projects</li><li><strong>Hands-on Exercise:</strong> Structure a production-ready ML project</li><li><strong>Case Study:</strong> ML Engineering for Credit Risk Classification</li></ul></div>\n<div class=\"module\"><h6>Module 2: Model Packaging and Serving</h6><ul><li>Model serialization: Pickle, Joblib, ONNX, TensorFlow SavedModel</li><li>Building REST APIs with FastAPI or Flask</li><li>Serving models with TensorFlow Serving and TorchServe</li><li>Handling batch vs. real-time inference</li><li><strong>Hands-on Exercise:</strong> Deploy an ML model as a REST API</li><li><strong>Case Study:</strong> Image Classification API for E-Commerce Platform</li></ul></div>\n<div class=\"module\"><h6>Module 3: Scalable Deployment with Docker and Kubernetes</h6><ul><li>Introduction to Docker: images, containers, Dockerfiles</li><li>Containerizing ML models</li><li>Basics of Kubernetes: pods, services, deployments</li><li>Auto-scaling and resource management for ML workloads</li><li><strong>Hands-on Exercise:</strong> Deploy a containerized ML model on Kubernetes</li><li><strong>Case Study:</strong> Scalable Inference for Video Surveillance Models</li></ul></div>\n<div class=\"module\"><h6>Module 4: MLOps and Workflow Automation</h6><ul><li>ML lifecycle management (data versioning, model tracking, reproducibility)</li><li>Tools: MLflow, DVC, Airflow, Prefect</li><li>Experiment tracking, model registry, and pipeline automation</li><li>CI/CD pipelines for ML (GitHub Actions, Jenkins)</li><li><strong>Hands-on Exercise:</strong> Build an automated ML pipeline using MLflow</li><li><strong>Case Study:</strong> MLOps for Predictive Maintenance in Manufacturing</li></ul></div>\n<div class=\"module\"><h6>Module 5: Monitoring, Testing, and Responsible Deployment</h6><ul><li>Performance monitoring (latency, throughput, accuracy drift)</li><li>A/B testing and model rollout strategies</li><li>Data drift and concept drift detection</li><li>Fairness, explainability (SHAP, LIME), and audit readiness</li><li><strong>Hands-on Exercise:</strong> Set up model monitoring with Prometheus + Grafana</li><li><strong>Case Study:</strong> Responsible ML Deployment in Healthcare System</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -521,7 +521,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Deep Learning Foundations</h6>\r\n  <ul>\r\n    <li>Mathematical foundations of neural networks</li>\r\n    <li>Activation functions, optimizers, loss functions</li>\r\n    <li>Backpropagation and gradient descent</li>\r\n    <li>Model initialization, regularization (Dropout, L2), batch norm</li>\r\n    <li><strong>Hands-on Exercise:</strong> Implement a deep feedforward network from scratch</li>\r\n    <li><strong>Case Study:</strong> Predict Customer Churn Using Fully Connected Networks</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Convolutional Neural Networks (CNNs)</h6>\r\n  <ul>\r\n    <li>Convolutions, pooling, padding, and architecture design</li>\r\n    <li>Popular CNNs: LeNet, AlexNet, ResNet, EfficientNet</li>\r\n    <li>Image augmentation and regularization in vision tasks</li>\r\n    <li>Transfer learning with pretrained vision models</li>\r\n    <li><strong>Hands-on Exercise:</strong> Fine-tune ResNet for medical image classification</li>\r\n    <li><strong>Case Study:</strong> Real-Time Defect Detection in Manufacturing</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: Sequence Models and Recurrent Neural Networks</h6>\r\n  <ul>\r\n    <li>RNNs, LSTMs, GRUs — theory and practice</li>\r\n    <li>Attention mechanisms and sequence-to-sequence models</li>\r\n    <li>Time series forecasting and NLP sequence modeling</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build an LSTM for stock prediction</li>\r\n    <li><strong>Case Study:</strong> Text Generation with GRUs for Creative Writing</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: Transformers, NLP, and Language Models</h6>\r\n  <ul>\r\n    <li>Transformer architecture: multi-head attention, encoder-decoder</li>\r\n    <li>Pretrained LLMs: BERT, GPT, T5, RoBERTa</li>\r\n    <li>Hugging Face Transformers, tokenization, and fine-tuning</li>\r\n    <li>Prompt engineering and RAG (retrieval-augmented generation)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Fine-tune BERT for sentiment analysis</li>\r\n    <li><strong>Case Study:</strong> Custom LLM for Legal Document Classification</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: Generative AI and Model Deployment</h6>\r\n  <ul>\r\n    <li>Variational Autoencoders (VAEs), GANs, and Diffusion Models</li>\r\n    <li>Model interpretability: SHAP, saliency maps, LIME</li>\r\n    <li>Model deployment with Streamlit, FastAPI, ONNX, TensorFlow Lite</li>\r\n    <li>Cloud-based GPU training and model monitoring</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build and deploy a GAN for image synthesis</li>\r\n    <li><strong>Capstone Project:</strong> End-to-end deep learning system for chosen domain (e.g., agriculture, health, mobility, art, education)</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Deep Learning Foundations</h6><ul><li>Mathematical foundations of neural networks</li><li>Activation functions, optimizers, loss functions</li><li>Backpropagation and gradient descent</li><li>Model initialization, regularization (Dropout, L2), batch norm</li><li><strong>Hands-on Exercise:</strong> Implement a deep feedforward network from scratch</li><li><strong>Case Study:</strong> Predict Customer Churn Using Fully Connected Networks</li></ul></div>\n<div class=\"module\"><h6>Module 2: Convolutional Neural Networks (CNNs)</h6><ul><li>Convolutions, pooling, padding, and architecture design</li><li>Popular CNNs: LeNet, AlexNet, ResNet, EfficientNet</li><li>Image augmentation and regularization in vision tasks</li><li>Transfer learning with pretrained vision models</li><li><strong>Hands-on Exercise:</strong> Fine-tune ResNet for medical image classification</li><li><strong>Case Study:</strong> Real-Time Defect Detection in Manufacturing</li></ul></div>\n<div class=\"module\"><h6>Module 3: Sequence Models and Recurrent Neural Networks</h6><ul><li>RNNs, LSTMs, GRUs — theory and practice</li><li>Attention mechanisms and sequence-to-sequence models</li><li>Time series forecasting and NLP sequence modeling</li><li><strong>Hands-on Exercise:</strong> Build an LSTM for stock prediction</li><li><strong>Case Study:</strong> Text Generation with GRUs for Creative Writing</li></ul></div>\n<div class=\"module\"><h6>Module 4: Transformers, NLP, and Language Models</h6><ul><li>Transformer architecture: multi-head attention, encoder-decoder</li><li>Pretrained LLMs: BERT, GPT, T5, RoBERTa</li><li>Hugging Face Transformers, tokenization, and fine-tuning</li><li>Prompt engineering and RAG (retrieval-augmented generation)</li><li><strong>Hands-on Exercise:</strong> Fine-tune BERT for sentiment analysis</li><li><strong>Case Study:</strong> Custom LLM for Legal Document Classification</li></ul></div>\n<div class=\"module\"><h6>Module 5: Generative AI and Model Deployment</h6><ul><li>Variational Autoencoders (VAEs), GANs, and Diffusion Models</li><li>Model interpretability: SHAP, saliency maps, LIME</li><li>Model deployment with Streamlit, FastAPI, ONNX, TensorFlow Lite</li><li>Cloud-based GPU training and model monitoring</li><li><strong>Hands-on Exercise:</strong> Build and deploy a GAN for image synthesis</li><li><strong>Capstone Project:</strong> End-to-end deep learning system for chosen domain (e.g., agriculture, health, mobility, art, education)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -569,7 +569,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Fundamentals of NLP and Classical Techniques</h6>\r\n  <ul>\r\n    <li>Text preprocessing: tokenization, stopwords, stemming, lemmatization</li>\r\n    <li>Vectorization methods: Bag of Words, TF-IDF, word embeddings</li>\r\n    <li>Named Entity Recognition (NER), POS tagging, text classification</li>\r\n    <li>Tools: NLTK, spaCy, scikit-learn</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build a text classifier with TF-IDF + Logistic Regression</li>\r\n    <li><strong>Case Study:</strong> Email Spam Classification for Telecom Company</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Modern NLP with Deep Learning</h6>\r\n  <ul>\r\n    <li>Word2Vec, GloVe, FastText embeddings</li>\r\n    <li>RNNs, LSTMs, GRUs for sequence learning</li>\r\n    <li>Attention mechanisms and encoder-decoder models</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build an LSTM-based sentiment classifier</li>\r\n    <li><strong>Case Study:</strong> Opinion Mining from Customer Reviews</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: Transformers and Pretrained Language Models</h6>\r\n  <ul>\r\n    <li>Transformer architecture (BERT, GPT, RoBERTa, T5)</li>\r\n    <li>Fine-tuning vs. prompting vs. retrieval-augmented generation (RAG)</li>\r\n    <li>Hugging Face Transformers and Datasets</li>\r\n    <li>Domain adaptation for healthcare, legal, or education texts</li>\r\n    <li><strong>Hands-on Exercise:</strong> Fine-tune BERT for multi-label classification</li>\r\n    <li><strong>Case Study:</strong> Legal Document Classification for JusticeTech Platform</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: NLP Applications and Deployment</h6>\r\n  <ul>\r\n    <li>Chatbot development using Rasa, OpenAI APIs, or LLMs</li>\r\n    <li>Text summarization, Q&A systems, translation, NER pipelines</li>\r\n    <li>Deployment with FastAPI, Streamlit, and RESTful APIs</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build a chatbot for a customer service workflow</li>\r\n    <li><strong>Case Study:</strong> NLP-powered Knowledge Assistant for University Helpdesk</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: Responsible NLP, Multilingual AI, and African Language Models</h6>\r\n  <ul>\r\n    <li>Bias, toxicity, fairness in NLP models</li>\r\n    <li>Working with Swahili, Yoruba, Zulu, Hausa, and other African languages</li>\r\n    <li>Transfer learning for low-resource NLP</li>\r\n    <li>Ethical considerations and explainability tools (LIME, SHAP)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Evaluate fairness in text classification model</li>\r\n    <li><strong>Capstone Project:</strong> End-to-end NLP system (your choice: chatbot, LLM-based Q&A, document classifier, etc.)</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Fundamentals of NLP and Classical Techniques</h6><ul><li>Text preprocessing: tokenization, stopwords, stemming, lemmatization</li><li>Vectorization methods: Bag of Words, TF-IDF, word embeddings</li><li>Named Entity Recognition (NER), POS tagging, text classification</li><li>Tools: NLTK, spaCy, scikit-learn</li><li><strong>Hands-on Exercise:</strong> Build a text classifier with TF-IDF + Logistic Regression</li><li><strong>Case Study:</strong> Email Spam Classification for Telecom Company</li></ul></div>\n<div class=\"module\"><h6>Module 2: Modern NLP with Deep Learning</h6><ul><li>Word2Vec, GloVe, FastText embeddings</li><li>RNNs, LSTMs, GRUs for sequence learning</li><li>Attention mechanisms and encoder-decoder models</li><li><strong>Hands-on Exercise:</strong> Build an LSTM-based sentiment classifier</li><li><strong>Case Study:</strong> Opinion Mining from Customer Reviews</li></ul></div>\n<div class=\"module\"><h6>Module 3: Transformers and Pretrained Language Models</h6><ul><li>Transformer architecture (BERT, GPT, RoBERTa, T5)</li><li>Fine-tuning vs. prompting vs. retrieval-augmented generation (RAG)</li><li>Hugging Face Transformers and Datasets</li><li>Domain adaptation for healthcare, legal, or education texts</li><li><strong>Hands-on Exercise:</strong> Fine-tune BERT for multi-label classification</li><li><strong>Case Study:</strong> Legal Document Classification for JusticeTech Platform</li></ul></div>\n<div class=\"module\"><h6>Module 4: NLP Applications and Deployment</h6><ul><li>Chatbot development using Rasa, OpenAI APIs, or LLMs</li><li>Text summarization, Q&A systems, translation, NER pipelines</li><li>Deployment with FastAPI, Streamlit, and RESTful APIs</li><li><strong>Hands-on Exercise:</strong> Build a chatbot for a customer service workflow</li><li><strong>Case Study:</strong> NLP-powered Knowledge Assistant for University Helpdesk</li></ul></div>\n<div class=\"module\"><h6>Module 5: Responsible NLP, Multilingual AI, and African Language Models</h6><ul><li>Bias, toxicity, fairness in NLP models</li><li>Working with Swahili, Yoruba, Zulu, Hausa, and other African languages</li><li>Transfer learning for low-resource NLP</li><li>Ethical considerations and explainability tools (LIME, SHAP)</li><li><strong>Hands-on Exercise:</strong> Evaluate fairness in text classification model</li><li><strong>Capstone Project:</strong> End-to-end NLP system (your choice: chatbot, LLM-based Q&A, document classifier, etc.)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -617,7 +617,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Foundations of Computer Vision and CNNs</h6>\r\n  <ul>\r\n    <li>Basics of visual perception and image processing</li>\r\n    <li>OpenCV and Pillow for transformations, filters, and augmentation</li>\r\n    <li>Deep learning foundations for image understanding (CNNs, pooling, activations)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Image classification using custom CNN</li>\r\n    <li><strong>Case Study:</strong> Plant Disease Detection from Leaf Images</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Object Detection and Localization</h6>\r\n  <ul>\r\n    <li>Single Shot Detectors (SSD), YOLOv5/v8, Faster R-CNN</li>\r\n    <li>Bounding box regression and anchor box concepts</li>\r\n    <li>Training and fine-tuning pretrained object detectors</li>\r\n    <li>Evaluation metrics: IoU, mAP, precision-recall</li>\r\n    <li><strong>Hands-on Exercise:</strong> Train a YOLOv8 model on a custom dataset</li>\r\n    <li><strong>Case Study:</strong> Helmet Detection for Workplace Safety</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: Image Segmentation and Scene Understanding</h6>\r\n  <ul>\r\n    <li>Semantic vs. instance segmentation</li>\r\n    <li>U-Net, Mask R-CNN, DeepLabV3</li>\r\n    <li>Applications in medical imaging, satellite image analysis</li>\r\n    <li><strong>Hands-on Exercise:</strong> Segment objects in medical scans using U-Net</li>\r\n    <li><strong>Case Study:</strong> Land Cover Classification from Satellite Images</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: Video Analysis, Tracking, and Real-Time Systems</h6>\r\n  <ul>\r\n    <li>Object tracking (SORT, Deep SORT), optical flow</li>\r\n    <li>Action recognition, pose estimation</li>\r\n    <li>Real-time streaming and inference using TensorRT or ONNX</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build a real-time vehicle tracking system</li>\r\n    <li><strong>Case Study:</strong> Crowd Monitoring for Urban Planning</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: Generative Vision Models, Deployment & Responsible AI</h6>\r\n  <ul>\r\n    <li>Generative Adversarial Networks (GANs) for vision</li>\r\n    <li>Vision Transformers (ViT, DINO, SAM)</li>\r\n    <li>Explainability in vision models (Grad-CAM, saliency maps)</li>\r\n    <li>Deploying models via Flask, FastAPI, and Streamlit</li>\r\n    <li>Ethics and governance: facial recognition, privacy, and surveillance</li>\r\n    <li><strong>Hands-on Exercise:</strong> Deploy a face mask detection model via API</li>\r\n    <li><strong>Capstone Project:</strong> End-to-end vision system in health, agriculture, security, or retail</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Foundations of Computer Vision and CNNs</h6><ul><li>Basics of visual perception and image processing</li><li>OpenCV and Pillow for transformations, filters, and augmentation</li><li>Deep learning foundations for image understanding (CNNs, pooling, activations)</li><li><strong>Hands-on Exercise:</strong> Image classification using custom CNN</li><li><strong>Case Study:</strong> Plant Disease Detection from Leaf Images</li></ul></div>\n<div class=\"module\"><h6>Module 2: Object Detection and Localization</h6><ul><li>Single Shot Detectors (SSD), YOLOv5/v8, Faster R-CNN</li><li>Bounding box regression and anchor box concepts</li><li>Training and fine-tuning pretrained object detectors</li><li>Evaluation metrics: IoU, mAP, precision-recall</li><li><strong>Hands-on Exercise:</strong> Train a YOLOv8 model on a custom dataset</li><li><strong>Case Study:</strong> Helmet Detection for Workplace Safety</li></ul></div>\n<div class=\"module\"><h6>Module 3: Image Segmentation and Scene Understanding</h6><ul><li>Semantic vs. instance segmentation</li><li>U-Net, Mask R-CNN, DeepLabV3</li><li>Applications in medical imaging, satellite image analysis</li><li><strong>Hands-on Exercise:</strong> Segment objects in medical scans using U-Net</li><li><strong>Case Study:</strong> Land Cover Classification from Satellite Images</li></ul></div>\n<div class=\"module\"><h6>Module 4: Video Analysis, Tracking, and Real-Time Systems</h6><ul><li>Object tracking (SORT, Deep SORT), optical flow</li><li>Action recognition, pose estimation</li><li>Real-time streaming and inference using TensorRT or ONNX</li><li><strong>Hands-on Exercise:</strong> Build a real-time vehicle tracking system</li><li><strong>Case Study:</strong> Crowd Monitoring for Urban Planning</li></ul></div>\n<div class=\"module\"><h6>Module 5: Generative Vision Models, Deployment & Responsible AI</h6><ul><li>Generative Adversarial Networks (GANs) for vision</li><li>Vision Transformers (ViT, DINO, SAM)</li><li>Explainability in vision models (Grad-CAM, saliency maps)</li><li>Deploying models via Flask, FastAPI, and Streamlit</li><li>Ethics and governance: facial recognition, privacy, and surveillance</li><li><strong>Hands-on Exercise:</strong> Deploy a face mask detection model via API</li><li><strong>Capstone Project:</strong> End-to-end vision system in health, agriculture, security, or retail</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -665,7 +665,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Cloud Computing Foundations</h6>\r\n  <ul>\r\n    <li>History and evolution of cloud computing</li>\r\n    <li>IaaS, PaaS, SaaS: service models and use cases</li>\r\n    <li>Public, private, hybrid, and multi-cloud environments</li>\r\n    <li>Core components: compute, storage, networking, databases</li>\r\n    <li><strong>Hands-on Exercise:</strong> Launch and configure a virtual server in AWS</li>\r\n    <li><strong>Case Study:</strong> Migrating a local CRM system to the cloud</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Cloud Infrastructure and Virtualization</h6>\r\n  <ul>\r\n    <li>Virtual machines (VMs), containers (Docker), and Kubernetes</li>\r\n    <li>Elastic computing, auto-scaling, and load balancing</li>\r\n    <li>Virtual networks (VPC, subnets, firewalls, VPNs)</li>\r\n    <li>Storage options: block, object, and file storage</li>\r\n    <li><strong>Hands-on Exercise:</strong> Configure a containerized application using Docker + GCP</li>\r\n    <li><strong>Case Study:</strong> Scalable E-Commerce Platform on Azure</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: Security, Identity, and Compliance in the Cloud</h6>\r\n  <ul>\r\n    <li>Identity and Access Management (IAM)</li>\r\n    <li>Encryption at rest/in transit, SSL/TLS, key management</li>\r\n    <li>Shared responsibility model and zero-trust architecture</li>\r\n    <li>Governance, compliance (GDPR, ISO 27001, NIST, local data regulations)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Implement IAM roles and policy controls in Azure</li>\r\n    <li><strong>Case Study:</strong> Securing Financial Data for a Regional Fintech</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: DevOps and Automation in the Cloud</h6>\r\n  <ul>\r\n    <li>Infrastructure as Code (Terraform, AWS CloudFormation)</li>\r\n    <li>CI/CD pipelines for cloud-native apps</li>\r\n    <li>Monitoring, logging, and alerting (CloudWatch, Azure Monitor, Stackdriver)</li>\r\n    <li>Serverless computing (AWS Lambda, Google Cloud Functions)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Deploy a CI/CD pipeline for containerized microservices</li>\r\n    <li><strong>Case Study:</strong> Automating NGO Reporting System on AWS</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: Cloud Architecture, Migration & Optimization</h6>\r\n  <ul>\r\n    <li>Designing for scalability, resilience, and high availability</li>\r\n    <li>Cost optimization strategies (reserved instances, rightsizing, autoscaling)</li>\r\n    <li>Cloud migration planning (6 Rs framework)</li>\r\n    <li>Disaster recovery, multi-region deployments, failover</li>\r\n    <li><strong>Hands-on Exercise:</strong> Design a multi-tier cloud architecture using a case scenario</li>\r\n    <li><strong>Capstone Project:</strong> Design and deploy a cloud solution for a real-world client (e.g., public agency, startup, or research institution)</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Cloud Computing Foundations</h6><ul><li>History and evolution of cloud computing</li><li>IaaS, PaaS, SaaS: service models and use cases</li><li>Public, private, hybrid, and multi-cloud environments</li><li>Core components: compute, storage, networking, databases</li><li><strong>Hands-on Exercise:</strong> Launch and configure a virtual server in AWS</li><li><strong>Case Study:</strong> Migrating a local CRM system to the cloud</li></ul></div>\n<div class=\"module\"><h6>Module 2: Cloud Infrastructure and Virtualization</h6><ul><li>Virtual machines (VMs), containers (Docker), and Kubernetes</li><li>Elastic computing, auto-scaling, and load balancing</li><li>Virtual networks (VPC, subnets, firewalls, VPNs)</li><li>Storage options: block, object, and file storage</li><li><strong>Hands-on Exercise:</strong> Configure a containerized application using Docker + GCP</li><li><strong>Case Study:</strong> Scalable E-Commerce Platform on Azure</li></ul></div>\n<div class=\"module\"><h6>Module 3: Security, Identity, and Compliance in the Cloud</h6><ul><li>Identity and Access Management (IAM)</li><li>Encryption at rest/in transit, SSL/TLS, key management</li><li>Shared responsibility model and zero-trust architecture</li><li>Governance, compliance (GDPR, ISO 27001, NIST, local data regulations)</li><li><strong>Hands-on Exercise:</strong> Implement IAM roles and policy controls in Azure</li><li><strong>Case Study:</strong> Securing Financial Data for a Regional Fintech</li></ul></div>\n<div class=\"module\"><h6>Module 4: DevOps and Automation in the Cloud</h6><ul><li>Infrastructure as Code (Terraform, AWS CloudFormation)</li><li>CI/CD pipelines for cloud-native apps</li><li>Monitoring, logging, and alerting (CloudWatch, Azure Monitor, Stackdriver)</li><li>Serverless computing (AWS Lambda, Google Cloud Functions)</li><li><strong>Hands-on Exercise:</strong> Deploy a CI/CD pipeline for containerized microservices</li><li><strong>Case Study:</strong> Automating NGO Reporting System on AWS</li></ul></div>\n<div class=\"module\"><h6>Module 5: Cloud Architecture, Migration & Optimization</h6><ul><li>Designing for scalability, resilience, and high availability</li><li>Cost optimization strategies (reserved instances, rightsizing, autoscaling)</li><li>Cloud migration planning (6 Rs framework)</li><li>Disaster recovery, multi-region deployments, failover</li><li><strong>Hands-on Exercise:</strong> Design a multi-tier cloud architecture using a case scenario</li><li><strong>Capstone Project:</strong> Design and deploy a cloud solution for a real-world client (e.g., public agency, startup, or research institution)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -713,7 +713,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: IoT Fundamentals and System Architecture</h6>\r\n  <ul>\r\n    <li>What is IoT? Use cases and value chain</li>\r\n    <li>IoT architecture: device, gateway, cloud, analytics, interface</li>\r\n    <li>Sensors, actuators, microcontrollers (MCUs), and edge devices</li>\r\n    <li>Prototyping kits: Arduino, ESP32, Raspberry Pi</li>\r\n    <li><strong>Hands-on Exercise:</strong> Connect a temperature sensor to ESP32</li>\r\n    <li><strong>Case Study:</strong> Smart Greenhouse Monitoring System</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Device Programming and Hardware Integration</h6>\r\n  <ul>\r\n    <li>GPIO, analog/digital sensors, PWM, interrupts</li>\r\n    <li>Programming microcontrollers (Arduino IDE, MicroPython)</li>\r\n    <li>Serial communication and real-time data logging</li>\r\n    <li>Local displays and feedback interfaces (OLED, LCD, buzzers)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build a motion-activated LED alert system</li>\r\n    <li><strong>Case Study:</strong> Low-Cost Cold Chain Monitoring for Vaccines</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: IoT Communication Protocols and Networking</h6>\r\n  <ul>\r\n    <li>WiFi, BLE, Zigbee, LoRaWAN, NB-IoT, GSM</li>\r\n    <li>Protocols: MQTT, HTTP/REST, CoAP</li>\r\n    <li>Publish/Subscribe systems and message brokers</li>\r\n    <li>IoT device addressing and security</li>\r\n    <li><strong>Hands-on Exercise:</strong> Send sensor data to MQTT broker</li>\r\n    <li><strong>Case Study:</strong> City-wide Air Quality Monitoring Network</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: Cloud Platforms, Data Analytics, and Dashboards</h6>\r\n  <ul>\r\n    <li>Cloud IoT services: AWS IoT Core, Azure IoT Hub, Google Cloud IoT</li>\r\n    <li>IoT data storage and streaming (InfluxDB, Firebase, ThingSpeak)</li>\r\n    <li>Visualizing data using Grafana, Power BI, or Node-RED</li>\r\n    <li>Actuation logic and real-time alerts</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build a dashboard for real-time sensor data</li>\r\n    <li><strong>Case Study:</strong> Smart Water Metering for Urban Utilities</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: IoT Security, Edge AI, and Deployment</h6>\r\n  <ul>\r\n    <li>Common threats: eavesdropping, spoofing, firmware attacks</li>\r\n    <li>Security best practices: encryption, OTA updates, authentication</li>\r\n    <li>Edge AI: local ML on microcontrollers using TensorFlow Lite Micro</li>\r\n    <li>Deploying IoT at scale and managing devices remotely</li>\r\n    <li><strong>Hands-on Exercise:</strong> Train and deploy a simple anomaly detection model on-device</li>\r\n    <li><strong>Capstone Project:</strong> Design, prototype, and present an end-to-end IoT system (e.g., smart farm, home automation, asset tracker)</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: IoT Fundamentals and System Architecture</h6><ul><li>What is IoT? Use cases and value chain</li><li>IoT architecture: device, gateway, cloud, analytics, interface</li><li>Sensors, actuators, microcontrollers (MCUs), and edge devices</li><li>Prototyping kits: Arduino, ESP32, Raspberry Pi</li><li><strong>Hands-on Exercise:</strong> Connect a temperature sensor to ESP32</li><li><strong>Case Study:</strong> Smart Greenhouse Monitoring System</li></ul></div>\n<div class=\"module\"><h6>Module 2: Device Programming and Hardware Integration</h6><ul><li>GPIO, analog/digital sensors, PWM, interrupts</li><li>Programming microcontrollers (Arduino IDE, MicroPython)</li><li>Serial communication and real-time data logging</li><li>Local displays and feedback interfaces (OLED, LCD, buzzers)</li><li><strong>Hands-on Exercise:</strong> Build a motion-activated LED alert system</li><li><strong>Case Study:</strong> Low-Cost Cold Chain Monitoring for Vaccines</li></ul></div>\n<div class=\"module\"><h6>Module 3: IoT Communication Protocols and Networking</h6><ul><li>WiFi, BLE, Zigbee, LoRaWAN, NB-IoT, GSM</li><li>Protocols: MQTT, HTTP/REST, CoAP</li><li>Publish/Subscribe systems and message brokers</li><li>IoT device addressing and security</li><li><strong>Hands-on Exercise:</strong> Send sensor data to MQTT broker</li><li><strong>Case Study:</strong> City-wide Air Quality Monitoring Network</li></ul></div>\n<div class=\"module\"><h6>Module 4: Cloud Platforms, Data Analytics, and Dashboards</h6><ul><li>Cloud IoT services: AWS IoT Core, Azure IoT Hub, Google Cloud IoT</li><li>IoT data storage and streaming (InfluxDB, Firebase, ThingSpeak)</li><li>Visualizing data using Grafana, Power BI, or Node-RED</li><li>Actuation logic and real-time alerts</li><li><strong>Hands-on Exercise:</strong> Build a dashboard for real-time sensor data</li><li><strong>Case Study:</strong> Smart Water Metering for Urban Utilities</li></ul></div>\n<div class=\"module\"><h6>Module 5: IoT Security, Edge AI, and Deployment</h6><ul><li>Common threats: eavesdropping, spoofing, firmware attacks</li><li>Security best practices: encryption, OTA updates, authentication</li><li>Edge AI: local ML on microcontrollers using TensorFlow Lite Micro</li><li>Deploying IoT at scale and managing devices remotely</li><li><strong>Hands-on Exercise:</strong> Train and deploy a simple anomaly detection model on-device</li><li><strong>Capstone Project:</strong> Design, prototype, and present an end-to-end IoT system (e.g., smart farm, home automation, asset tracker)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -761,7 +761,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<h6>Module 1: Blockchain Foundations and Architecture</h6>\r\n  <ul>\r\n    <li>History of blockchain and Web3 evolution</li>\r\n    <li>Distributed ledgers, nodes, peer-to-peer systems</li>\r\n    <li>Cryptography: hash functions, digital signatures, public/private keys</li>\r\n    <li>Consensus algorithms: PoW, PoS, PBFT, DPoS</li>\r\n    <li><strong>Hands-on Exercise:</strong> Simulate a blockchain ledger using Python</li>\r\n    <li><strong>Case Study:</strong> Blockchain for Land Registry Transparency</li>\r\n  </ul>\r\n\r\n  <h6>Module 2: Smart Contracts and Ethereum Development</h6>\r\n  <ul>\r\n    <li>Ethereum architecture, EVM, accounts, gas</li>\r\n    <li>Solidity basics: functions, data types, inheritance</li>\r\n    <li>Truffle, Hardhat, and Remix for smart contract development</li>\r\n    <li><strong>Hands-on Exercise:</strong> Build a voting or escrow smart contract</li>\r\n    <li><strong>Case Study:</strong> Crowdfunding dApp for Creative Entrepreneurs</li>\r\n  </ul>\r\n\r\n  <h6>Module 3: Blockchain Platforms and Enterprise Integration</h6>\r\n  <ul>\r\n    <li>Public vs. private vs. consortium blockchains</li>\r\n    <li>Hyperledger Fabric basics: channels, chaincode, identity</li>\r\n    <li>Sidechains, Layer 2 solutions (Polygon, Arbitrum)</li>\r\n    <li>APIs and blockchain integration with enterprise systems</li>\r\n    <li><strong>Hands-on Exercise:</strong> Deploy a chaincode on Hyperledger Fabric</li>\r\n    <li><strong>Case Study:</strong> Blockchain for Transparent Procurement</li>\r\n  </ul>\r\n\r\n  <h6>Module 4: Tokenization, NFTs, and Decentralized Finance (DeFi)</h6>\r\n  <ul>\r\n    <li>Tokens and token standards (ERC-20, ERC-721, ERC-1155)</li>\r\n    <li>Stablecoins, staking, yield farming, DEXs</li>\r\n    <li>NFT creation and marketplaces (OpenSea, Rarible)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Mint and list an NFT</li>\r\n    <li><strong>Case Study:</strong> DeFi Lending Platform for Smallholder Farmers</li>\r\n  </ul>\r\n\r\n  <h6>Module 5: Security, Regulation, and Governance</h6>\r\n  <ul>\r\n    <li>Smart contract vulnerabilities and audit tools</li>\r\n    <li>Blockchain security threats: 51% attacks, sybil attacks, reentrancy</li>\r\n    <li>Regulatory landscape (global + regional)</li>\r\n    <li>Governance models (DAOs, on-chain voting, treasury management)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Perform a security audit using MythX or Slither</li>\r\n    <li><strong>Capstone Project:</strong> Design and deploy a blockchain solution for your chosen domain (finance, supply chain, health, government, art)</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Blockchain Foundations and Architecture</h6><ul><li>History of blockchain and Web3 evolution</li><li>Distributed ledgers, nodes, peer-to-peer systems</li><li>Cryptography: hash functions, digital signatures, public/private keys</li><li>Consensus algorithms: PoW, PoS, PBFT, DPoS</li><li><strong>Hands-on Exercise:</strong> Simulate a blockchain ledger using Python</li><li><strong>Case Study:</strong> Blockchain for Land Registry Transparency</li></ul></div>\n<div class=\"module\"><h6>Module 2: Smart Contracts and Ethereum Development</h6><ul><li>Ethereum architecture, EVM, accounts, gas</li><li>Solidity basics: functions, data types, inheritance</li><li>Truffle, Hardhat, and Remix for smart contract development</li><li><strong>Hands-on Exercise:</strong> Build a voting or escrow smart contract</li><li><strong>Case Study:</strong> Crowdfunding dApp for Creative Entrepreneurs</li></ul></div>\n<div class=\"module\"><h6>Module 3: Blockchain Platforms and Enterprise Integration</h6><ul><li>Public vs. private vs. consortium blockchains</li><li>Hyperledger Fabric basics: channels, chaincode, identity</li><li>Sidechains, Layer 2 solutions (Polygon, Arbitrum)</li><li>APIs and blockchain integration with enterprise systems</li><li><strong>Hands-on Exercise:</strong> Deploy a chaincode on Hyperledger Fabric</li><li><strong>Case Study:</strong> Blockchain for Transparent Procurement</li></ul></div>\n<div class=\"module\"><h6>Module 4: Tokenization, NFTs, and Decentralized Finance (DeFi)</h6><ul><li>Tokens and token standards (ERC-20, ERC-721, ERC-1155)</li><li>Stablecoins, staking, yield farming, DEXs</li><li>NFT creation and marketplaces (OpenSea, Rarible)</li><li><strong>Hands-on Exercise:</strong> Mint and list an NFT</li><li><strong>Case Study:</strong> DeFi Lending Platform for Smallholder Farmers</li></ul></div>\n<div class=\"module\"><h6>Module 5: Security, Regulation, and Governance</h6><ul><li>Smart contract vulnerabilities and audit tools</li><li>Blockchain security threats: 51% attacks, sybil attacks, reentrancy</li><li>Regulatory landscape (global + regional)</li><li>Governance models (DAOs, on-chain voting, treasury management)</li><li><strong>Hands-on Exercise:</strong> Perform a security audit using MythX or Slither</li><li><strong>Capstone Project:</strong> Design and deploy a blockchain solution for your chosen domain (finance, supply chain, health, government, art)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -809,7 +809,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<p><strong>Module 1: Cybersecurity Fundamentals and Threat Landscape</strong></p>\r\n  <ul>\r\n    <li>Types of cyber threats: malware, ransomware, phishing, APTs</li>\r\n    <li>Cyber kill chain and attack vectors</li>\r\n    <li>CIA Triad: Confidentiality, Integrity, Availability</li>\r\n    <li>Cybercrime trends and threat actors (state-sponsored, hacktivists, insiders)</li>\r\n    <li><strong>Hands-on Exercise:</strong> Simulate a phishing attack and analyze the payload</li>\r\n    <li><strong>Case Study:</strong> Ransomware Attack on Municipal Infrastructure</li>\r\n  </ul>\r\n\r\n  <p><strong>Module 2: Network and Infrastructure Security</strong></p>\r\n  <ul>\r\n    <li>Network segmentation, firewalls, VPNs, and intrusion detection systems</li>\r\n    <li>Wireless and endpoint security</li>\r\n    <li>SIEM systems and traffic monitoring</li>\r\n    <li>Secure protocols (HTTPS, SSH, TLS) and port management</li>\r\n    <li><strong>Hands-on Exercise:</strong> Configure a virtual firewall and detect malicious traffic</li>\r\n    <li><strong>Case Study:</strong> Network Breach in a University Setting</li>\r\n  </ul>\r\n\r\n  <p><strong>Module 3: Ethical Hacking and Vulnerability Assessment</strong></p>\r\n  <ul>\r\n    <li>Penetration testing lifecycle (reconnaissance to exploitation)</li>\r\n    <li>Tools: Nmap, Metasploit, Burp Suite, Wireshark</li>\r\n    <li>OWASP Top 10 Web Vulnerabilities</li>\r\n    <li>Common exploits: SQL injection, XSS, privilege escalation</li>\r\n    <li><strong>Hands-on Exercise:</strong> Perform a vulnerability scan using Nessus</li>\r\n    <li><strong>Case Study:</strong> Web Application Audit for E-Commerce Company</li>\r\n  </ul>\r\n\r\n  <p><strong>Module 4: Cloud, Application, and Endpoint Security</strong></p>\r\n  <ul>\r\n    <li>Cloud risk models (shared responsibility, misconfiguration, data leakage)</li>\r\n    <li>Secure APIs, DevSecOps, containers, and Kubernetes security</li>\r\n    <li>Endpoint protection (EDR, antivirus, patching, asset control)</li>\r\n    <li>Multi-factor authentication (MFA), SSO, and IAM best practices</li>\r\n    <li><strong>Hands-on Exercise:</strong> Secure a cloud storage bucket and audit IAM policies</li>\r\n    <li><strong>Case Study:</strong> Data Breach from Misconfigured Cloud Bucket</li>\r\n  </ul>\r\n\r\n  <p><strong>Module 5: Governance, Compliance, and Incident Response</strong></p>\r\n  <ul>\r\n    <li>Cybersecurity frameworks: NIST, ISO 27001, GDPR, local ICT laws</li>\r\n    <li>Risk assessments and business continuity</li>\r\n    <li>Cybersecurity policies and awareness programs</li>\r\n    <li>Digital forensics, incident detection and response</li>\r\n    <li><strong>Hands-on Exercise:</strong> Simulate and document an incident response plan</li>\r\n    <li><strong>Capstone Project:</strong> Design and present a Cybersecurity Strategy for a Sector-Specific Organization (e.g., healthcare, finance, public agency)</li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Cybersecurity Fundamentals and Threat Landscape</h6><ul><li>Types of cyber threats: malware, ransomware, phishing, APTs</li><li>Cyber kill chain and attack vectors</li><li>CIA Triad: Confidentiality, Integrity, Availability</li><li>Cybercrime trends and threat actors (state-sponsored, hacktivists, insiders)</li><li><strong>Hands-on Exercise:</strong> Simulate a phishing attack and analyze the payload</li><li><strong>Case Study:</strong> Ransomware Attack on Municipal Infrastructure</li></ul></div>\n<div class=\"module\"><h6>Module 2: Network and Infrastructure Security</h6><ul><li>Network segmentation, firewalls, VPNs, and intrusion detection systems</li><li>Wireless and endpoint security</li><li>SIEM systems and traffic monitoring</li><li>Secure protocols (HTTPS, SSH, TLS) and port management</li><li><strong>Hands-on Exercise:</strong> Configure a virtual firewall and detect malicious traffic</li><li><strong>Case Study:</strong> Network Breach in a University Setting</li></ul></div>\n<div class=\"module\"><h6>Module 3: Ethical Hacking and Vulnerability Assessment</h6><ul><li>Penetration testing lifecycle (reconnaissance to exploitation)</li><li>Tools: Nmap, Metasploit, Burp Suite, Wireshark</li><li>OWASP Top 10 Web Vulnerabilities</li><li>Common exploits: SQL injection, XSS, privilege escalation</li><li><strong>Hands-on Exercise:</strong> Perform a vulnerability scan using Nessus</li><li><strong>Case Study:</strong> Web Application Audit for E-Commerce Company</li></ul></div>\n<div class=\"module\"><h6>Module 4: Cloud, Application, and Endpoint Security</h6><ul><li>Cloud risk models (shared responsibility, misconfiguration, data leakage)</li><li>Secure APIs, DevSecOps, containers, and Kubernetes security</li><li>Endpoint protection (EDR, antivirus, patching, asset control)</li><li>Multi-factor authentication (MFA), SSO, and IAM best practices</li><li><strong>Hands-on Exercise:</strong> Secure a cloud storage bucket and audit IAM policies</li><li><strong>Case Study:</strong> Data Breach from Misconfigured Cloud Bucket</li></ul></div>\n<div class=\"module\"><h6>Module 5: Governance, Compliance, and Incident Response</h6><ul><li>Cybersecurity frameworks: NIST, ISO 27001, GDPR, local ICT laws</li><li>Risk assessments and business continuity</li><li>Cybersecurity policies and awareness programs</li><li>Digital forensics, incident detection and response</li><li><strong>Hands-on Exercise:</strong> Simulate and document an incident response plan</li><li><strong>Capstone Project:</strong> Design and present a Cybersecurity Strategy for a Sector-Specific Organization (e.g., healthcare, finance, public agency)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -857,7 +857,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<ul>\r\n    <li>\r\n      <strong>Module 1: BI Foundations and Data Strategy</strong>\r\n      <ul>\r\n        <li>What is Business Intelligence? Components and lifecycle</li>\r\n        <li>Data to decision: types of BI (operational, tactical, strategic)</li>\r\n        <li>KPIs, metrics, OKRs, and data-driven culture</li>\r\n        <li>Self-service vs. centralized BI</li>\r\n        <li><em>Hands-on Exercise:</em> Map a BI workflow for an organization</li>\r\n        <li><em>Case Study:</em> Performance Reporting in a Development NGO</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 2: Data Preparation and SQL for BI</strong>\r\n      <ul>\r\n        <li>Connecting to data sources (Excel, CSV, SQL, APIs)</li>\r\n        <li>Data profiling, cleansing, and transformation</li>\r\n        <li>SQL basics: SELECT, JOIN, GROUP BY, filtering, subqueries</li>\r\n        <li>Creating views and preparing datasets for analysis</li>\r\n        <li><em>Hands-on Exercise:</em> Create a KPI dataset using SQL</li>\r\n        <li><em>Case Study:</em> Sales and Inventory Insights for a Retailer</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 3: Dashboards and Data Visualization</strong>\r\n      <ul>\r\n        <li>Visualization principles: clarity, context, storytelling</li>\r\n        <li>Tools: Power BI, Tableau, Looker Studio</li>\r\n        <li>Charts: bar, pie, line, combo, scatter, waterfall, maps</li>\r\n        <li>Filters, slicers, bookmarks, drill-through and interactive visuals</li>\r\n        <li><em>Hands-on Exercise:</em> Build an interactive dashboard in Power BI</li>\r\n        <li><em>Case Study:</em> Dashboard for Health Clinic Chain Performance</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 4: BI Reporting, Automation, and Cloud Platforms</strong>\r\n      <ul>\r\n        <li>Scheduled reports, email alerts, and subscriptions</li>\r\n        <li>Cloud-based BI and embedded analytics (e.g., Google Looker, Power BI Service)</li>\r\n        <li>Integrating BI with Excel, SharePoint, web portals</li>\r\n        <li>Data refresh, scheduling, and data gateways</li>\r\n        <li><em>Hands-on Exercise:</em> Set up auto-refresh and report sharing</li>\r\n        <li><em>Case Study:</em> KPI Dashboard for Public Budget Monitoring</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 5: Insight Communication, Governance & BI Strategy</strong>\r\n      <ul>\r\n        <li>Data storytelling and report presentation</li>\r\n        <li>Stakeholder analysis and tailoring visuals for different audiences</li>\r\n        <li>BI governance: access control, data stewardship, versioning</li>\r\n        <li>Building a BI roadmap and managing BI projects</li>\r\n        <li><em>Hands-on Exercise:</em> Present a dashboard and insight brief to a non-technical stakeholder</li>\r\n        <li><em>Capstone Project:</em> Design, build, and present a full BI solution for a sector of your choice (e.g., education, health, finance, agriculture, governance)</li>\r\n      </ul>\r\n    </li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: BI Foundations and Data Strategy</h6><ul><li>What is Business Intelligence? Components and lifecycle</li><li>Data to decision: types of BI (operational, tactical, strategic)</li><li>KPIs, metrics, OKRs, and data-driven culture</li><li>Self-service vs. centralized BI</li><li><em>Hands-on Exercise:</em> Map a BI workflow for an organization</li><li><em>Case Study:</em> Performance Reporting in a Development NGO</li></ul></div>\n<div class=\"module\"><h6>Module 2: Data Preparation and SQL for BI</h6><ul><li>Connecting to data sources (Excel, CSV, SQL, APIs)</li><li>Data profiling, cleansing, and transformation</li><li>SQL basics: SELECT, JOIN, GROUP BY, filtering, subqueries</li><li>Creating views and preparing datasets for analysis</li><li><em>Hands-on Exercise:</em> Create a KPI dataset using SQL</li><li><em>Case Study:</em> Sales and Inventory Insights for a Retailer</li></ul></div>\n<div class=\"module\"><h6>Module 3: Dashboards and Data Visualization</h6><ul><li>Visualization principles: clarity, context, storytelling</li><li>Tools: Power BI, Tableau, Looker Studio</li><li>Charts: bar, pie, line, combo, scatter, waterfall, maps</li><li>Filters, slicers, bookmarks, drill-through and interactive visuals</li><li><em>Hands-on Exercise:</em> Build an interactive dashboard in Power BI</li><li><em>Case Study:</em> Dashboard for Health Clinic Chain Performance</li></ul></div>\n<div class=\"module\"><h6>Module 4: BI Reporting, Automation, and Cloud Platforms</h6><ul><li>Scheduled reports, email alerts, and subscriptions</li><li>Cloud-based BI and embedded analytics (e.g., Google Looker, Power BI Service)</li><li>Integrating BI with Excel, SharePoint, web portals</li><li>Data refresh, scheduling, and data gateways</li><li><em>Hands-on Exercise:</em> Set up auto-refresh and report sharing</li><li><em>Case Study:</em> KPI Dashboard for Public Budget Monitoring</li></ul></div>\n<div class=\"module\"><h6>Module 5: Insight Communication, Governance & BI Strategy</h6><ul><li>Data storytelling and report presentation</li><li>Stakeholder analysis and tailoring visuals for different audiences</li><li>BI governance: access control, data stewardship, versioning</li><li>Building a BI roadmap and managing BI projects</li><li><em>Hands-on Exercise:</em> Present a dashboard and insight brief to a non-technical stakeholder</li><li><em>Capstone Project:</em> Design, build, and present a full BI solution for a sector of your choice (e.g., education, health, finance, agriculture, governance)</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -905,7 +905,7 @@
           "heading": "Certification Objectives"
         },
         {
-          "content": "<ul>\r\n    <li>\r\n      <strong>Module 1: Foundations of Digital Marketing & Strategy</strong>\r\n      <ul>\r\n        <li>Digital marketing landscape: trends, channels, KPIs</li>\r\n        <li>Understanding buyer personas and digital journeys</li>\r\n        <li>Omnichannel strategy and funnel-based planning</li>\r\n        <li>Digital branding and competitive research</li>\r\n        <li><strong>Hands-on Exercise:</strong> Develop a digital strategy for a local business</li>\r\n        <li><strong>Case Study:</strong> Multi-Channel Campaign for a Tourism SME</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 2: Content Marketing & SEO</strong>\r\n      <ul>\r\n        <li>Content creation frameworks: storytelling, CTA, visuals</li>\r\n        <li>Blogging, video, podcasting, and short-form content</li>\r\n        <li>Search Engine Optimization: on-page, off-page, and technical SEO</li>\r\n        <li>Keyword research (Google Keyword Planner, Ubersuggest)</li>\r\n        <li><strong>Hands-on Exercise:</strong> Write and optimize a blog for search</li>\r\n        <li><strong>Case Study:</strong> SEO Strategy for Health Education Platform</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 3: Social Media Marketing & Advertising</strong>\r\n      <ul>\r\n        <li>Organic vs. paid strategies (Facebook, Instagram, LinkedIn, TikTok)</li>\r\n        <li>Scheduling and automation tools (Buffer, Hootsuite)</li>\r\n        <li>Ad campaign planning (Facebook/Meta Ads Manager, TikTok Ads)</li>\r\n        <li>Audience targeting and retargeting techniques</li>\r\n        <li><strong>Hands-on Exercise:</strong> Launch and analyze a Facebook/Instagram ad campaign</li>\r\n        <li><strong>Case Study:</strong> Social Media Campaign for Voter Awareness</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 4: Search Engine Marketing (SEM), Email & CRM</strong>\r\n      <ul>\r\n        <li>Google Ads: text, display, YouTube campaigns</li>\r\n        <li>Bidding, quality score, ad extensions</li>\r\n        <li>Email marketing tools: Mailchimp, Brevo, HubSpot</li>\r\n        <li>Customer journey mapping and lead nurturing</li>\r\n        <li><strong>Hands-on Exercise:</strong> Create and schedule an email automation campaign</li>\r\n        <li><strong>Case Study:</strong> Lead Generation for Fintech Startup</li>\r\n      </ul>\r\n    </li>\r\n    <li>\r\n      <strong>Module 5: Web Analytics, Conversion & Reporting</strong>\r\n      <ul>\r\n        <li>Google Analytics (GA4), Google Tag Manager basics</li>\r\n        <li>UTM parameters and campaign tracking</li>\r\n        <li>Conversion rate optimization (CRO) tactics</li>\r\n        <li>Building dashboards and client reports (Google Looker Studio)</li>\r\n        <li><strong>Hands-on Exercise:</strong> Analyze website and campaign performance</li>\r\n        <li><strong>Capstone Project:</strong> Plan, execute, and report on a full digital campaign for a cause, product, or organization of your choice</li>\r\n      </ul>\r\n    </li>\r\n  </ul>",
+          "content": "<div class=\"module\"><h6>Module 1: Foundations of Digital Marketing & Strategy</h6><ul><li>Digital marketing landscape: trends, channels, KPIs</li><li>Understanding buyer personas and digital journeys</li><li>Omnichannel strategy and funnel-based planning</li><li>Digital branding and competitive research</li><li><strong>Hands-on Exercise:</strong> Develop a digital strategy for a local business</li><li><strong>Case Study:</strong> Multi-Channel Campaign for a Tourism SME</li></ul></div>\n<div class=\"module\"><h6>Module 2: Content Marketing & SEO</h6><ul><li>Content creation frameworks: storytelling, CTA, visuals</li><li>Blogging, video, podcasting, and short-form content</li><li>Search Engine Optimization: on-page, off-page, and technical SEO</li><li>Keyword research (Google Keyword Planner, Ubersuggest)</li><li><strong>Hands-on Exercise:</strong> Write and optimize a blog for search</li><li><strong>Case Study:</strong> SEO Strategy for Health Education Platform</li></ul></div>\n<div class=\"module\"><h6>Module 3: Social Media Marketing & Advertising</h6><ul><li>Organic vs. paid strategies (Facebook, Instagram, LinkedIn, TikTok)</li><li>Scheduling and automation tools (Buffer, Hootsuite)</li><li>Ad campaign planning (Facebook/Meta Ads Manager, TikTok Ads)</li><li>Audience targeting and retargeting techniques</li><li><strong>Hands-on Exercise:</strong> Launch and analyze a Facebook/Instagram ad campaign</li><li><strong>Case Study:</strong> Social Media Campaign for Voter Awareness</li></ul></div>\n<div class=\"module\"><h6>Module 4: Search Engine Marketing (SEM), Email & CRM</h6><ul><li>Google Ads: text, display, YouTube campaigns</li><li>Bidding, quality score, ad extensions</li><li>Email marketing tools: Mailchimp, Brevo, HubSpot</li><li>Customer journey mapping and lead nurturing</li><li><strong>Hands-on Exercise:</strong> Create and schedule an email automation campaign</li><li><strong>Case Study:</strong> Lead Generation for Fintech Startup</li></ul></div>\n<div class=\"module\"><h6>Module 5: Web Analytics, Conversion & Reporting</h6><ul><li>Google Analytics (GA4), Google Tag Manager basics</li><li>UTM parameters and campaign tracking</li><li>Conversion rate optimization (CRO) tactics</li><li>Building dashboards and client reports (Google Looker Studio)</li><li><strong>Hands-on Exercise:</strong> Analyze website and campaign performance</li><li><strong>Capstone Project:</strong> Plan, execute, and report on a full digital campaign for a cause, product, or organization of your choice</li></ul></div>",
           "heading": "Certificate Modules"
         },
         {
@@ -921,66 +921,6 @@
       "apply_url": "https://arifa.org/certification/apply/20"
     },
     "position": 19,
-    "published": true
-  },
-  {
-    "collection": "COURSE",
-    "slug": "applied-machine-learning",
-    "title": "Applied Machine Learning",
-    "image": null,
-    "group": null,
-    "data": {
-      "desc": "A hands-on course covering regression, classification, clustering, and the deployment of ML models into production environments.",
-      "level": "Intermediate",
-      "format": "Hybrid",
-      "duration": "6 Weeks"
-    },
-    "position": 0,
-    "published": true
-  },
-  {
-    "collection": "COURSE",
-    "slug": "ai-robotics-innovation-lab",
-    "title": "AI & Robotics Innovation Lab",
-    "image": null,
-    "group": null,
-    "data": {
-      "desc": "An intensive workshop focusing on computer vision and reinforcement learning applied to physical robotics and automation.",
-      "level": "Advanced",
-      "format": "In-Person",
-      "duration": "4 Weeks"
-    },
-    "position": 1,
-    "published": true
-  },
-  {
-    "collection": "COURSE",
-    "slug": "python-for-data-analysis",
-    "title": "Python for Data Analysis",
-    "image": null,
-    "group": null,
-    "data": {
-      "desc": "Master Pandas, NumPy, and Matplotlib. Perfect for analysts wanting to move beyond Excel into programmatic data manipulation.",
-      "level": "Beginner",
-      "format": "Online",
-      "duration": "3 Weeks"
-    },
-    "position": 2,
-    "published": true
-  },
-  {
-    "collection": "COURSE",
-    "slug": "ai-ethics-governance",
-    "title": "AI Ethics & Governance",
-    "image": null,
-    "group": null,
-    "data": {
-      "desc": "A seminar-style course exploring algorithmic bias, data privacy laws, and responsible AI deployment frameworks in Africa.",
-      "level": "All Levels",
-      "format": "Online",
-      "duration": "2 Weeks"
-    },
-    "position": 3,
     "published": true
   },
   {
@@ -1533,42 +1473,6 @@
   },
   {
     "collection": "RESEARCH_PROJECT",
-    "slug": "15",
-    "title": "Unified AI-Enabled Health Referral System for Delivering Universal Access to \nQuality Health Care: Tanzania as Use Case - Development of a Framework \nfor Unifying Stakeholders through Structured Quality Data Sets.",
-    "image": "https://arifa.org/storage/project_photos/14c.jpg",
-    "group": null,
-    "data": {
-      "content": "<h2 class=\"blog-title\">Unified AI-Enabled Health Referral System for Delivering Universal Access to \nQuality Health Care: Tanzania as Use Case - Development of a Framework \nfor Unifying Stakeholders through Structured Quality Data Sets.</h2>\n                            <p class=\"blog-text mb-30\"></p><p style=\"text-align: justify;\">We successfully conducted a research project focused on developing a framework for a Unified AI-Enabled Health Care Referral System to support universal access to quality healthcare services in Tanzania. The project aimed to unify stakeholders across the healthcare ecosystem through structured and reliable data, ultimately improving referral efficiency and healthcare outcomes.</p>\n\n<p style=\"text-align: justify;\">The study examined current patterns of AI adoption in Tanzanian health facilities and assessed the strengths, weaknesses, and gaps of the existing referral system. It also analyzed the data management practices of stakeholders involved in healthcare referrals to determine the structure and quality of the data used. This informed the creation of a framework for collecting and storing structured data sets aligned with Know Your Patient (KYP) compliance.</p>\n\n<p style=\"text-align: justify;\">The project culminated in the design and pilot implementation of a prototype AI-powered referral system tailored to Tanzanian needs. Additionally, training and capacity-building sessions were conducted for healthcare professionals and administrators to support system adoption and ensure effective utilization. The outcomes offer a scalable model for enhancing equitable access to healthcare through intelligent, data-driven referral networks.</p>\n<p></p>\n                            \n                            <blockquote>\n                                <p>Join your peers for an AI-focused evening gathering as the day winds down. Enjoy light refreshments while engaging in conversations about responsible AI development, emerging research trends, and real-world applications. Foster collaboration and innovation within the AI research community.</p><cite>Denis Mwighusa</cite></blockquote>\n                           \n                                \n                                \n                                <!--<div class=\"share-links clearfix\">\n                                    <div class=\"row justify-content-between\">\n                                        <div class=\"col-md-auto\"><span class=\"share-links-title\">Tags:</span>\n                                            <div class=\"tagcloud\"><a href=\"blog.html\">Apartment</a> <a href=\"blog.html\">Buyer</a> <a href=\"blog.html\">Modern</a> <a href=\"blog.html\">Luxury</a></div>\n                                        </div>\n                                        <div class=\"col-md-auto text-xl-end\">\n                                            <div class=\"share-links_wrapp\"><span class=\"share-links-title\">Share:</span>\n                                                <div class=\"social-links\"><a href=\"https://www.facebook.com/\"><i class=\"fab fa-facebook-f\"></i></a> <a href=\"https://www.twitter.com/\"><i class=\"fab fa-twitter\"></i></a> <a href=\"https://www.instagram.com/\"><i class=\"fab fa-instagram\"></i></a>                                                    <a href=\"https://www.linkedin.com/\"><i class=\"fab fa-linkedin-in\"></i></a></div>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>-->"
-    },
-    "position": 15,
-    "published": true
-  },
-  {
-    "collection": "RESEARCH_PROJECT",
-    "slug": "16",
-    "title": "Investigating longitudinal effects of HIV and periventricular white matter \nhyper intensities (PWMH) on microstructural integrity of WM tracts, free\u0002water flow and cognitive impairment using deep learning and statistical \napproaches",
-    "image": "https://arifa.org/storage/project_photos/15a.webp",
-    "group": null,
-    "data": {
-      "content": "<h2 class=\"blog-title\">Investigating longitudinal effects of HIV and periventricular white matter \nhyper intensities (PWMH) on microstructural integrity of WM tracts, free\u0002water flow and cognitive impairment using deep learning and statistical \napproaches</h2>\n                            <p class=\"blog-text mb-30\"></p><p style=\"text-align: justify;\">ARIFA conducted a pioneering study aimed at understanding the long-term effects of HIV and periventricular white matter hyperintensities (PWMH) on the brain’s microstructural integrity, free-water flow, and cognitive function. Using advanced diffusion MRI and fMRI technologies with high spatio-temporal resolution, the study sought to define and map the diffusional, spatial, and temporal characteristics of both free water and tissue components within the brain's white matter (WM) and grey matter (GM) structures.</p>\n\n<p style=\"text-align: justify;\">The research linked these physical brain changes to neural cognitive circuits and explored the underlying genetic factors influencing these abnormalities. By applying deep learning and statistical modeling, the study provided insights into how these structural and functional changes correlate with cognitive decline in both aging individuals and those living with HIV.</p>\n\n<p style=\"text-align: justify;\">The project proposed that identifying shared and disease-specific neurobiological processes underlying cognitive impairment may offer a pathway for targeted interventions. Ultimately, this research contributes to the broader understanding of HIV-related cognitive aging and highlights novel opportunities for therapeutic strategies aimed at preserving cognitive function in vulnerable populations.</p>\n<p></p>\n                            \n                            <blockquote>\n                                <p>Join your peers for an AI-focused evening gathering as the day winds down. Enjoy light refreshments while engaging in conversations about responsible AI development, emerging research trends, and real-world applications. Foster collaboration and innovation within the AI research community.</p><cite>Denis Mwighusa</cite></blockquote>\n                           \n                                \n                                \n                                <!--<div class=\"share-links clearfix\">\n                                    <div class=\"row justify-content-between\">\n                                        <div class=\"col-md-auto\"><span class=\"share-links-title\">Tags:</span>\n                                            <div class=\"tagcloud\"><a href=\"blog.html\">Apartment</a> <a href=\"blog.html\">Buyer</a> <a href=\"blog.html\">Modern</a> <a href=\"blog.html\">Luxury</a></div>\n                                        </div>\n                                        <div class=\"col-md-auto text-xl-end\">\n                                            <div class=\"share-links_wrapp\"><span class=\"share-links-title\">Share:</span>\n                                                <div class=\"social-links\"><a href=\"https://www.facebook.com/\"><i class=\"fab fa-facebook-f\"></i></a> <a href=\"https://www.twitter.com/\"><i class=\"fab fa-twitter\"></i></a> <a href=\"https://www.instagram.com/\"><i class=\"fab fa-instagram\"></i></a>                                                    <a href=\"https://www.linkedin.com/\"><i class=\"fab fa-linkedin-in\"></i></a></div>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>-->"
-    },
-    "position": 16,
-    "published": true
-  },
-  {
-    "collection": "RESEARCH_PROJECT",
-    "slug": "17",
-    "title": "Analysis Assessment of Opportunities and Constraints for Local \nGovernments to Responsibly Use and Govern AI Technologies in Cities",
-    "image": "https://arifa.org/storage/project_photos/16a.jpg",
-    "group": null,
-    "data": {
-      "content": "<h2 class=\"blog-title\">Analysis Assessment of Opportunities and Constraints for Local \nGovernments to Responsibly Use and Govern AI Technologies in Cities</h2>\n                            <p class=\"blog-text mb-30\"></p><p style=\"text-align: justify;\">ARIFA conducted an in-depth assessment examining the opportunities and constraints faced by local governments in adopting, implementing, and governing artificial intelligence (AI) technologies in urban settings. As cities across Africa increasingly explore smart solutions to improve public service delivery, urban planning, and citizen engagement, the study aimed to understand how local authorities can harness AI responsibly while safeguarding public trust, equity, and accountability.</p>\n\n<p style=\"text-align: justify;\">The research analyzed the institutional, technical, financial, and policy environments influencing AI readiness at the local government level. It also assessed ethical considerations, data governance frameworks, and capacity gaps that may impact the responsible use of AI in city systems. Drawing on interviews, policy reviews, and international benchmarks, the study identified actionable insights and recommendations to guide municipalities in developing inclusive, transparent, and effective AI governance models.</p>\n\n<p style=\"text-align: justify;\">The findings contribute to national and regional efforts to ensure that the digital transformation of cities is aligned with democratic values and public interest, enabling local governments to lead in shaping people-centered, AI-enabled urban futures.</p>\n<p></p>\n                            \n                            <blockquote>\n                                <p>Join your peers for an AI-focused evening gathering as the day winds down. Enjoy light refreshments while engaging in conversations about responsible AI development, emerging research trends, and real-world applications. Foster collaboration and innovation within the AI research community.</p><cite>Denis Mwighusa</cite></blockquote>\n                           \n                                \n                                \n                                <!--<div class=\"share-links clearfix\">\n                                    <div class=\"row justify-content-between\">\n                                        <div class=\"col-md-auto\"><span class=\"share-links-title\">Tags:</span>\n                                            <div class=\"tagcloud\"><a href=\"blog.html\">Apartment</a> <a href=\"blog.html\">Buyer</a> <a href=\"blog.html\">Modern</a> <a href=\"blog.html\">Luxury</a></div>\n                                        </div>\n                                        <div class=\"col-md-auto text-xl-end\">\n                                            <div class=\"share-links_wrapp\"><span class=\"share-links-title\">Share:</span>\n                                                <div class=\"social-links\"><a href=\"https://www.facebook.com/\"><i class=\"fab fa-facebook-f\"></i></a> <a href=\"https://www.twitter.com/\"><i class=\"fab fa-twitter\"></i></a> <a href=\"https://www.instagram.com/\"><i class=\"fab fa-instagram\"></i></a>                                                    <a href=\"https://www.linkedin.com/\"><i class=\"fab fa-linkedin-in\"></i></a></div>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>-->"
-    },
-    "position": 17,
-    "published": true
-  },
-  {
-    "collection": "RESEARCH_PROJECT",
     "slug": "116",
     "title": "Unified AI-Enabled Health Referral System for Delivering Universal Access to Quality Health Care: Tanzania as Use Case - Development of a Framework for Unifying Stakeholders through Structured Quality Data Sets.",
     "image": "/images/projects_images/14a.png",
@@ -1576,7 +1480,7 @@
     "data": {
       "content": "<p style=\"text-align: justify;\">We successfully conducted a research project focused on developing a framework for a Unified AI-Enabled Health Care Referral System to support universal access to quality healthcare services in Tanzania. The project aimed to unify stakeholders across the healthcare ecosystem through structured and reliable data, ultimately improving referral efficiency and healthcare outcomes.</p>\n\n<p style=\"text-align: justify;\">The study examined current patterns of AI adoption in Tanzanian health facilities and assessed the strengths, weaknesses, and gaps of the existing referral system. It also analyzed the data management practices of stakeholders involved in healthcare referrals to determine the structure and quality of the data used. This informed the creation of a framework for collecting and storing structured data sets aligned with Know Your Patient (KYP) compliance.</p>\n\n<p style=\"text-align: justify;\">The project culminated in the design and pilot implementation of a prototype AI-powered referral system tailored to Tanzanian needs. Additionally, training and capacity-building sessions were conducted for healthcare professionals and administrators to support system adoption and ensure effective utilization. The outcomes offer a scalable model for enhancing equitable access to healthcare through intelligent, data-driven referral networks.</p>"
     },
-    "position": 18,
+    "position": 15,
     "published": true
   },
   {
@@ -1588,7 +1492,7 @@
     "data": {
       "content": "<p style=\"text-align: justify;\">ARIFA conducted a pioneering study aimed at understanding the long-term effects of HIV and periventricular white matter hyperintensities (PWMH) on the brain’s microstructural integrity, free-water flow, and cognitive function. Using advanced diffusion MRI and fMRI technologies with high spatio-temporal resolution, the study sought to define and map the diffusional, spatial, and temporal characteristics of both free water and tissue components within the brain's white matter (WM) and grey matter (GM) structures.</p>\n\n<p style=\"text-align: justify;\">The research linked these physical brain changes to neural cognitive circuits and explored the underlying genetic factors influencing these abnormalities. By applying deep learning and statistical modeling, the study provided insights into how these structural and functional changes correlate with cognitive decline in both aging individuals and those living with HIV.</p>\n\n<p style=\"text-align: justify;\">The project proposed that identifying shared and disease-specific neurobiological processes underlying cognitive impairment may offer a pathway for targeted interventions. Ultimately, this research contributes to the broader understanding of HIV-related cognitive aging and highlights novel opportunities for therapeutic strategies aimed at preserving cognitive function in vulnerable populations.</p>"
     },
-    "position": 19,
+    "position": 16,
     "published": true
   },
   {
@@ -1600,7 +1504,7 @@
     "data": {
       "content": "<p style=\"text-align: justify;\">ARIFA conducted an in-depth assessment examining the opportunities and constraints faced by local governments in adopting, implementing, and governing artificial intelligence (AI) technologies in urban settings. As cities across Africa increasingly explore smart solutions to improve public service delivery, urban planning, and citizen engagement, the study aimed to understand how local authorities can harness AI responsibly while safeguarding public trust, equity, and accountability.</p>\n\n<p style=\"text-align: justify;\">The research analyzed the institutional, technical, financial, and policy environments influencing AI readiness at the local government level. It also assessed ethical considerations, data governance frameworks, and capacity gaps that may impact the responsible use of AI in city systems. Drawing on interviews, policy reviews, and international benchmarks, the study identified actionable insights and recommendations to guide municipalities in developing inclusive, transparent, and effective AI governance models.</p>\n\n<p style=\"text-align: justify;\">The findings contribute to national and regional efforts to ensure that the digital transformation of cities is aligned with democratic values and public interest, enabling local governments to lead in shaping people-centered, AI-enabled urban futures.</p>"
     },
-    "position": 20,
+    "position": 17,
     "published": true
   },
   {
@@ -2129,6 +2033,377 @@
       "bio": "Eng. Placidius is a Software Engineer who started..."
     },
     "position": 43,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "dar-es-salaam",
+    "title": "Dar es Salaam",
+    "image": "/images/masterclass/daressalaam.jpg",
+    "group": null,
+    "data": {
+      "country": "Tanzania",
+      "date": "21–22 May 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "Strategic AI leadership for East Africa's gateway. Focus on trade, fintech and public sector modernization.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 0,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "nairobi",
+    "title": "Nairobi",
+    "image": "/images/masterclass/nairobi.jpg",
+    "group": null,
+    "data": {
+      "country": "Kenya",
+      "date": "11–12 June 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "Silicon Savannah deep dive: AI for fintech, agritech, and regional digital transformation.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 1,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "accra",
+    "title": "Accra",
+    "image": "/images/masterclass/accra.jpg",
+    "group": null,
+    "data": {
+      "country": "Ghana",
+      "date": "25–26 June 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "Building AI-ready governance, smart policy frameworks, and economic diversification.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 2,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "kigali",
+    "title": "Kigali",
+    "image": "/images/masterclass/kigali.jpg",
+    "group": null,
+    "data": {
+      "country": "Rwanda",
+      "date": "16–17 July 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "AI for digital identity, smart cities and data-driven public service excellence.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 3,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "johannesburg",
+    "title": "Johannesburg",
+    "image": "/images/masterclass/Johannesburg.jpg",
+    "group": null,
+    "data": {
+      "country": "South Africa",
+      "date": "6–7 August 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "Industrial AI, mining analytics, and corporate AI governance in the leading economy.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 4,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "lagos",
+    "title": "Lagos",
+    "image": null,
+    "group": null,
+    "data": {
+      "country": "Nigeria",
+      "date": "27–28 August 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "AI for scaling enterprises, financial inclusion and regulatory innovation in West Africa.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 5,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "dakar",
+    "title": "Dakar",
+    "image": null,
+    "group": null,
+    "data": {
+      "country": "Senegal",
+      "date": "17–18 September 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "Francophone Africa AI strategies, digital transformation in agriculture and logistics.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 6,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "cairo",
+    "title": "Cairo",
+    "image": "/images/masterclass/cairo.jpg",
+    "group": null,
+    "data": {
+      "country": "Egypt",
+      "date": "8–9 October 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "Leading AI adoption in North Africa: smart infrastructure, e-government and risk.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 7,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "addis-ababa",
+    "title": "Addis Ababa",
+    "image": null,
+    "group": null,
+    "data": {
+      "country": "Ethiopia",
+      "date": "29–30 October 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "AI for industrial parks, agricultural AI and pan-African policy alignment.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 8,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
+    "slug": "casablanca",
+    "title": "Casablanca",
+    "image": null,
+    "group": null,
+    "data": {
+      "country": "Morocco",
+      "date": "19–20 November 2026",
+      "format": "2-day intensive",
+      "early_price": "$750.00",
+      "standard_price": "$950.00",
+      "group_price": "",
+      "desc": "AI-driven manufacturing, trade analytics and cross-continental leadership.",
+      "register_url": "",
+      "fee_tzs": "1950000"
+    },
+    "position": 9,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "ai-for-beginners",
+    "title": "AI for Beginners",
+    "image": "/images/short-courses/ai-for-beginners.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "1 week",
+      "price": "200,000 Tsh",
+      "price_tzs": "200000"
+    },
+    "position": 0,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "web-development-bootcamp",
+    "title": "Web Development Bootcamp",
+    "image": "/images/short-courses/web-development-bootcamp.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "3 weeks",
+      "price": "400,000 Tsh",
+      "price_tzs": "400000",
+      "desc": "Learn HTML, CSS, JavaScript, and backend technologies."
+    },
+    "position": 1,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "digital-marketing-mastery",
+    "title": "Digital Marketing Mastery",
+    "image": "/images/short-courses/digital-marketing-mastery.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "1 week",
+      "price": "200,000 Tsh",
+      "price_tzs": "200000"
+    },
+    "position": 2,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "python-for-data-science",
+    "title": "Python for Data Science",
+    "image": "/images/short-courses/python-for-data-science.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "3 weeks",
+      "price": "200,000 Tsh",
+      "price_tzs": "200000"
+    },
+    "position": 3,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "cybersecurity-essentials",
+    "title": "Cybersecurity Essentials",
+    "image": "/images/short-courses/cybersecurity-essentials.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "1 week",
+      "price": "200,000 Tsh",
+      "price_tzs": "200000"
+    },
+    "position": 4,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "graphic-design-basics",
+    "title": "Graphic Design Basics",
+    "image": "/images/short-courses/graphic-design-basics.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "1 day",
+      "price": "200,000 Tsh",
+      "price_tzs": "200000"
+    },
+    "position": 5,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "mobile-app-development",
+    "title": "Mobile App Development",
+    "image": "/images/short-courses/mobile-app-development.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "1 day",
+      "price": "100,000 Tsh",
+      "price_tzs": "100000"
+    },
+    "position": 6,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "cloud-computing-essentials",
+    "title": "Cloud Computing Essentials",
+    "image": "/images/short-courses/cloud-computing-essentials.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "3 months",
+      "price": "900,000 Tsh",
+      "price_tzs": "900000"
+    },
+    "position": 7,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "business-analytics",
+    "title": "Business Analytics",
+    "image": "/images/short-courses/business-analytics.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "3 months",
+      "price": "700,000 Tsh",
+      "price_tzs": "700000"
+    },
+    "position": 8,
+    "published": true
+  },
+  {
+    "collection": "COURSE",
+    "slug": "leadership-management",
+    "title": "Leadership & Management",
+    "image": "/images/short-courses/leadership-management.jpg",
+    "group": null,
+    "data": {
+      "date": "July 15, 2025 (10 days)",
+      "location": "Morogoro, Dsm",
+      "certificate": "CodeCamp",
+      "period": "3 weeks",
+      "price": "500,000 Tsh",
+      "price_tzs": "500000"
+    },
+    "position": 9,
     "published": true
   }
 ]

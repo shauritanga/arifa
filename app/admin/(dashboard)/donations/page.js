@@ -5,6 +5,11 @@ import StatusPill from "../status-pill";
 export const dynamic = "force-dynamic";
 
 const TZS = new Intl.NumberFormat("en-TZ");
+const TYPE_LABELS = {
+  DONATION: "Donation",
+  SPONSORSHIP: "Sponsorship",
+  TRAINING: "Master Class",
+};
 const STATUSES = ["ALL", "PAID", "PROCESSING", "PENDING", "FAILED", "CANCELLED"];
 const PAGE_SIZE = 25;
 
@@ -126,7 +131,7 @@ export default async function DonationsPage({ searchParams }) {
                   {d.reference}
                 </td>
                 <td className="px-5 py-4 text-black/60">
-                  {d.type === "SPONSORSHIP" ? "Sponsorship" : "Donation"}
+                  {TYPE_LABELS[d.type] ?? "Donation"}
                 </td>
                 <td className="px-5 py-4 text-right font-bold text-black">
                   TSh {TZS.format(d.amount)}

@@ -17,6 +17,10 @@ datasource db {
 enum DonationType {
   DONATION
   SPONSORSHIP
+  /// A paid seat on a Master Class session. It is not a gift, but it is the same
+  /// thing mechanically — one row per payment intent, settled by the same Airpay
+  /// lifecycle — so it rides the same table rather than forking the money code.
+  TRAINING
 }
 
 enum PaymentStatus {
@@ -46,7 +50,10 @@ model Donation {
   email        String
   phone        String
   organization String?
+  /// Sponsorship package, or the Master Class session a TRAINING row paid for.
   packageName  String?
+  /// Job title. Only collected for TRAINING registrations.
+  position     String?
   message      String?
 
   /// Whole Tanzanian shillings. Airpay bills TZS and the donor enters TZS, so
