@@ -262,6 +262,14 @@ button {
   color: #fff;
 }
 
+/* Extra top room while the ICAFoW announcement bar is visible */
+html[data-announcement="1"] .page-hero {
+  padding-top: 12rem;
+}
+html[data-announcement="1"] #hero {
+  padding-top: 9.5rem;
+}
+
 .page-hero::after {
   content: "";
   position: absolute;

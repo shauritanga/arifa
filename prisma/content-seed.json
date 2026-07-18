@@ -926,15 +926,23 @@
   {
     "collection": "EVENT",
     "slug": "arifa-annual-ai-conference-2026",
-    "title": "ARIFA Annual AI Conference 2026",
+    "title": "ICAFoW 2026 — International Conference on AI & the Future of Work",
     "image": null,
     "group": "Upcoming",
     "data": {
-      "day": "15",
-      "desc": "Join leading AI researchers and practitioners for our flagship annual conference featuring keynotes, workshops, and networking sessions.",
+      "kind": "Conference",
+      "day": "24",
+      "endDay": "26",
+      "month": "Sep",
+      "endMonth": "Sep",
       "year": "2026",
-      "month": "Jul",
-      "location": "YMCA Building, Dar es Salaam, Tanzania"
+      "endYear": "2026",
+      "desc": "Join 1,000+ leaders, researchers, and innovators at the International Conference on AI & the Future of Work (ICAFoW), exploring how artificial intelligence is transforming industries, economies, and societies across Africa.",
+      "content": "The International Conference on AI & the Future of Work (ICAFoW 2026) is ARIFA's flagship pan-African conference. Held at the Julius Nyerere International Convention Centre (JNICC) in Dar es Salaam, the three-day programme brings together policymakers, researchers, executives, and innovators for keynotes, paper presentations, exhibitions, and high-level networking.\n\nRegister, submit a paper, or explore sponsorship and exhibition opportunities on the official conference site.",
+      "location": "JNICC, Dar es Salaam, Tanzania",
+      "registerUrl": "https://aiconference.arifa.org#registration",
+      "organizer": "ARIFA",
+      "tags": ["Conference", "AI", "Future of Work", "ICAFoW"]
     },
     "position": 0,
     "published": true

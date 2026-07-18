@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ICAFOW, isIcaFowCampaignActive } from "@/lib/icafow";
 
 /**
  * Simplified top-level nav: 5 groups + Contact + Support CTA.
@@ -41,8 +42,9 @@ const navItems = [
     children: [
       {
         label: "AI Conference",
-        href: "https://aiconference.arifa.org",
+        href: ICAFOW.url,
         external: true,
+        badge: "2026",
       },
       { label: "AI Dinner", href: "/events/ai-dinner" },
       { label: "AI Marathon", href: "/events/ai-marathon" },
@@ -63,11 +65,21 @@ const navItems = [
   { label: "Contact", href: "/contact-us" },
 ];
 
+function NavBadge({ label }) {
+  if (!label || !isIcaFowCampaignActive()) return null;
+  return (
+    <span className="ml-1.5 inline-flex items-center rounded-full bg-primary/10 px-1.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-wide text-primary">
+      {label}
+    </span>
+  );
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSub, setOpenSub] = useState(null);
   const [desktopOpen, setDesktopOpen] = useState(null);
+  const campaignOn = isIcaFowCampaignActive();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -99,7 +111,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`relative z-50 w-full transition-all duration-300 ${
           scrolled
             ? "bg-white/95 backdrop-blur-md border-b border-line shadow-[0_1px_0_rgba(15,20,25,0.04)]"
             : "bg-transparent"
@@ -186,16 +198,20 @@ export default function Header() {
                               className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
                               onClick={() => setDesktopOpen(null)}
                             >
-                              {child.label}
+                              <span className="inline-flex items-center">
+                                {child.label}
+                                <NavBadge label={child.badge} />
+                              </span>
                               <i className="fas fa-arrow-up-right-from-square text-[0.65em] opacity-40" />
                             </a>
                           ) : (
                             <Link
                               href={child.href}
-                              className="block px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
+                              className="flex items-center px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
                               onClick={() => setDesktopOpen(null)}
                             >
                               {child.label}
+                              <NavBadge label={child.badge} />
                             </Link>
                           )}
                         </li>
@@ -207,7 +223,22 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {campaignOn && (
+              <a
+                href={ICAFOW.registerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`hidden md:inline-flex items-center justify-center gap-1.5 px-3 py-2 text-[0.75rem] font-semibold rounded-md transition-all ${
+                  scrolled
+                    ? "text-primary border border-primary/30 bg-primary/5 hover:bg-primary hover:text-white"
+                    : "text-white border border-white/35 bg-white/10 hover:bg-white/20"
+                }`}
+              >
+                ICAFoW
+                <i className="fas fa-arrow-up-right-from-square text-[0.65em] opacity-70" aria-hidden="true" />
+              </a>
+            )}
             <Link
               href="/support-us"
               className={`hidden lg:inline-flex items-center justify-center px-4 py-2 text-[0.8125rem] font-semibold rounded-md transition-all ${
@@ -294,18 +325,20 @@ export default function Header() {
                               href={child.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="block py-2.5 pl-3 text-sm text-muted hover:text-primary"
+                              className="flex items-center py-2.5 pl-3 text-sm text-muted hover:text-primary"
                               onClick={closeMobileNav}
                             >
                               {child.label}
+                              <NavBadge label={child.badge} />
                             </a>
                           ) : (
                             <Link
                               href={child.href}
-                              className="block py-2.5 pl-3 text-sm text-muted hover:text-primary"
+                              className="flex items-center py-2.5 pl-3 text-sm text-muted hover:text-primary"
                               onClick={closeMobileNav}
                             >
                               {child.label}
+                              <NavBadge label={child.badge} />
                             </Link>
                           )}
                         </li>
@@ -316,7 +349,20 @@ export default function Header() {
               )}
             </li>
           ))}
-          <li className="mt-6">
+          {campaignOn && (
+            <li className="mt-6">
+              <a
+                href={ICAFOW.registerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center py-3 border-2 border-primary text-primary rounded-md font-semibold text-sm hover:bg-primary hover:text-white transition-colors"
+                onClick={closeMobileNav}
+              >
+                Register for ICAFoW 2026
+              </a>
+            </li>
+          )}
+          <li className={campaignOn ? "mt-3" : "mt-6"}>
             <Link
               href="/support-us"
               className="block w-full text-center py-3 bg-primary text-white rounded-md font-semibold text-sm"

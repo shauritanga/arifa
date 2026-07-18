@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import ConferenceAnnouncementBar from "./ConferenceAnnouncementBar";
 
 /**
  * The public header/footer must not appear on the admin dashboard, but both live
@@ -12,7 +13,12 @@ export default function SiteChrome({ header, footer, children }) {
 
   return (
     <>
-      {!isAdmin && header}
+      {!isAdmin && (
+        <div className="fixed top-0 left-0 right-0 z-50">
+          <ConferenceAnnouncementBar />
+          {header}
+        </div>
+      )}
       <main
         id="main-content"
         className={`flex-grow ${isAdmin ? "" : "site-copy"}`}

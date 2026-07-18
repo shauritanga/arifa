@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SponsorMarquee from "./components/SponsorMarquee";
+import ConferenceFeatured from "./components/ConferenceFeatured";
 import { AiNetworkBg } from "@/components/ui/ai-network-bg";
+import { ICAFOW, isIcaFowCampaignActive } from "@/lib/icafow";
 
 const FALLBACK_AVATAR = "https://arifa.org/storage/images/user_avatar.png";
 
@@ -224,8 +226,23 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
 
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
           <div className="max-w-[42rem] mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/25 bg-black/25 text-white text-xs font-semibold tracking-[0.14em] uppercase mb-7 animate-fadeInUp backdrop-blur-sm">
-              Africa Research Institute for AI
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 mb-7 animate-fadeInUp">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/25 bg-black/25 text-white text-xs font-semibold tracking-[0.14em] uppercase backdrop-blur-sm">
+                Africa Research Institute for AI
+              </div>
+              {isIcaFowCampaignActive() && (
+                <a
+                  href={ICAFOW.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#a8efc4]/40 bg-[#a8efc4]/15 text-[#a8efc4] text-xs font-semibold tracking-[0.08em] uppercase backdrop-blur-sm hover:bg-[#a8efc4]/25 transition-colors"
+                >
+                  {ICAFOW.shortName}
+                  <span className="hidden sm:inline font-medium normal-case tracking-normal text-white/80">
+                    · {ICAFOW.dateLabel}
+                  </span>
+                </a>
+              )}
             </div>
             <h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.15] mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)] tracking-[-0.03em]"
@@ -259,19 +276,41 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
               Africa&apos;s AI future.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fadeInUp animate-delay-300">
-              <Link
-                href="/research/research-projects"
-                className="btn-primary w-full sm:w-auto"
-              >
-                Explore Research
-                <i className="fas fa-arrow-right text-xs opacity-80" />
-              </Link>
-              <Link
-                href="/publications"
-                className="btn-secondary w-full sm:w-auto"
-              >
-                Publications
-              </Link>
+              {isIcaFowCampaignActive() ? (
+                <>
+                  <a
+                    href={ICAFOW.registerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full sm:w-auto"
+                  >
+                    Register for ICAFoW
+                    <i className="fas fa-arrow-up-right-from-square text-xs opacity-80" />
+                  </a>
+                  <Link
+                    href="/research/research-projects"
+                    className="btn-secondary w-full sm:w-auto"
+                  >
+                    Explore Research
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/research/research-projects"
+                    className="btn-primary w-full sm:w-auto"
+                  >
+                    Explore Research
+                    <i className="fas fa-arrow-right text-xs opacity-80" />
+                  </Link>
+                  <Link
+                    href="/publications"
+                    className="btn-secondary w-full sm:w-auto"
+                  >
+                    Publications
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -659,6 +698,9 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
           </div>
         </div>
       </section>
+
+      {/* ====== ICAFoW 2026 (campaign) ====== */}
+      <ConferenceFeatured />
 
       {/* ====== Closing CTA (no repeated stats) ====== */}
       <section

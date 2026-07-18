@@ -11,6 +11,10 @@ const quickLinks = [
 ];
 
 const resources = [
+  {
+    label: "ICAFoW 2026 Conference",
+    href: "https://aiconference.arifa.org",
+  },
   { label: "ARIFA Journal (IJAIT)", href: "https://ijait.arifa.org" },
   { label: "Short Courses", href: "/training/short-courses" },
   { label: "Annual Calendar", href: "/calendar" },

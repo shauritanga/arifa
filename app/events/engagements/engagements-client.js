@@ -62,10 +62,19 @@ function formatRange(event) {
 function EventCard({ event, index }) {
   const href = `/events/${event.slug}`;
   const image = event.image || FALLBACK_IMAGE;
+  const isFeaturedConference =
+    event.slug === "arifa-annual-ai-conference-2026" ||
+    /icafow/i.test(event.title || "");
 
   return (
     <RevealOnScroll delay={(index % 3) * 80} className="h-full">
-      <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white shadow-[0_1px_2px_rgba(15,20,25,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_16px_40px_rgba(15,20,25,0.08)]">
+      <article
+        className={`group flex h-full flex-col overflow-hidden rounded-xl border bg-white shadow-[0_1px_2px_rgba(15,20,25,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_16px_40px_rgba(15,20,25,0.08)] ${
+          isFeaturedConference
+            ? "border-primary/30 ring-1 ring-primary/15"
+            : "border-line"
+        }`}
+      >
         {/* Image + date badge — inspired by demo.arifa.org/events */}
         <Link href={href} className="relative block aspect-[16/10] overflow-hidden bg-surface-warm">
           <Image
@@ -121,7 +130,7 @@ function EventCard({ event, index }) {
             <div className="flex-grow" />
           )}
 
-          <div className="mt-5 border-t border-line pt-4">
+          <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-line pt-4">
             <Link
               href={href}
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
@@ -129,6 +138,17 @@ function EventCard({ event, index }) {
               Read more
               <i className="fas fa-arrow-right text-[0.7em] transition-transform group-hover:translate-x-0.5" />
             </Link>
+            {event.registerUrl ? (
+              <a
+                href={event.registerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-secondary transition-colors hover:opacity-80"
+              >
+                Register
+                <i className="fas fa-arrow-up-right-from-square text-[0.7em]" />
+              </a>
+            ) : null}
           </div>
         </div>
       </article>

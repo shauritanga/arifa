@@ -23,6 +23,7 @@ export default async function EngagementsPage() {
       kind: e.kind || "Event",
       image: e.image || gallery[0] || "",
       type: e.group || "Past",
+      registerUrl: e.registerUrl || "",
     };
   });
 
