@@ -162,7 +162,7 @@ export default function Home() {
       {/* ====== Hero ====== */}
       <section
         id="hero"
-        className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-36 md:pb-44 overflow-hidden bg-night"
+        className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-36 md:pb-44 overflow-visible bg-night"
         style={{ color: "#ffffff" }}
       >
         <div className="absolute inset-0 z-0">
