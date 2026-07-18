@@ -1,10 +1,24 @@
 "use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import ApplicationModal from "@/app/components/ApplicationModal";
+
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) {
+      node.classList.add("opacity-100", "translate-y-0");
+      node.classList.remove("opacity-0", "translate-y-6");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -13,118 +27,214 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
+
   return (
     <div
       ref={ref}
       className={`opacity-0 translate-y-6 transition-all duration-700 ease-out ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {" "}
-      {children}{" "}
+      {children}
     </div>
   );
 }
+
+function JobCard({ job, index }) {
+  const [open, setOpen] = useState(false);
+  const [applyOpen, setApplyOpen] = useState(false);
+  const panelId = useId();
+
+  const meta = [
+    job.department && { icon: "fas fa-building", label: job.department },
+    job.location && { icon: "fas fa-map-marker-alt", label: job.location },
+    job.type && { icon: "fas fa-clock", label: job.type },
+  ].filter(Boolean);
+
+  return (
+    <RevealOnScroll delay={index * 80}>
+      <article
+        className={`rounded-xl border bg-white transition-all duration-300 ${
+          open
+            ? "border-primary/25 shadow-[0_16px_40px_rgba(15,20,25,0.08)]"
+            : "border-line shadow-[0_1px_2px_rgba(15,20,25,0.04)] hover:border-primary/20 hover:shadow-[0_12px_32px_rgba(15,20,25,0.06)]"
+        }`}
+      >
+        <div className="p-6 md:p-8">
+          {/* Meta chips */}
+          {meta.length > 0 && (
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              {meta.map((item) => (
+                <span
+                  key={item.label}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-alt px-2.5 py-1 text-xs font-medium text-muted"
+                >
+                  <i className={`${item.icon} text-[0.65rem] text-secondary`} />
+                  {item.label}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Title */}
+          <h3 className="text-xl md:text-2xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em] leading-snug">
+            {job.title}
+          </h3>
+
+          {/* Short description */}
+          {job.shortDesc ? (
+            <p className="mt-3 text-sm md:text-base text-muted leading-relaxed max-w-3xl">
+              {job.shortDesc}
+            </p>
+          ) : null}
+
+          {/* Actions — left-aligned; top Apply only when collapsed */}
+          <div className="mt-6 flex flex-wrap items-center justify-start gap-3">
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls={panelId}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/30 hover:bg-surface-alt focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/15"
+            >
+              {open ? "Hide details" : "View more"}
+              <i
+                className={`fas fa-chevron-down text-[0.65em] text-muted transition-transform duration-300 ${
+                  open ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {!open && (
+              <button
+                type="button"
+                onClick={() => setApplyOpen(true)}
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-light focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
+              >
+                Apply now
+                <i className="fas fa-arrow-right text-[0.7em] opacity-90" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Expandable details — same card, separated by a line */}
+        <div
+          id={panelId}
+          className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="border-t border-line px-6 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="h-px w-6 bg-primary" />
+                <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">
+                  Role details
+                </h4>
+              </div>
+              {job.details ? (
+                <div className="text-sm md:text-base text-ink-soft leading-relaxed whitespace-pre-line max-w-3xl">
+                  {job.details}
+                </div>
+              ) : (
+                <p className="text-sm text-muted">
+                  Full role details will be shared during the application
+                  process. Reach out if you would like more information.
+                </p>
+              )}
+
+              <div className="mt-6">
+                <button
+                  type="button"
+                  onClick={() => setApplyOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-light"
+                >
+                  Apply for this role
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <ApplicationModal
+        isOpen={applyOpen}
+        onClose={() => setApplyOpen(false)}
+        courseTitle={job.title}
+        courseImage="/hero-bg.png"
+      />
+    </RevealOnScroll>
+  );
+}
+
 export default function Careers({ jobs }) {
   return (
     <>
-      {" "}
-      {/* ====== Page Header ====== */}{" "}
       <section className="page-hero">
-        {" "}
         <div className="absolute inset-0 z-0">
-          {" "}
           <Image
             src="/hero-bg.png"
-            alt="Careers Background"
+            alt=""
             fill
             className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
-          />{" "}
-          <div className="absolute inset-0 bg-night/80" />{" "}
-        </div>{" "}
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-night/80" />
+        </div>
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
-          {" "}
-          <div className="page-hero-badge animate-fadeInUp">
-            {" "}
-            Opportunities{" "}
-          </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
-            {" "}
-            Careers at <span className="text-secondary">ARIFA</span>{" "}
-          </h1>{" "}
+          <div className="page-hero-badge animate-fadeInUp">Opportunities</div>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]"
+            style={{ color: "#ffffff" }}
+          >
+            Careers at <span style={{ color: "#8fd4aa" }}>ARIFA</span>
+          </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-[700px] mx-auto animate-fadeInUp animate-delay-200">
-            {" "}
             Join our team of researchers, educators, and innovators dedicated to
-            shaping the future of artificial intelligence in Africa.{" "}
-          </p>{" "}
-        </div>{" "}
-      </section>{" "}
-      {/* ====== Jobs List ====== */}{" "}
-      <section className="py-24 bg-white min-h-[60vh]">
-        {" "}
-        <div className="max-w-[1000px] mx-auto px-6">
-          {" "}
-          <div className="text-center max-w-[700px] mx-auto mb-16">
-            {" "}
-            <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
-              Open Positions
-            </h2>{" "}
-            <p className="text-muted text-lg">
-              {" "}
+            shaping the future of artificial intelligence in Africa.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-24 bg-canvas min-h-[50vh]">
+        <div className="max-w-[800px] mx-auto px-6">
+          <div className="mb-12 max-w-[36rem]">
+            <span className="institute-eyebrow mb-3">Open positions</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em] mb-3">
+              Work with us
+            </h2>
+            <p className="text-muted leading-relaxed">
               We are always looking for exceptional talent. If you don&apos;t
               see a role that fits but believe you belong at ARIFA, please send
-              us your CV anyway.{" "}
-            </p>{" "}
-          </div>{" "}
-          <div className="space-y-6">
-            {" "}
-            {jobs.map((job, idx) => (
-              <RevealOnScroll
-                key={idx}
-                delay={idx * 100}
-                className="bg-white rounded-xl p-8 border border-line shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] hover:border-primary/30 transition-all flex flex-col md:flex-row md:items-center justify-between group"
-              >
-                {" "}
-                <div className="mb-6 md:mb-0">
-                  {" "}
-                  <h3 className="text-xl font-bold text-ink font-[var(--font-heading)] mb-3 group-hover:text-primary transition-colors">
-                    {job.title}
-                  </h3>{" "}
-                  <div className="flex flex-wrap gap-4 text-sm font-semibold text-muted">
-                    {" "}
-                    <span className="flex items-center gap-1.5">
-                      <i className="fas fa-building text-secondary" />{" "}
-                      {job.department}
-                    </span>{" "}
-                    <span className="flex items-center gap-1.5">
-                      <i className="fas fa-map-marker-alt text-secondary" />{" "}
-                      {job.location}
-                    </span>{" "}
-                    <span className="flex items-center gap-1.5">
-                      <i className="fas fa-clock text-secondary" /> {job.type}
-                    </span>{" "}
-                  </div>{" "}
-                </div>{" "}
-                <div>
-                  {" "}
-                  <Link
-                    href="/contact-us"
-                    className="px-6 py-3 border-2 border-primary text-primary rounded-md font-bold hover:bg-primary hover:text-white transition-all whitespace-nowrap block text-center md:inline-block"
-                  >
-                    {" "}
-                    Apply Now{" "}
-                  </Link>{" "}
-                </div>{" "}
-              </RevealOnScroll>
-            ))}{" "}
-          </div>{" "}
-        </div>{" "}
-      </section>{" "}
+              us your CV anyway.
+            </p>
+          </div>
+
+          {jobs.length === 0 ? (
+            <div className="rounded-xl border border-line bg-white px-8 py-16 text-center">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/8 text-primary">
+                <i className="fas fa-briefcase" />
+              </div>
+              <p className="text-ink font-semibold mb-2">No open roles right now</p>
+              <p className="text-sm text-muted max-w-sm mx-auto">
+                Check back soon, or contact us to introduce yourself.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {jobs.map((job, idx) => (
+                <JobCard key={job.id || job.title || idx} job={job} index={idx} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </>
   );
 }

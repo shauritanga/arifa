@@ -68,7 +68,9 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading), "Plus Jakarta Sans", system-ui, sans-serif;
-  color: var(--color-ink);
+  /* Inherit color so utilities (text-white) and parent sections can control it.
+     Forcing ink here made titles invisible on dark heroes. */
+  color: inherit;
   letter-spacing: -0.02em;
 }
 
@@ -333,7 +335,7 @@ button {
 }
 
 .page-hero h1 {
-  color: #fff;
+  color: #ffffff !important;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -381,12 +383,69 @@ button {
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
   margin-top: 0.5rem;
+  line-height: 1.35;
+}
+
+/* Comfortable reading measure for long copy */
+.measure {
+  max-width: 38rem;
+}
+
+.measure-narrow {
+  max-width: 34rem;
+}
+
+/* Admin dashboard dark surface — recolor common utility classes used in pages.
+   Attribute selectors avoid invalid CSS for Tailwind classes that contain "/". */
+.admin-content-dark h1,
+.admin-content-dark h2,
+.admin-content-dark h3,
+.admin-content-dark h4 {
+  color: #fafafa;
+}
+
+.admin-content-dark [class*="text-black"] {
+  color: #d4d4d8;
+}
+
+.admin-content-dark .text-black {
+  color: #f4f4f5;
+}
+
+.admin-content-dark .bg-white,
+.admin-content-dark [class*="bg-white"] {
+  background-color: rgb(39 39 42 / 0.9);
+}
+
+.admin-content-dark [class*="border-black"] {
+  border-color: #3f3f46;
+}
+
+.admin-content-dark [class*="divide-black"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #3f3f46;
+}
+
+.admin-content-dark label > span {
+  color: #e4e4e7;
+}
+
+.admin-content-dark input,
+.admin-content-dark textarea,
+.admin-content-dark select {
+  background-color: #27272a;
+  border-color: #52525b;
+  color: #fafafa;
+}
+
+.admin-content-dark input::placeholder,
+.admin-content-dark textarea::placeholder {
+  color: #71717a;
 }
 
 /* Animations */

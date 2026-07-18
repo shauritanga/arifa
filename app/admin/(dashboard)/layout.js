@@ -14,5 +14,15 @@ export default async function AdminLayout({ children }) {
   const session = await auth();
   if (!session?.user?.email) redirect("/admin/login");
 
-  return <AdminShell user={{ email: session.user.email }}>{children}</AdminShell>;
+  return (
+    <AdminShell
+      user={{
+        email: session.user.email,
+        name: session.user.name || null,
+        role: session.user.role || "admin",
+      }}
+    >
+      {children}
+    </AdminShell>
+  );
 }

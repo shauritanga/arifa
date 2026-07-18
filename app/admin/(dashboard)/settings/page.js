@@ -8,13 +8,16 @@ export default async function SettingsPage() {
 
   return (
     <div>
-      <h1 className="mb-8 text-3xl font-extrabold text-black font-[var(--font-heading)]">
-        Settings
+      <h1 className="mb-2 text-3xl font-extrabold text-black font-[var(--font-heading)]">
+        Profile &amp; settings
       </h1>
+      <p className="mb-8 text-sm text-black/50">
+        Manage your admin account and security.
+      </p>
 
       <div className="space-y-6">
         <div className="rounded-2xl border border-black/10 bg-white p-6">
-          <h2 className="mb-4 font-extrabold text-black">Your account</h2>
+          <h2 className="mb-4 font-extrabold text-black">Profile</h2>
           <dl className="space-y-3 text-sm">
             <div className="flex justify-between gap-4">
               <dt className="text-black/50">Email</dt>

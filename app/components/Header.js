@@ -3,9 +3,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * Simplified top-level nav: 5 groups + Contact + Support CTA.
+ * Secondary pages fold into Engage (sponsorship + careers).
+ */
 const navItems = [
   {
-    label: "About Us",
+    label: "About",
     children: [
       { label: "About ARIFA", href: "/about" },
       { label: "Our Team", href: "/team" },
@@ -22,10 +26,6 @@ const navItems = [
         external: true,
       },
     ],
-  },
-  {
-    label: "Sponsorship",
-    href: "/industry/levels-of-engagement-and-support",
   },
   {
     label: "Training",
@@ -50,10 +50,17 @@ const navItems = [
     ],
   },
   {
-    label: "Opportunities",
-    children: [{ label: "Careers", href: "/opportunities/careers" }],
+    label: "Engage",
+    children: [
+      {
+        label: "Industry Sponsorship",
+        href: "/industry/levels-of-engagement-and-support",
+      },
+      { label: "Careers", href: "/opportunities/careers" },
+      { label: "Support Us", href: "/support-us" },
+    ],
   },
-  { label: "Contact Us", href: "/contact-us" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 export default function Header() {
@@ -107,7 +114,7 @@ export default function Header() {
           </Link>
 
           <nav
-            className="hidden xl:flex items-center gap-0.5"
+            className="hidden lg:flex items-center gap-0.5"
             aria-label="Main Navigation"
           >
             {navItems.map((item) => (
@@ -115,14 +122,14 @@ export default function Header() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 px-3.5 py-2 text-[0.8125rem] font-semibold tracking-wide ${linkTone}`}
+                    className={`flex items-center gap-1 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide ${linkTone}`}
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     type="button"
-                    className={`flex items-center gap-1.5 px-3.5 py-2 text-[0.8125rem] font-semibold tracking-wide cursor-default ${linkTone}`}
+                    className={`flex items-center gap-1.5 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide cursor-default ${linkTone}`}
                     aria-haspopup="true"
                   >
                     {item.label}
@@ -131,7 +138,7 @@ export default function Header() {
                 )}
 
                 {item.children && (
-                  <ul className="absolute top-full left-0 min-w-[14rem] py-2 bg-white border border-line rounded-lg shadow-[0_16px_40px_rgba(15,20,25,0.1)] opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200 z-10">
+                  <ul className="absolute top-full left-0 min-w-[14.5rem] py-2 bg-white border border-line rounded-lg shadow-[0_16px_40px_rgba(15,20,25,0.1)] opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200 z-10">
                     {item.children.map((child) => (
                       <li key={child.label}>
                         {child.external ? (
@@ -163,7 +170,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/support-us"
-              className={`hidden xl:inline-flex items-center justify-center px-4 py-2 text-[0.8125rem] font-semibold rounded-md transition-all ${
+              className={`hidden lg:inline-flex items-center justify-center px-4 py-2 text-[0.8125rem] font-semibold rounded-md transition-all ${
                 scrolled
                   ? "text-white bg-primary hover:bg-primary-light"
                   : "text-night bg-white hover:bg-white/90"
@@ -173,7 +180,7 @@ export default function Header() {
             </Link>
             <button
               type="button"
-              className="xl:hidden flex flex-col justify-center gap-[5px] w-10 h-10 items-center z-[110]"
+              className="lg:hidden flex flex-col justify-center gap-[5px] w-10 h-10 items-center z-[110]"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileOpen}

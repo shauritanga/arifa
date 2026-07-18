@@ -3,11 +3,19 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SponsorMarquee from "./components/SponsorMarquee";
+import { AiNetworkBg } from "@/components/ui/ai-network-bg";
 
 const heroImages = [
   "/hero-bg.png",
   "/who-we-are-office.png",
   "/program-training.png",
+];
+
+const IMPACT_STATS = [
+  { end: 100, label: "Researchers", full: "Expert Researchers" },
+  { end: 40, label: "Papers", full: "Published Papers" },
+  { end: 5000, label: "Trained", full: "Individuals Trained" },
+  { end: 10, label: "Countries", full: "African Countries Reached" },
 ];
 
 function AnimatedCounter({ end, duration = 2000 }) {
@@ -24,7 +32,7 @@ function AnimatedCounter({ end, duration = 2000 }) {
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - (1 - progress) * (1 - progress);
       const current = Math.round(startValue + (end - startValue) * eased);
-      node.textContent = current + "+";
+      node.textContent = current.toLocaleString("en-US") + "+";
       if (progress < 1) {
         requestAnimationFrame(animate);
       }
@@ -48,6 +56,18 @@ function AnimatedCounter({ end, duration = 2000 }) {
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) {
+      node.classList.add("opacity-100", "translate-y-0");
+      node.classList.remove("opacity-0", "translate-y-6");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -58,7 +78,7 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
   return (
@@ -142,7 +162,8 @@ export default function Home() {
       {/* ====== Hero ====== */}
       <section
         id="hero"
-        className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-36 md:pb-40 overflow-hidden bg-night"
+        className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-36 md:pb-44 overflow-hidden bg-night"
+        style={{ color: "#ffffff" }}
       >
         <div className="absolute inset-0 z-0">
           {heroImages.map((src, idx) => (
@@ -155,57 +176,87 @@ export default function Home() {
                 idx === currentImageIdx ? "opacity-100" : "opacity-0"
               }`}
               style={{
-                filter: "brightness(0.38) saturate(0.7) contrast(1.05)",
+                filter: "brightness(0.42) saturate(0.75) contrast(1.05)",
               }}
               priority={idx === 0}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-night/70 via-night/55 to-night/85" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(139,0,0,0.22),transparent_65%)]" />
+          {/* Light scrim — photo shows through; text relies on shadow + center darkening */}
+          <div className="absolute inset-0 bg-night/45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-night/55 via-night/30 to-night/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_45%,rgba(0,0,0,0.28),transparent_72%)]" />
         </div>
 
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
-          <div className="max-w-[44rem] mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/6 text-white/80 text-xs font-semibold tracking-[0.14em] uppercase mb-7 animate-fadeInUp">
+          <div className="max-w-[42rem] mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/25 bg-black/25 text-white text-xs font-semibold tracking-[0.14em] uppercase mb-7 animate-fadeInUp backdrop-blur-sm">
               Africa Research Institute for AI
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.12] mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)] tracking-[-0.03em]">
-              Advancing{" "}
-              <span className="text-[#8fd4aa]">Artificial Intelligence</span>{" "}
-              Research for Africa
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.15] mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)] tracking-[-0.03em]"
+              style={{
+                color: "#ffffff",
+                textShadow:
+                  "0 2px 4px rgba(0,0,0,0.55), 0 8px 28px rgba(0,0,0,0.45)",
+              }}
+            >
+              <span style={{ color: "#ffffff" }}>Advancing </span>
+              <span
+                style={{
+                  color: "#a8efc4",
+                  textShadow:
+                    "0 2px 4px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.35)",
+                }}
+              >
+                Artificial Intelligence
+              </span>
+              <span style={{ color: "#ffffff" }}> Research for Africa</span>
             </h1>
-            <p className="text-base md:text-lg text-white/70 leading-relaxed mb-10 max-w-[36rem] mx-auto animate-fadeInUp animate-delay-200">
+            <p
+              className="text-base md:text-lg leading-relaxed mb-10 max-w-[34rem] mx-auto animate-fadeInUp animate-delay-200"
+              style={{
+                color: "rgba(255,255,255,0.88)",
+                textShadow: "0 1px 8px rgba(0,0,0,0.45)",
+              }}
+            >
               Driving innovation through cutting-edge research, world-class
               training programs, and strategic industry partnerships to shape
               Africa&apos;s AI future.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fadeInUp animate-delay-300">
-              <Link href="/research/research-projects" className="btn-primary w-full sm:w-auto">
+              <Link
+                href="/research/research-projects"
+                className="btn-primary w-full sm:w-auto"
+              >
                 Explore Research
                 <i className="fas fa-arrow-right text-xs opacity-80" />
               </Link>
-              <Link href="/training/certifications" className="btn-secondary w-full sm:w-auto">
-                Our Programs
+              <Link
+                href="/publications"
+                className="btn-secondary w-full sm:w-auto"
+              >
+                Publications
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Stats bar — desktop */}
+        {/* Single stats strip — desktop (overlapping hero) */}
         <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-1/2 hidden md:block">
-          <div className="max-w-[56rem] mx-auto px-6">
+          <div className="max-w-[58rem] mx-auto px-6">
             <div className="bg-white rounded-xl border border-line shadow-[0_16px_48px_rgba(15,20,25,0.1)] grid grid-cols-4 divide-x divide-line">
-              {[
-                { end: 15, label: "Researchers" },
-                { end: 20, label: "Publications" },
-                { end: 5, label: "Countries" },
-                { end: 500, label: "Trainees" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center px-4 py-7">
-                  <div className="stat-value text-3xl lg:text-4xl text-primary">
+              {IMPACT_STATS.map((stat) => (
+                <div
+                  key={stat.full}
+                  className="text-center px-3 lg:px-5 py-6 lg:py-7"
+                  title={stat.full}
+                >
+                  <div className="stat-value text-3xl lg:text-[2.35rem] text-primary">
                     <AnimatedCounter end={stat.end} />
                   </div>
-                  <div className="stat-label">{stat.label}</div>
+                  <div className="stat-label mt-2 leading-snug px-1">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -213,20 +264,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mobile stats */}
+      {/* Single stats strip — mobile */}
       <div className="md:hidden bg-white border-b border-line">
         <div className="grid grid-cols-2 divide-x divide-y divide-line">
-          {[
-            { end: 15, label: "Researchers" },
-            { end: 20, label: "Publications" },
-            { end: 5, label: "Countries" },
-            { end: 500, label: "Trainees" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center px-4 py-5">
+          {IMPACT_STATS.map((stat) => (
+            <div
+              key={stat.full}
+              className="text-center px-3 py-5"
+              title={stat.full}
+            >
               <div className="stat-value text-2xl text-primary">
                 <AnimatedCounter end={stat.end} />
               </div>
-              <div className="stat-label">{stat.label}</div>
+              <div className="stat-label mt-1.5 leading-snug">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -257,10 +307,10 @@ export default function Home() {
 
             <RevealOnScroll delay={150}>
               <span className="institute-eyebrow mb-4">Who We Are</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-5 tracking-[-0.02em]">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-5 tracking-[-0.02em] max-w-[22ch]">
                 Shaping Africa&apos;s AI Future Through Research & Innovation
               </h2>
-              <p className="text-base md:text-lg text-muted mb-8 leading-relaxed prose-institute">
+              <p className="text-base md:text-[1.0625rem] text-muted mb-8 leading-[1.75] prose-institute max-w-[38rem]">
                 The Africa Research Institute for AI (ARIFA) is a pioneering
                 institution dedicated to advancing artificial intelligence
                 research, training, and innovation across the African continent.
@@ -268,7 +318,7 @@ export default function Home() {
                 cutting-edge AI technology and Africa&apos;s unique challenges
                 and opportunities.
               </p>
-              <div className="space-y-5 mb-9">
+              <div className="space-y-5 mb-9 max-w-[36rem]">
                 <div className="flex gap-4">
                   <div className="w-11 h-11 rounded-lg bg-primary/8 text-primary flex items-center justify-center shrink-0 border border-primary/10">
                     <i className="fas fa-microscope" />
@@ -277,7 +327,7 @@ export default function Home() {
                     <h4 className="text-base font-semibold text-ink font-[var(--font-heading)] mb-1">
                       Research Excellence
                     </h4>
-                    <p className="text-muted text-sm leading-relaxed">
+                    <p className="text-muted text-sm leading-relaxed max-w-[32rem]">
                       Publishing impactful research in AI, data science, and
                       emerging technologies.
                     </p>
@@ -291,7 +341,7 @@ export default function Home() {
                     <h4 className="text-base font-semibold text-ink font-[var(--font-heading)] mb-1">
                       Capacity Building
                     </h4>
-                    <p className="text-muted text-sm leading-relaxed">
+                    <p className="text-muted text-sm leading-relaxed max-w-[32rem]">
                       Training the next generation of AI professionals through
                       certifications and short courses.
                     </p>
@@ -307,41 +357,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ====== Research Focus Areas ====== */}
-      <section id="our-focus" className="section-pad section-muted border-y border-line">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="max-w-[36rem] mb-14">
-            <span className="institute-eyebrow mb-3">Our Focus</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-3 tracking-[-0.02em]">
-              Research Focus Areas
-            </h2>
-            <p className="text-muted leading-relaxed">
-              We pursue impactful research across key domains where AI can
-              transform Africa&apos;s future.
-            </p>
+      {/* ====== Research Focus (visual peak) ====== */}
+      <section
+        id="our-focus"
+        className="relative section-pad border-y border-line overflow-hidden bg-[#f3f1ec] py-24 md:py-32"
+      >
+        <AiNetworkBg />
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+            <div className="max-w-[36rem]">
+              <span className="institute-eyebrow mb-3">Research</span>
+              <h2 className="text-3xl md:text-[2.5rem] font-bold text-ink font-[var(--font-heading)] leading-tight mb-3 tracking-[-0.02em]">
+                Research Focus Areas
+              </h2>
+              <p className="text-muted leading-relaxed max-w-[34rem]">
+                We pursue impactful research across key domains where AI can
+                transform Africa&apos;s future.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 shrink-0">
+              <Link
+                href="/research/research-projects"
+                className="btn-primary text-sm !py-2.5 !px-4"
+              >
+                All projects
+                <i className="fas fa-arrow-right text-[0.65em] opacity-80" />
+              </Link>
+              <Link
+                href="/publications"
+                className="btn-outline text-sm !py-2.5 !px-4"
+              >
+                Publications
+              </Link>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
             {focusAreas.map((area, i) => (
               <RevealOnScroll
                 key={area.title}
-                delay={i * 80}
-                className="institute-card p-6 h-full flex flex-col"
+                delay={i * 70}
+                className="institute-card p-7 md:p-8 h-full flex flex-col bg-white shadow-[0_10px_36px_rgba(15,20,25,0.07)] border-line hover:border-primary/25"
               >
-                <div className="w-11 h-11 rounded-lg bg-surface-alt text-primary flex items-center justify-center text-lg mb-5 border border-line">
-                  <i className={area.icon} />
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/8 text-primary flex items-center justify-center text-xl shrink-0 border border-primary/10">
+                    <i className={area.icon} />
+                  </div>
+                  <div className="pt-1">
+                    <span className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                      Focus 0{i + 1}
+                    </span>
+                    <h3 className="text-xl font-semibold text-ink font-[var(--font-heading)] mt-0.5 tracking-[-0.01em]">
+                      {area.title}
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-ink font-[var(--font-heading)] mb-2.5">
-                  {area.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed mb-6 flex-grow">
+                <p className="text-[0.9375rem] text-muted leading-relaxed mb-6 flex-grow max-w-[36rem]">
                   {area.text}
                 </p>
                 <Link
                   href="/research/research-projects"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark"
                 >
-                  Learn more
+                  Explore related work
                   <i className="fas fa-arrow-right text-[0.7em]" />
                 </Link>
               </RevealOnScroll>
@@ -350,52 +428,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ====== Programs ====== */}
-      <section className="section-pad bg-canvas">
+      {/* ====== Programs (quieter support section) ====== */}
+      <section className="py-16 md:py-20 bg-canvas border-b border-line">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="max-w-[36rem] mb-14">
-            <span className="institute-eyebrow mb-3">Programs</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-3 tracking-[-0.02em]">
-              Training & Certifications
-            </h2>
-            <p className="text-muted leading-relaxed">
-              Build your AI career with our industry-recognized certification
-              programs and hands-on short courses.
-            </p>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+            <div className="max-w-[32rem]">
+              <span className="institute-eyebrow mb-2 text-[0.7rem]">
+                Programs
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] leading-tight tracking-[-0.02em]">
+                Training & Certifications
+              </h2>
+              <p className="text-muted text-sm md:text-base leading-relaxed mt-2 max-w-[30rem]">
+                Build your AI career with our industry-recognized certification
+                programs and hands-on short courses.
+              </p>
+            </div>
+            <Link
+              href="/training/certifications"
+              className="text-sm font-semibold text-primary hover:text-primary-dark inline-flex items-center gap-2 shrink-0"
+            >
+              View all programs
+              <i className="fas fa-arrow-right text-[0.7em]" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {programs.map((program, i) => (
-              <RevealOnScroll key={program.title} delay={i * 90} className="h-full">
+              <RevealOnScroll key={program.title} delay={i * 70} className="h-full">
                 <Link
                   href={program.href}
-                  className="institute-card overflow-hidden h-full flex flex-col group block"
+                  className="group block h-full rounded-lg border border-line bg-white overflow-hidden transition-all hover:border-line-strong hover:shadow-[0_6px_20px_rgba(15,20,25,0.05)]"
                 >
-                  <div className="relative h-48 overflow-hidden bg-surface-warm">
+                  <div className="relative h-36 overflow-hidden bg-surface-warm">
                     <Image
                       src={program.image}
                       alt={program.alt}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03] opacity-95"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 border border-line rounded text-[0.65rem] font-semibold text-primary uppercase tracking-wide">
+                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-white/95 border border-line rounded text-[0.6rem] font-semibold text-muted uppercase tracking-wide">
                       {program.badge}
                     </div>
                   </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-lg font-semibold text-ink font-[var(--font-heading)] mb-2 group-hover:text-primary transition-colors">
+                  <div className="p-4 md:p-5 flex flex-col flex-grow">
+                    <h3 className="text-base font-semibold text-ink font-[var(--font-heading)] mb-1.5 group-hover:text-primary transition-colors leading-snug">
                       {program.title}
                     </h3>
-                    <p className="text-sm text-muted leading-relaxed mb-5 flex-grow">
+                    <p className="text-xs text-muted leading-relaxed mb-4 flex-grow line-clamp-2">
                       {program.text}
                     </p>
-                    <div className="flex gap-4 border-t border-line pt-4">
-                      <span className="text-xs font-medium text-muted flex items-center gap-1.5">
-                        <i className="fas fa-clock text-secondary text-[0.75em]" />{" "}
+                    <div className="flex gap-3 border-t border-line pt-3">
+                      <span className="text-[0.7rem] font-medium text-subtle flex items-center gap-1">
+                        <i className="fas fa-clock text-secondary/80 text-[0.65em]" />{" "}
                         {program.duration}
                       </span>
-                      <span className="text-xs font-medium text-muted flex items-center gap-1.5">
-                        <i className="fas fa-signal text-secondary text-[0.75em]" />{" "}
+                      <span className="text-[0.7rem] font-medium text-subtle flex items-center gap-1">
+                        <i className="fas fa-signal text-secondary/80 text-[0.65em]" />{" "}
                         {program.level}
                       </span>
                     </div>
@@ -404,83 +493,63 @@ export default function Home() {
               </RevealOnScroll>
             ))}
           </div>
-
-          <div>
-            <Link href="/training/certifications" className="btn-outline">
-              View All Programs
-              <i className="fas fa-arrow-right text-xs opacity-70" />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* ====== Impact Stats ====== */}
-      <section className="relative section-pad bg-night overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* ====== Closing CTA (no repeated stats) ====== */}
+      <section
+        className="section-pad bg-night relative overflow-hidden"
+        style={{ color: "#ffffff" }}
+      >
+        <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
           <Image
             src="/hero-bg.png"
             alt=""
             fill
-            className="object-cover object-center opacity-[0.12] grayscale"
+            className="object-cover grayscale"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-night/80" />
         </div>
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-          <div className="max-w-[36rem] mb-14">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] uppercase text-[#8fd4aa] mb-3">
-              <span className="w-4 h-px bg-[#8fd4aa]" />
-              Our Impact
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-[var(--font-heading)] leading-tight tracking-[-0.02em]">
-              Making a Difference Across Africa
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-            {[
-              { end: 15, label: "Expert Researchers" },
-              { end: 20, label: "Published Papers" },
-              { end: 500, label: "Professionals Trained" },
-              { end: 5, label: "Partner Countries" },
-            ].map((stat) => (
-              <div key={stat.label} className="lg:border-l lg:border-white/10 lg:pl-8 first:lg:border-0 first:lg:pl-0">
-                <div className="text-4xl md:text-5xl font-bold text-white font-[var(--font-heading)] mb-2 tracking-tight">
-                  <AnimatedCounter end={stat.end} />
-                </div>
-                <div className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-[0.1em]">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ====== CTA Section ====== */}
-      <section className="section-pad bg-canvas">
-        <div className="max-w-[52rem] mx-auto px-6">
-          <div className="rounded-xl p-10 md:p-14 text-center border border-line bg-white shadow-[0_8px_40px_rgba(15,20,25,0.04)] relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-primary to-secondary" />
-            <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] mb-4 tracking-[-0.02em]">
-              Ready to Shape Africa&apos;s AI Future?
-            </h2>
-            <p className="text-muted text-base md:text-lg mb-8 max-w-[32rem] mx-auto leading-relaxed">
-              Whether you&apos;re a researcher, student, or industry partner,
-              there&apos;s a place for you at ARIFA. Join us in building
-              Africa&apos;s AI ecosystem.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href="/training/certifications"
-                className="btn-primary w-full sm:w-auto !bg-secondary hover:!bg-secondary-light"
-              >
-                Start Learning
-                <i className="fas fa-graduation-cap text-xs opacity-80" />
-              </Link>
-              <Link href="/contact-us" className="btn-ghost-dark w-full sm:w-auto">
-                Get in Touch
-              </Link>
-            </div>
+        <div className="absolute inset-0 bg-night/80 pointer-events-none" />
+        <div className="relative z-10 max-w-[40rem] mx-auto px-6 text-center">
+          <span
+            className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] uppercase mb-4"
+            style={{ color: "#a8efc4" }}
+          >
+            <span className="w-4 h-px" style={{ background: "#a8efc4" }} />
+            Join ARIFA
+          </span>
+          <h2
+            className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] mb-4 tracking-[-0.02em]"
+            style={{
+              color: "#ffffff",
+              textShadow: "0 2px 12px rgba(0,0,0,0.4)",
+            }}
+          >
+            Ready to Shape Africa&apos;s AI Future?
+          </h2>
+          <p
+            className="text-base md:text-lg mb-8 leading-relaxed max-w-[32rem] mx-auto"
+            style={{ color: "rgba(255,255,255,0.85)" }}
+          >
+            Whether you&apos;re a researcher, student, or industry partner,
+            there&apos;s a place for you at ARIFA. Join us in building
+            Africa&apos;s AI ecosystem.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/research/research-projects"
+              className="btn-primary w-full sm:w-auto"
+            >
+              Explore Research
+              <i className="fas fa-arrow-right text-xs opacity-80" />
+            </Link>
+            <Link
+              href="/contact-us"
+              className="btn-secondary w-full sm:w-auto"
+            >
+              Get in Touch
+            </Link>
           </div>
         </div>
       </section>

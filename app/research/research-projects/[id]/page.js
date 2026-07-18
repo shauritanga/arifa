@@ -1,17 +1,22 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { getBySlug } from "@/lib/content";
+import SafeHtml from "@/components/ui/safe-html";
+import DetailHero from "@/components/ui/detail-hero";
 
 export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const project = await getBySlug("RESEARCH_PROJECT", id);
 
   return {
-    title: project ? `${project.title} - ARIFA Research` : "Research Project - ARIFA",
+    title: project
+      ? `${project.title} - ARIFA Research`
+      : "Research Project - ARIFA",
   };
 }
+
 export default async function ResearchProjectDetails({ params }) {
   const { id } = await params;
   const data = await getBySlug("RESEARCH_PROJECT", id);
@@ -19,214 +24,129 @@ export default async function ResearchProjectDetails({ params }) {
   if (!data) {
     notFound();
   }
+
   return (
-    <div className="min-h-screen bg-white">
-      {" "}
-      {/* ====== Stunning Premium Header ====== */}{" "}
-      <section className="relative pt-48 pb-32 overflow-hidden flex flex-col justify-center">
-        {" "}
-        {/* Background Image & Overlays */}{" "}
-        <div className="absolute inset-0 z-0 bg-primary">
-          {" "}
-          <Image
-            src={data.image}
-            alt={data.title}
-            fill
-            className="object-cover object-center opacity-75"
-            priority
-          />{" "}
-          <div className="absolute inset-0 bg-night/80" />{" "}
-          <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-night/70" />{" "}
-        </div>{" "}
-        <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
-          {" "}
-          {/* Breadcrumb Navigation */}{" "}
-          <nav
-            className="flex items-center gap-3 text-sm text-white/70 mb-10 font-medium tracking-wide"
-            aria-label="Breadcrumb"
-          >
-            {" "}
-            <Link
-              href="/"
-              className="hover:text-white transition-colors flex items-center gap-2"
-            >
-              {" "}
-              <i className="fas fa-home text-white/50" /> Home{" "}
-            </Link>{" "}
-            <i className="fas fa-chevron-right text-xs text-white/30" />{" "}
-            <Link
-              href="/research/research-projects"
-              className="hover:text-white transition-colors"
-            >
-              {" "}
-              Research Projects{" "}
-            </Link>{" "}
-            <i className="fas fa-chevron-right text-xs text-white/30" />{" "}
-            <span
-              className="text-white font-bold truncate max-w-[150px] md:max-w-[300px] lg:max-w-md"
-              title={data.title}
-            >
-              {" "}
-              {data.title}{" "}
-            </span>{" "}
-          </nav>{" "}
-          <div className="flex flex-col lg:flex-row gap-12 lg:items-end justify-between">
-            {" "}
-            <div className="max-w-4xl">
-              {" "}
-              <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
-                {" "}
-                Active Research{" "}
-              </span>{" "}
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] font-[var(--font-heading)] ">
-                {" "}
-                {data.title}{" "}
-              </h1>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
-        {/* Decorative divider */}{" "}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
-          {" "}
-          <svg
-            className="relative block w-full h-[50px]"
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            {" "}
-            <path
-              d="M1200 120L0 120 0 0 1200 0 1200 120z"
-              fill="#FFFFFF"
-              opacity="0.1"
-            ></path>{" "}
-            <path
-              d="M0 120h1200V0C936.56 120 263.44 120 0 0v120z"
-              fill="#FFFFFF"
-            ></path>{" "}
-          </svg>{" "}
-        </div>{" "}
-      </section>{" "}
-      {/* ====== Project Content with Balance and Hierarchy ====== */}{" "}
-      <section className="py-20">
-        {" "}
+    <div className="min-h-screen bg-canvas">
+      <DetailHero
+        badge="Active Research"
+        title={data.title}
+        image={data.image}
+        imageAlt={data.title}
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Research Projects", href: "/research/research-projects" },
+          { label: data.title },
+        ]}
+      />
+
+      <section className="py-16 md:py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          {" "}
-          <div className="grid lg:grid-cols-12 gap-12">
-            {" "}
-            {/* Left Column: Descriptive Content */}{" "}
-            <div className="lg:col-span-8 space-y-8">
-              {" "}
-              <div className="bg-white p-8 md:p-12 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-line relative overflow-hidden group">
-                {" "}
-                <div className="relative z-10">
-                  {" "}
-                  <h2 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-8 pb-4 border-b border-line flex items-center gap-4">
-                    {" "}
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                      {" "}
-                      <i className="fas fa-file-alt" />{" "}
-                    </div>{" "}
-                    Project Overview{" "}
-                  </h2>{" "}
-                  <div
-                    className="max-w-none text-lg text-muted leading-loose [&_p]:mb-6 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-black [&_h3]:mt-12 [&_h3]:mb-6 [&_h3]:font-[var(--font-heading)] [&_h4]:text-xl [&_h4]:font-bold [&_h4]:text-black [&_h4]:mt-8 [&_h4]:mb-4 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-8 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/5 [&_strong]:px-1.5 [&_strong]:rounded"
-                    dangerouslySetInnerHTML={{ __html: data.content }}
-                  />{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>{" "}
-            {/* Right Column: Sticky Navigation & Quick Actions */}{" "}
-            <div className="lg:col-span-4 relative">
-              {" "}
-              <div className="sticky top-32 space-y-8">
-                {" "}
-                {/* Meta Card (High Contrast) */}{" "}
-                <div className="bg-primary p-8 rounded-xl shadow-xl relative overflow-hidden">
-                  {" "}
-                  <h3 className="text-xl font-bold text-white font-[var(--font-heading)] mb-6">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12">
+            <div className="lg:col-span-8">
+              <article className="bg-white p-7 md:p-10 rounded-xl border border-line shadow-[0_8px_30px_rgba(15,20,25,0.04)]">
+                <h2 className="text-xl md:text-2xl font-bold text-ink font-[var(--font-heading)] mb-6 pb-4 border-b border-line flex items-center gap-3">
+                  <span className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary shrink-0">
+                    <i className="fas fa-file-alt" />
+                  </span>
+                  Project Overview
+                </h2>
+                <SafeHtml
+                  className="max-w-none text-base md:text-lg text-ink-soft leading-relaxed [&_p]:mb-5 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-[var(--font-heading)] [&_h4]:text-lg [&_h4]:font-bold [&_h4]:text-ink [&_h4]:mt-8 [&_h4]:mb-3 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-6 [&_ul]:space-y-3 [&_li]:relative [&_li]:pl-7 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-1.5 [&_li]:before:h-1.5 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-ink [&_strong]:font-semibold"
+                  html={data.content}
+                />
+              </article>
+            </div>
+
+            <aside className="lg:col-span-4">
+              <div className="sticky top-28 space-y-5">
+                <div className="bg-night p-7 rounded-xl border border-white/10">
+                  <h3 className="text-lg font-bold text-white font-[var(--font-heading)] mb-5">
                     Research Details
-                  </h3>{" "}
-                  <ul className="space-y-6">
-                    {" "}
-                    <li className="flex items-start gap-4">
-                      {" "}
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0 border border-white/20">
-                        {" "}
-                        <i className="fas fa-calendar-alt" />{" "}
-                      </div>{" "}
+                  </h3>
+                  <ul className="space-y-5">
+                    <li className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-white/8 flex items-center justify-center text-[#9fe0b8] shrink-0 border border-white/10">
+                        <i className="fas fa-calendar-alt" />
+                      </div>
                       <div>
-                        {" "}
-                        <strong className="block text-sm text-white font-bold mb-1">
+                        <strong className="block text-sm text-white font-semibold mb-0.5">
                           Status
-                        </strong>{" "}
+                        </strong>
                         <span className="text-sm text-white/60">
                           Ongoing Research
-                        </span>{" "}
-                      </div>{" "}
-                    </li>{" "}
-                    <li className="flex items-start gap-4">
-                      {" "}
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0 border border-white/20">
-                        {" "}
-                        <i className="fas fa-globe-africa" />{" "}
-                      </div>{" "}
+                        </span>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-white/8 flex items-center justify-center text-[#9fe0b8] shrink-0 border border-white/10">
+                        <i className="fas fa-globe-africa" />
+                      </div>
                       <div>
-                        {" "}
-                        <strong className="block text-sm text-white font-bold mb-1">
+                        <strong className="block text-sm text-white font-semibold mb-0.5">
                           Region
-                        </strong>{" "}
+                        </strong>
                         <span className="text-sm text-white/60">
                           Pan-African Initiative
-                        </span>{" "}
-                      </div>{" "}
-                    </li>{" "}
-                    <li className="flex items-start gap-4">
-                      {" "}
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0 border border-white/20">
-                        {" "}
-                        <i className="fas fa-users" />{" "}
-                      </div>{" "}
+                        </span>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-white/8 flex items-center justify-center text-[#9fe0b8] shrink-0 border border-white/10">
+                        <i className="fas fa-users" />
+                      </div>
                       <div>
-                        {" "}
-                        <strong className="block text-sm text-white font-bold mb-1">
+                        <strong className="block text-sm text-white font-semibold mb-0.5">
                           Stakeholders
-                        </strong>{" "}
+                        </strong>
                         <span className="text-sm text-white/60">
-                          Government & Academic
-                        </span>{" "}
-                      </div>{" "}
-                    </li>{" "}
-                  </ul>{" "}
-                </div>{" "}
-                {/* Share Card */}{" "}
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-line">
-                  {" "}
-                  <h4 className="font-bold text-black mb-4">
+                          Government &amp; Academic
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl border border-line">
+                  <h4 className="font-semibold text-ink mb-4 text-sm">
                     Share this Research
-                  </h4>{" "}
-                  <div className="flex gap-4">
-                    {" "}
-                    <button className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-black/60 hover:text-white hover:bg-[#00803D] hover:border-[#00803D] transition-colors">
-                      {" "}
-                      <i className="fab fa-twitter" />{" "}
-                    </button>{" "}
-                    <button className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-black/60 hover:text-white hover:bg-[#990000] hover:border-[#990000] transition-colors">
-                      {" "}
-                      <i className="fab fa-linkedin-in" />{" "}
-                    </button>{" "}
-                    <button className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-black/60 hover:text-white hover:bg-primary hover:border-black transition-colors">
-                      {" "}
-                      <i className="fas fa-link" />{" "}
-                    </button>{" "}
-                  </div>{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
-      </section>{" "}
+                  </h4>
+                  <div className="flex gap-3">
+                    <button
+                      type="button"
+                      className="w-11 h-11 rounded-lg border border-line flex items-center justify-center text-muted hover:text-white hover:bg-secondary hover:border-secondary transition-colors"
+                      aria-label="Share on Twitter"
+                    >
+                      <i className="fab fa-twitter" />
+                    </button>
+                    <button
+                      type="button"
+                      className="w-11 h-11 rounded-lg border border-line flex items-center justify-center text-muted hover:text-white hover:bg-primary hover:border-primary transition-colors"
+                      aria-label="Share on LinkedIn"
+                    >
+                      <i className="fab fa-linkedin-in" />
+                    </button>
+                    <button
+                      type="button"
+                      className="w-11 h-11 rounded-lg border border-line flex items-center justify-center text-muted hover:text-white hover:bg-ink hover:border-ink transition-colors"
+                      aria-label="Copy link"
+                    >
+                      <i className="fas fa-link" />
+                    </button>
+                  </div>
+                </div>
+
+                <Link
+                  href="/research/research-projects"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark"
+                >
+                  <i className="fas fa-arrow-left text-xs" />
+                  All research projects
+                </Link>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

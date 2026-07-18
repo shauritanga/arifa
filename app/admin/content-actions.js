@@ -16,7 +16,7 @@ const PUBLIC_PATHS = {
   PUBLICATION: ["/publications"],
   COURSE: ["/training/short-courses"],
   JOB: ["/opportunities/careers"],
-  EVENT: ["/events/engagements"],
+  EVENT: ["/events", "/events/engagements"],
 };
 
 function revalidateFor(collection, slug) {
@@ -24,7 +24,29 @@ function revalidateFor(collection, slug) {
     revalidatePath(path);
     if (slug) revalidatePath(`${path}/${slug}`);
   }
+  // Event detail lives at /events/<slug>
+  if (collection === "EVENT" && slug) {
+    revalidatePath(`/events/${slug}`);
+  }
   revalidatePath(`/admin/content/${collection}`);
+}
+
+/** One URL/path (or tag) per non-empty line → string[]. */
+function readLines(raw) {
+  return String(raw || "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+function slugify(text) {
+  return String(text || "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
 }
 
 /** Build the `data` blob from the collection's declared fields. */
@@ -44,6 +66,15 @@ function readFields(collection, formData) {
       } catch {
         return { error: `${field.label} must be valid JSON.` };
       }
+      continue;
+    }
+
+    if (field.kind === "lines") {
+      const lines = readLines(raw);
+      if (field.required && lines.length === 0) {
+        return { error: `${field.label} is required.` };
+      }
+      data[field.key] = lines;
       continue;
     }
 
@@ -72,9 +103,29 @@ export async function saveContentItem(collection, id, formData) {
   const { data, error } = readFields(collection, formData);
   if (error) return { ok: false, error };
 
-  const slug = String(formData.get("slug") ?? "").trim() || null;
-  const image = String(formData.get("image") ?? "").trim() || null;
-  const group = String(formData.get("group") ?? "").trim() || null;
+  let slug = String(formData.get("slug") ?? "").trim() || null;
+  if (spec.hasSlug && !slug) {
+    slug = slugify(title) || null;
+  }
+  let image = String(formData.get("image") ?? "").trim() || null;
+  // Cover falls back to first gallery image so listings always have a photo.
+  if (!image && Array.isArray(data.images) && data.images[0]) {
+    image = data.images[0];
+  }
+  // Prefer free-text custom group when the form sent both (category + custom).
+  const groupCustom = String(formData.get("groupCustom") ?? "").trim();
+  const groupSelect = String(formData.get("group") ?? "").trim();
+  const group =
+    (groupSelect === "__custom__" ? groupCustom : groupCustom || groupSelect) ||
+    null;
+
+  if (spec.group?.required && !group) {
+    return {
+      ok: false,
+      error: `${spec.group.label ?? "Category"} is required.`,
+    };
+  }
+
   const published = formData.get("published") === "on";
 
   const values = { title, image, group, data, published };

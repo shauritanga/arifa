@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import SafeHtml from "@/components/ui/safe-html";
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -143,10 +144,10 @@ export default function ResearchProjects({ projects }) {
                         {project.title}{" "}
                       </h3>{" "}
                       <div className="w-8 h-0.5 bg-primary/30 mb-4 group-hover:w-12 group-hover:bg-primary transition-all duration-300" />{" "}
-                      <div
+                      <SafeHtml
                         className="text-muted text-sm leading-relaxed line-clamp-3 mb-6"
-                        dangerouslySetInnerHTML={{ __html: project.content }}
-                      />{" "}
+                        html={project.content}
+                      />
                       <div className="mt-auto pt-4 border-t border-line flex items-center justify-between">
                         {" "}
                         <span className="text-sm font-semibold text-ink group-hover:text-primary transition-colors flex items-center gap-2">

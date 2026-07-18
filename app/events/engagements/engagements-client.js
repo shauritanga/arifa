@@ -1,10 +1,24 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+
+const FALLBACK_IMAGE = "/hero-bg.png";
+
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) {
+      node.classList.add("opacity-100", "translate-y-0");
+      node.classList.remove("opacity-0", "translate-y-6");
+      return;
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -13,9 +27,9 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
   return (
@@ -24,184 +38,189 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
       className={`opacity-0 translate-y-6 transition-all duration-700 ease-out ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {" "}
-      {children}{" "}
+      {children}
     </div>
   );
 }
+
+function formatRange(event) {
+  const start = [event.month, event.day].filter(Boolean).join(" ");
+  const sameDay =
+    event.day === event.endDay &&
+    event.month === event.endMonth &&
+    event.year === event.endYear;
+  if (sameDay || !event.endDay) {
+    return [start, event.year].filter(Boolean).join(", ");
+  }
+  const end = [event.endMonth, event.endDay].filter(Boolean).join(" ");
+  if (event.year === event.endYear) {
+    return `${start} – ${end}, ${event.year || ""}`.trim();
+  }
+  return `${start}, ${event.year || ""} – ${end}, ${event.endYear || ""}`.trim();
+}
+
+function EventCard({ event, index }) {
+  const href = `/events/${event.slug}`;
+  const image = event.image || FALLBACK_IMAGE;
+
+  return (
+    <RevealOnScroll delay={(index % 3) * 80} className="h-full">
+      <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white shadow-[0_1px_2px_rgba(15,20,25,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_16px_40px_rgba(15,20,25,0.08)]">
+        {/* Image + date badge — inspired by demo.arifa.org/events */}
+        <Link href={href} className="relative block aspect-[16/10] overflow-hidden bg-surface-warm">
+          <Image
+            src={image}
+            alt={event.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-night/50 via-transparent to-transparent" />
+
+          {/* Floating date tile */}
+          <div className="absolute left-4 top-4 flex min-w-[3.5rem] flex-col items-center rounded-lg bg-white px-2.5 py-2 text-center shadow-md">
+            <span className="font-[var(--font-heading)] text-2xl font-bold leading-none text-primary">
+              {event.day || "—"}
+            </span>
+            <span className="mt-1 text-[0.65rem] font-bold uppercase tracking-wider text-ink">
+              {event.month || ""}
+            </span>
+          </div>
+
+          {/* Kind badge */}
+          <span className="absolute right-4 top-4 rounded-full bg-night/75 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+            {event.kind || "Event"}
+          </span>
+        </Link>
+
+        <div className="flex flex-1 flex-col p-5 md:p-6">
+          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-muted">
+            {event.location ? (
+              <span className="inline-flex max-w-full items-center gap-1.5">
+                <i className="fas fa-map-marker-alt text-[0.7em] text-secondary" />
+                <span className="truncate">{event.location}</span>
+              </span>
+            ) : null}
+            <span className="inline-flex items-center gap-1.5">
+              <i className="fas fa-calendar-alt text-[0.7em] text-secondary" />
+              {formatRange(event)}
+            </span>
+          </div>
+
+          <h3 className="font-[var(--font-heading)] text-lg font-bold leading-snug text-ink transition-colors group-hover:text-primary md:text-xl">
+            <Link href={href} className="line-clamp-2">
+              {event.title}
+            </Link>
+          </h3>
+
+          {event.desc ? (
+            <p className="mt-2 line-clamp-2 flex-grow text-sm leading-relaxed text-muted">
+              {event.desc}
+            </p>
+          ) : (
+            <div className="flex-grow" />
+          )}
+
+          <div className="mt-5 border-t border-line pt-4">
+            <Link
+              href={href}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
+            >
+              Read more
+              <i className="fas fa-arrow-right text-[0.7em] transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+      </article>
+    </RevealOnScroll>
+  );
+}
+
+function EventGrid({ events, emptyLabel }) {
+  if (!events.length) {
+    return (
+      <div className="rounded-xl border border-dashed border-line bg-white px-6 py-14 text-center text-sm text-muted">
+        {emptyLabel}
+      </div>
+    );
+  }
+  return (
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+      {events.map((event, idx) => (
+        <EventCard key={event.slug || event.title} event={event} index={idx} />
+      ))}
+    </div>
+  );
+}
+
 export default function Engagements({ engagements }) {
   const upcomingEvents = engagements.filter((e) => e.type === "Upcoming");
-  const pastEvents = engagements.filter((e) => e.type === "Past");
+  const pastEvents = engagements.filter((e) => e.type !== "Upcoming");
+
   return (
     <>
-      {" "}
-      {/* ====== Page Header ====== */}{" "}
       <section className="page-hero">
-        {" "}
         <div className="absolute inset-0 z-0">
-          {" "}
           <Image
             src="/about-img.png"
-            alt="Events Background"
+            alt=""
             fill
             className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
-          />{" "}
-          <div className="absolute inset-0 bg-night/80" />{" "}
-        </div>{" "}
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-night/80" />
+        </div>
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
-          {" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp font-[var(--font-heading)]">
-            {" "}
-            Our <span className="text-secondary">Engagements</span>{" "}
-          </h1>{" "}
-          <p className="text-lg md:text-xl text-white/80 max-w-[700px] mx-auto animate-fadeInUp animate-delay-100">
-            {" "}
-            A comprehensive overview of ARIFA&apos;s past and upcoming
-            conferences, workshops, and strategic partnerships.{" "}
-          </p>{" "}
-        </div>{" "}
-      </section>{" "}
-      {/* ====== Upcoming Events ====== */}{" "}
-      <section className="py-24 bg-white">
-        {" "}
+          <div className="page-hero-badge animate-fadeInUp">Events &amp; News</div>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]"
+            style={{ color: "#ffffff" }}
+          >
+            Stay in the <span style={{ color: "#8fd4aa" }}>loop</span>
+          </h1>
+          <p className="text-lg md:text-xl text-white/75 max-w-[36rem] mx-auto animate-fadeInUp animate-delay-200">
+            Latest events, announcements, and highlights from ARIFA&apos;s work
+            across Africa — all in one place.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-canvas">
         <div className="max-w-[1200px] mx-auto px-6">
-          {" "}
-          <div className="text-center mb-16">
-            {" "}
-            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
-              Join Us
-            </span>{" "}
-            <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)]">
-              {" "}
-              Upcoming Events{" "}
-            </h2>{" "}
-            <div className="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" />{" "}
-          </div>{" "}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {" "}
-            {upcomingEvents.map((event, idx) => (
-              <RevealOnScroll
-                key={idx}
-                delay={(idx % 3) * 100}
-                className="bg-white rounded-xl flex flex-col overflow-hidden border border-line shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(15,20,25,0.07)] hover:-translate-y-1 transition-all duration-300 group"
-              >
-                {" "}
-                {/* Date Header */}{" "}
-                <div className="bg-primary text-white p-6 relative overflow-hidden">
-                  {" "}
-                  <div className="flex items-center gap-4 relative z-10">
-                    {" "}
-                    <span className="text-5xl font-bold font-[var(--font-heading)] leading-none">
-                      {event.day}
-                    </span>{" "}
-                    <div className="flex flex-col">
-                      {" "}
-                      <span className="text-lg font-bold uppercase tracking-widest text-secondary leading-tight">
-                        {event.month}
-                      </span>{" "}
-                      <span className="text-sm font-medium opacity-90">
-                        {event.year}
-                      </span>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
-                {/* Content */}{" "}
-                <div className="p-8 flex-grow flex flex-col">
-                  {" "}
-                  <h3 className="text-xl font-bold text-ink font-[var(--font-heading)] mb-4 group-hover:text-primary transition-colors leading-snug">
-                    {" "}
-                    {event.title}{" "}
-                  </h3>{" "}
-                  <p className="text-sm font-semibold text-muted mb-4 flex items-center gap-2">
-                    {" "}
-                    <i className="fas fa-map-marker-alt text-secondary" />{" "}
-                    {event.location}{" "}
-                  </p>{" "}
-                  <p className="text-muted leading-relaxed text-sm flex-grow">
-                    {" "}
-                    {event.desc}{" "}
-                  </p>{" "}
-                  <div className="mt-8 pt-6 border-t border-line">
-                    {" "}
-                    <Link
-                      href="/contact-us"
-                      className="inline-flex items-center text-sm font-bold text-primary hover:text-secondary transition-colors group/link"
-                    >
-                      {" "}
-                      Register Now{" "}
-                      <i className="fas fa-arrow-right ml-2 text-[0.8em] group-hover/link:translate-x-1 transition-transform" />{" "}
-                    </Link>{" "}
-                  </div>{" "}
-                </div>{" "}
-              </RevealOnScroll>
-            ))}{" "}
-          </div>{" "}
-        </div>{" "}
-      </section>{" "}
-      {/* ====== Past Events ====== */}{" "}
-      <section className="py-24 bg-white border-t border-line">
-        {" "}
+          <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <span className="institute-eyebrow mb-2">Join us</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em]">
+                Upcoming events
+              </h2>
+            </div>
+            <p className="text-sm text-muted max-w-xs sm:text-right">
+              {upcomingEvents.length} open{" "}
+              {upcomingEvents.length === 1 ? "engagement" : "engagements"}
+            </p>
+          </div>
+          <EventGrid
+            events={upcomingEvents}
+            emptyLabel="No upcoming events at the moment. Check past highlights below."
+          />
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-white border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6">
-          {" "}
-          <div className="text-center mb-16">
-            {" "}
-            <span className="text-secondary font-bold tracking-wider uppercase text-sm mb-2 block">
-              Our Track Record
-            </span>{" "}
-            <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)]">
-              {" "}
-              Past Engagements{" "}
-            </h2>{" "}
-            <div className="w-20 h-1 bg-secondary mx-auto mt-6 rounded-full" />{" "}
-          </div>{" "}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {" "}
-            {pastEvents.map((event, idx) => (
-              <RevealOnScroll
-                key={idx}
-                delay={(idx % 3) * 50}
-                className="bg-white rounded-xl flex flex-col overflow-hidden border border-line hover:shadow-lg hover:shadow-black/5 hover:-translate-y-1 transition-all duration-300 group"
-              >
-                {" "}
-                {/* Date Header */}{" "}
-                <div className="bg-primary text-white p-5 flex items-center gap-3 border-b-4 border-transparent group-hover:border-primary transition-colors">
-                  {" "}
-                  <span className="text-3xl font-bold font-[var(--font-heading)] leading-none text-white/90">
-                    {event.day}
-                  </span>{" "}
-                  <div className="flex flex-col">
-                    {" "}
-                    <span className="text-sm font-bold uppercase tracking-widest text-secondary leading-tight">
-                      {event.month}
-                    </span>{" "}
-                    <span className="text-xs font-medium opacity-60">
-                      {event.year}
-                    </span>{" "}
-                  </div>{" "}
-                </div>{" "}
-                {/* Content */}{" "}
-                <div className="p-6 flex-grow flex flex-col">
-                  {" "}
-                  <h3 className="text-lg font-bold text-ink font-[var(--font-heading)] mb-3 group-hover:text-primary transition-colors leading-snug">
-                    {" "}
-                    {event.title}{" "}
-                  </h3>{" "}
-                  <p className="text-xs font-semibold text-muted mb-4 flex items-center gap-2">
-                    {" "}
-                    <i className="fas fa-map-marker-alt text-secondary" />{" "}
-                    {event.location}{" "}
-                  </p>{" "}
-                  <p className="text-sm text-muted leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
-                    {" "}
-                    {event.desc}{" "}
-                  </p>{" "}
-                </div>{" "}
-              </RevealOnScroll>
-            ))}{" "}
-          </div>{" "}
-        </div>{" "}
-      </section>{" "}
+          <div className="mb-10">
+            <span className="institute-eyebrow mb-2">Archive</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em]">
+              Past engagements
+            </h2>
+          </div>
+          <EventGrid
+            events={pastEvents}
+            emptyLabel="Past events will appear here once published."
+          />
+        </div>
+      </section>
     </>
   );
 }
