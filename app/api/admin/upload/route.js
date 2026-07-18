@@ -22,6 +22,7 @@ const FOLDERS = new Set([
   "team",
   "research",
   "training",
+  "careers",
   "general",
 ]);
 
