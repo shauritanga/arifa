@@ -23,7 +23,7 @@ function DetailRow({ icon, label, value }) {
         <i className={`${icon} text-primary`} />
         {label}
       </span>
-      <span className="text-right text-black/70">{value}</span>
+      <span className="text-right text-muted">{value}</span>
     </div>
   );
 }
@@ -48,14 +48,14 @@ export default async function MasterclassSessionPage({ params }) {
         <div className="text-xs font-bold uppercase tracking-[2px] text-primary">
           {session.country} · Executive Session
         </div>
-        <h1 className="mt-2 text-4xl md:text-5xl font-extrabold text-black font-[var(--font-heading)]">
+        <h1 className="mt-2 text-4xl md:text-5xl font-bold text-ink font-[var(--font-heading)]">
           {session.title}
         </h1>
 
         <div className="mt-10 grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-start">
           <div>
             {session.image && (
-              <div className="relative h-[260px] w-full overflow-hidden rounded-2xl">
+              <div className="relative h-[260px] w-full overflow-hidden rounded-xl">
                 <Image
                   src={session.image}
                   alt={`AI Master Class in ${session.title}, ${session.country}`}
@@ -66,13 +66,13 @@ export default async function MasterclassSessionPage({ params }) {
                 />
               </div>
             )}
-            <p className="mt-6 text-lg leading-relaxed text-black/70">
+            <p className="mt-6 text-lg leading-relaxed text-muted">
               {session.desc}
             </p>
           </div>
 
-          <div className="rounded-2xl border border-black/10 bg-white p-7 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
-            <h2 className="mb-2 text-xl font-bold text-black font-[var(--font-heading)]">
+          <div className="rounded-xl border border-line bg-white p-7 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
+            <h2 className="mb-2 text-xl font-bold text-ink font-[var(--font-heading)]">
               Session details
             </h2>
             <DetailRow
@@ -98,7 +98,7 @@ export default async function MasterclassSessionPage({ params }) {
               value={
                 <>
                   {session.early_price && (
-                    <span className="font-extrabold text-primary">
+                    <span className="font-bold text-primary">
                       {session.early_price}
                     </span>
                   )}
@@ -118,8 +118,8 @@ export default async function MasterclassSessionPage({ params }) {
           </div>
         </div>
 
-        <div className="mt-16 rounded-2xl border border-black/10 bg-white p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
-          <h2 className="mb-2 text-2xl font-bold text-black font-[var(--font-heading)]">
+        <div className="mt-16 rounded-xl border border-line bg-white p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
+          <h2 className="mb-2 text-2xl font-bold text-ink font-[var(--font-heading)]">
             Registration
           </h2>
 
@@ -127,7 +127,7 @@ export default async function MasterclassSessionPage({ params }) {
             /* No fee set for this city yet, so there is nothing we could
                legitimately charge. Take the enquiry instead of inventing a price. */
             <>
-              <p className="mb-8 text-black/70">
+              <p className="mb-8 text-muted">
                 Online registration for {session.title} is not open yet. Contact
                 our team and we will reserve your seat and confirm the fee.
               </p>
@@ -141,7 +141,7 @@ export default async function MasterclassSessionPage({ params }) {
             </>
           ) : (
             <>
-              <p className="mb-8 text-black/70">
+              <p className="mb-8 text-muted">
                 Complete the form to reserve your seat. You will be taken to
                 AirPay to pay{" "}
                 <strong className="text-black">

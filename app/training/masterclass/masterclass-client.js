@@ -155,7 +155,7 @@ function RegisterModal({ session, onClose }) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-[640px] rounded-2xl bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-9"
+        className="relative w-full max-w-[640px] rounded-xl bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-9"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -170,7 +170,7 @@ function RegisterModal({ session, onClose }) {
         <div className="text-xs font-bold uppercase tracking-[2px] text-primary">
           {session.country} · Executive Session
         </div>
-        <h2 className="mt-1 text-2xl font-extrabold text-black font-[var(--font-heading)]">
+        <h2 className="mt-1 text-2xl font-bold text-ink font-[var(--font-heading)]">
           Register — {session.title}
         </h2>
         <p className="mt-2 mb-7 text-sm text-black/60">
@@ -198,22 +198,22 @@ export default function Masterclass({ sessions }) {
   return (
     <>
       {/* ====== Page Header ====== */}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         <div className="absolute inset-0 z-0">
           <Image
             src="/program-training.png"
             alt="Executive AI Master Class Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-night/80" />
         </div>
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             Training
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             Leading Organizations in the Age of{" "}
             <span className="text-secondary">Artificial Intelligence</span>
           </h1>
@@ -222,10 +222,10 @@ export default function Masterclass({ sessions }) {
             members and senior decision-makers.
           </p>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 rounded-2xl border border-white/15 bg-white/10 px-8 py-6 backdrop-blur-sm animate-fadeInUp animate-delay-300">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 rounded-xl border border-white/15 bg-white/10 px-8 py-6 backdrop-blur-sm animate-fadeInUp animate-delay-300">
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-4xl font-extrabold leading-none text-[#ffd966]">
+                <div className="text-4xl font-bold leading-none text-[#ffd966]">
                   {stat.number}
                 </div>
                 <div className="mt-2 text-xs font-medium uppercase tracking-[1px] text-white/80">
@@ -247,7 +247,7 @@ export default function Masterclass({ sessions }) {
                   <div className="hidden w-0.5 self-stretch bg-primary sm:block" />
                 )}
                 <div className="min-w-[180px] flex-1 text-[#141414]">
-                  <span className="font-extrabold">
+                  <span className="font-bold">
                     <i className={`fa-solid ${item.icon} mr-2 text-primary`} />
                     {item.title}
                   </span>
@@ -263,7 +263,7 @@ export default function Masterclass({ sessions }) {
       {/* ====== Key Learning Outcomes ====== */}
       <section className="pt-16 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="relative inline-block text-2xl font-bold text-black font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
+          <h2 className="relative inline-block text-2xl font-bold text-ink font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
             Key Learning Outcomes
           </h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -283,7 +283,7 @@ export default function Masterclass({ sessions }) {
       {/* ====== 2026 Tour — city cards ====== */}
       <section className="py-20 bg-white min-h-[60vh]">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="relative inline-block text-2xl font-bold text-black font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
+          <h2 className="relative inline-block text-2xl font-bold text-ink font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
             2026 Master Class Tour — Select Your City
           </h2>
           <p className="mt-8 max-w-[780px] text-lg text-[#4a627a] text-left">
@@ -324,7 +324,7 @@ export default function Masterclass({ sessions }) {
                     <div className="mb-2 text-xs font-bold uppercase tracking-[2px] text-primary">
                       {session.country} · Executive Session
                     </div>
-                    <h3 className="text-2xl font-extrabold leading-tight text-[#141414] font-[var(--font-heading)]">
+                    <h3 className="text-2xl font-bold leading-tight text-[#141414] font-[var(--font-heading)]">
                       {session.title}
                     </h3>
                     <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-[#2c5a6e]">
@@ -339,7 +339,7 @@ export default function Masterclass({ sessions }) {
                       <div className="mt-4 flex flex-wrap items-baseline justify-between gap-2 rounded-[9px] bg-[#eef2fa] px-4 py-3">
                         <span>
                           {session.early_price && (
-                            <span className="text-[1.4rem] font-extrabold text-primary">
+                            <span className="text-[1.4rem] font-bold text-primary">
                               {session.early_price}
                             </span>
                           )}
@@ -384,7 +384,7 @@ export default function Masterclass({ sessions }) {
           <div className="mt-10 flex flex-wrap items-center justify-between gap-6 rounded-[32px] bg-[#f3dcdc] px-7 py-5 text-primary">
             {CERT_NOTES.map((note) => (
               <div key={note.title}>
-                <strong className="font-extrabold">
+                <strong className="font-bold">
                   <i className={`fa-solid ${note.icon} mr-2`} />
                   {note.title}
                 </strong>

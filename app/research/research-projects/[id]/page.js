@@ -35,8 +35,8 @@ export default async function ResearchProjectDetails({ params }) {
             className="object-cover object-center opacity-75"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
-          <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
+          <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-night/70" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
           {" "}
@@ -78,7 +78,7 @@ export default async function ResearchProjectDetails({ params }) {
                 {" "}
                 Active Research{" "}
               </span>{" "}
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] font-[var(--font-heading)] ">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] font-[var(--font-heading)] ">
                 {" "}
                 {data.title}{" "}
               </h1>{" "}
@@ -118,11 +118,11 @@ export default async function ResearchProjectDetails({ params }) {
             {/* Left Column: Descriptive Content */}{" "}
             <div className="lg:col-span-8 space-y-8">
               {" "}
-              <div className="bg-white p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/10 relative overflow-hidden group">
+              <div className="bg-white p-8 md:p-12 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-line relative overflow-hidden group">
                 {" "}
                 <div className="relative z-10">
                   {" "}
-                  <h2 className="text-2xl font-bold text-black font-[var(--font-heading)] mb-8 pb-4 border-b border-black/10 flex items-center gap-4">
+                  <h2 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-8 pb-4 border-b border-line flex items-center gap-4">
                     {" "}
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
                       {" "}
@@ -131,7 +131,7 @@ export default async function ResearchProjectDetails({ params }) {
                     Project Overview{" "}
                   </h2>{" "}
                   <div
-                    className="max-w-none text-lg text-black/70 leading-loose [&_p]:mb-6 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-black [&_h3]:mt-12 [&_h3]:mb-6 [&_h3]:font-[var(--font-heading)] [&_h4]:text-xl [&_h4]:font-bold [&_h4]:text-black [&_h4]:mt-8 [&_h4]:mb-4 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-8 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/5 [&_strong]:px-1.5 [&_strong]:rounded"
+                    className="max-w-none text-lg text-muted leading-loose [&_p]:mb-6 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-black [&_h3]:mt-12 [&_h3]:mb-6 [&_h3]:font-[var(--font-heading)] [&_h4]:text-xl [&_h4]:font-bold [&_h4]:text-black [&_h4]:mt-8 [&_h4]:mb-4 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-8 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/5 [&_strong]:px-1.5 [&_strong]:rounded"
                     dangerouslySetInnerHTML={{ __html: data.content }}
                   />{" "}
                 </div>{" "}
@@ -143,7 +143,7 @@ export default async function ResearchProjectDetails({ params }) {
               <div className="sticky top-32 space-y-8">
                 {" "}
                 {/* Meta Card (High Contrast) */}{" "}
-                <div className="bg-primary p-8 rounded-3xl shadow-xl relative overflow-hidden">
+                <div className="bg-primary p-8 rounded-xl shadow-xl relative overflow-hidden">
                   {" "}
                   <h3 className="text-xl font-bold text-white font-[var(--font-heading)] mb-6">
                     Research Details
@@ -201,22 +201,22 @@ export default async function ResearchProjectDetails({ params }) {
                   </ul>{" "}
                 </div>{" "}
                 {/* Share Card */}{" "}
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-black/10">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-line">
                   {" "}
                   <h4 className="font-bold text-black mb-4">
                     Share this Research
                   </h4>{" "}
                   <div className="flex gap-4">
                     {" "}
-                    <button className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black/60 hover:text-white hover:bg-[#00803D] hover:border-[#00803D] transition-colors">
+                    <button className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-black/60 hover:text-white hover:bg-[#00803D] hover:border-[#00803D] transition-colors">
                       {" "}
                       <i className="fab fa-twitter" />{" "}
                     </button>{" "}
-                    <button className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black/60 hover:text-white hover:bg-[#990000] hover:border-[#990000] transition-colors">
+                    <button className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-black/60 hover:text-white hover:bg-[#990000] hover:border-[#990000] transition-colors">
                       {" "}
                       <i className="fab fa-linkedin-in" />{" "}
                     </button>{" "}
-                    <button className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black/60 hover:text-white hover:bg-primary hover:border-black transition-colors">
+                    <button className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-black/60 hover:text-white hover:bg-primary hover:border-black transition-colors">
                       {" "}
                       <i className="fas fa-link" />{" "}
                     </button>{" "}

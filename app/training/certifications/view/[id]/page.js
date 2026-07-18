@@ -44,7 +44,7 @@ export default async function CertificationDetails({ params }) {
             className="object-cover object-center scale-105"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70 " />{" "}
+          <div className="absolute inset-0 bg-night/70 " />{" "}
           <div className="absolute inset-0 bg-primary/60 opacity-60" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10">
@@ -87,7 +87,7 @@ export default async function CertificationDetails({ params }) {
                 {" "}
                 Professional Certification{" "}
               </span>{" "}
-              <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-6 font-[var(--font-heading)] ">
+              <h1 className="text-4xl md:text-6xl font-bold text-white leading-[1.1] mb-6 font-[var(--font-heading)] ">
                 {" "}
                 {data.title}{" "}
               </h1>{" "}
@@ -99,7 +99,7 @@ export default async function CertificationDetails({ params }) {
               </p>{" "}
             </div>{" "}
             {/* Quick Stats / Action inside Hero */}{" "}
-            <div className="bg-white/10 border border-white/20 p-8 rounded-2xl shrink-0 lg:w-80 shadow-2xl">
+            <div className="bg-white/10 border border-white/20 p-8 rounded-xl shrink-0 lg:w-80 shadow-2xl">
               {" "}
               <div className="flex flex-col gap-6">
                 {" "}
@@ -171,7 +171,7 @@ export default async function CertificationDetails({ params }) {
               {otherSections.map((sec, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/10 transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] relative overflow-hidden group"
+                  className="bg-white p-8 md:p-12 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-line transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] relative overflow-hidden group"
                 >
                   {" "}
                   <div className="relative z-10">
@@ -184,13 +184,13 @@ export default async function CertificationDetails({ params }) {
                           className={`fas ${idx === 0 ? "fa-info-circle" : idx === 1 ? "fa-bullseye" : "fa-check-double"} text-xl`}
                         />{" "}
                       </div>{" "}
-                      <h2 className="text-3xl font-extrabold text-black font-[var(--font-heading)]">
+                      <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)]">
                         {" "}
                         {sec.heading}{" "}
                       </h2>{" "}
                     </div>{" "}
                     <div
-                      className="max-w-none text-lg text-black/70 leading-relaxed [&_p]:mb-6 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-6 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded"
+                      className="max-w-none text-lg text-muted leading-relaxed [&_p]:mb-6 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-6 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded"
                       dangerouslySetInnerHTML={{ __html: sec.content }}
                     />{" "}
                   </div>{" "}
@@ -203,7 +203,7 @@ export default async function CertificationDetails({ params }) {
               <div className="sticky top-32 space-y-8">
                 {" "}
                 {/* Secondary Apply Card (High Contrast) */}{" "}
-                <div className="bg-primary p-8 rounded-3xl shadow-xl relative overflow-hidden">
+                <div className="bg-primary p-8 rounded-xl shadow-xl relative overflow-hidden">
                   {" "}
                   <h3 className="text-2xl font-bold text-white font-[var(--font-heading)] mb-4">
                     Ready to Enroll?
@@ -221,11 +221,11 @@ export default async function CertificationDetails({ params }) {
                   />{" "}
                 </div>{" "}
                 {/* Help Card */}{" "}
-                <div className="bg-white p-8 rounded-3xl shadow-sm border border-black/10">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-line">
                   {" "}
                   <div className="flex items-center gap-4 mb-4">
                     {" "}
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-black/70">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-muted">
                       {" "}
                       <i className="fas fa-headset" />{" "}
                     </div>{" "}
@@ -250,7 +250,7 @@ export default async function CertificationDetails({ params }) {
       </section>{" "}
       {/* ====== Full-Width Modules Section ====== */}{" "}
       {modulesSection && (
-        <section className="py-24 bg-white border-t border-black/10">
+        <section className="py-24 bg-white border-t border-line">
           {" "}
           <div className="max-w-[1000px] mx-auto px-6">
             {" "}
@@ -259,7 +259,7 @@ export default async function CertificationDetails({ params }) {
               <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
                 Curriculum Breakdown
               </span>{" "}
-              <h2 className="text-4xl md:text-5xl font-extrabold text-black font-[var(--font-heading)] relative inline-block">
+              <h2 className="text-4xl md:text-5xl font-bold text-ink font-[var(--font-heading)] relative inline-block">
                 {" "}
                 Course Modules{" "}
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-primary rounded-full" />{" "}
@@ -267,7 +267,7 @@ export default async function CertificationDetails({ params }) {
             </div>{" "}
             {/* We use a custom styling trick for the raw HTML modules to make them look like cards */}{" "}
             <div
-              className=" modules-container space-y-6 [&>.module]:bg-primary/5 [&>.module]:rounded-2xl [&>.module]:p-8 [&>.module]:border [&>.module]:border-black/10 [&>.module]:transition-all hover:[&>.module]:border-primary/30 hover:[&>.module]:shadow-md [&>.module_h6]:text-2xl [&>.module_h6]:font-bold [&>.module_h6]:text-black [&>.module_h6]:mb-4 [&>.module_h6]:font-[var(--font-heading)] [&>.module_ul]:list-none [&>.module_ul]:pl-0 [&>.module_ul]:space-y-3 [&>.module_ul_li]:relative [&>.module_ul_li]:pl-8 [&>.module_ul_li]:text-black/70 [&>.module_ul_li]:text-lg [&>.module_ul_li::before]:content-['✓'] [&>.module_ul_li::before]:font-bold [&>.module_ul_li::before]:absolute [&>.module_ul_li::before]:left-0 [&>.module_ul_li::before]:text-secondary [&>.module_ul_li_strong]:text-black [&>.module_ul_li_strong]:bg-white [&>.module_ul_li_strong]:px-2 [&>.module_ul_li_strong]:py-0.5 [&>.module_ul_li_strong]:rounded-md [&>.module_ul_li_strong]:shadow-sm [&>.module_ul_li_strong]:border [&>.module_ul_li_strong]:border-black/10 "
+              className=" modules-container space-y-6 [&>.module]:bg-primary/5 [&>.module]:rounded-xl [&>.module]:p-8 [&>.module]:border [&>.module]:border-line [&>.module]:transition-all hover:[&>.module]:border-primary/30 hover:[&>.module]:shadow-md [&>.module_h6]:text-2xl [&>.module_h6]:font-bold [&>.module_h6]:text-black [&>.module_h6]:mb-4 [&>.module_h6]:font-[var(--font-heading)] [&>.module_ul]:list-none [&>.module_ul]:pl-0 [&>.module_ul]:space-y-3 [&>.module_ul_li]:relative [&>.module_ul_li]:pl-8 [&>.module_ul_li]:text-muted [&>.module_ul_li]:text-lg [&>.module_ul_li::before]:content-['✓'] [&>.module_ul_li::before]:font-bold [&>.module_ul_li::before]:absolute [&>.module_ul_li::before]:left-0 [&>.module_ul_li::before]:text-secondary [&>.module_ul_li_strong]:text-black [&>.module_ul_li_strong]:bg-white [&>.module_ul_li_strong]:px-2 [&>.module_ul_li_strong]:py-0.5 [&>.module_ul_li_strong]:rounded-md [&>.module_ul_li_strong]:shadow-sm [&>.module_ul_li_strong]:border [&>.module_ul_li_strong]:border-line "
               dangerouslySetInnerHTML={{ __html: modulesSection.content }}
             />{" "}
           </div>{" "}

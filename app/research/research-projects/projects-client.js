@@ -33,17 +33,17 @@ export default function ResearchProjects({ projects }) {
     <div className="min-h-screen bg-white">
       {" "}
       {/* ====== Hero Section ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden flex flex-col justify-center min-h-[45vh]">
+      <section className="page-hero flex flex-col justify-center min-h-[42vh]">
         {" "}
         {/* Background elements */}{" "}
         <div className="absolute inset-0 z-0">
           {" "}
-          <div className="absolute inset-0 bg-primary/70 z-10" />{" "}
+          <div className="absolute inset-0 bg-night/80 z-10" />{" "}
           <Image
             src="/hero-bg.png"
             alt="Research Projects"
             fill
-            className="object-cover object-center opacity-40"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
         </div>{" "}
@@ -51,21 +51,21 @@ export default function ResearchProjects({ projects }) {
           {" "}
           <RevealOnScroll>
             {" "}
-            <span className="inline-block px-4 py-1.5 bg-white/10 text-white border border-white/20 rounded-full text-sm font-bold uppercase tracking-[0.2em] mb-6 ">
+            <span className="page-hero-badge mb-6">
               {" "}
               Discover Our Work{" "}
             </span>{" "}
           </RevealOnScroll>{" "}
           <RevealOnScroll delay={100}>
             {" "}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 font-[var(--font-heading)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 font-[var(--font-heading)]">
               {" "}
-              Research <span className="text-primary">Projects</span>{" "}
+              Research <span className="text-[#8fd4aa]">Projects</span>{" "}
             </h1>{" "}
           </RevealOnScroll>{" "}
           <RevealOnScroll delay={200}>
             {" "}
-            <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
               {" "}
               Exploring the frontiers of Artificial Intelligence across Africa.
               Discover our initiatives in AI policy, agriculture, healthcare,
@@ -97,16 +97,16 @@ export default function ResearchProjects({ projects }) {
         </div>{" "}
       </section>{" "}
       {/* ====== Projects Grid ====== */}{" "}
-      <section className="py-24">
+      <section className="py-24 bg-canvas">
         {" "}
         <div className="max-w-[1200px] mx-auto px-6">
           {" "}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {" "}
             {projects.map((project, idx) => (
               <RevealOnScroll
                 key={project.id}
-                delay={(idx % 3) * 100}
+                delay={(idx % 3) * 80}
                 className="h-full"
               >
                 {" "}
@@ -115,46 +115,41 @@ export default function ResearchProjects({ projects }) {
                   className="group block h-full"
                 >
                   {" "}
-                  <div className="bg-white rounded-2xl shadow-sm border border-black/10 overflow-hidden h-full flex flex-col transition-all duration-500 hover:shadow-xl hover:-translate-y-2 relative">
+                  <div className="bg-white rounded-xl border border-line overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_12px_32px_rgba(15,20,25,0.07)] hover:-translate-y-1 hover:border-primary/20 relative">
                     {" "}
-                    {/* Hover Glow Effect */}{" "}
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none" />{" "}
                     {/* Image Area */}{" "}
-                    <div className="relative h-56 w-full overflow-hidden z-10">
+                    <div className="relative h-48 w-full overflow-hidden bg-surface-warm">
                       {" "}
-                      <div className="absolute inset-0 bg-primary/15 group-hover:bg-transparent transition-colors duration-500 z-10" />{" "}
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                        className="object-cover transform group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />{" "}
-                      <div className="absolute top-4 left-4 z-20">
+                      <div className="absolute top-3 left-3 z-20">
                         {" "}
-                        <span className="px-3 py-1 bg-white/90 text-black text-xs font-bold uppercase tracking-wider rounded-md shadow-sm">
+                        <span className="px-2.5 py-1 bg-white/95 text-ink text-[0.65rem] font-semibold uppercase tracking-wider rounded border border-line">
                           {" "}
                           Research{" "}
                         </span>{" "}
                       </div>{" "}
                     </div>{" "}
                     {/* Content Area */}{" "}
-                    <div className="p-8 flex flex-col flex-1 z-10 relative bg-white">
+                    <div className="p-6 flex flex-col flex-1 relative bg-white">
                       {" "}
-                      <h3 className="text-xl font-bold text-black font-[var(--font-heading)] leading-snug mb-4 group-hover:text-primary transition-colors line-clamp-3">
+                      <h3 className="text-lg font-semibold text-ink font-[var(--font-heading)] leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-3 tracking-[-0.01em]">
                         {" "}
                         {project.title}{" "}
                       </h3>{" "}
-                      {/* A subtle decorative line */}{" "}
-                      <div className="w-10 h-1 bg-primary/20 mb-6 group-hover:w-16 group-hover:bg-primary transition-all duration-500" />{" "}
-                      {/* We extract plain text from the HTML content for the snippet */}{" "}
+                      <div className="w-8 h-0.5 bg-primary/30 mb-4 group-hover:w-12 group-hover:bg-primary transition-all duration-300" />{" "}
                       <div
-                        className="text-black/60 text-sm leading-relaxed line-clamp-3 mb-8"
+                        className="text-muted text-sm leading-relaxed line-clamp-3 mb-6"
                         dangerouslySetInnerHTML={{ __html: project.content }}
                       />{" "}
-                      <div className="mt-auto pt-5 border-t border-black/10 flex items-center justify-between">
+                      <div className="mt-auto pt-4 border-t border-line flex items-center justify-between">
                         {" "}
-                        <span className="text-sm font-bold text-black group-hover:text-primary transition-colors flex items-center gap-2">
+                        <span className="text-sm font-semibold text-ink group-hover:text-primary transition-colors flex items-center gap-2">
                           {" "}
                           Read Project Details{" "}
                           <i className="fas fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform" />{" "}

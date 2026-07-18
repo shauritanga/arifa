@@ -13,7 +13,11 @@ export default function SiteChrome({ header, footer, children }) {
   return (
     <>
       {!isAdmin && header}
-      <main className={`flex-grow ${isAdmin ? "" : "site-copy"}`}>
+      <main
+        id="main-content"
+        className={`flex-grow ${isAdmin ? "" : "site-copy"}`}
+        tabIndex={-1}
+      >
         {children}
       </main>
       {!isAdmin && footer}

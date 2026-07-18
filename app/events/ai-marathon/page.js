@@ -15,10 +15,10 @@ export default function AIMarathon() {
             src="/about-img.png"
             alt="AI Marathon Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[800px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
@@ -27,7 +27,7 @@ export default function AIMarathon() {
             {" "}
             <i className="fas fa-hammer text-4xl text-primary animate-bounce" />{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp font-[var(--font-heading)]">
             {" "}
             ARIFA AI <span className="text-secondary">Marathon</span>{" "}
           </h1>{" "}
@@ -42,7 +42,7 @@ export default function AIMarathon() {
         {" "}
         <div className="max-w-[800px] w-full mx-auto px-6 text-center">
           {" "}
-          <p className="text-lg md:text-xl text-black/70 max-w-[600px] mx-auto animate-fadeInUp animate-delay-200 leading-relaxed mb-10">
+          <p className="text-lg md:text-xl text-muted max-w-[600px] mx-auto animate-fadeInUp animate-delay-200 leading-relaxed mb-10">
             {" "}
             We are working hard to build an amazing digital experience for the
             upcoming AI Marathon. Stay tuned for exciting updates, registration
@@ -59,7 +59,7 @@ export default function AIMarathon() {
             </Link>{" "}
             <Link
               href="/contact-us"
-              className="px-8 py-3.5 bg-white hover:bg-white border border-black/10 text-black rounded-xl font-bold transition-all hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
+              className="px-8 py-3.5 bg-white hover:bg-white border border-line text-black rounded-xl font-bold transition-all hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
             >
               {" "}
               Contact Us for Inquiries{" "}

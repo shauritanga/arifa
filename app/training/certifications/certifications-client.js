@@ -35,7 +35,7 @@ export default function Certifications({ certifications }) {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -43,18 +43,18 @@ export default function Certifications({ certifications }) {
             src="/program-certification.png"
             alt="Certifications Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             {" "}
             Training{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             {" "}
             Professional{" "}
             <span className="text-secondary">Certifications</span>{" "}
@@ -73,10 +73,10 @@ export default function Certifications({ certifications }) {
           {" "}
           <div className="text-center max-w-[800px] mx-auto mb-16">
             {" "}
-            <h2 className="text-3xl font-bold text-black font-[var(--font-heading)] mb-6">
+            <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
               Our Comprehensive Certification Portfolio
             </h2>{" "}
-            <p className="text-black/70 text-lg">
+            <p className="text-muted text-lg">
               {" "}
               Explore our wide range of professional certifications tailored for
               different career stages, from foundational concepts to advanced
@@ -89,7 +89,7 @@ export default function Certifications({ certifications }) {
               <RevealOnScroll
                 key={idx}
                 delay={(idx % 3) * 50}
-                className="bg-white rounded-2xl overflow-hidden border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all group flex flex-col h-full"
+                className="bg-white rounded-xl overflow-hidden border border-line shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all group flex flex-col h-full"
               >
                 {" "}
                 <div className="relative h-56 w-full overflow-hidden bg-primary/5">
@@ -113,19 +113,19 @@ export default function Certifications({ certifications }) {
                 </div>{" "}
                 <div className="p-6 flex flex-col flex-grow">
                   {" "}
-                  <h3 className="text-xl font-bold text-black font-[var(--font-heading)] leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-xl font-bold text-ink font-[var(--font-heading)] leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2">
                     {" "}
                     {cert.title}{" "}
                   </h3>{" "}
-                  <p className="text-black/70 text-sm mb-6 line-clamp-3 leading-relaxed">
+                  <p className="text-muted text-sm mb-6 line-clamp-3 leading-relaxed">
                     {" "}
                     {cert.desc}{" "}
                   </p>{" "}
-                  <div className="mt-auto pt-5 border-t border-black/10 flex justify-between items-center gap-4">
+                  <div className="mt-auto pt-5 border-t border-line flex justify-between items-center gap-4">
                     {" "}
                     <Link
                       href={`/training/certifications/view/${cert.view_url.split("/").pop()}`}
-                      className="text-sm font-bold text-black hover:text-primary transition-colors flex-1 text-center py-2.5 border border-black/10 hover:border-primary rounded-lg"
+                      className="text-sm font-bold text-black hover:text-primary transition-colors flex-1 text-center py-2.5 border border-line hover:border-primary rounded-lg"
                     >
                       {" "}
                       View Syllabus{" "}

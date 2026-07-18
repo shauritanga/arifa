@@ -34,7 +34,7 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
 const PERIODS = ["3 months", "3 weeks", "1 week", "1 day"];
 
 const INPUT =
-  "w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
+  "w-full px-4 py-3 rounded-lg border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
 const LABEL = "block text-sm font-bold text-black mb-2";
 
 /** Enroll + pay form for one course; posts to the courses route which prices it. */
@@ -150,7 +150,7 @@ function EnrollModal({ course, onClose }) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-[600px] rounded-2xl bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-9"
+        className="relative w-full max-w-[600px] rounded-xl bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-9"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -165,7 +165,7 @@ function EnrollModal({ course, onClose }) {
         <div className="text-xs font-bold uppercase tracking-[2px] text-primary">
           Short Course
         </div>
-        <h2 className="mt-1 text-2xl font-extrabold text-black font-[var(--font-heading)]">
+        <h2 className="mt-1 text-2xl font-bold text-ink font-[var(--font-heading)]">
           Enroll — {course.title}
         </h2>
         <p className="mt-2 mb-7 text-sm text-black/60">
@@ -226,22 +226,22 @@ export default function ShortCourses({ courses }) {
   return (
     <>
       {/* ====== Page Header ====== */}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         <div className="absolute inset-0 z-0">
           <Image
             src="/program-training.png"
             alt="Short Courses Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-night/80" />
         </div>
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             Training
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             Intensive <span className="text-secondary">Short Courses</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-[700px] mx-auto animate-fadeInUp animate-delay-200">
@@ -256,7 +256,7 @@ export default function ShortCourses({ courses }) {
         <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-6 md:flex-row md:items-start">
           {/* Sidebar */}
           <aside className="w-full shrink-0 rounded-xl bg-white p-6 shadow-[0_4px_10px_rgba(0,0,0,0.04)] md:sticky md:top-28 md:w-[220px]">
-            <h2 className="mb-4 text-lg font-bold text-black font-[var(--font-heading)]">
+            <h2 className="mb-4 text-lg font-bold text-ink font-[var(--font-heading)]">
               Short Courses Period
             </h2>
             <ul className="space-y-1">
@@ -267,7 +267,7 @@ export default function ShortCourses({ courses }) {
                   className={`w-full rounded-md px-3 py-2 text-left text-sm font-semibold transition-colors ${
                     period === "all"
                       ? "bg-primary text-white"
-                      : "text-black/70 hover:bg-primary/10 hover:text-primary"
+                      : "text-muted hover:bg-primary/10 hover:text-primary"
                   }`}
                 >
                   All Courses
@@ -281,7 +281,7 @@ export default function ShortCourses({ courses }) {
                     className={`w-full rounded-md px-3 py-2 text-left text-sm font-semibold transition-colors ${
                       period === p
                         ? "bg-primary text-white"
-                        : "text-black/70 hover:bg-primary/10 hover:text-primary"
+                        : "text-muted hover:bg-primary/10 hover:text-primary"
                     }`}
                   >
                     {p}

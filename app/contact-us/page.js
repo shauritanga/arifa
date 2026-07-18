@@ -59,7 +59,7 @@ export default function Contact() {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -67,18 +67,18 @@ export default function Contact() {
             src="/hero-bg.png"
             alt="Contact ARIFA Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             {" "}
             Get in Touch{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             {" "}
             Contact <span className="text-secondary">ARIFA</span>{" "}
           </h1>{" "}
@@ -101,10 +101,10 @@ export default function Contact() {
               {" "}
               <RevealOnScroll>
                 {" "}
-                <h2 className="text-3xl font-bold text-black font-[var(--font-heading)] mb-6">
+                <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
                   Contact Information
                 </h2>{" "}
-                <p className="text-black/70 mb-8">
+                <p className="text-muted mb-8">
                   {" "}
                   Reach out to us using the details below or fill out the
                   contact form and a member of our team will assist you.{" "}
@@ -119,10 +119,10 @@ export default function Contact() {
                     </div>{" "}
                     <div>
                       {" "}
-                      <h4 className="font-bold text-black font-[var(--font-heading)] mb-1">
+                      <h4 className="font-bold text-ink font-[var(--font-heading)] mb-1">
                         Our Location
                       </h4>{" "}
-                      <p className="text-black/70 text-sm leading-relaxed">
+                      <p className="text-muted text-sm leading-relaxed">
                         {" "}
                         Old Bagamoyo Road, Brown Street,
                         <br /> Box 2512, Mbezi Beach, Kinondoni,
@@ -138,10 +138,10 @@ export default function Contact() {
                     </div>{" "}
                     <div>
                       {" "}
-                      <h4 className="font-bold text-black font-[var(--font-heading)] mb-1">
+                      <h4 className="font-bold text-ink font-[var(--font-heading)] mb-1">
                         Email Us
                       </h4>{" "}
-                      <p className="text-black/70 text-sm">
+                      <p className="text-muted text-sm">
                         {" "}
                         <a
                           href="mailto:info@arifa.org"
@@ -160,10 +160,10 @@ export default function Contact() {
                     </div>{" "}
                     <div>
                       {" "}
-                      <h4 className="font-bold text-black font-[var(--font-heading)] mb-1">
+                      <h4 className="font-bold text-ink font-[var(--font-heading)] mb-1">
                         Office Hours
                       </h4>{" "}
-                      <p className="text-black/70 text-sm">
+                      <p className="text-muted text-sm">
                         {" "}
                         Mon – Sat: 8:00 AM – 7:00 PM
                         <br /> Sunday: Closed{" "}
@@ -172,9 +172,9 @@ export default function Contact() {
                   </div>{" "}
                 </div>{" "}
                 {/* Socials */}{" "}
-                <div className="mt-10 pt-10 border-t border-black/10">
+                <div className="mt-10 pt-10 border-t border-line">
                   {" "}
-                  <h4 className="font-bold text-black font-[var(--font-heading)] mb-4">
+                  <h4 className="font-bold text-ink font-[var(--font-heading)] mb-4">
                     Follow Us
                   </h4>{" "}
                   <div className="flex flex-wrap gap-3">
@@ -248,10 +248,10 @@ export default function Contact() {
               {" "}
               <RevealOnScroll
                 delay={200}
-                className="bg-white rounded-2xl p-8 md:p-12 border border-black/10 shadow-[0_20px_40px_rgba(0,0,0,0.04)]"
+                className="bg-white rounded-xl p-8 md:p-12 border border-line shadow-[0_8px_30px_rgba(15,20,25,0.05)]"
               >
                 {" "}
-                <h3 className="text-2xl font-bold text-black font-[var(--font-heading)] mb-6">
+                <h3 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-6">
                   Send us a Message
                 </h3>{" "}
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -271,7 +271,7 @@ export default function Contact() {
                         id="firstName"
                         name="firstName"
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="John"
                       />{" "}
                     </div>{" "}
@@ -288,7 +288,7 @@ export default function Contact() {
                         id="lastName"
                         name="lastName"
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="Doe"
                       />{" "}
                     </div>{" "}
@@ -308,7 +308,7 @@ export default function Contact() {
                         id="email"
                         name="email"
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="john@example.com"
                       />{" "}
                     </div>{" "}
@@ -324,7 +324,7 @@ export default function Contact() {
                         type="tel"
                         id="phone"
                         name="phone"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         placeholder="+255 123 456 789"
                       />{" "}
                     </div>{" "}
@@ -342,7 +342,7 @@ export default function Contact() {
                       name="subject"
                       defaultValue=""
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
                     >
                       {" "}
                       <option value="" disabled>
@@ -371,7 +371,7 @@ export default function Contact() {
                       name="message"
                       rows="5"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-line focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
                       placeholder="How can we help you?"
                     ></textarea>{" "}
                   </div>{" "}

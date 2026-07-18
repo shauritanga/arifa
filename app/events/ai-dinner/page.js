@@ -71,7 +71,7 @@ export default function AIDinner() {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -79,14 +79,14 @@ export default function AIDinner() {
             src="/about-img.png"
             alt="AI Dinner Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp font-[var(--font-heading)]">
             {" "}
             ARIFA AI <span className="text-secondary">Dinner 2026</span>{" "}
           </h1>{" "}
@@ -140,7 +140,7 @@ export default function AIDinner() {
               </RevealOnScroll>{" "}
               <RevealOnScroll delay={200}>
                 {" "}
-                <h3 className="text-3xl font-bold text-black font-[var(--font-heading)] mb-6">
+                <h3 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
                   {" "}
                   What to Expect{" "}
                 </h3>{" "}
@@ -160,11 +160,11 @@ export default function AIDinner() {
               </RevealOnScroll>{" "}
               <RevealOnScroll delay={300}>
                 {" "}
-                <h3 className="text-3xl font-bold text-black font-[var(--font-heading)] mb-8">
+                <h3 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-8">
                   {" "}
                   Tentative Programme{" "}
                 </h3>{" "}
-                <div className="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-black/10 overflow-hidden">
+                <div className="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-line overflow-hidden">
                   {" "}
                   <div className="hidden md:grid grid-cols-[1fr_2fr] gap-4 p-6 bg-primary text-white font-bold font-[var(--font-heading)]">
                     {" "}
@@ -195,9 +195,9 @@ export default function AIDinner() {
               {" "}
               <RevealOnScroll delay={400}>
                 {" "}
-                <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-black/10 p-8 sticky top-32">
+                <div className="bg-white rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-line p-8 sticky top-32">
                   {" "}
-                  <h3 className="text-2xl font-bold text-black font-[var(--font-heading)] mb-6 border-b border-black/10 pb-4">
+                  <h3 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-6 border-b border-line pb-4">
                     {" "}
                     Event Details{" "}
                   </h3>{" "}
@@ -211,7 +211,7 @@ export default function AIDinner() {
                       </div>{" "}
                       <div>
                         {" "}
-                        <p className="text-sm text-black/70 font-semibold mb-1">
+                        <p className="text-sm text-muted font-semibold mb-1">
                           Date
                         </p>{" "}
                         <p className="text-black font-bold">
@@ -227,7 +227,7 @@ export default function AIDinner() {
                       </div>{" "}
                       <div>
                         {" "}
-                        <p className="text-sm text-black/70 font-semibold mb-1">
+                        <p className="text-sm text-muted font-semibold mb-1">
                           Time
                         </p>{" "}
                         <p className="text-black font-bold">
@@ -243,7 +243,7 @@ export default function AIDinner() {
                       </div>{" "}
                       <div>
                         {" "}
-                        <p className="text-sm text-black/70 font-semibold mb-1">
+                        <p className="text-sm text-muted font-semibold mb-1">
                           Location
                         </p>{" "}
                         <p className="text-black font-bold">
@@ -259,7 +259,7 @@ export default function AIDinner() {
                     {" "}
                     Reserve Your Seat{" "}
                   </Link>{" "}
-                  <p className="text-xs text-center text-black/70 mt-4">
+                  <p className="text-xs text-center text-muted mt-4">
                     {" "}
                     The ARIFA AI Dinner is expected to become one of the
                     region’s premier AI networking and thought leadership

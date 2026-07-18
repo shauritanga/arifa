@@ -92,22 +92,22 @@ export default function About() {
   return (
     <>
       {/* ====== Page Header ====== */}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         <div className="absolute inset-0 z-0">
           <Image
             src="/about-img.png"
             alt="About ARIFA Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-night/80" />
         </div>
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             About Us
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             Driving Africa&apos;s{" "}
             <span className="text-secondary">AI Revolution</span>
           </h1>
@@ -123,7 +123,7 @@ export default function About() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <RevealOnScroll delay={200} className="relative order-2 md:order-1">
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
                   src="/images/about/about1.jpg"
                   alt="ARIFA researchers"
@@ -131,7 +131,7 @@ export default function About() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -right-8 -bottom-8 w-48 h-48 rounded-2xl overflow-hidden border-8 border-white shadow-xl hidden md:block">
+              <div className="absolute -right-8 -bottom-8 w-48 h-48 rounded-xl overflow-hidden border-8 border-white shadow-xl hidden md:block">
                 <Image
                   src="/images/about/about2.jpg"
                   alt="ARIFA at work"
@@ -145,10 +145,10 @@ export default function About() {
               <span className="block text-primary font-bold tracking-widest uppercase text-sm mb-4">
                 Who We Are
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-black font-[var(--font-heading)] leading-tight mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-6">
                 Africa Research Institute For AI
               </h2>
-              <div className="space-y-4 text-black/70 leading-relaxed text-justify">
+              <div className="space-y-4 text-muted leading-relaxed text-justify">
                 <p>
                   Africa Research Institute For AI (ARIFA), is a not-for-profit
                   think tank united by a shared commitment to advancing impactful
@@ -195,15 +195,15 @@ export default function About() {
               <RevealOnScroll
                 key={item.title}
                 delay={idx * 100}
-                className="rounded-2xl border border-black/10 bg-white p-9 shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
+                className="rounded-xl border border-line bg-white p-9 shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
               >
-                <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-3xl text-primary">
+                <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-3xl text-primary">
                   <i className={item.icon} />
                 </div>
-                <h3 className="mb-4 text-2xl font-bold text-black font-[var(--font-heading)]">
+                <h3 className="mb-4 text-2xl font-bold text-ink font-[var(--font-heading)]">
                   {item.title}
                 </h3>
-                <p className="leading-relaxed text-black/70 text-justify">
+                <p className="leading-relaxed text-muted text-justify">
                   {item.text}
                 </p>
               </RevealOnScroll>
@@ -217,7 +217,7 @@ export default function About() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid gap-16 md:grid-cols-2 md:items-center">
             <RevealOnScroll className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-2xl">
                 <Image
                   src="/images/about/about3.jpg"
                   alt="Africa Research Institute for AI"
@@ -231,10 +231,10 @@ export default function About() {
               <span className="block text-primary font-bold tracking-widest uppercase text-sm mb-4">
                 Why Choose Us
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-black font-[var(--font-heading)] leading-tight mb-5">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-5">
                 Africa Research Institute for AI
               </h2>
-              <p className="mb-10 leading-relaxed text-black/70 text-justify">
+              <p className="mb-10 leading-relaxed text-muted text-justify">
                 At Africa Research Institute for AI, we are committed to shaping
                 the future of artificial intelligence on the continent through a
                 holistic, ethical, and innovative approach. Here&apos;s why we

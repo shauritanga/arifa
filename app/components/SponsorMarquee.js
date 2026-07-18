@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+
 const SPONSORS = [
   {
     name: "Agripoa",
@@ -42,51 +43,51 @@ const SPONSORS = [
     logo: "/images/sponsors-logos/wv-logo.svg",
   },
 ];
+
 export default function SponsorMarquee() {
   return (
-    <div className="w-full bg-white py-12 border-y border-black/10 overflow-hidden flex flex-col items-center">
-      {" "}
-      <h3 className="text-sm font-bold text-black/70 uppercase tracking-widest mb-8">
-        {" "}
-        Trusted by Leading Organizations{" "}
-      </h3>{" "}
-      <div className="relative flex overflow-x-hidden w-full max-w-[1400px] group">
-        {" "}
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-16 px-8 group-hover:[animation-play-state:paused]">
-          {" "}
+    <div className="w-full bg-surface-alt py-14 border-y border-line overflow-hidden flex flex-col items-center">
+      <h3 className="text-xs font-semibold text-muted uppercase tracking-[0.16em] mb-10">
+        Trusted by Leading Organizations
+      </h3>
+      <div className="relative flex overflow-x-hidden w-full max-w-[1200px] group">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-14 px-6 group-hover:[animation-play-state:paused]">
           {[...SPONSORS, ...SPONSORS, ...SPONSORS].map((sponsor, i) => (
             <div
-              key={i}
-              className="flex items-center justify-center transition-transform duration-300 hover:-translate-y-1 w-[150px] flex-shrink-0 cursor-pointer"
+              key={`${sponsor.name}-${i}`}
+              className="flex items-center justify-center w-[140px] flex-shrink-0 opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
             >
-              {" "}
               <Image
                 src={sponsor.logo}
                 alt={sponsor.name}
-                width={150}
-                height={60}
-                className="object-contain max-h-[60px]"
-              />{" "}
+                width={140}
+                height={52}
+                className="object-contain max-h-[48px]"
+              />
             </div>
-          ))}{" "}
-        </div>{" "}
-        {/* Gradient Fades */}{" "}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 max-w-[200px] bg-white/70" />{" "}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 max-w-[200px] bg-white/70" />{" "}
-      </div>{" "}
+          ))}
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface-alt to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface-alt to-transparent" />
+      </div>
       <style jsx>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-150px * 10 - 4rem * 10));
+            transform: translateX(calc(-140px * 10 - 3.5rem * 10));
           }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 36s linear infinite;
         }
-      `}</style>{" "}
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation: none;
+          }
+        }
+      `}</style>
     </div>
   );
 }

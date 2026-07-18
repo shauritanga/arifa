@@ -25,7 +25,7 @@ export default async function ApplyCertification({ params }) {
         {" "}
         <Link
           href={`/training/certifications/view/${id}`}
-          className="inline-flex items-center gap-2 text-black/70 hover:text-primary transition-colors mb-8 text-sm font-bold uppercase tracking-wider"
+          className="inline-flex items-center gap-2 text-muted hover:text-primary transition-colors mb-8 text-sm font-bold uppercase tracking-wider"
         >
           {" "}
           <i className="fas fa-arrow-left" /> Back to Course Details{" "}
@@ -35,13 +35,13 @@ export default async function ApplyCertification({ params }) {
           {/* Form Area */}{" "}
           <div className="lg:col-span-2">
             {" "}
-            <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg border border-black/10 relative overflow-hidden">
+            <div className="bg-white p-8 md:p-12 rounded-xl shadow-lg border border-line relative overflow-hidden">
               {" "}
               <div className="absolute top-0 left-0 w-full h-2 bg-primary" />{" "}
-              <h1 className="text-3xl font-extrabold text-black font-[var(--font-heading)] mb-2">
+              <h1 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-2">
                 Application Form
               </h1>{" "}
-              <p className="text-black/70 mb-10">
+              <p className="text-muted mb-10">
                 Fill out the form below to apply for the{" "}
                 <strong className="text-primary">{data.title}</strong>.
               </p>{" "}
@@ -51,7 +51,7 @@ export default async function ApplyCertification({ params }) {
           {/* Sidebar Area */}{" "}
           <div className="lg:col-span-1">
             {" "}
-            <div className="bg-white rounded-2xl shadow-lg border border-black/10 overflow-hidden sticky top-32">
+            <div className="bg-white rounded-xl shadow-lg border border-line overflow-hidden sticky top-32">
               {" "}
               <div className="relative h-48">
                 {" "}
@@ -61,7 +61,7 @@ export default async function ApplyCertification({ params }) {
                   fill
                   className="object-cover"
                 />{" "}
-                <div className="absolute inset-0 bg-primary/70" />{" "}
+                <div className="absolute inset-0 bg-night/80" />{" "}
                 <div className="absolute bottom-4 left-4 right-4">
                   {" "}
                   <span className="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-2 uppercase tracking-wide">
@@ -74,9 +74,9 @@ export default async function ApplyCertification({ params }) {
                   </h3>{" "}
                 </div>{" "}
               </div>{" "}
-              <div className="p-6 bg-primary/5 border-b border-black/10">
+              <div className="p-6 bg-primary/5 border-b border-line">
                 {" "}
-                <p className="text-sm text-black/70 font-medium">
+                <p className="text-sm text-muted font-medium">
                   {" "}
                   You are taking the first step towards advancing your career
                   with ARIFA&apos;s industry-leading certification.{" "}
@@ -94,7 +94,7 @@ export default async function ApplyCertification({ params }) {
                     <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 text-xs font-bold">
                       1
                     </div>{" "}
-                    <p className="text-sm text-black/70">
+                    <p className="text-sm text-muted">
                       Submit your application details.
                     </p>{" "}
                   </li>{" "}
@@ -103,7 +103,7 @@ export default async function ApplyCertification({ params }) {
                     <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 text-xs font-bold">
                       2
                     </div>{" "}
-                    <p className="text-sm text-black/70">
+                    <p className="text-sm text-muted">
                       Our admissions team will review your profile.
                     </p>{" "}
                   </li>{" "}
@@ -112,7 +112,7 @@ export default async function ApplyCertification({ params }) {
                     <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 text-xs font-bold">
                       3
                     </div>{" "}
-                    <p className="text-sm text-black/70">
+                    <p className="text-sm text-muted">
                       Receive your enrollment package and payment link.
                     </p>{" "}
                   </li>{" "}

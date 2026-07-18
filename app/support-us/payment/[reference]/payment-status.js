@@ -53,7 +53,7 @@ const COPY = {
   REFUNDED: {
     title: "This payment was refunded.",
     body: "Contact ARIFA if you have any questions about this refund.",
-    tone: "bg-black/5 text-black/70",
+    tone: "bg-black/5 text-muted",
   },
 };
 
@@ -116,9 +116,9 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
       <div className={`mb-6 rounded-xl px-5 py-4 font-bold ${copy.tone}`}>
         {copy.title}
       </div>
-      <p className="text-black/70 leading-relaxed mb-8">{copy.body}</p>
+      <p className="text-muted leading-relaxed mb-8">{copy.body}</p>
 
-      <dl className="grid gap-4 text-sm text-black/70">
+      <dl className="grid gap-4 text-sm text-muted">
         <div>
           <dt className="font-bold text-black">Reference</dt>
           <dd>{donation.reference}</dd>
@@ -166,7 +166,7 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
         </Link>
         <Link
           href="/contact-us"
-          className="inline-flex justify-center rounded-xl border border-black/10 px-6 py-3 font-bold text-black/70"
+          className="inline-flex justify-center rounded-xl border border-line px-6 py-3 font-bold text-muted"
         >
           Contact ARIFA
         </Link>

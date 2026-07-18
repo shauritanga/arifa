@@ -34,11 +34,11 @@ export default async function MasterclassPaymentStatusPage({ params }) {
   return (
     <section className="min-h-[70vh] bg-white pt-40 pb-24">
       <div className="mx-auto max-w-[760px] px-6">
-        <div className="rounded-2xl border border-black/10 bg-white p-8 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+        <div className="rounded-xl border border-line bg-white p-8 md:p-12 shadow-[0_12px_32px_rgba(15,20,25,0.07)]">
           <div className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-primary">
             {registration.packageName || "Master Class"}
           </div>
-          <h1 className="mb-8 text-3xl md:text-5xl font-extrabold text-black font-[var(--font-heading)]">
+          <h1 className="mb-8 text-3xl md:text-5xl font-bold text-ink font-[var(--font-heading)]">
             Registration Status
           </h1>
           <PaymentStatus

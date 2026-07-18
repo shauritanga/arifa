@@ -34,7 +34,7 @@ export default function Careers({ jobs }) {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -42,18 +42,18 @@ export default function Careers({ jobs }) {
             src="/hero-bg.png"
             alt="Careers Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             {" "}
             Opportunities{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             {" "}
             Careers at <span className="text-secondary">ARIFA</span>{" "}
           </h1>{" "}
@@ -71,10 +71,10 @@ export default function Careers({ jobs }) {
           {" "}
           <div className="text-center max-w-[700px] mx-auto mb-16">
             {" "}
-            <h2 className="text-3xl font-bold text-black font-[var(--font-heading)] mb-6">
+            <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
               Open Positions
             </h2>{" "}
-            <p className="text-black/70 text-lg">
+            <p className="text-muted text-lg">
               {" "}
               We are always looking for exceptional talent. If you don&apos;t
               see a role that fits but believe you belong at ARIFA, please send
@@ -87,15 +87,15 @@ export default function Careers({ jobs }) {
               <RevealOnScroll
                 key={idx}
                 delay={idx * 100}
-                className="bg-white rounded-2xl p-8 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] hover:border-primary/30 transition-all flex flex-col md:flex-row md:items-center justify-between group"
+                className="bg-white rounded-xl p-8 border border-line shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] hover:border-primary/30 transition-all flex flex-col md:flex-row md:items-center justify-between group"
               >
                 {" "}
                 <div className="mb-6 md:mb-0">
                   {" "}
-                  <h3 className="text-xl font-bold text-black font-[var(--font-heading)] mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-ink font-[var(--font-heading)] mb-3 group-hover:text-primary transition-colors">
                     {job.title}
                   </h3>{" "}
-                  <div className="flex flex-wrap gap-4 text-sm font-semibold text-black/70">
+                  <div className="flex flex-wrap gap-4 text-sm font-semibold text-muted">
                     {" "}
                     <span className="flex items-center gap-1.5">
                       <i className="fas fa-building text-secondary" />{" "}
@@ -114,7 +114,7 @@ export default function Careers({ jobs }) {
                   {" "}
                   <Link
                     href="/contact-us"
-                    className="px-6 py-3 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all whitespace-nowrap block text-center md:inline-block"
+                    className="px-6 py-3 border-2 border-primary text-primary rounded-md font-bold hover:bg-primary hover:text-white transition-all whitespace-nowrap block text-center md:inline-block"
                   >
                     {" "}
                     Apply Now{" "}

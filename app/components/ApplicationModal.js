@@ -51,7 +51,7 @@ export default function ApplicationModal({
   const modalContent = (
     <div className="fixed inset-0 z-[99999] flex items-center justify-center overflow-y-auto bg-primary/85 p-4 transition-all duration-300 sm:p-6">
       <div className="absolute inset-0" onClick={onClose} />
-      <div className="relative my-auto flex w-full max-w-4xl transform flex-col overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-300 md:flex-row">
+      <div className="relative my-auto flex w-full max-w-4xl transform flex-col overflow-hidden rounded-xl bg-white shadow-2xl transition-all duration-300 md:flex-row">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/40 md:bg-primary/5 md:text-black md:hover:bg-primary/10"
@@ -72,7 +72,7 @@ export default function ApplicationModal({
             <span className="mb-4 inline-block w-fit rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
               Application
             </span>
-            <h3 className="mb-4 font-[var(--font-heading)] text-2xl font-extrabold leading-tight text-white md:text-3xl">
+            <h3 className="mb-4 font-[var(--font-heading)] text-2xl font-bold leading-tight text-white md:text-3xl">
               {courseTitle}
             </h3>
             <p className="hidden text-sm leading-relaxed text-white/80 md:block">
@@ -91,7 +91,7 @@ export default function ApplicationModal({
               <h3 className="text-2xl font-bold text-black">
                 Application Received!
               </h3>
-              <p className="max-w-sm text-black/70">
+              <p className="max-w-sm text-muted">
                 Thank you for applying. Our admissions team will be in touch
                 shortly.
               </p>
@@ -110,7 +110,7 @@ export default function ApplicationModal({
                     <input
                       type="text"
                       name="firstName"
-                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      className="w-full rounded-xl border border-line bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
                   </div>
@@ -121,7 +121,7 @@ export default function ApplicationModal({
                     <input
                       type="text"
                       name="lastName"
-                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      className="w-full rounded-xl border border-line bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
                   </div>
@@ -135,7 +135,7 @@ export default function ApplicationModal({
                     <input
                       type="email"
                       name="email"
-                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      className="w-full rounded-xl border border-line bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
                   </div>
@@ -146,7 +146,7 @@ export default function ApplicationModal({
                     <input
                       type="tel"
                       name="phone"
-                      className="w-full rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                      className="w-full rounded-xl border border-line bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                       required
                     />
                   </div>
@@ -160,7 +160,7 @@ export default function ApplicationModal({
                   <textarea
                     name="motivation"
                     rows={3}
-                    className="w-full resize-none rounded-xl border border-black/10 bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
+                    className="w-full resize-none rounded-xl border border-line bg-primary/5 px-4 py-3 text-black outline-none transition-all focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10"
                     required
                   />
                 </div>
@@ -174,7 +174,7 @@ export default function ApplicationModal({
                   </label>
                   <label
                     htmlFor="cv-modal"
-                    className="block w-full cursor-pointer rounded-xl border-2 border-dashed border-black/10 p-6 text-center transition-all hover:border-primary hover:bg-primary/5"
+                    className="block w-full cursor-pointer rounded-xl border-2 border-dashed border-line p-6 text-center transition-all hover:border-primary hover:bg-primary/5"
                   >
                     <i className="fas fa-cloud-upload-alt mb-2 text-2xl text-black/50 transition-colors" />
                     <p className="text-sm font-medium text-black">
@@ -203,7 +203,7 @@ export default function ApplicationModal({
                   </div>
                 )}
 
-                <div className="flex items-center justify-end gap-4 border-t border-black/10 pt-4">
+                <div className="flex items-center justify-end gap-4 border-t border-line pt-4">
                   <button
                     type="button"
                     onClick={onClose}

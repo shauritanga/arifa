@@ -1,18 +1,21 @@
-import { Plus_Jakarta_Sans, Nunito } from "next/font/google";
+import { Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SiteChrome from "./components/SiteChrome";
+
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-heading",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
 });
-const nunito = Nunito({
+
+const sourceSerif = Source_Serif_4({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
+
 export const metadata = {
   title: "ARIFA | Africa Research Institute for AI",
   description:
@@ -52,11 +55,12 @@ export const metadata = {
     ],
   },
 };
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${jakartaSans.variable} ${nunito.variable} scroll-smooth`}
+      className={`${jakartaSans.variable} ${sourceSerif.variable} scroll-smooth`}
     >
       <head>
         <link
@@ -64,7 +68,13 @@ export default function RootLayout({ children }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased bg-canvas text-ink-soft">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[200] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <SiteChrome header={<Header />} footer={<Footer />}>
           {children}
         </SiteChrome>

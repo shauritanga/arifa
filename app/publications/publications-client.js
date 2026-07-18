@@ -34,7 +34,7 @@ export default function Publications({ publications }) {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -42,18 +42,18 @@ export default function Publications({ publications }) {
             src="/hero-bg.png"
             alt="Publications Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             {" "}
             Research{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             {" "}
             Our <span className="text-secondary">Publications</span>{" "}
           </h1>{" "}
@@ -65,18 +65,18 @@ export default function Publications({ publications }) {
         </div>{" "}
       </section>{" "}
       {/* ====== Publications List ====== */}{" "}
-      <section className="py-24 bg-white min-h-[60vh]">
+      <section className="py-24 bg-canvas min-h-[60vh]">
         {" "}
         <div className="max-w-[900px] mx-auto px-6">
           {" "}
-          <div className="mb-12 flex justify-between items-center bg-white p-6 rounded-2xl border border-black/10">
+          <div className="mb-12 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 bg-white p-6 rounded-xl border border-line">
             {" "}
             <div>
               {" "}
-              <h3 className="font-bold text-black font-[var(--font-heading)]">
+              <h3 className="font-semibold text-ink font-[var(--font-heading)]">
                 Looking for the ARIFA Journal?
               </h3>{" "}
-              <p className="text-sm text-black/70">
+              <p className="text-sm text-muted mt-1">
                 Visit the International Journal of AI Technology (IJAIT)
               </p>{" "}
             </div>{" "}
@@ -84,39 +84,39 @@ export default function Publications({ publications }) {
               href="https://ijait.arifa.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 bg-primary text-white rounded-full font-semibold text-sm hover:bg-primary transition-colors"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-white rounded-md font-semibold text-sm hover:bg-primary-light transition-colors shrink-0"
             >
               {" "}
               Go to IJAIT{" "}
             </a>{" "}
           </div>{" "}
-          <div className="space-y-16">
+          <div className="space-y-14">
             {" "}
             {publications.map((group, groupIdx) => (
               <div key={groupIdx}>
                 {" "}
-                <h2 className="text-3xl font-extrabold text-black font-[var(--font-heading)] mb-8 pb-4 border-b-2 border-primary/20">
+                <h2 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-6 pb-3 border-b border-line tracking-[-0.02em]">
                   {" "}
                   {group.year}{" "}
                 </h2>{" "}
-                <div className="space-y-8">
+                <div className="space-y-4">
                   {" "}
                   {group.papers.map((paper, idx) => (
                     <RevealOnScroll
                       key={idx}
-                      delay={idx * 100}
+                      delay={idx * 60}
                       className="group"
                     >
                       {" "}
-                      <div className="flex gap-4">
+                      <article className="flex gap-4 rounded-xl border border-line bg-white p-5 transition-all hover:border-primary/20 hover:shadow-[0_8px_24px_rgba(15,20,25,0.05)]">
                         {" "}
-                        <div className="w-10 h-10 rounded-full bg-white text-secondary flex items-center justify-center shrink-0 mt-1 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <div className="w-10 h-10 rounded-md bg-surface-alt border border-line text-primary flex items-center justify-center shrink-0 mt-0.5">
                           {" "}
-                          <i className="fas fa-file-alt" />{" "}
+                          <i className="fas fa-file-alt text-sm" />{" "}
                         </div>{" "}
                         <div>
                           {" "}
-                          <h3 className="text-xl font-bold text-black font-[var(--font-heading)] leading-snug mb-2 group-hover:text-primary transition-colors">
+                          <h3 className="text-lg font-semibold text-ink font-[var(--font-heading)] leading-snug mb-2 group-hover:text-primary transition-colors">
                             {" "}
                             <a
                               href={paper.link}
@@ -125,16 +125,17 @@ export default function Publications({ publications }) {
                               {paper.title}
                             </a>{" "}
                           </h3>{" "}
-                          <p className="text-black font-medium mb-1">
+                          <p className="text-ink-soft text-sm font-medium mb-1">
                             {" "}
                             {paper.authors}{" "}
                           </p>{" "}
-                          <p className="text-sm text-black/70 italic">
+                          <p className="text-sm text-muted">
                             {" "}
-                            Published in: {paper.venue}{" "}
+                            Published in:{" "}
+                            <span className="italic">{paper.venue}</span>{" "}
                           </p>{" "}
                         </div>{" "}
-                      </div>{" "}
+                      </article>{" "}
                     </RevealOnScroll>
                   ))}{" "}
                 </div>{" "}

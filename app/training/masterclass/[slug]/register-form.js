@@ -4,7 +4,7 @@ import { useState } from "react";
 import { startPayment } from "@/lib/client/start-payment";
 
 const INPUT =
-  "w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
+  "w-full px-4 py-3 rounded-lg border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
 const LABEL = "block text-sm font-bold text-black mb-2";
 
 export default function RegisterForm({ slug, city, fee }) {

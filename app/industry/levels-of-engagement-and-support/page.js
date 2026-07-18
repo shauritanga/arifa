@@ -35,7 +35,7 @@ export default function IndustryEngagement() {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -43,18 +43,18 @@ export default function IndustryEngagement() {
             src="/about-img.png"
             alt="Industry Engagement Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             {" "}
             Industry{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             {" "}
             Levels of Engagement{" "}
             <span className="text-secondary">& Support</span>{" "}
@@ -75,10 +75,10 @@ export default function IndustryEngagement() {
           {" "}
           <div className="text-center max-w-[700px] mx-auto mb-16">
             {" "}
-            <h2 className="text-3xl font-bold text-black font-[var(--font-heading)] mb-6">
+            <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
               Sponsorship Packages
             </h2>{" "}
-            <p className="text-black/70 text-lg">
+            <p className="text-muted text-lg">
               {" "}
               Pricing plans for Digital Transformation. Choose a partnership
               tier that best aligns with your organizational goals.{" "}
@@ -89,7 +89,7 @@ export default function IndustryEngagement() {
             {/* Basic Package */}{" "}
             <RevealOnScroll
               delay={100}
-              className="bg-white rounded-2xl p-10 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col relative overflow-hidden"
+              className="bg-white rounded-xl p-10 border border-line shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(15,20,25,0.07)] transition-all flex flex-col relative overflow-hidden"
             >
               {" "}
               <div className="absolute top-0 right-0 w-24 h-24 bg-white rounded-bl-full -z-10" />{" "}
@@ -97,19 +97,19 @@ export default function IndustryEngagement() {
                 {" "}
                 <i className="fas fa-handshake" />{" "}
               </div>{" "}
-              <h3 className="text-2xl font-bold text-black font-[var(--font-heading)] mb-2">
+              <h3 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-2">
                 Basic Package
               </h3>{" "}
               <div className="mb-6">
                 {" "}
-                <span className="text-3xl font-extrabold text-black">
+                <span className="text-3xl font-bold text-black">
                   $25,000
                 </span>{" "}
-                <span className="text-sm font-bold text-black/70 uppercase tracking-wider ml-1">
+                <span className="text-sm font-bold text-muted uppercase tracking-wider ml-1">
                   / Annually
                 </span>{" "}
               </div>{" "}
-              <p className="text-black/70 mb-8 font-medium">
+              <p className="text-muted mb-8 font-medium">
                 {" "}
                 Pricing plan for Digital Transformation{" "}
               </p>{" "}
@@ -157,7 +157,7 @@ export default function IndustryEngagement() {
             {/* Standard Package */}{" "}
             <RevealOnScroll
               delay={200}
-              className="bg-primary rounded-2xl p-10 border border-primary shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-all flex flex-col relative overflow-hidden lg:-translate-y-4"
+              className="bg-primary rounded-xl p-10 border border-primary shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-all flex flex-col relative overflow-hidden lg:-translate-y-4"
             >
               {" "}
               <div className="absolute top-0 left-0 w-full h-2 bg-secondary" />{" "}
@@ -174,7 +174,7 @@ export default function IndustryEngagement() {
               </h3>{" "}
               <div className="mb-6">
                 {" "}
-                <span className="text-3xl font-extrabold text-white">
+                <span className="text-3xl font-bold text-white">
                   $50,000
                 </span>{" "}
                 <span className="text-sm font-bold text-white/50 uppercase tracking-wider ml-1">
@@ -228,7 +228,7 @@ export default function IndustryEngagement() {
             {/* Premium Package */}{" "}
             <RevealOnScroll
               delay={300}
-              className="bg-white rounded-2xl p-10 border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all flex flex-col relative overflow-hidden"
+              className="bg-white rounded-xl p-10 border border-line shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(15,20,25,0.07)] transition-all flex flex-col relative overflow-hidden"
             >
               {" "}
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-tr-full -z-10" />{" "}
@@ -236,19 +236,19 @@ export default function IndustryEngagement() {
                 {" "}
                 <i className="fas fa-crown" />{" "}
               </div>{" "}
-              <h3 className="text-2xl font-bold text-black font-[var(--font-heading)] mb-2">
+              <h3 className="text-2xl font-bold text-ink font-[var(--font-heading)] mb-2">
                 Premium Package
               </h3>{" "}
               <div className="mb-6">
                 {" "}
-                <span className="text-3xl font-extrabold text-black">
+                <span className="text-3xl font-bold text-black">
                   $100,000
                 </span>{" "}
-                <span className="text-sm font-bold text-black/70 uppercase tracking-wider ml-1">
+                <span className="text-sm font-bold text-muted uppercase tracking-wider ml-1">
                   / Annually
                 </span>{" "}
               </div>{" "}
-              <p className="text-black/70 mb-8 font-medium">
+              <p className="text-muted mb-8 font-medium">
                 {" "}
                 All ARIFA Level 2 Partner opportunities, plus:{" "}
               </p>{" "}

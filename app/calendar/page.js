@@ -60,7 +60,7 @@ export default function Calendar() {
     <>
       {" "}
       {/* ====== Page Header ====== */}{" "}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         {" "}
         <div className="absolute inset-0 z-0">
           {" "}
@@ -68,18 +68,18 @@ export default function Calendar() {
             src="/hero-bg.png"
             alt="Academic Calendar Background"
             fill
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
           />{" "}
-          <div className="absolute inset-0 bg-primary/70" />{" "}
+          <div className="absolute inset-0 bg-night/80" />{" "}
         </div>{" "}
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
           {" "}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             {" "}
             Training{" "}
           </div>{" "}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
             {" "}
             Academic <span className="text-secondary">Calendar</span>{" "}
           </h1>{" "}
@@ -101,12 +101,12 @@ export default function Calendar() {
               <RevealOnScroll
                 key={idx}
                 delay={idx * 100}
-                className="flex flex-col md:flex-row md:items-center bg-white rounded-2xl p-6 border border-black/10 hover:shadow-lg transition-all group"
+                className="flex flex-col md:flex-row md:items-center bg-white rounded-xl p-6 border border-line hover:shadow-lg transition-all group"
               >
                 {" "}
-                <div className="md:w-1/3 mb-4 md:mb-0 border-b md:border-b-0 md:border-r border-black/10 pb-4 md:pb-0 md:pr-6">
+                <div className="md:w-1/3 mb-4 md:mb-0 border-b md:border-b-0 md:border-r border-line pb-4 md:pb-0 md:pr-6">
                   {" "}
-                  <h3 className="text-xl font-bold text-black font-[var(--font-heading)]">
+                  <h3 className="text-xl font-bold text-ink font-[var(--font-heading)]">
                     {item.month}
                   </h3>{" "}
                   <p className="text-primary font-medium mt-1">
@@ -116,7 +116,7 @@ export default function Calendar() {
                 <div className="md:w-2/3 md:pl-6">
                   {" "}
                   <span
-                    className={`inline-block px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider mb-2 ${item.type === "Certification" ? "bg-primary/10 text-primary" : item.type === "Short Course" ? "bg-secondary/20 text-secondary" : "bg-primary/10 text-black/70"}`}
+                    className={`inline-block px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider mb-2 ${item.type === "Certification" ? "bg-primary/10 text-primary" : item.type === "Short Course" ? "bg-secondary/20 text-secondary" : "bg-primary/10 text-muted"}`}
                   >
                     {" "}
                     {item.type}{" "}
@@ -132,7 +132,7 @@ export default function Calendar() {
             {" "}
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-bold shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-md font-bold shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary hover:-translate-y-0.5 transition-all"
             >
               {" "}
               Contact Admissions <i className="fas fa-envelope text-sm" />{" "}

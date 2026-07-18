@@ -103,7 +103,7 @@ export default function SupportUsPage({ searchParams }) {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse-dot" />{" "}
               Partner With Us{" "}
             </div>{" "}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
               {" "}
               Empower the Future of{" "}
               <span className="text-secondary">African Prosperity</span>.{" "}
@@ -123,7 +123,7 @@ export default function SupportUsPage({ searchParams }) {
                     .getElementById("pledge-form")
                     .scrollIntoView({ behavior: "smooth" })
                 }
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-semibold shadow-[0_8px_20px_rgba(0,0,0,0.3)] hover:bg-primary hover:-translate-y-1 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-md font-semibold shadow-[0_8px_20px_rgba(0,0,0,0.3)] hover:bg-primary hover:-translate-y-1 transition-all"
               >
                 {" "}
                 Make a Donation <i className="fas fa-heart text-sm" />{" "}
@@ -134,7 +134,7 @@ export default function SupportUsPage({ searchParams }) {
                     .getElementById("partnership-tiers")
                     .scrollIntoView({ behavior: "smooth" })
                 }
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/30 text-white rounded-full font-semibold hover:bg-white/10 hover:-translate-y-1 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/30 text-white rounded-md font-semibold hover:bg-white/10 hover:-translate-y-1 transition-all"
               >
                 {" "}
                 Explore Partnerships{" "}
@@ -155,11 +155,11 @@ export default function SupportUsPage({ searchParams }) {
               <h2 className="text-sm font-bold text-primary tracking-[0.2em] uppercase mb-4">
                 The Impact of Your Support
               </h2>{" "}
-              <h3 className="text-3xl md:text-5xl font-extrabold text-black leading-tight mb-8 font-[var(--font-heading)]">
+              <h3 className="text-3xl md:text-5xl font-bold text-black leading-tight mb-8 font-[var(--font-heading)]">
                 {" "}
                 AI Built for Africa, By Africa.{" "}
               </h3>{" "}
-              <p className="text-lg text-black/70 leading-relaxed mb-8">
+              <p className="text-lg text-muted leading-relaxed mb-8">
                 {" "}
                 ARIFA is uniquely positioned to address the continent&apos;s
                 most pressing challenges. By supporting our institute, you are
@@ -179,7 +179,7 @@ export default function SupportUsPage({ searchParams }) {
                     <h4 className="text-xl font-bold text-black mb-2">
                       Sustainable Agriculture
                     </h4>{" "}
-                    <p className="text-black/70 leading-relaxed">
+                    <p className="text-muted leading-relaxed">
                       Developing AI models that predict crop yields and detect
                       diseases early, directly enhancing food security.
                     </p>{" "}
@@ -196,7 +196,7 @@ export default function SupportUsPage({ searchParams }) {
                     <h4 className="text-xl font-bold text-black mb-2">
                       Transformative Healthcare
                     </h4>{" "}
-                    <p className="text-black/70 leading-relaxed">
+                    <p className="text-muted leading-relaxed">
                       Creating diagnostic tools suited for low-resource
                       environments to democratize access to quality care.
                     </p>{" "}
@@ -213,7 +213,7 @@ export default function SupportUsPage({ searchParams }) {
                     <h4 className="text-xl font-bold text-black mb-2">
                       Empowering the Next Generation
                     </h4>{" "}
-                    <p className="text-black/70 leading-relaxed">
+                    <p className="text-muted leading-relaxed">
                       Providing world-class AI certifications and training to
                       African youth, ensuring they lead the digital revolution.
                     </p>{" "}
@@ -223,7 +223,7 @@ export default function SupportUsPage({ searchParams }) {
             </RevealOnScroll>{" "}
             <RevealOnScroll
               delay={200}
-              className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative h-[600px] rounded-xl overflow-hidden shadow-2xl"
             >
               {" "}
               <Image
@@ -235,9 +235,9 @@ export default function SupportUsPage({ searchParams }) {
               <div className="absolute inset-0 bg-primary/80" />{" "}
               <div className="absolute bottom-8 left-8 right-8">
                 {" "}
-                <div className="bg-white/10 border border-white/20 rounded-2xl p-6 text-white">
+                <div className="bg-white/10 border border-white/20 rounded-xl p-6 text-white">
                   {" "}
-                  <div className="text-3xl font-extrabold mb-2 font-[var(--font-heading)]">
+                  <div className="text-3xl font-bold mb-2 font-[var(--font-heading)]">
                     100%
                   </div>{" "}
                   <div className="text-sm font-medium text-white/80 uppercase tracking-wide">
@@ -267,7 +267,7 @@ export default function SupportUsPage({ searchParams }) {
               <h2 className="text-sm font-bold text-secondary tracking-[0.2em] uppercase mb-4">
                 Collaboration Models
               </h2>{" "}
-              <h3 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6 font-[var(--font-heading)]">
+              <h3 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6 font-[var(--font-heading)]">
                 {" "}
                 Ways to Engage & Support{" "}
               </h3>{" "}
@@ -283,9 +283,9 @@ export default function SupportUsPage({ searchParams }) {
             {" "}
             <RevealOnScroll delay={100}>
               {" "}
-              <div className="h-full bg-white/5 border border-white/10 p-10 rounded-3xl hover:-translate-y-2 hover:bg-white/10 transition-all duration-300 group">
+              <div className="h-full bg-white/5 border border-white/10 p-10 rounded-xl hover:-translate-y-1 hover:bg-white/10 transition-all duration-300 group">
                 {" "}
-                <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white text-2xl mb-8 shadow-lg">
+                <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center text-white text-2xl mb-8 shadow-lg">
                   {" "}
                   <i className="fas fa-hand-holding-heart" />{" "}
                 </div>{" "}
@@ -317,12 +317,12 @@ export default function SupportUsPage({ searchParams }) {
             </RevealOnScroll>{" "}
             <RevealOnScroll delay={200}>
               {" "}
-              <div className="h-full bg-primary/20 border border-primary/30 p-10 rounded-3xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+              <div className="h-full bg-primary/20 border border-primary/30 p-10 rounded-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
                 {" "}
                 <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">
                   Most Impactful
                 </div>{" "}
-                <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center text-white text-2xl mb-8 shadow-lg">
+                <div className="w-16 h-16 rounded-xl bg-secondary flex items-center justify-center text-white text-2xl mb-8 shadow-lg">
                   {" "}
                   <i className="fas fa-building" />{" "}
                 </div>{" "}
@@ -354,9 +354,9 @@ export default function SupportUsPage({ searchParams }) {
             </RevealOnScroll>{" "}
             <RevealOnScroll delay={300}>
               {" "}
-              <div className="h-full bg-white/5 border border-white/10 p-10 rounded-3xl hover:-translate-y-2 hover:bg-white/10 transition-all duration-300 group">
+              <div className="h-full bg-white/5 border border-white/10 p-10 rounded-xl hover:-translate-y-1 hover:bg-white/10 transition-all duration-300 group">
                 {" "}
-                <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white text-2xl mb-8 shadow-lg">
+                <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center text-white text-2xl mb-8 shadow-lg">
                   {" "}
                   <i className="fas fa-university" />{" "}
                 </div>{" "}
@@ -398,18 +398,18 @@ export default function SupportUsPage({ searchParams }) {
             {" "}
             <div className="text-center mb-16">
               {" "}
-              <h2 className="text-3xl md:text-5xl font-extrabold text-black leading-tight mb-6 font-[var(--font-heading)]">
+              <h2 className="text-3xl md:text-5xl font-bold text-black leading-tight mb-6 font-[var(--font-heading)]">
                 {" "}
                 Make Your Pledge Today{" "}
               </h2>{" "}
-              <p className="text-lg text-black/70 leading-relaxed">
+              <p className="text-lg text-muted leading-relaxed">
                 {" "}
                 Fill out the form below to process your financial contribution
                 or sponsorship via AirPay, or to initiate a corporate
                 partnership discussion.{" "}
               </p>{" "}
             </div>{" "}
-            <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-black/10 p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-[0_12px_32px_rgba(15,20,25,0.07)] border border-line p-8 md:p-12">
               {" "}
               <form onSubmit={handleSubmit} className="space-y-8">
                 {" "}
@@ -428,7 +428,7 @@ export default function SupportUsPage({ searchParams }) {
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
                       placeholder="Jane Doe"
                     />{" "}
                   </div>{" "}
@@ -445,7 +445,7 @@ export default function SupportUsPage({ searchParams }) {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
                       placeholder="jane@example.com"
                     />{" "}
                   </div>{" "}
@@ -465,7 +465,7 @@ export default function SupportUsPage({ searchParams }) {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
                       placeholder="+255 700 000 000"
                     />{" "}
                   </div>{" "}
@@ -484,7 +484,7 @@ export default function SupportUsPage({ searchParams }) {
                           organization: e.target.value,
                         })
                       }
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"
                       placeholder="Company or Foundation"
                     />{" "}
                   </div>{" "}
@@ -503,7 +503,7 @@ export default function SupportUsPage({ searchParams }) {
                           supportType: e.target.value,
                         })
                       }
-                      className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium appearance-none"
+                      className="w-full px-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium appearance-none"
                     >
                       {" "}
                       <option value="financial">Financial Donation</option>{" "}
@@ -522,7 +522,7 @@ export default function SupportUsPage({ searchParams }) {
                     </label>{" "}
                     <div className="relative">
                       {" "}
-                      <span className="absolute left-5 top-1/2 -translate-y-1/2 font-bold text-black/70">
+                      <span className="absolute left-5 top-1/2 -translate-y-1/2 font-bold text-muted">
                         TSh
                       </span>{" "}
                       <input
@@ -535,7 +535,7 @@ export default function SupportUsPage({ searchParams }) {
                         onChange={(e) =>
                           setFormData({ ...formData, amount: e.target.value })
                         }
-                        className="w-full pl-16 pr-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-bold text-lg text-primary"
+                        className="w-full pl-16 pr-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-bold text-lg text-primary"
                         placeholder="1,000,000"
                       />{" "}
                     </div>{" "}
@@ -560,7 +560,7 @@ export default function SupportUsPage({ searchParams }) {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="w-full px-5 py-4 rounded-xl bg-white border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium resize-none"
+                    className="w-full px-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium resize-none"
                     placeholder="Let us know if you want to fund a specific research area..."
                   ></textarea>{" "}
                 </div>{" "}
@@ -596,14 +596,14 @@ export default function SupportUsPage({ searchParams }) {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-3 py-5 bg-primary text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all group disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-3 py-5 bg-primary text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all group disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       {" "}
                       {isSubmitting ? "Submitting..." : "Submit Inquiry"}{" "}
                     </button>
                   )}{" "}
                   {isPayment && (
-                    <div className="text-center mt-4 flex items-center justify-center gap-4 text-sm text-black/70 font-medium">
+                    <div className="text-center mt-4 flex items-center justify-center gap-4 text-sm text-muted font-medium">
                       {" "}
                       <span>
                         <i className="fas fa-shield-check text-secondary mr-1" />{" "}

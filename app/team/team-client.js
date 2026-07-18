@@ -54,9 +54,9 @@ function TeamCard({ member, index, onSelect }) {
       <button
         type="button"
         onClick={() => onSelect(member)}
-        className="group flex h-full w-full flex-col items-center rounded-[28px] border border-white/10 bg-primary px-6 pt-7 pb-6 text-center shadow-[0_8px_22px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_55px_rgba(0,0,0,0.28)] focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/40"
+        className="group flex h-full w-full flex-col items-center rounded-xl border border-line bg-white px-6 pt-7 pb-6 text-center shadow-[0_1px_2px_rgba(15,20,25,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_12px_32px_rgba(15,20,25,0.08)] focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
       >
-        <div className="mb-5 h-[126px] w-[126px] shrink-0 rounded-full border-[3px] border-white/90 bg-[#f1f5fe] p-[3px]">
+        <div className="mb-5 h-[120px] w-[120px] shrink-0 rounded-full border border-line bg-surface-alt p-1">
           <div className="relative h-full w-full overflow-hidden rounded-full">
             <Image
               src={imageSrc}
@@ -67,18 +67,18 @@ function TeamCard({ member, index, onSelect }) {
             />
           </div>
         </div>
-        <h4 className="font-[var(--font-heading)] text-lg font-extrabold leading-tight text-white">
+        <h4 className="font-[var(--font-heading)] text-lg font-semibold leading-tight text-ink">
           {member.name}
         </h4>
         {role && (
-          <div className="mt-1.5 text-sm font-semibold text-white/70">
+          <div className="mt-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-primary">
             {role}
           </div>
         )}
-        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/80">
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted">
           {member.bio}
         </p>
-        <span className="mt-5 inline-block rounded-[10px] border-[1.5px] border-white bg-white px-5 py-2 text-sm font-semibold text-primary transition-colors group-hover:bg-transparent group-hover:text-white">
+        <span className="mt-5 inline-block rounded-md border border-line bg-surface-alt px-4 py-2 text-sm font-semibold text-ink transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-white">
           View Bio
         </span>
       </button>
@@ -94,7 +94,7 @@ export default function TeamPage({ team }) {
   return (
     <>
       {/* ====== Page Header ====== */}
-      <section className="relative pt-40 pb-24 bg-primary overflow-hidden">
+      <section className="page-hero">
         <div className="absolute inset-0 z-0">
           <Image
             src="/about-img.png"
@@ -102,18 +102,18 @@ export default function TeamPage({ team }) {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-30 grayscale-[0.2]"
           />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-night/80" />
         </div>
         <div className="max-w-[1200px] w-full mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold mb-6 animate-fadeInUp">
+          <div className="page-hero-badge animate-fadeInUp">
             About Us
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)]">
-            Meet Our <span className="text-secondary">Team</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fadeInUp animate-delay-100 font-[var(--font-heading)] tracking-[-0.03em]">
+            Meet Our <span className="text-[#8fd4aa]">Team</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-[700px] mx-auto animate-fadeInUp animate-delay-200">
+          <p className="text-lg md:text-xl text-white/70 max-w-[700px] mx-auto animate-fadeInUp animate-delay-200">
             A dedicated group of researchers, engineers, and professionals
             driving innovation in AI and digital transformation across Africa.
           </p>
@@ -121,24 +121,24 @@ export default function TeamPage({ team }) {
       </section>
 
       {/* ====== Team sections (stacked by category) ====== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="py-24 bg-canvas">
+        <div className="max-w-[1200px] mx-auto px-6">
           {categories.map((category) => (
             <div key={category} className="mb-20 last:mb-0">
-              <div className="mx-auto mb-12 max-w-[760px] text-center">
-                <span className="mb-3 block text-sm font-bold uppercase tracking-[0.18em] text-[#990000]">
+              <div className="mb-10 max-w-[40rem]">
+                <span className="institute-eyebrow mb-3">
                   ARIFA People
                 </span>
-                <h2 className="text-3xl font-extrabold text-black font-[var(--font-heading)]">
+                <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em]">
                   {category}
                 </h2>
-                <div className="mx-auto mt-5 flex h-1 w-16 overflow-hidden rounded-full">
-                  <span className="h-full flex-1 bg-[#990000]" />
-                  <span className="h-full flex-1 bg-[#00803D]" />
+                <div className="mt-4 flex h-0.5 w-14 overflow-hidden rounded-full">
+                  <span className="h-full flex-1 bg-primary" />
+                  <span className="h-full flex-1 bg-secondary" />
                 </div>
               </div>
 
-              <div className="grid gap-8 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+              <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
                 {team[category].map((member, index) => (
                   <TeamCard
                     key={`${category}-${member.name}-${index}`}
@@ -157,10 +157,10 @@ export default function TeamPage({ team }) {
       {selectedMember && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
           <div
-            className="absolute inset-0 bg-primary/70"
+            className="absolute inset-0 bg-night/80"
             onClick={() => setSelectedMember(null)}
           />
-          <div className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl md:flex-row animate-fadeInUp">
+          <div className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl md:flex-row animate-fadeInUp">
             <button
               onClick={() => setSelectedMember(null)}
               aria-label="Close profile"
@@ -176,7 +176,7 @@ export default function TeamPage({ team }) {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-top"
               />
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-primary/70 md:hidden" />
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-night/70 md:hidden" />
             </div>
             <div className="w-full overflow-y-auto p-8 md:w-3/5 md:p-12">
               <div className="mb-6 flex h-1 w-12 overflow-hidden rounded-full">
@@ -188,7 +188,7 @@ export default function TeamPage({ team }) {
                   {selectedRole}
                 </span>
               )}
-              <h2 className="mb-6 text-3xl font-extrabold text-black font-[var(--font-heading)]">
+              <h2 className="mb-6 text-3xl font-bold text-ink font-[var(--font-heading)]">
                 {selectedMember.name}
               </h2>
               <div className="text-lg leading-relaxed text-black">

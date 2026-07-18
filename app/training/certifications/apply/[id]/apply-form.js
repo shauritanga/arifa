@@ -5,7 +5,7 @@ import Link from "next/link";
 import { submitApplication } from "@/lib/client/submit-application";
 
 const INPUT =
-  "w-full px-4 py-3 rounded-lg border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
+  "w-full px-4 py-3 rounded-lg border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
 const LABEL = "block text-sm font-bold text-black mb-2";
 
 export default function ApplyForm({ programme, programmeId }) {
@@ -41,7 +41,7 @@ export default function ApplyForm({ programme, programmeId }) {
         <h2 className="mb-3 text-2xl font-bold text-black">
           Application received
         </h2>
-        <p className="mx-auto max-w-sm text-black/70">
+        <p className="mx-auto max-w-sm text-muted">
           Thank you for applying for {programme}. Our admissions team will be in
           touch shortly.
         </p>
@@ -149,10 +149,10 @@ export default function ApplyForm({ programme, programmeId }) {
         </label>
         <label
           htmlFor="cv"
-          className="block cursor-pointer rounded-lg border-2 border-dashed border-black/10 bg-primary/5 p-6 text-center transition-colors hover:border-primary"
+          className="block cursor-pointer rounded-lg border-2 border-dashed border-line bg-primary/5 p-6 text-center transition-colors hover:border-primary"
         >
           <i className="fas fa-cloud-upload-alt mb-2 text-3xl text-primary/50" />
-          <p className="text-sm text-black/70">
+          <p className="text-sm text-muted">
             {cvName || "Click to upload"}
           </p>
           <p className="mt-1 text-xs text-black/50">
@@ -178,7 +178,7 @@ export default function ApplyForm({ programme, programmeId }) {
         </div>
       )}
 
-      <div className="border-t border-black/10 pt-6">
+      <div className="border-t border-line pt-6">
         <button
           type="submit"
           disabled={submitting}
@@ -186,7 +186,7 @@ export default function ApplyForm({ programme, programmeId }) {
         >
           {submitting ? "Submitting…" : "Submit Application"}
         </button>
-        <p className="mt-4 text-center text-xs text-black/70">
+        <p className="mt-4 text-center text-xs text-muted">
           By submitting this form, you agree to our{" "}
           <Link href="#" className="text-primary hover:underline">
             Terms &amp; Conditions
