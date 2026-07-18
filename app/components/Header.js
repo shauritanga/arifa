@@ -67,6 +67,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSub, setOpenSub] = useState(null);
+  const [desktopOpen, setDesktopOpen] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -84,6 +85,11 @@ export default function Header() {
 
   const toggleSub = (label) => {
     setOpenSub(openSub === label ? null : label);
+  };
+
+  const closeMobileNav = () => {
+    setMobileOpen(false);
+    setOpenSub(null);
   };
 
   const linkTone = scrolled
@@ -117,54 +123,88 @@ export default function Header() {
             className="hidden lg:flex items-center gap-0.5"
             aria-label="Main Navigation"
           >
-            {navItems.map((item) => (
-              <div key={item.label} className="relative group">
-                {item.href ? (
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-1 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide ${linkTone}`}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className={`flex items-center gap-1.5 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide cursor-default ${linkTone}`}
-                    aria-haspopup="true"
-                  >
-                    {item.label}
-                    <i className="fas fa-chevron-down text-[0.55em] opacity-60 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
-                  </button>
-                )}
+            {navItems.map((item) => {
+              const isDesktopOpen = desktopOpen === item.label;
 
-                {item.children && (
-                  <ul className="absolute top-full left-0 min-w-[14.5rem] py-2 bg-white border border-line rounded-lg shadow-[0_16px_40px_rgba(15,20,25,0.1)] opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200 z-10">
-                    {item.children.map((child) => (
-                      <li key={child.label}>
-                        {child.external ? (
-                          <a
-                            href={child.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
-                          >
-                            {child.label}
-                            <i className="fas fa-arrow-up-right-from-square text-[0.65em] opacity-40" />
-                          </a>
-                        ) : (
-                          <Link
-                            href={child.href}
-                            className="block px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
-                          >
-                            {child.label}
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+              return (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() =>
+                    item.children && setDesktopOpen(item.label)
+                  }
+                  onMouseLeave={() => setDesktopOpen(null)}
+                  onFocus={() => item.children && setDesktopOpen(item.label)}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) {
+                      setDesktopOpen(null);
+                    }
+                  }}
+                >
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      className={`flex items-center gap-1 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide ${linkTone}`}
+                      onClick={() => setDesktopOpen(null)}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      className={`flex items-center gap-1.5 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide cursor-default ${linkTone}`}
+                      aria-haspopup="true"
+                      aria-expanded={isDesktopOpen}
+                      onClick={() =>
+                        setDesktopOpen(isDesktopOpen ? null : item.label)
+                      }
+                    >
+                      {item.label}
+                      <i
+                        className={`fas fa-chevron-down text-[0.55em] opacity-60 transition-transform ${
+                          isDesktopOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  )}
+
+                  {item.children && (
+                    <ul
+                      className={`absolute top-full left-0 z-10 min-w-[14.5rem] rounded-lg border border-line bg-white py-2 shadow-[0_16px_40px_rgba(15,20,25,0.1)] transition-all duration-200 ${
+                        isDesktopOpen
+                          ? "visible translate-y-0 opacity-100"
+                          : "invisible translate-y-1 opacity-0"
+                      }`}
+                    >
+                      {item.children.map((child) => (
+                        <li key={child.label}>
+                          {child.external ? (
+                            <a
+                              href={child.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
+                              onClick={() => setDesktopOpen(null)}
+                            >
+                              {child.label}
+                              <i className="fas fa-arrow-up-right-from-square text-[0.65em] opacity-40" />
+                            </a>
+                          ) : (
+                            <Link
+                              href={child.href}
+                              className="block px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
+                              onClick={() => setDesktopOpen(null)}
+                            >
+                              {child.label}
+                            </Link>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -226,7 +266,7 @@ export default function Header() {
                 <Link
                   href={item.href}
                   className="flex items-center justify-between py-3.5 font-semibold text-ink border-b border-line"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={closeMobileNav}
                 >
                   {item.label}
                 </Link>
@@ -255,7 +295,7 @@ export default function Header() {
                               target="_blank"
                               rel="noopener noreferrer"
                               className="block py-2.5 pl-3 text-sm text-muted hover:text-primary"
-                              onClick={() => setMobileOpen(false)}
+                              onClick={closeMobileNav}
                             >
                               {child.label}
                             </a>
@@ -263,7 +303,7 @@ export default function Header() {
                             <Link
                               href={child.href}
                               className="block py-2.5 pl-3 text-sm text-muted hover:text-primary"
-                              onClick={() => setMobileOpen(false)}
+                              onClick={closeMobileNav}
                             >
                               {child.label}
                             </Link>
@@ -280,7 +320,7 @@ export default function Header() {
             <Link
               href="/support-us"
               className="block w-full text-center py-3 bg-primary text-white rounded-md font-semibold text-sm"
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMobileNav}
             >
               Support Us
             </Link>
