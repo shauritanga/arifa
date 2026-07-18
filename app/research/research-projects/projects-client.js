@@ -44,10 +44,6 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
   );
 }
 
-/**
- * One shared card layout for every research project.
- * Title / excerpt heights are clamped so the grid stays aligned.
- */
 function ProjectCard({ project }) {
   return (
     <Link
@@ -63,14 +59,23 @@ function ProjectCard({ project }) {
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute top-3 left-3 z-20">
+          <div className="absolute top-3 left-3 z-20 flex max-w-[90%] flex-wrap gap-1.5">
             <span className="rounded border border-line bg-white/95 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-ink">
-              Research
+              {project.category
+                ? project.category.replace(/ Project$/i, "")
+                : "Research"}
             </span>
           </div>
         </div>
 
         <div className="flex flex-1 flex-col p-6">
+          {project.dateRange ? (
+            <p className="mb-2 inline-flex items-center gap-1.5 text-xs font-medium text-muted">
+              <i className="fas fa-calendar-alt text-primary/80 text-[0.65em]" aria-hidden="true" />
+              {project.dateRange}
+            </p>
+          ) : null}
+
           <h3 className="mb-3 min-h-[4.5rem] font-[var(--font-heading)] text-lg font-semibold leading-snug tracking-[-0.01em] text-ink line-clamp-3 transition-colors group-hover:text-primary">
             {project.title}
           </h3>
@@ -144,7 +149,7 @@ export default function ResearchProjects({ projects = [] }) {
         </div>
       </section>
 
-      <section className="bg-canvas py-24">
+      <section className="bg-canvas py-16 md:py-24">
         <div className="mx-auto max-w-[1200px] px-6">
           {projects.length === 0 ? (
             <p className="py-16 text-center text-muted">

@@ -3,7 +3,7 @@ import ResearchProjects from "./projects-client";
 
 export const dynamic = "force-dynamic";
 
-/** Plain-text card blurb from rich project HTML (strips headings, tags, collapse space). */
+/** Plain-text card blurb from rich project HTML. */
 function excerptFromContent(html, max = 160) {
   const text = String(html || "")
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -30,8 +30,10 @@ export default async function ResearchProjectsPage() {
     id: p.id,
     title: p.title,
     image: p.image || "/hero-bg.png",
-    // Cards never render full HTML — that caused uneven spacing between projects.
+    category: p.group || "",
+    dateRange: p.dateRange || "",
     excerpt: excerptFromContent(p.content),
   }));
+
   return <ResearchProjects projects={projects} />;
 }
