@@ -12,6 +12,7 @@ const NAV = [
   { href: "/admin/applications", label: "Applications", icon: "fa-file-lines" },
   { href: "/admin/messages", label: "Messages", icon: "fa-envelope" },
   { href: "/admin/users", label: "Admin Users", icon: "fa-users-gear" },
+  { href: "/admin/profile", label: "Profile", icon: "fa-user" },
   { href: "/admin/settings", label: "Settings", icon: "fa-gear" },
 ];
 
@@ -359,7 +360,7 @@ export default function AdminShell({ user, children }) {
                     <p className={`truncate text-xs ${muted}`}>{user?.email}</p>
                   </div>
                   <Link
-                    href="/admin/settings"
+                    href="/admin/profile"
                     role="menuitem"
                     onClick={() => setMenuOpen(false)}
                     className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium ${hoverItem}`}

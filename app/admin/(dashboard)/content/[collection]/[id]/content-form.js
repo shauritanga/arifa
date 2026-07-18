@@ -7,6 +7,8 @@ import {
   CoverImageField,
   GalleryImagesField,
 } from "../../../../components/image-upload-fields";
+import RichTextEditor from "../../../../components/rich-text-editor";
+import SectionsEditor from "../../../../components/sections-editor";
 
 const INPUT =
   "w-full rounded-lg border border-black/10 px-3 py-2 text-sm outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20";
@@ -61,10 +63,13 @@ export default function ContentForm({ collection, spec, item }) {
   const isEvent = collection === "EVENT";
 
   const bodyFields = spec.fields.filter(
-    (f) => !["images", "tags"].includes(f.key),
+    (f) => !["images", "tags", "sections"].includes(f.key) && f.kind !== "sections",
   );
   const mediaFields = spec.fields.filter((f) => f.key === "images");
   const tagFields = spec.fields.filter((f) => f.key === "tags");
+  const sectionFields = spec.fields.filter(
+    (f) => f.kind === "sections" || f.key === "sections",
+  );
 
   return (
     <form action={onSubmit}>
@@ -216,7 +221,11 @@ export default function ContentForm({ collection, spec, item }) {
             <SectionTitle
               icon="fa-align-left"
               title="Content"
-              desc="Details shown on the public site."
+              desc={
+                collection === "JOB"
+                  ? "Short blurb on the card; full role details use the visual editor below."
+                  : "Details shown on the public site."
+              }
             />
             <div className="mt-5 space-y-5">
               {bodyFields.map((field) => (
@@ -224,9 +233,14 @@ export default function ContentForm({ collection, spec, item }) {
                   key={field.key}
                   label={field.label}
                   required={field.required}
-                  hint={field.hint || hintFor(field)}
+                  hint={
+                    field.kind === "html"
+                      ? field.hint ||
+                        "Use the toolbar for headings, bold, lists, links, and images — no HTML knowledge needed."
+                      : field.hint || hintFor(field)
+                  }
                 >
-                  {renderField(field, item.data?.[field.key])}
+                  {renderField(field, item.data?.[field.key], { folder })}
                 </Field>
               ))}
               {tagFields.map((field) => (
@@ -236,11 +250,31 @@ export default function ContentForm({ collection, spec, item }) {
                   required={field.required}
                   hint={field.hint || hintFor(field)}
                 >
-                  {renderField(field, item.data?.[field.key])}
+                  {renderField(field, item.data?.[field.key], { folder })}
                 </Field>
               ))}
             </div>
           </section>
+
+          {sectionFields.length > 0 && (
+            <section className="rounded-2xl border border-black/10 bg-white p-5 shadow-sm sm:p-6">
+              <SectionTitle
+                icon="fa-layer-group"
+                title="Detail sections"
+                desc="Same order as the public page — Certificate Modules is always last."
+              />
+              <div className="mt-5 space-y-5">
+                {sectionFields.map((field) => (
+                  <SectionsEditor
+                    key={field.key}
+                    name={field.key}
+                    value={item.data?.[field.key]}
+                    folder={folder}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         {/* Sticky publish sidebar */}
@@ -319,7 +353,9 @@ function SectionTitle({ icon, title, desc }) {
 }
 
 function hintFor(field) {
-  if (field.kind === "html") return "Raw HTML — it is rendered as-is on the page.";
+  if (field.kind === "html") {
+    return "Use the visual editor for headings, lists, bold text, and links — no code needed.";
+  }
   if (field.kind === "json") return "JSON. Leave empty for none.";
   if (field.kind === "lines") return "One value per line.";
   return null;
@@ -331,7 +367,7 @@ function linesToText(value) {
   return "";
 }
 
-function renderField(field, value) {
+function renderField(field, value, { folder } = {}) {
   if (field.kind === "json") {
     return (
       <textarea
@@ -375,22 +411,35 @@ function renderField(field, value) {
     );
   }
 
-  if (field.kind === "html" || field.kind === "textarea") {
+  // Full visual editor for HTML body fields (research, bios, career details, etc.)
+  if (field.kind === "html") {
+    return (
+      <RichTextEditor
+        name={field.key}
+        value={typeof value === "string" ? value : ""}
+        folder={folder || "general"}
+        placeholder={
+          field.placeholder ||
+          "Write the full content here. Use headings, lists, bold, links, and images from the toolbar."
+        }
+      />
+    );
+  }
+
+  if (field.kind === "textarea") {
     const rows =
-      field.kind === "html"
-        ? 16
-        : field.key === "shortBio" || field.key === "desc"
-          ? 3
-          : field.key === "content"
-            ? 12
-            : 6;
+      field.key === "shortBio" || field.key === "desc"
+        ? 3
+        : field.key === "content"
+          ? 12
+          : 6;
     return (
       <textarea
         name={field.key}
         rows={rows}
         required={field.required}
         defaultValue={value ?? ""}
-        className={`${INPUT} resize-y ${field.kind === "html" ? "font-mono text-xs" : ""}`}
+        className={`${INPUT} resize-y`}
       />
     );
   }

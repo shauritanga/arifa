@@ -51,7 +51,7 @@ export default async function ResearchProjectDetails({ params }) {
                   Project Overview
                 </h2>
                 <SafeHtml
-                  className="max-w-none text-base md:text-lg text-ink-soft leading-relaxed [&_p]:mb-5 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-[var(--font-heading)] [&_h4]:text-lg [&_h4]:font-bold [&_h4]:text-ink [&_h4]:mt-8 [&_h4]:mb-3 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-6 [&_ul]:space-y-3 [&_li]:relative [&_li]:pl-7 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-1.5 [&_li]:before:h-1.5 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-ink [&_strong]:font-semibold"
+                  className="max-w-none text-base md:text-lg text-ink-soft leading-relaxed [&_p]:mb-5 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:font-[var(--font-heading)] [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:font-[var(--font-heading)] [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-ink [&_h4]:mt-6 [&_h4]:mb-2 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_li]:leading-relaxed [&_strong]:text-ink [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline [&_img]:rounded-lg [&_img]:my-4 [&_img]:max-w-full [&_blockquote]:border-l-4 [&_blockquote]:border-primary/25 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted"
                   html={data.content}
                 />
               </article>

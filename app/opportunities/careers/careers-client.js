@@ -3,6 +3,12 @@
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import ApplicationModal from "@/app/components/ApplicationModal";
+import SafeHtml from "@/components/ui/safe-html";
+
+/** Detect CMS HTML vs legacy plain-text job details. */
+function looksLikeHtml(value) {
+  return typeof value === "string" && /<\/?[a-z][\s\S]*>/i.test(value);
+}
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -138,9 +144,16 @@ function JobCard({ job, index }) {
                 </h4>
               </div>
               {job.details ? (
-                <div className="text-sm md:text-base text-ink-soft leading-relaxed whitespace-pre-line max-w-3xl">
-                  {job.details}
-                </div>
+                looksLikeHtml(job.details) ? (
+                  <SafeHtml
+                    className="job-details max-w-3xl text-sm md:text-base text-ink-soft leading-relaxed [&_h2]:mt-5 [&_h2]:mb-2 [&_h2]:text-base [&_h2]:font-bold [&_h2]:text-ink [&_h2]:font-[var(--font-heading)] [&_h3]:mt-5 [&_h3]:mb-2 [&_h3]:text-sm [&_h3]:font-bold [&_h3]:uppercase [&_h3]:tracking-[0.06em] [&_h3]:text-primary [&_h4]:mt-4 [&_h4]:mb-1.5 [&_h4]:text-sm [&_h4]:font-semibold [&_h4]:text-ink [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:mb-4 [&_ul]:list-none [&_ul]:space-y-2 [&_ul]:pl-0 [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:relative [&_li]:pl-6 [&_ul>li]:before:absolute [&_ul>li]:before:left-0 [&_ul>li]:before:top-[0.55em] [&_ul>li]:before:h-1.5 [&_ul>li]:before:w-1.5 [&_ul>li]:before:rounded-full [&_ul>li]:before:bg-primary [&_strong]:font-semibold [&_strong]:text-ink [&_a]:font-semibold [&_a]:text-primary [&_a]:underline"
+                    html={job.details}
+                  />
+                ) : (
+                  <div className="max-w-3xl whitespace-pre-line text-sm md:text-base leading-relaxed text-ink-soft">
+                    {job.details}
+                  </div>
+                )
               ) : (
                 <p className="text-sm text-muted">
                   Full role details will be shared during the application

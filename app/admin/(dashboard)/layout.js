@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../../lib/auth";
+import { prisma } from "../../../lib/prisma";
 import AdminShell from "./admin-shell";
 
 export const dynamic = "force-dynamic";
@@ -14,12 +15,18 @@ export default async function AdminLayout({ children }) {
   const session = await auth();
   if (!session?.user?.email) redirect("/admin/login");
 
+  // Prefer DB user so profile name edits show immediately in the shell.
+  const dbUser = await prisma.adminUser.findUnique({
+    where: { email: session.user.email },
+    select: { email: true, name: true, role: true },
+  });
+
   return (
     <AdminShell
       user={{
-        email: session.user.email,
-        name: session.user.name || null,
-        role: session.user.role || "admin",
+        email: dbUser?.email || session.user.email,
+        name: dbUser?.name || session.user.name || null,
+        role: dbUser?.role || session.user.role || "admin",
       }}
     >
       {children}

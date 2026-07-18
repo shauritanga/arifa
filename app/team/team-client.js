@@ -5,6 +5,24 @@ import { useEffect, useRef, useState } from "react";
 
 const FALLBACK_IMAGE = "https://arifa.org/storage/images/user_avatar.png";
 
+/** Plain text bios stay readable; HTML from the rich editor is passed through. */
+function bioToHtml(bio) {
+  const raw = String(bio || "").trim();
+  if (!raw) return "";
+  if (/<[a-z][\s\S]*>/i.test(raw)) return raw;
+  return raw
+    .split(/\n\n+/)
+    .map((p) => {
+      const escaped = p
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\n/g, "<br />");
+      return `<p>${escaped}</p>`;
+    })
+    .join("");
+}
+
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -223,9 +241,12 @@ export default function TeamPage({ team }) {
               <h2 className="mb-4 text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)]">
                 {selectedMember.name}
               </h2>
-              <div className="text-base leading-relaxed text-ink-soft whitespace-pre-line">
-                {selectedMember.bio}
-              </div>
+              <div
+                className="max-w-none text-base leading-relaxed text-ink-soft [&_p]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-ink [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-3 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1 [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline [&_img]:rounded-lg [&_img]:my-3 [&_img]:max-w-full"
+                dangerouslySetInnerHTML={{
+                  __html: bioToHtml(selectedMember.bio),
+                }}
+              />
             </div>
           </div>
         </div>

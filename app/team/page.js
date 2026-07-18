@@ -3,9 +3,10 @@ import TeamPage from "./team-client";
 
 export const dynamic = "force-dynamic";
 
-/** Truncate long bios into a short card blurb when shortBio is missing. */
+/** Strip tags then truncate for card blurb when shortBio is missing. */
 function deriveShortBio(bio, max = 160) {
   const text = String(bio || "")
+    .replace(/<[^>]+>/g, " ")
     .replace(/\s+/g, " ")
     .trim();
   if (!text) return "";

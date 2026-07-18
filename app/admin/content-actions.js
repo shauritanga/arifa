@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "../../lib/prisma";
 import { requireAdmin } from "../../lib/auth";
 import { COLLECTIONS, isCollection } from "../../lib/content";
+import { orderCertificationSections } from "../../lib/html";
 
 /**
  * Public pages read straight from the database, so an edit has to invalidate
@@ -56,15 +57,26 @@ function readFields(collection, formData) {
   for (const field of COLLECTIONS[collection].fields) {
     const raw = String(formData.get(field.key) ?? "").trim();
 
-    if (field.kind === "json") {
+    if (field.kind === "json" || field.kind === "sections") {
       if (!raw) {
         data[field.key] = [];
         continue;
       }
       try {
-        data[field.key] = JSON.parse(raw);
+        const parsed = JSON.parse(raw);
+        let list = Array.isArray(parsed) ? parsed : [];
+        // Public certification page always shows core modules last.
+        if (field.kind === "sections" && collection === "CERTIFICATION") {
+          list = orderCertificationSections(list);
+        }
+        data[field.key] = list;
       } catch {
-        return { error: `${field.label} must be valid JSON.` };
+        return {
+          error:
+            field.kind === "sections"
+              ? `${field.label} could not be saved. Please try again.`
+              : `${field.label} must be valid JSON.`,
+        };
       }
       continue;
     }
@@ -75,6 +87,15 @@ function readFields(collection, formData) {
         return { error: `${field.label} is required.` };
       }
       data[field.key] = lines;
+      continue;
+    }
+
+    if (field.kind === "html") {
+      const textOnly = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      if (field.required && !textOnly) {
+        return { error: `${field.label} is required.` };
+      }
+      data[field.key] = raw;
       continue;
     }
 

@@ -448,6 +448,23 @@ button {
   color: #71717a;
 }
 
+/* TipTap editor chrome */
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #a1a1aa;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.ProseMirror {
+  min-height: 280px;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {

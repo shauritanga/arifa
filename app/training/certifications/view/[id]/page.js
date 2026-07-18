@@ -4,6 +4,11 @@ import Link from "next/link";
 import ApplyButton from "@/app/components/ApplyButton";
 import SafeHtml from "@/components/ui/safe-html";
 import DetailHero from "@/components/ui/detail-hero";
+import {
+  formatCertificateModules,
+  isModulesSection,
+  orderCertificationSections,
+} from "@/lib/html";
 
 export const dynamic = "force-dynamic";
 
@@ -22,13 +27,14 @@ export default async function CertificationDetails({ params }) {
     notFound();
   }
 
-  const modulesSection = data.sections?.find((section) =>
-    section.heading.toLowerCase().includes("module"),
+  // Same order as admin: overview…assessment first, core modules always last.
+  const orderedSections = orderCertificationSections(data.sections || []);
+  const modulesSection = orderedSections.find((section) =>
+    isModulesSection(section),
   );
-  const otherSections =
-    data.sections?.filter(
-      (section) => !section.heading.toLowerCase().includes("module"),
-    ) || [];
+  const otherSections = orderedSections.filter(
+    (section) => !isModulesSection(section),
+  );
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -149,7 +155,7 @@ export default async function CertificationDetails({ params }) {
             </div>
             <SafeHtml
               className="modules-container space-y-6 [&>.module]:bg-primary/5 [&>.module]:rounded-xl [&>.module]:p-8 [&>.module]:border [&>.module]:border-line [&>.module]:transition-all hover:[&>.module]:border-primary/30 hover:[&>.module]:shadow-md [&>.module_h6]:text-2xl [&>.module_h6]:font-bold [&>.module_h6]:text-black [&>.module_h6]:mb-4 [&>.module_h6]:font-[var(--font-heading)] [&>.module_ul]:list-none [&>.module_ul]:pl-0 [&>.module_ul]:space-y-3 [&>.module_ul_li]:relative [&>.module_ul_li]:pl-8 [&>.module_ul_li]:text-muted [&>.module_ul_li]:text-lg [&>.module_ul_li::before]:content-['✓'] [&>.module_ul_li::before]:font-bold [&>.module_ul_li::before]:absolute [&>.module_ul_li::before]:left-0 [&>.module_ul_li::before]:text-secondary [&>.module_ul_li_strong]:text-black [&>.module_ul_li_strong]:bg-white [&>.module_ul_li_strong]:px-2 [&>.module_ul_li_strong]:py-0.5 [&>.module_ul_li_strong]:rounded-md [&>.module_ul_li_strong]:shadow-sm [&>.module_ul_li_strong]:border [&>.module_ul_li_strong]:border-line"
-              html={modulesSection.content || ""}
+              html={formatCertificateModules(modulesSection.content || "")}
             />
           </div>
         </section>
