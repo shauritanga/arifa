@@ -21,16 +21,16 @@ export default function SponsorMarquee({ sponsors = [] }) {
         Trusted by Leading Organizations
       </h3>
       <div className="relative flex overflow-x-hidden w-full max-w-[1200px] group">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-14 px-6 group-hover:[animation-play-state:paused] w-max">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-16 px-6 group-hover:[animation-play-state:paused] w-max">
           {track.map((sponsor, i) => {
             const logo = (
-              <div className="flex items-center justify-center w-[140px] flex-shrink-0 opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+              <div className="flex items-center justify-center w-[180px] flex-shrink-0 opacity-95 transition-opacity duration-300 hover:opacity-100">
                 <Image
                   src={sponsor.logo}
                   alt={sponsor.name}
-                  width={140}
-                  height={52}
-                  className="object-contain max-h-[48px]"
+                  width={180}
+                  height={72}
+                  className="object-contain max-h-[68px] w-auto"
                 />
               </div>
             );

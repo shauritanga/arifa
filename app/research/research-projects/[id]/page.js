@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { getBySlug } from "@/lib/content";
 import SafeHtml from "@/components/ui/safe-html";
 import DetailHero from "@/components/ui/detail-hero";
@@ -134,14 +133,6 @@ export default async function ResearchProjectDetails({ params }) {
                     </button>
                   </div>
                 </div>
-
-                <Link
-                  href="/research/research-projects"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark"
-                >
-                  <i className="fas fa-arrow-left text-xs" />
-                  All research projects
-                </Link>
               </div>
             </aside>
           </div>
