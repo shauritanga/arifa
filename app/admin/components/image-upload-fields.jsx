@@ -35,11 +35,19 @@ export function CoverImageField({
   folder = "general",
   label = "Cover image",
   hint,
+  /** Optional: "cover" (default) or "avatar" (circular crop preview). */
+  variant = "cover",
+  onChange,
 }) {
   const inputRef = useRef(null);
   const [url, setUrl] = useState(value || "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+
+  const setAndNotify = (next) => {
+    setUrl(next);
+    onChange?.(next);
+  };
 
   const onPick = async (e) => {
     const file = e.target.files?.[0];
@@ -49,13 +57,15 @@ export function CoverImageField({
     setBusy(true);
     try {
       const [uploaded] = await uploadFiles([file], folder);
-      if (uploaded) setUrl(uploaded);
+      if (uploaded) setAndNotify(uploaded);
     } catch (err) {
       setError(err.message || "Upload failed.");
     } finally {
       setBusy(false);
     }
   };
+
+  const isAvatar = variant === "avatar";
 
   return (
     <div>
@@ -66,13 +76,19 @@ export function CoverImageField({
       <input type="hidden" name={name} value={url} />
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-        <div className="relative h-32 w-full shrink-0 overflow-hidden rounded-xl border border-black/10 bg-black/[0.03] sm:h-28 sm:w-40">
+        <div
+          className={`relative shrink-0 overflow-hidden border border-black/10 bg-black/[0.03] ${
+            isAvatar
+              ? "h-28 w-28 rounded-full"
+              : "h-32 w-full rounded-xl sm:h-28 sm:w-40"
+          }`}
+        >
           {url ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={url} alt="" className="h-full w-full object-cover" />
           ) : (
             <div className="flex h-full items-center justify-center text-xs text-black/35">
-              No image
+              {isAvatar ? <i className="fas fa-user text-2xl text-black/20" /> : "No image"}
             </div>
           )}
         </div>
@@ -86,7 +102,15 @@ export function CoverImageField({
           >
             <i className="fas fa-cloud-upload-alt mb-1 text-lg text-black/40" />
             <span className="text-sm font-semibold text-black">
-              {busy ? "Uploading…" : url ? "Replace image" : "Upload from device"}
+              {busy
+                ? "Uploading…"
+                : url
+                  ? isAvatar
+                    ? "Replace photo"
+                    : "Replace image"
+                  : isAvatar
+                    ? "Upload photo"
+                    : "Upload from device"}
             </span>
             <span className="mt-0.5 text-xs text-black/45">
               JPEG, PNG, WebP · max 5MB
@@ -103,10 +127,10 @@ export function CoverImageField({
           {url && (
             <button
               type="button"
-              onClick={() => setUrl("")}
+              onClick={() => setAndNotify("")}
               className="text-xs font-semibold text-red-600 hover:underline"
             >
-              Remove image
+              {isAvatar ? "Remove photo" : "Remove image"}
             </button>
           )}
         </div>

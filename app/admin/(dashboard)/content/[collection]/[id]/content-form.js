@@ -20,6 +20,7 @@ const FOLDER_BY_COLLECTION = {
   CERTIFICATION: "training",
   COURSE: "training",
   MASTERCLASS: "training",
+  JOB: "careers",
 };
 
 export default function ContentForm({ collection, spec, item }) {

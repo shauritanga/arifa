@@ -165,6 +165,8 @@ model AdminUser {
   id           String   @id @default(cuid())
   email        String   @unique
   name         String?
+  /// Optional profile photo (public URL under /uploads/…).
+  image        String?
   passwordHash String
   role         String   @default("admin") // admin | viewer
   createdAt    DateTime @default(now())

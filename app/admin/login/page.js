@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
@@ -34,8 +35,15 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-primary/5 px-6 py-24">
       <div className="w-full max-w-sm rounded-2xl border border-black/10 bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
         <div className="mb-8 text-center">
-          <div className="text-sm font-bold uppercase tracking-[0.2em] text-primary">
-            ARIFA
+          <div className="mb-4 flex justify-center">
+            <Image
+              src="/images/arifa-logo-dark.png"
+              alt="ARIFA"
+              width={140}
+              height={48}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </div>
           <h1 className="mt-2 text-2xl font-extrabold text-black font-[var(--font-heading)]">
             Admin Dashboard

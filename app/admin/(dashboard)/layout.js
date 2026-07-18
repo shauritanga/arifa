@@ -15,10 +15,10 @@ export default async function AdminLayout({ children }) {
   const session = await auth();
   if (!session?.user?.email) redirect("/admin/login");
 
-  // Prefer DB user so profile name edits show immediately in the shell.
+  // Prefer DB user so profile name/photo edits show immediately in the shell.
   const dbUser = await prisma.adminUser.findUnique({
     where: { email: session.user.email },
-    select: { email: true, name: true, role: true },
+    select: { email: true, name: true, image: true, role: true },
   });
 
   return (
@@ -26,6 +26,7 @@ export default async function AdminLayout({ children }) {
       user={{
         email: dbUser?.email || session.user.email,
         name: dbUser?.name || session.user.name || null,
+        image: dbUser?.image || null,
         role: dbUser?.role || session.user.role || "admin",
       }}
     >

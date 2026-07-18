@@ -20,6 +20,7 @@ export default async function ProfilePage() {
         id: user.id,
         email: user.email,
         name: user.name || "",
+        image: user.image || "",
         role: user.role || "admin",
         createdAt: user.createdAt.toISOString(),
       }}

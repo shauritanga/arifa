@@ -117,7 +117,7 @@ export async function changePassword(formData) {
   return { ok: true };
 }
 
-/** Update the signed-in admin's display name (and optional email). */
+/** Update the signed-in admin's display name, photo, and optional email. */
 export async function updateProfile(formData) {
   const me = await requireAdmin();
 
@@ -125,12 +125,19 @@ export async function updateProfile(formData) {
   const email = String(formData.get("email") || "")
     .toLowerCase()
     .trim();
+  // Empty string clears the photo; missing field leaves it unchanged.
+  const hasImageField = formData.has("image");
+  const imageRaw = String(formData.get("image") || "").trim();
+  const image = imageRaw || null;
 
   if (!name) {
     return { ok: false, error: "Display name is required." };
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { ok: false, error: "Enter a valid email address." };
+  }
+  if (image && !image.startsWith("/") && !/^https?:\/\//i.test(image)) {
+    return { ok: false, error: "Profile picture path looks invalid." };
   }
 
   const user = await prisma.adminUser.findUnique({ where: { email: me.email } });
@@ -143,7 +150,11 @@ export async function updateProfile(formData) {
 
   await prisma.adminUser.update({
     where: { id: user.id },
-    data: { name, email },
+    data: {
+      name,
+      email,
+      ...(hasImageField ? { image } : {}),
+    },
   });
 
   revalidatePath("/admin/profile");

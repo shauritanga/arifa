@@ -1,9 +1,29 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
+
+/** Black logo for light UI; white logo for dark UI. */
+const LOGO_LIGHT = "/images/arifa-logo-dark.png";
+const LOGO_DARK = "/images/arifa-logo-light.png";
+
+function AdminLogo({ dark, compact = false, className = "" }) {
+  return (
+    <Image
+      src={dark ? LOGO_DARK : LOGO_LIGHT}
+      alt="ARIFA"
+      width={compact ? 36 : 120}
+      height={compact ? 20 : 36}
+      className={`object-contain object-left ${
+        compact ? "h-8 w-auto max-w-[2.25rem]" : "h-8 w-auto max-w-[7.5rem]"
+      } ${className}`}
+      priority
+    />
+  );
+}
 
 const NAV = [
   { href: "/admin", label: "Overview", icon: "fa-chart-line" },
@@ -179,16 +199,12 @@ export default function AdminShell({ user, children }) {
             collapsed ? "justify-center" : "justify-between gap-2 px-4"
           }`}
         >
-          <Link href="/admin" className="flex min-w-0 items-center gap-2.5">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
-              A
-            </span>
-            {!collapsed && (
-              <span className="truncate font-bold tracking-tight">
-                ARIFA{" "}
-                <span className={`font-medium ${muted}`}>Admin</span>
-              </span>
-            )}
+          <Link
+            href="/admin"
+            className="flex min-w-0 items-center"
+            title="ARIFA Admin"
+          >
+            <AdminLogo dark={dark} compact={collapsed} />
           </Link>
           {!collapsed && (
             <button
@@ -247,13 +263,11 @@ export default function AdminShell({ user, children }) {
         >
           <Link
             href="/admin"
-            className="flex items-center gap-2.5 font-bold"
+            className="flex min-w-0 items-center"
             onClick={() => setMobileOpen(false)}
+            title="ARIFA Admin"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
-              A
-            </span>
-            ARIFA Admin
+            <AdminLogo dark={dark} />
           </Link>
           <button
             type="button"
@@ -332,9 +346,18 @@ export default function AdminShell({ user, children }) {
                 aria-expanded={menuOpen}
                 aria-haspopup="menu"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-white ring-2 ring-primary/20">
-                  {initials}
-                </span>
+                {user?.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={user.image}
+                    alt=""
+                    className="h-9 w-9 rounded-full object-cover ring-2 ring-primary/20"
+                  />
+                ) : (
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-white ring-2 ring-primary/20">
+                    {initials}
+                  </span>
+                )}
                 <span className="hidden max-w-[9rem] flex-col items-start sm:flex">
                   <span className="truncate text-sm font-semibold leading-tight">
                     {displayName}

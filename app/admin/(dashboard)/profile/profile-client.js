@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { changePassword, updateProfile } from "../../actions";
+import { CoverImageField } from "../../components/image-upload-fields";
 
 const INPUT =
   "w-full rounded-lg border border-black/10 px-3 py-2 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
@@ -20,30 +21,37 @@ export default function ProfileClient({ user }) {
   const [passPending, startPass] = useTransition();
   const [profileResult, setProfileResult] = useState(null);
   const [passResult, setPassResult] = useState(null);
+  // Live preview after upload / remove before save.
+  const [previewImage, setPreviewImage] = useState(user.image || "");
 
   const onProfile = (formData) => {
     setProfileResult(null);
     startProfile(async () => {
-      setProfileResult(await updateProfile(formData));
+      const res = await updateProfile(formData);
+      setProfileResult(res);
+      if (res.ok) {
+        const next = String(formData.get("image") || "").trim();
+        setPreviewImage(next);
+      }
     });
   };
 
   const onPassword = (formData) => {
     setPassResult(null);
     startPass(async () => {
-      const res = await changePassword(formData);
-      setPassResult(res);
-      if (res.ok) {
-        // clear password fields by remounting form via key is overkill; leave message
-      }
+      setPassResult(await changePassword(formData));
     });
   };
 
-  const created = new Date(user.createdAt).toLocaleDateString(undefined, {
+  // Fixed locale so SSR and the browser always match (avoids hydration mismatch).
+  const created = new Date(user.createdAt).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "UTC",
   });
+
+  const showImage = previewImage || user.image;
 
   return (
     <div>
@@ -61,9 +69,18 @@ export default function ProfileClient({ user }) {
 
       {/* Identity card */}
       <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-black/10 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:p-6">
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-white shadow-md shadow-primary/25">
-          {initials(user.name, user.email)}
-        </div>
+        {showImage ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={showImage}
+            alt=""
+            className="h-16 w-16 shrink-0 rounded-2xl object-cover shadow-md shadow-primary/15 ring-2 ring-primary/15"
+          />
+        ) : (
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-white shadow-md shadow-primary/25">
+            {initials(user.name, user.email)}
+          </div>
+        )}
         <div className="min-w-0 flex-1">
           <h2 className="truncate text-base font-bold text-black">
             {user.name || "Unnamed admin"}
@@ -110,6 +127,18 @@ export default function ProfileClient({ user }) {
                   : profileResult.error}
               </div>
             )}
+
+            <div>
+              <CoverImageField
+                name="image"
+                value={user.image || ""}
+                folder="profiles"
+                variant="avatar"
+                label="Profile picture"
+                hint="Shown in the top bar and on this page. Click Save profile after uploading."
+                onChange={(url) => setPreviewImage(url || "")}
+              />
+            </div>
 
             <label className="block">
               <span className="mb-1.5 block text-[0.7rem] font-semibold uppercase tracking-wide text-black/70">

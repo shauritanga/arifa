@@ -50,10 +50,20 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
   );
 }
 
+/** Fallback images when a job has no uploaded cover (cycles by index). */
+const JOB_IMAGE_FALLBACKS = [
+  "/who-we-are-office.png",
+  "/about-img.png",
+  "/program-training.png",
+];
+
 function JobCard({ job, index }) {
   const [open, setOpen] = useState(false);
   const [applyOpen, setApplyOpen] = useState(false);
   const panelId = useId();
+
+  const imageSrc =
+    job.image || JOB_IMAGE_FALLBACKS[index % JOB_IMAGE_FALLBACKS.length];
 
   const meta = [
     job.department && { icon: "fas fa-building", label: job.department },
@@ -64,71 +74,90 @@ function JobCard({ job, index }) {
   return (
     <RevealOnScroll delay={index * 80}>
       <article
-        className={`rounded-xl border bg-white transition-all duration-300 ${
+        className={`overflow-hidden rounded-xl border bg-white transition-all duration-300 ${
           open
             ? "border-primary/25 shadow-[0_16px_40px_rgba(15,20,25,0.08)]"
             : "border-line shadow-[0_1px_2px_rgba(15,20,25,0.04)] hover:border-primary/20 hover:shadow-[0_12px_32px_rgba(15,20,25,0.06)]"
         }`}
       >
-        <div className="p-6 md:p-8">
-          {/* Meta chips */}
-          {meta.length > 0 && (
-            <div className="mb-4 flex flex-wrap items-center gap-2">
-              {meta.map((item) => (
-                <span
-                  key={item.label}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-alt px-2.5 py-1 text-xs font-medium text-muted"
+        {/* Image left · content right (stacks on small screens) */}
+        <div className="flex flex-col sm:flex-row">
+          <div className="relative h-44 w-full shrink-0 overflow-hidden bg-surface-alt sm:h-auto sm:w-[220px] md:w-[260px]">
+            <Image
+              src={imageSrc}
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 640px) 100vw, 260px"
+              aria-hidden="true"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/25 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-night/5" />
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <div className="p-6 md:p-8">
+              {/* Meta chips */}
+              {meta.length > 0 && (
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                  {meta.map((item) => (
+                    <span
+                      key={item.label}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-alt px-2.5 py-1 text-xs font-medium text-muted"
+                    >
+                      <i
+                        className={`${item.icon} text-[0.65rem] text-secondary`}
+                      />
+                      {item.label}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Title */}
+              <h3 className="text-xl md:text-2xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em] leading-snug">
+                {job.title}
+              </h3>
+
+              {/* Short description */}
+              {job.shortDesc ? (
+                <p className="mt-3 text-sm md:text-base text-muted leading-relaxed max-w-3xl">
+                  {job.shortDesc}
+                </p>
+              ) : null}
+
+              {/* Actions — left-aligned; top Apply only when collapsed */}
+              <div className="mt-6 flex flex-wrap items-center justify-start gap-3">
+                <button
+                  type="button"
+                  onClick={() => setOpen((v) => !v)}
+                  aria-expanded={open}
+                  aria-controls={panelId}
+                  className="inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/30 hover:bg-surface-alt focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/15"
                 >
-                  <i className={`${item.icon} text-[0.65rem] text-secondary`} />
-                  {item.label}
-                </span>
-              ))}
+                  {open ? "Hide details" : "View more"}
+                  <i
+                    className={`fas fa-chevron-down text-[0.65em] text-muted transition-transform duration-300 ${
+                      open ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {!open && (
+                  <button
+                    type="button"
+                    onClick={() => setApplyOpen(true)}
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-light focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
+                  >
+                    Apply now
+                    <i className="fas fa-arrow-right text-[0.7em] opacity-90" />
+                  </button>
+                )}
+              </div>
             </div>
-          )}
-
-          {/* Title */}
-          <h3 className="text-xl md:text-2xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em] leading-snug">
-            {job.title}
-          </h3>
-
-          {/* Short description */}
-          {job.shortDesc ? (
-            <p className="mt-3 text-sm md:text-base text-muted leading-relaxed max-w-3xl">
-              {job.shortDesc}
-            </p>
-          ) : null}
-
-          {/* Actions — left-aligned; top Apply only when collapsed */}
-          <div className="mt-6 flex flex-wrap items-center justify-start gap-3">
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              aria-controls={panelId}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink/30 hover:bg-surface-alt focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/15"
-            >
-              {open ? "Hide details" : "View more"}
-              <i
-                className={`fas fa-chevron-down text-[0.65em] text-muted transition-transform duration-300 ${
-                  open ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {!open && (
-              <button
-                type="button"
-                onClick={() => setApplyOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-light focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
-              >
-                Apply now
-                <i className="fas fa-arrow-right text-[0.7em] opacity-90" />
-              </button>
-            )}
           </div>
         </div>
 
-        {/* Expandable details — same card, separated by a line */}
+        {/* Expandable details — full width under the image+summary row */}
         <div
           id={panelId}
           className={`grid transition-[grid-template-rows] duration-300 ease-out ${
@@ -136,7 +165,7 @@ function JobCard({ job, index }) {
           }`}
         >
           <div className="overflow-hidden">
-            <div className="border-t border-line px-6 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6">
+            <div className="border-t border-line px-6 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6 sm:pl-[calc(220px+1.5rem)] md:pl-[calc(260px+2rem)]">
               <div className="mb-3 flex items-center gap-2">
                 <span className="h-px w-6 bg-primary" />
                 <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">
@@ -179,7 +208,7 @@ function JobCard({ job, index }) {
         isOpen={applyOpen}
         onClose={() => setApplyOpen(false)}
         courseTitle={job.title}
-        courseImage="/hero-bg.png"
+        courseImage={imageSrc}
       />
     </RevealOnScroll>
   );
@@ -216,7 +245,7 @@ export default function Careers({ jobs }) {
       </section>
 
       <section className="py-20 md:py-24 bg-canvas min-h-[50vh]">
-        <div className="max-w-[800px] mx-auto px-6">
+        <div className="max-w-[960px] mx-auto px-6">
           <div className="mb-12 max-w-[36rem]">
             <span className="institute-eyebrow mb-3">Open positions</span>
             <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em] mb-3">
