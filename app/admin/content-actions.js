@@ -12,7 +12,7 @@ import { orderCertificationSections } from "../../lib/html";
  */
 const PUBLIC_PATHS = {
   RESEARCH_PROJECT: ["/research/research-projects"],
-  TEAM_MEMBER: ["/team"],
+  TEAM_MEMBER: ["/", "/team"],
   CERTIFICATION: ["/training/certifications"],
   PUBLICATION: ["/publications"],
   COURSE: ["/training/short-courses"],

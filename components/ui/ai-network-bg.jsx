@@ -13,6 +13,8 @@ export function AiNetworkBg({
   lineColor = "139, 0, 0",
   accentColor = "13, 122, 66",
   opacity = 0.72,
+  /** "light" fades toward white (default). "dark" fades toward the parent bg. */
+  tone = "light",
 }) {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
@@ -197,7 +199,13 @@ export function AiNetworkBg({
     >
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
       {/* Soft edge fade so cards stay primary */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(255,255,255,0.38)_100%)]" />
+      <div
+        className={`absolute inset-0 ${
+          tone === "dark"
+            ? "bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.35)_100%)]"
+            : "bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(255,255,255,0.38)_100%)]"
+        }`}
+      />
     </div>
   );
 }
