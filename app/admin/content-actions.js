@@ -18,6 +18,7 @@ const PUBLIC_PATHS = {
   COURSE: ["/training/short-courses"],
   JOB: ["/opportunities/careers"],
   EVENT: ["/events", "/events/engagements"],
+  SPONSOR: ["/", "/industry/levels-of-engagement-and-support"],
 };
 
 function revalidateFor(collection, slug) {
@@ -132,6 +133,12 @@ export async function saveContentItem(collection, id, formData) {
   // Cover falls back to first gallery image so listings always have a photo.
   if (!image && Array.isArray(data.images) && data.images[0]) {
     image = data.images[0];
+  }
+  if (spec.imageRequired && !image) {
+    return {
+      ok: false,
+      error: `${spec.imageLabel ?? "Image"} is required.`,
+    };
   }
   // Prefer free-text custom group when the form sent both (category + custom).
   const groupCustom = String(formData.get("groupCustom") ?? "").trim();

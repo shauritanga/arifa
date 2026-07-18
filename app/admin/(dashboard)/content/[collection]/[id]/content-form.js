@@ -21,6 +21,7 @@ const FOLDER_BY_COLLECTION = {
   COURSE: "training",
   MASTERCLASS: "training",
   JOB: "careers",
+  SPONSOR: "sponsors",
 };
 
 export default function ContentForm({ collection, spec, item }) {
@@ -186,8 +187,12 @@ export default function ContentForm({ collection, spec, item }) {
             <section className="rounded-2xl border border-black/10 bg-white p-5 shadow-sm sm:p-6">
               <SectionTitle
                 icon="fa-images"
-                title="Media"
-                desc="Cover and gallery images."
+                title={collection === "SPONSOR" ? "Logo" : "Media"}
+                desc={
+                  collection === "SPONSOR"
+                    ? "Partner logo shown in the public marquee."
+                    : "Cover and gallery images."
+                }
               />
               <div className="mt-5 space-y-6">
                 {spec.hasImage && (
@@ -201,7 +206,10 @@ export default function ContentForm({ collection, spec, item }) {
                         ? "Avatar / photo"
                         : "Cover image")
                     }
-                    hint={spec.imageHint || "Upload an image from your device."}
+                    hint={
+                      (spec.imageHint || "Upload an image from your device.") +
+                      (spec.imageRequired ? " Required." : "")
+                    }
                   />
                 )}
                 {mediaFields.map((field) => (

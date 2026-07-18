@@ -45,6 +45,11 @@ const META = {
     color: "bg-primary/10 text-primary",
     desc: "Events, news, and engagements with galleries.",
   },
+  SPONSOR: {
+    icon: "fa-handshake",
+    color: "bg-teal-500/10 text-teal-700",
+    desc: "Partner logos in the site marquee — add without the public form.",
+  },
 };
 
 export default async function ContentIndexPage() {

@@ -2411,5 +2411,105 @@
     },
     "position": 9,
     "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "agripoa",
+    "title": "Agripoa",
+    "image": "/images/sponsors-logos/agripoa-logo.png",
+    "group": null,
+    "data": {},
+    "position": 0,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "costech",
+    "title": "COSTECH",
+    "image": "/images/sponsors-logos/costech-logo.png",
+    "group": null,
+    "data": {},
+    "position": 1,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "ict-commission",
+    "title": "ICT Commission",
+    "image": "/images/sponsors-logos/ict-logo.png",
+    "group": null,
+    "data": {},
+    "position": 2,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "jamhuri",
+    "title": "Jamhuri",
+    "image": "/images/sponsors-logos/jamhuri-logo.png",
+    "group": null,
+    "data": {},
+    "position": 3,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "tahia",
+    "title": "TAHIA",
+    "image": "/images/sponsors-logos/tahia-logo.png",
+    "group": null,
+    "data": {},
+    "position": 4,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "tcra",
+    "title": "TCRA",
+    "image": "/images/sponsors-logos/tcra-logo.png",
+    "group": null,
+    "data": {},
+    "position": 5,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "ttcl",
+    "title": "TTCL",
+    "image": "/images/sponsors-logos/ttcl-logo.png",
+    "group": null,
+    "data": {},
+    "position": 6,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "university-of-dodoma",
+    "title": "University of Dodoma",
+    "image": "/images/sponsors-logos/udom-logo.png",
+    "group": null,
+    "data": {},
+    "position": 7,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "usaid",
+    "title": "USAID",
+    "image": "/images/sponsors-logos/usaid-logo.png",
+    "group": null,
+    "data": {},
+    "position": 8,
+    "published": true
+  },
+  {
+    "collection": "SPONSOR",
+    "slug": "world-vision",
+    "title": "World Vision",
+    "image": "/images/sponsors-logos/wv-logo.svg",
+    "group": null,
+    "data": {},
+    "position": 9,
+    "published": true
   }
 ]

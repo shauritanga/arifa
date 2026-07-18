@@ -168,7 +168,7 @@ const programs = [
   },
 ];
 
-export default function HomeClient({ boardMembers = [] }) {
+export default function HomeClient({ boardMembers = [], sponsors = [] }) {
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
   const [selectedMember, setSelectedMember] = useState(null);
 
@@ -718,7 +718,7 @@ export default function HomeClient({ boardMembers = [] }) {
         </div>
       </section>
 
-      <SponsorMarquee />
+      <SponsorMarquee sponsors={sponsors} />
 
       {selectedMember && (
         <div

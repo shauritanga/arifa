@@ -1,4 +1,4 @@
-import { getGrouped } from "@/lib/content";
+import { getCollection, getGrouped } from "@/lib/content";
 import HomeClient from "./home-client";
 
 export const dynamic = "force-dynamic";
@@ -23,8 +23,21 @@ function hasPortrait(image) {
   return !/user_avatar/i.test(src);
 }
 
+function mapSponsors(items) {
+  return items
+    .filter((s) => s.image)
+    .map((s) => ({
+      name: s.title,
+      logo: s.image,
+      url: s.url || "",
+    }));
+}
+
 export default async function Home() {
-  const grouped = await getGrouped("TEAM_MEMBER");
+  const [grouped, sponsorItems] = await Promise.all([
+    getGrouped("TEAM_MEMBER"),
+    getCollection("SPONSOR"),
+  ]);
   const board = grouped.get("Board of Directors") ?? [];
 
   // Spotlight a few directors on the homepage; full list lives on /team.
@@ -40,5 +53,10 @@ export default async function Home() {
     image: m.image || "",
   }));
 
-  return <HomeClient boardMembers={boardMembers} />;
+  return (
+    <HomeClient
+      boardMembers={boardMembers}
+      sponsors={mapSponsors(sponsorItems)}
+    />
+  );
 }

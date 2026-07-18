@@ -15,6 +15,8 @@ const ALLOWED = new Map([
   ["image/webp", "webp"],
   ["image/gif", "gif"],
   ["image/avif", "avif"],
+  // Logos often ship as SVG.
+  ["image/svg+xml", "svg"],
 ]);
 
 const FOLDERS = new Set([
@@ -23,6 +25,7 @@ const FOLDERS = new Set([
   "research",
   "training",
   "careers",
+  "sponsors",
   "general",
 ]);
 
