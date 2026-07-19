@@ -96,7 +96,7 @@ function TeamCard({ member, index, onSelect }) {
 
         {/* Short description */}
         {member.shortBio ? (
-          <p className="mt-3 w-full line-clamp-3 flex-grow text-sm leading-relaxed text-muted text-justify">
+          <p className="mt-3 line-clamp-3 flex-grow text-sm leading-relaxed text-muted">
             {member.shortBio}
           </p>
         ) : (
