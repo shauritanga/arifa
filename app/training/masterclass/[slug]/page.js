@@ -9,9 +9,9 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const session = await getSession(slug);
-  if (!session) return { title: "Master Class | ARIFA" };
+  if (!session) return { title: "Masterclass | ARIFA" };
   return {
-    title: `${session.title} Master Class | ARIFA`,
+    title: `${session.title} Masterclass | ARIFA`,
     description: session.desc,
   };
 }
@@ -42,7 +42,7 @@ export default async function MasterclassSessionPage({ params }) {
           href="/training/masterclass"
           className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-primary"
         >
-          <i className="fas fa-arrow-left text-xs" /> All Master Class cities
+          <i className="fas fa-arrow-left text-xs" /> All Masterclass cities
         </Link>
 
         <div className="text-xs font-bold uppercase tracking-[2px] text-primary">
@@ -58,7 +58,7 @@ export default async function MasterclassSessionPage({ params }) {
               <div className="relative h-[260px] w-full overflow-hidden rounded-xl">
                 <Image
                   src={session.image}
-                  alt={`AI Master Class in ${session.title}, ${session.country}`}
+                  alt={`AI Masterclass in ${session.title}, ${session.country}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 520px"
                   className="object-cover"

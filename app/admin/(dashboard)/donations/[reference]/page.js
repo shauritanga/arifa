@@ -11,7 +11,7 @@ const TZS = new Intl.NumberFormat("en-TZ");
 const TYPE_LABELS = {
   DONATION: "Donation",
   SPONSORSHIP: "Sponsorship",
-  TRAINING: "Master Class",
+  TRAINING: "Masterclass",
 };
 
 export default async function DonationDetailPage({ params }) {

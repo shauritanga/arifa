@@ -23,7 +23,7 @@ const META = {
   MASTERCLASS: {
     icon: "fa-chalkboard-user",
     color: "bg-rose-500/10 text-rose-700",
-    desc: "Master Class cities, dates, and fees.",
+    desc: "Masterclass cities, dates, and fees.",
   },
   PUBLICATION: {
     icon: "fa-book",

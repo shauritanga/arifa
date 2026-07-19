@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 const MAX_EMAIL = 50;
 
 /**
- * Register (and pay) for a Master Class seat.
+ * Register (and pay) for a Masterclass seat.
  *
  * The price is NOT taken from the request: the browser only says which city, and
  * the fee is read from that session's record. A registrant therefore cannot pick
@@ -37,7 +37,7 @@ export async function POST(request) {
 
   const session = await getSession(text(body?.slug, 80));
   if (!session) {
-    return Response.json({ error: "Unknown Master Class session." }, { status: 404 });
+    return Response.json({ error: "Unknown Masterclass session." }, { status: 404 });
   }
 
   const amount = feeInShillings(session);

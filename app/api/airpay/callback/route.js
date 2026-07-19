@@ -61,7 +61,7 @@ export async function GET(request) {
 
 /**
  * Airpay returns every payer to this one registered URL, so the landing page is
- * chosen here: a Master Class registrant is following a training journey and
+ * chosen here: a Masterclass registrant is following a training journey and
  * should not be dropped on the donation status page.
  */
 function statusUrl(donation) {

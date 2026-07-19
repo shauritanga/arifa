@@ -8,7 +8,7 @@ const TZS = new Intl.NumberFormat("en-TZ");
 const TYPE_LABELS = {
   DONATION: "Donation",
   SPONSORSHIP: "Sponsorship",
-  TRAINING: "Master Class",
+  TRAINING: "Masterclass",
 };
 const STATUSES = ["ALL", "PAID", "PROCESSING", "PENDING", "FAILED", "CANCELLED"];
 const PAGE_SIZE = 25;

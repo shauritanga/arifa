@@ -151,7 +151,7 @@ function RegisterModal({ session, onClose }) {
       className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/60 p-4 py-10 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
-      aria-label={`Register for ${session.title} Master Class`}
+      aria-label={`Register for ${session.title} Masterclass`}
       onClick={onClose}
     >
       <div
@@ -202,7 +202,7 @@ export default function Masterclass({ sessions }) {
         <div className="absolute inset-0 z-0">
           <Image
             src="/program-training.png"
-            alt="Executive AI Master Class Background"
+            alt="Executive AI Masterclass Background"
             fill
             className="object-cover object-center opacity-30 grayscale-[0.2]"
             priority
@@ -284,10 +284,10 @@ export default function Masterclass({ sessions }) {
       <section className="py-20 bg-white min-h-[60vh]">
         <div className="max-w-[1200px] mx-auto px-6">
           <h2 className="relative inline-block text-2xl font-bold text-ink font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
-            2026 Master Class Tour — Select Your City
+            2026 Masterclass Tour — Select Your City
           </h2>
           <p className="mt-8 max-w-[780px] text-lg text-[#4a627a] text-left">
-            Join a premier session near you. Each master class includes local
+            Join a premier session near you. Each Masterclass includes local
             case studies, global frameworks, and an executive certificate.
           </p>
 
@@ -303,7 +303,7 @@ export default function Masterclass({ sessions }) {
                     {session.image ? (
                       <Image
                         src={session.image}
-                        alt={`AI Master Class in ${session.title}, ${session.country}`}
+                        alt={`AI Masterclass in ${session.title}, ${session.country}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 380px"
                         className="object-cover"

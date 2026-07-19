@@ -90,7 +90,7 @@ export default function RegisterForm({ slug, city, fee }) {
 
       <div>
         <label htmlFor="motivation" className={LABEL}>
-          Why do you want to attend this master class?{" "}
+          Why do you want to attend this Masterclass?{" "}
           <span className="text-primary">*</span>
         </label>
         <textarea

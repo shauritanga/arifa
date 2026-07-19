@@ -14,7 +14,7 @@ const MAX_EMAIL = 50;
  * The price is NOT taken from the request: the browser only says which course,
  * and the fee is read from that course's record. An enrollee therefore cannot
  * pick what they pay. Returns the Airpay checkout form for the browser to POST,
- * exactly like the Master Class route — settlement, retries and the status page
+ * exactly like the Masterclass route — settlement, retries and the status page
  * are then the shared donation lifecycle.
  */
 export async function POST(request) {

@@ -5,7 +5,7 @@ import Masterclass from "./masterclass-client";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Executive AI Master Class | ARIFA",
+  title: "Executive AI Masterclass | ARIFA",
   description:
     "A premier executive training for CEOs, government leaders, board members and senior decision-makers, running across ten African cities in 2026.",
 };

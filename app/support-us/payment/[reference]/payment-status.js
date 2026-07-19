@@ -162,7 +162,7 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
           href={kind === "training" ? "/training/masterclass" : "/support-us#pledge-form"}
           className="inline-flex justify-center rounded-xl border border-primary px-6 py-3 font-bold text-primary"
         >
-          {kind === "training" ? "Back to Master Class" : "Make Another Gift"}
+          {kind === "training" ? "Back to Masterclass" : "Make Another Gift"}
         </Link>
         <Link
           href="/contact-us"
