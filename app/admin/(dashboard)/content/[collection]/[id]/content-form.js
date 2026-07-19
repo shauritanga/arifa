@@ -22,6 +22,7 @@ const FOLDER_BY_COLLECTION = {
   MASTERCLASS: "training",
   JOB: "careers",
   SPONSOR: "sponsors",
+  PUBLICATION: "publications",
 };
 
 export default function ContentForm({ collection, spec, item }) {

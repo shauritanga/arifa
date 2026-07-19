@@ -1245,11 +1245,12 @@
     "slug": "adapting-large-language-models-for-low-resource-african-lang",
     "title": "Adapting Large Language Models for Low-Resource African Languages: A Case Study in Kiswahili",
     "image": null,
-    "group": "2025",
+    "group": "Research Reports",
     "data": {
-      "link": "#",
+      "link": "",
       "venue": "Proceedings of the African Conference on AI (ACAI)",
-      "authors": "Dr. Sarah Akinyi, Fatima Hassan"
+      "authors": "Dr. Sarah Akinyi, Fatima Hassan",
+      "year": "2025"
     },
     "position": 0,
     "published": true
@@ -1259,11 +1260,12 @@
     "slug": "computer-vision-and-edge-computing-for-real-time-pest-detect",
     "title": "Computer Vision and Edge Computing for Real-Time Pest Detection in Maize",
     "image": null,
-    "group": "2025",
+    "group": "Research Reports",
     "data": {
-      "link": "#",
+      "link": "",
       "venue": "Journal of Smart Agriculture in Developing Nations",
-      "authors": "Dr. David Nwachukwu, Eng. Prof. Zaipuna O. Yonah"
+      "authors": "Dr. David Nwachukwu, Eng. Prof. Zaipuna O. Yonah",
+      "year": "2025"
     },
     "position": 1,
     "published": true
@@ -1273,11 +1275,12 @@
     "slug": "mitigating-algorithmic-bias-in-healthcare-diagnostics-for-un",
     "title": "Mitigating Algorithmic Bias in Healthcare Diagnostics for Underrepresented Populations",
     "image": null,
-    "group": "2024",
+    "group": "Research Reports",
     "data": {
-      "link": "#",
+      "link": "",
       "venue": "International Journal of AI Ethics",
-      "authors": "Prof. Kwame Osei, Dr. Sarah Akinyi"
+      "authors": "Prof. Kwame Osei, Dr. Sarah Akinyi",
+      "year": "2024"
     },
     "position": 2,
     "published": true
@@ -1287,11 +1290,12 @@
     "slug": "the-state-of-ai-readiness-in-east-african-public-sectors",
     "title": "The State of AI Readiness in East African Public Sectors",
     "image": null,
-    "group": "2024",
+    "group": "Research Reports",
     "data": {
-      "link": "#",
+      "link": "",
       "venue": "ARIFA Institute Whitepapers",
-      "authors": "Eng. Dr. Dennis N. Mwighusa"
+      "authors": "Eng. Dr. Dennis N. Mwighusa",
+      "year": "2024"
     },
     "position": 3,
     "published": true
@@ -1301,11 +1305,12 @@
     "slug": "deep-learning-approaches-to-traffic-flow-optimization-in-dar",
     "title": "Deep Learning Approaches to Traffic Flow Optimization in Dar es Salaam",
     "image": null,
-    "group": "2024",
+    "group": "Research Reports",
     "data": {
-      "link": "#",
+      "link": "",
       "venue": "IEEE Conference on Intelligent Transportation Systems",
-      "authors": "Fatima Hassan, Dr. David Nwachukwu"
+      "authors": "Fatima Hassan, Dr. David Nwachukwu",
+      "year": "2024"
     },
     "position": 4,
     "published": true
@@ -2541,6 +2546,21 @@
     "group": null,
     "data": {},
     "position": 9,
+    "published": true
+  },
+  {
+    "collection": "PUBLICATION",
+    "slug": "embracing-ai-transforming-the-tanzanian-justice-system",
+    "title": "Embracing AI: Transforming the Tanzanian Justice System",
+    "image": "/images/publications/embrace-ai-justice.png",
+    "group": "Research Reports",
+    "data": {
+      "year": "2024",
+      "authors": "Africa Research Institute for AI (ARIFA)",
+      "venue": "ARIFA Research Reports",
+      "link": ""
+    },
+    "position": 5,
     "published": true
   }
 ]

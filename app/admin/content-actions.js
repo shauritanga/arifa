@@ -15,6 +15,7 @@ const PUBLIC_PATHS = {
   TEAM_MEMBER: ["/", "/team"],
   CERTIFICATION: ["/training/certifications"],
   PUBLICATION: ["/publications"],
+  // detail revalidated via slug below
   COURSE: ["/training/short-courses"],
   JOB: ["/opportunities/careers"],
   EVENT: ["/events", "/events/engagements"],
@@ -29,6 +30,10 @@ function revalidateFor(collection, slug) {
   // Event detail lives at /events/<slug>
   if (collection === "EVENT" && slug) {
     revalidatePath(`/events/${slug}`);
+  }
+  // Publication detail lives at /publications/<slug>
+  if (collection === "PUBLICATION" && slug) {
+    revalidatePath(`/publications/${slug}`);
   }
   revalidatePath(`/admin/content/${collection}`);
 }
