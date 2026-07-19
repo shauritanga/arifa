@@ -96,7 +96,7 @@ function TeamCard({ member, index, onSelect }) {
 
         {/* Short description */}
         {member.shortBio ? (
-          <p className="mt-3 line-clamp-3 flex-grow text-sm leading-relaxed text-muted">
+          <p className="mt-3 w-full line-clamp-3 flex-grow text-sm leading-relaxed text-muted text-justify">
             {member.shortBio}
           </p>
         ) : (
@@ -242,7 +242,7 @@ export default function TeamPage({ team }) {
                 {selectedMember.name}
               </h2>
               <div
-                className="max-w-none text-base leading-relaxed text-ink-soft [&_p]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-ink [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-3 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1 [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline [&_img]:rounded-lg [&_img]:my-3 [&_img]:max-w-full"
+                className="max-w-none text-base leading-relaxed text-ink-soft text-justify [&_p]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-ink [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-3 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1 [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline [&_img]:rounded-lg [&_img]:my-3 [&_img]:max-w-full"
                 dangerouslySetInnerHTML={{
                   __html: bioToHtml(selectedMember.bio),
                 }}

@@ -384,7 +384,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
               <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-5 tracking-[-0.02em] max-w-[22ch]">
                 Shaping Africa&apos;s AI Future Through Research & Innovation
               </h2>
-              <p className="text-base md:text-[1.0625rem] text-muted mb-8 leading-[1.75] prose-institute max-w-[38rem]">
+              <p className="text-base md:text-[1.0625rem] text-muted mb-8 leading-[1.75] prose-institute max-w-[38rem] text-justify">
                 The Africa Research Institute for AI (ARIFA) is a pioneering
                 institution dedicated to advancing artificial intelligence
                 research, training, and innovation across the African continent.
@@ -401,7 +401,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                     <h4 className="text-base font-semibold text-ink font-[var(--font-heading)] mb-1">
                       Research Excellence
                     </h4>
-                    <p className="text-muted text-sm leading-relaxed max-w-[32rem]">
+                    <p className="text-muted text-sm leading-relaxed max-w-[32rem] text-justify">
                       Publishing impactful research in AI, data science, and
                       emerging technologies.
                     </p>
@@ -415,7 +415,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                     <h4 className="text-base font-semibold text-ink font-[var(--font-heading)] mb-1">
                       Capacity Building
                     </h4>
-                    <p className="text-muted text-sm leading-relaxed max-w-[32rem]">
+                    <p className="text-muted text-sm leading-relaxed max-w-[32rem] text-justify">
                       Training the next generation of AI professionals through
                       certifications and short courses.
                     </p>
@@ -444,7 +444,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
               <h2 className="text-3xl md:text-[2.5rem] font-bold text-ink font-[var(--font-heading)] leading-tight mb-3 tracking-[-0.02em]">
                 Research Focus Areas
               </h2>
-              <p className="text-muted leading-relaxed max-w-[34rem]">
+              <p className="text-muted leading-relaxed max-w-[34rem] text-justify">
                 We pursue impactful research across key domains where AI can
                 transform Africa&apos;s future.
               </p>
@@ -486,7 +486,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                     </h3>
                   </div>
                 </div>
-                <p className="text-[0.9375rem] text-muted leading-relaxed mb-6 flex-grow max-w-[36rem]">
+                <p className="text-[0.9375rem] text-muted leading-relaxed mb-6 flex-grow max-w-[36rem] text-justify">
                   {area.text}
                 </p>
                 <Link
@@ -556,7 +556,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                   Meet Our Board Member
                 </h2>
                 <p
-                  className="text-sm md:text-base leading-relaxed mt-2 max-w-[30rem]"
+                  className="text-sm md:text-base leading-relaxed mt-2 max-w-[30rem] text-justify"
                   style={{ color: "rgba(255,255,255,0.72)" }}
                 >
                   Experts guiding ARIFA&apos;s research, training, and innovation
@@ -642,7 +642,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
               <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] leading-tight tracking-[-0.02em]">
                 Training & Certifications
               </h2>
-              <p className="text-muted text-sm md:text-base leading-relaxed mt-2 max-w-[30rem]">
+              <p className="text-muted text-sm md:text-base leading-relaxed mt-2 max-w-[30rem] text-justify">
                 Build your AI career with our industry-recognized certification
                 programs and hands-on short courses.
               </p>
@@ -678,7 +678,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                     <h3 className="text-base font-semibold text-ink font-[var(--font-heading)] mb-1.5 group-hover:text-primary transition-colors leading-snug">
                       {program.title}
                     </h3>
-                    <p className="text-xs text-muted leading-relaxed mb-4 flex-grow line-clamp-2">
+                    <p className="text-xs text-muted leading-relaxed mb-4 flex-grow line-clamp-2 text-justify">
                       {program.text}
                     </p>
                     <div className="flex gap-3 border-t border-line pt-3">
@@ -805,7 +805,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                 {selectedMember.name}
               </h2>
               <div
-                className="max-w-none text-base leading-relaxed text-ink-soft [&_p]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-ink [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-3 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1 [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline"
+                className="max-w-none text-base leading-relaxed text-ink-soft text-justify [&_p]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-ink [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-ink [&_h3]:mt-3 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1 [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline"
                 dangerouslySetInnerHTML={{
                   __html: bioToHtml(selectedMember.bio),
                 }}

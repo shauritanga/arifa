@@ -150,10 +150,10 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-muted leading-relaxed text-justify">
                 <p>
-                  Africa Research Institute For AI (ARIFA), is a not-for-profit
+                  Africa Research Institute For AI (ARIFA),  is a pan-African
                   think tank united by a shared commitment to advancing impactful
                   research, training and advisory. ARIFA is specifically focused
-                  on Sub-Saharan Africa (SSA) and seeks to foster innovation,
+                  on African Continent and seeks to foster innovation,
                   facilitate knowledge exchange, and drive evidence-based
                   policymaking to effectively tackle the dynamic challenges posed
                   by the rapid advancements in technology.
