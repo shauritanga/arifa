@@ -126,14 +126,14 @@ const focusAreas = [
     text: "Big data analysis, predictive modelling, and data-driven decision making for development challenges.",
   },
   {
-    icon: "fas fa-shield-halved",
-    title: "ICT & e-Governance",
-    text: "Digital transformation, smart governance solutions, and technology-enabled public service delivery.",
+    icon: "fas fa-building-columns",
+    title: "Digital Transformation & Smart Governance",
+    text: "Digital Government, Smart Cities, GovTech, Digital Public Infrastructure, Cybersecurity, Digital Identity.",
   },
   {
-    icon: "fas fa-seedling",
-    title: "Smart Agriculture",
-    text: "AI-powered solutions for precision farming, crop monitoring, and agricultural innovation across Africa.",
+    icon: "fas fa-earth-africa",
+    title: "AI for Sustainable Development",
+    text: "AI applications in Agriculture, Healthcare, Education, Climate Change, Environment, Disaster Management, Energy.",
   },
 ];
 
