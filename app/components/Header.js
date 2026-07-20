@@ -47,7 +47,11 @@ const navItems = [
         badge: "2026",
       },
       { label: "AI Dinner", href: "/events/ai-dinner" },
-      { label: "AI Marathon", href: "/events/ai-marathon" },
+      {
+        label: "AI Marathon",
+        href: "https://aimarathon.arifa.org",
+        external: true,
+      },
       { label: "Engagements", href: "/events/engagements" },
     ],
   },
