@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import RegisterForm from "./[slug]/register-form";
+import { formatShillings, formatUsd, usdHeadline } from "@/lib/currency";
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -178,9 +179,14 @@ function RegisterModal({ session, onClose }) {
           {session.date}
           {session.format ? ` · ${session.format}` : ""} · You will pay{" "}
           <strong className="text-black">
-            TSh {session.fee.toLocaleString("en-TZ")}
-          </strong>{" "}
-          via AirPay.
+            {formatUsd(
+              usdHeadline({
+                usdPrice: session.early_price,
+                shillings: session.fee,
+              }),
+            )}
+          </strong>
+          , charged as {formatShillings(session.fee)} via AirPay.
         </p>
 
         <RegisterForm
@@ -286,7 +292,7 @@ export default function Masterclass({ sessions }) {
           <h2 className="relative inline-block text-2xl font-bold text-ink font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
             2026 Masterclass Tour — Select Your City
           </h2>
-          <p className="mt-8 max-w-[780px] text-lg text-[#4a627a] text-left">
+          <p className="mt-8 max-w-[780px] text-lg text-[#4a627a] text-justify">
             Join a premier session near you. Each Masterclass includes local
             case studies, global frameworks, and an executive certificate.
           </p>
@@ -366,7 +372,7 @@ export default function Masterclass({ sessions }) {
                       </div>
                     )}
 
-                    <p className="my-4 text-[0.95rem] leading-relaxed text-[#3e5a6c]">
+                    <p className="my-4 text-[0.95rem] leading-relaxed text-[#3e5a6c] text-justify">
                       {session.desc}
                     </p>
 

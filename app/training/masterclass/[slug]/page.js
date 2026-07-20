@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { feeInShillings, getSession } from "@/lib/masterclass";
+import { formatShillings, formatUsd, usdHeadline } from "@/lib/currency";
 import RegisterForm from "./register-form";
 
 export const dynamic = "force-dynamic";
@@ -66,7 +67,7 @@ export default async function MasterclassSessionPage({ params }) {
                 />
               </div>
             )}
-            <p className="mt-6 text-lg leading-relaxed text-muted">
+            <p className="mt-6 text-lg leading-relaxed text-muted text-justify">
               {session.desc}
             </p>
           </div>
@@ -109,7 +110,7 @@ export default async function MasterclassSessionPage({ params }) {
                   )}
                   {fee != null && (
                     <span className="block text-sm text-black/60">
-                      Charged as TSh {fee.toLocaleString("en-TZ")}
+                      Charged as {formatShillings(fee)}
                     </span>
                   )}
                 </>
@@ -127,7 +128,7 @@ export default async function MasterclassSessionPage({ params }) {
             /* No fee set for this city yet, so there is nothing we could
                legitimately charge. Take the enquiry instead of inventing a price. */
             <>
-              <p className="mb-8 text-muted">
+              <p className="mb-8 text-muted text-justify">
                 Online registration for {session.title} is not open yet. Contact
                 our team and we will reserve your seat and confirm the fee.
               </p>
@@ -141,13 +142,18 @@ export default async function MasterclassSessionPage({ params }) {
             </>
           ) : (
             <>
-              <p className="mb-8 text-muted">
+              <p className="mb-8 text-muted text-justify">
                 Complete the form to reserve your seat. You will be taken to
                 AirPay to pay{" "}
                 <strong className="text-black">
-                  TSh {fee.toLocaleString("en-TZ")}
-                </strong>{" "}
-                by card or mobile money.
+                  {formatUsd(
+                    usdHeadline({
+                      usdPrice: session.early_price,
+                      shillings: fee,
+                    }),
+                  )}
+                </strong>
+                , charged as {formatShillings(fee)}, by card or mobile money.
               </p>
               <RegisterForm
                 slug={String(session.id)}

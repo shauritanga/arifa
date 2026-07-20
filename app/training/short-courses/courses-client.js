@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { startPayment } from "@/lib/client/start-payment";
+import {
+  formatShillings,
+  formatUsd,
+  usdFromShillings,
+} from "@/lib/currency";
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -118,7 +123,7 @@ function EnrollForm({ course, fee }) {
       >
         {submitting
           ? "Taking you to AirPay…"
-          : `Enroll — pay TSh ${fee.toLocaleString("en-TZ")}`}
+          : `Enroll — ${formatUsd(usdFromShillings(fee))}`}
       </button>
 
       <p className="text-center text-sm text-black/50">
@@ -177,9 +182,9 @@ function EnrollModal({ course, onClose }) {
           )}
           You will pay{" "}
           <strong className="text-black">
-            TSh {feeInShillings(course).toLocaleString("en-TZ")}
-          </strong>{" "}
-          via AirPay.
+            {formatUsd(usdFromShillings(feeInShillings(course)))}
+          </strong>
+          , charged as {formatShillings(feeInShillings(course))} via AirPay.
         </p>
 
         <EnrollForm course={course} fee={feeInShillings(course)} />
@@ -331,13 +336,25 @@ export default function ShortCourses({ courses }) {
                         </div>
                       )}
                       {course.desc && (
-                        <p className="mt-2 text-sm leading-relaxed text-black/60">
+                        <p className="mt-2 text-sm leading-relaxed text-black/60 text-justify">
                           {course.desc}
                         </p>
                       )}
                       <div className="mt-auto flex items-center justify-between pt-4">
                         <span className="font-bold text-[#800000]">
-                          {course.price}
+                          {usdFromShillings(feeInShillings(course)) != null ? (
+                            <>
+                              {formatUsd(
+                                usdFromShillings(feeInShillings(course)),
+                              )}
+                              <span className="block text-[0.7rem] font-medium text-black/50">
+                                Charged as{" "}
+                                {formatShillings(feeInShillings(course))}
+                              </span>
+                            </>
+                          ) : (
+                            course.price
+                          )}
                         </span>
                         <EnrollButton course={course} onEnroll={setActive} />
                       </div>

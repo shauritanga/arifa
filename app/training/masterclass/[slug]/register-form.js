@@ -7,7 +7,12 @@ const INPUT =
   "w-full px-4 py-3 rounded-lg border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
 const LABEL = "block text-sm font-bold text-black mb-2";
 
-export default function RegisterForm({ slug, city, fee }) {
+/**
+ * `usd` is the headline price shown on the button; `fee` is the shilling amount
+ * Airpay actually bills. Both are passed in so the button cannot disagree with
+ * the price quoted on the page around it.
+ */
+export default function RegisterForm({ slug, city, fee, usd }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 

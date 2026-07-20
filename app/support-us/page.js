@@ -2,6 +2,7 @@
 import { use, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { startPayment } from "../../lib/client/start-payment";
+import { TZS_PER_USD, formatShillings, parseUsd } from "../../lib/currency";
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -48,6 +49,12 @@ export default function SupportUsPage({ searchParams }) {
       : "",
   });
   const isPayment = ["financial", "sponsorship"].includes(formData.supportType);
+  /* The payer quotes dollars; Airpay only settles shillings, so the entered
+     USD is converted here and the shilling figure is the only amount sent. */
+  const usdEntered = parseUsd(formData.amount);
+  const shillingsDue = usdEntered
+    ? Math.round(usdEntered * TZS_PER_USD)
+    : null;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const handleSubmit = async (e) => {
@@ -63,10 +70,17 @@ export default function SupportUsPage({ searchParams }) {
       return;
     }
 
+    if (!shillingsDue) {
+      setError("Enter a payment amount in US dollars.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       // Navigates away to AirPay on success, so isSubmitting stays true.
       await startPayment({
         ...formData,
+        amount: shillingsDue,
         paymentType:
           formData.supportType === "sponsorship" ? "sponsorship" : "donation",
       });
@@ -108,7 +122,7 @@ export default function SupportUsPage({ searchParams }) {
               Empower the Future of{" "}
               <span className="text-secondary">African Prosperity</span>.{" "}
             </h1>{" "}
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 animate-fadeInUp animate-delay-200">
+            <p className="text-lg md:text-xl text-white/80 leading-relaxed text-justify mb-10 animate-fadeInUp animate-delay-200">
               {" "}
               Your support directly funds cutting-edge Artificial Intelligence
               research in healthcare, agriculture, and economic development.
@@ -159,7 +173,7 @@ export default function SupportUsPage({ searchParams }) {
                 {" "}
                 AI Built for Africa, By Africa.{" "}
               </h3>{" "}
-              <p className="text-lg text-muted leading-relaxed mb-8">
+              <p className="text-lg text-muted leading-relaxed text-justify mb-8">
                 {" "}
                 ARIFA is uniquely positioned to address the continent&apos;s
                 most pressing challenges. By supporting our institute, you are
@@ -179,7 +193,7 @@ export default function SupportUsPage({ searchParams }) {
                     <h4 className="text-xl font-bold text-black mb-2">
                       Sustainable Agriculture
                     </h4>{" "}
-                    <p className="text-muted leading-relaxed">
+                    <p className="text-muted leading-relaxed text-justify">
                       Developing AI models that predict crop yields and detect
                       diseases early, directly enhancing food security.
                     </p>{" "}
@@ -196,7 +210,7 @@ export default function SupportUsPage({ searchParams }) {
                     <h4 className="text-xl font-bold text-black mb-2">
                       Transformative Healthcare
                     </h4>{" "}
-                    <p className="text-muted leading-relaxed">
+                    <p className="text-muted leading-relaxed text-justify">
                       Creating diagnostic tools suited for low-resource
                       environments to democratize access to quality care.
                     </p>{" "}
@@ -213,7 +227,7 @@ export default function SupportUsPage({ searchParams }) {
                     <h4 className="text-xl font-bold text-black mb-2">
                       Empowering the Next Generation
                     </h4>{" "}
-                    <p className="text-muted leading-relaxed">
+                    <p className="text-muted leading-relaxed text-justify">
                       Providing world-class AI certifications and training to
                       African youth, ensuring they lead the digital revolution.
                     </p>{" "}
@@ -292,7 +306,7 @@ export default function SupportUsPage({ searchParams }) {
                 <h4 className="text-2xl font-bold text-white mb-4">
                   Philanthropic Giving
                 </h4>{" "}
-                <p className="text-white/70 leading-relaxed mb-8">
+                <p className="text-white/70 leading-relaxed text-justify mb-8">
                   {" "}
                   Direct financial contributions to fund specific research
                   verticals, scholarships for underprivileged trainees, or
@@ -329,7 +343,7 @@ export default function SupportUsPage({ searchParams }) {
                 <h4 className="text-2xl font-bold text-white mb-4">
                   Corporate Partnership
                 </h4>{" "}
-                <p className="text-white/70 leading-relaxed mb-8">
+                <p className="text-white/70 leading-relaxed text-justify mb-8">
                   {" "}
                   Strategic alliances with industry leaders to co-develop AI
                   solutions, sponsor large-scale projects, and tap into our
@@ -363,7 +377,7 @@ export default function SupportUsPage({ searchParams }) {
                 <h4 className="text-2xl font-bold text-white mb-4">
                   Academic Collaboration
                 </h4>{" "}
-                <p className="text-white/70 leading-relaxed mb-8">
+                <p className="text-white/70 leading-relaxed text-justify mb-8">
                   {" "}
                   Partnering with global universities and research institutes to
                   share data, co-author publications, and facilitate researcher
@@ -518,32 +532,41 @@ export default function SupportUsPage({ searchParams }) {
                   <div className="animate-fadeInUp">
                     {" "}
                     <label className="block text-sm font-bold text-black mb-2 uppercase tracking-wide">
-                      Payment Amount (TZS)
+                      Payment Amount (USD)
                     </label>{" "}
                     <div className="relative">
                       {" "}
                       <span className="absolute left-5 top-1/2 -translate-y-1/2 font-bold text-muted">
-                        TSh
+                        USD
                       </span>{" "}
                       <input
                         type="number"
                         name="amount"
                         required
-                        min="1000"
+                        min="1"
                         step="1"
                         value={formData.amount}
                         onChange={(e) =>
                           setFormData({ ...formData, amount: e.target.value })
                         }
                         className="w-full pl-16 pr-5 py-4 rounded-xl bg-white border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-bold text-lg text-primary"
-                        placeholder="1,000,000"
+                        placeholder="500"
                       />{" "}
                     </div>{" "}
+                    {/* The USD figure is the headline, but Airpay settles in
+                        shillings — show the billed figure here rather than
+                        surprising them at checkout. */}
+                    {shillingsDue ? (
+                      <p className="mt-3 text-sm font-medium text-black/60">
+                        Charged as {formatShillings(shillingsDue)} at TSh{" "}
+                        {TZS_PER_USD.toLocaleString("en-US")} to the dollar.
+                      </p>
+                    ) : null}{" "}
                     {formData.supportType === "sponsorship" && (
-                      <p className="mt-3 text-sm text-black/60">
-                        Enter the agreed sponsorship amount in Tanzanian
-                        shillings. USD package prices are shown for planning and
-                        should be confirmed with ARIFA before payment.
+                      <p className="mt-3 text-sm text-black/60 text-justify">
+                        Enter the agreed sponsorship amount in US dollars. The
+                        shilling figure above is what your bank will be debited
+                        — confirm it with ARIFA before paying.
                       </p>
                     )}
                   </div>
