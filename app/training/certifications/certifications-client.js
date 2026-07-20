@@ -117,7 +117,7 @@ export default function Certifications({ certifications }) {
                     {" "}
                     {cert.title}{" "}
                   </h3>{" "}
-                  <p className="text-muted text-sm mb-6 line-clamp-3 leading-relaxed">
+                  <p className="text-muted text-sm mb-6 line-clamp-3 leading-relaxed text-justify">
                     {" "}
                     {cert.desc}{" "}
                   </p>{" "}

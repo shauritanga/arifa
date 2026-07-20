@@ -116,7 +116,7 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
       <div className={`mb-6 rounded-xl px-5 py-4 font-bold ${copy.tone}`}>
         {copy.title}
       </div>
-      <p className="text-muted leading-relaxed mb-8">{copy.body}</p>
+      <p className="text-muted leading-relaxed mb-8 text-justify">{copy.body}</p>
 
       <dl className="grid gap-4 text-sm text-muted">
         <div>

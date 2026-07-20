@@ -82,7 +82,7 @@ function ProjectCard({ project }) {
 
           <div className="mb-4 h-0.5 w-8 bg-primary/30 transition-all duration-300 group-hover:w-12 group-hover:bg-primary" />
 
-          <p className="mb-6 min-h-[4.5rem] flex-1 text-sm leading-relaxed text-muted line-clamp-3">
+          <p className="mb-6 min-h-[4.5rem] flex-1 text-sm leading-relaxed text-muted line-clamp-3 text-justify">
             {project.excerpt ||
               "Explore this ARIFA research initiative and its impact across Africa."}
           </p>

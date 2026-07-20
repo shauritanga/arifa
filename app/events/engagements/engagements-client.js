@@ -123,7 +123,7 @@ function EventCard({ event, index }) {
           </h3>
 
           {event.desc ? (
-            <p className="mt-2 line-clamp-2 flex-grow text-sm leading-relaxed text-muted">
+            <p className="mt-2 line-clamp-2 flex-grow text-sm leading-relaxed text-muted text-justify">
               {event.desc}
             </p>
           ) : (

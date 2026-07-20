@@ -92,7 +92,7 @@ export default async function CertificationDetails({ params }) {
                       </h2>
                     </div>
                     <SafeHtml
-                      className="max-w-none text-lg text-muted leading-relaxed [&_p]:mb-6 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-6 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded"
+                      className="max-w-none text-lg text-muted leading-relaxed text-justify [&_p]:mb-6 [&_ul]:list-none [&_ul]:pl-0 [&_ul]:mb-6 [&_ul]:space-y-4 [&_li]:relative [&_li]:pl-8 [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full [&_strong]:text-black [&_strong]:font-bold [&_strong]:bg-primary/10 [&_strong]:px-1 [&_strong]:rounded"
                       html={sec.content || ""}
                     />
                   </div>
@@ -106,7 +106,7 @@ export default async function CertificationDetails({ params }) {
                   <h3 className="text-2xl font-bold text-white font-[var(--font-heading)] mb-4">
                     Ready to Enroll?
                   </h3>
-                  <p className="text-white/70 text-sm mb-8 leading-relaxed">
+                  <p className="text-white/70 text-sm mb-8 leading-relaxed text-justify">
                     Join hundreds of professionals advancing their careers
                     through ARIFA&apos;s premier training network across Africa.
                   </p>
@@ -124,7 +124,7 @@ export default async function CertificationDetails({ params }) {
                     </div>
                     <h4 className="font-bold text-black">Need Help?</h4>
                   </div>
-                  <p className="text-sm text-black/60 mb-6">
+                  <p className="text-sm text-black/60 mb-6 text-justify">
                     Our admissions team is available to answer any questions
                     about the curriculum or enrollment process.
                   </p>

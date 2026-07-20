@@ -152,7 +152,7 @@ export default async function PublicationDetailPage({ params }) {
                 )}
 
                 <SafeHtml
-                  className="max-w-none text-base leading-relaxed text-ink-soft md:text-lg [&_p]:mb-5 [&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-6"
+                  className="max-w-none text-base leading-relaxed text-ink-soft md:text-lg text-justify [&_p]:mb-5 [&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-6"
                   html={body}
                 />
 

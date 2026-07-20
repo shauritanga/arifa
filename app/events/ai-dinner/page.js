@@ -111,7 +111,7 @@ export default function AIDinner() {
                 {" "}
                 <div className="max-w-none">
                   {" "}
-                  <p className="text-lg text-black leading-relaxed">
+                  <p className="text-lg text-black leading-relaxed text-justify">
                     {" "}
                     The Africa Research Institute For AI (ARIFA) is proud to
                     announce the inaugural ARIFA AI Dinner 2026, an exclusive
@@ -121,7 +121,7 @@ export default function AIDinner() {
                     celebrate the growing impact of Artificial Intelligence in
                     Africa.{" "}
                   </p>{" "}
-                  <p className="text-lg text-black leading-relaxed mt-4">
+                  <p className="text-lg text-black leading-relaxed mt-4 text-justify">
                     {" "}
                     Participants will have the opportunity to interact with
                     high-profile guests from government institutions, diplomatic
@@ -129,7 +129,7 @@ export default function AIDinner() {
                     international agencies, technology companies, startups,
                     investors, and media representatives.{" "}
                   </p>{" "}
-                  <p className="text-lg text-black leading-relaxed mt-4">
+                  <p className="text-lg text-black leading-relaxed mt-4 text-justify">
                     {" "}
                     The ARIFA AI Dinner is more than an event, it is a movement
                     to strengthen Africa’s AI ecosystem, inspire responsible

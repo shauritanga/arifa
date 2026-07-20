@@ -41,7 +41,7 @@ export default async function ApplyCertification({ params }) {
               <h1 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-2">
                 Application Form
               </h1>{" "}
-              <p className="text-muted mb-10">
+              <p className="text-muted mb-10 text-justify">
                 Fill out the form below to apply for the{" "}
                 <strong className="text-primary">{data.title}</strong>.
               </p>{" "}
@@ -76,7 +76,7 @@ export default async function ApplyCertification({ params }) {
               </div>{" "}
               <div className="p-6 bg-primary/5 border-b border-line">
                 {" "}
-                <p className="text-sm text-muted font-medium">
+                <p className="text-sm text-muted font-medium text-justify">
                   {" "}
                   You are taking the first step towards advancing your career
                   with ARIFA&apos;s industry-leading certification.{" "}

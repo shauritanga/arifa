@@ -118,7 +118,7 @@ export default function ApplicationModal({
             <h3 className="mb-2 font-[var(--font-heading)] text-xl font-bold leading-tight text-white sm:mb-4 sm:text-2xl md:text-3xl">
               {courseTitle}
             </h3>
-            <p className="hidden text-sm leading-relaxed text-white/80 md:block">
+            <p className="hidden text-sm leading-relaxed text-white/80 md:block text-justify">
               Take the next step in your career. Submit your application and our
               admissions team will contact you within 24 hours.
             </p>

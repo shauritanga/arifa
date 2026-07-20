@@ -104,7 +104,7 @@ export default function Contact() {
                 <h2 className="text-3xl font-bold text-ink font-[var(--font-heading)] mb-6">
                   Contact Information
                 </h2>{" "}
-                <p className="text-muted mb-8">
+                <p className="text-muted mb-8 text-justify">
                   {" "}
                   Reach out to us using the details below or fill out the
                   contact form and a member of our team will assist you.{" "}

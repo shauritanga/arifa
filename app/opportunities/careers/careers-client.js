@@ -120,7 +120,7 @@ function JobCard({ job, index }) {
 
               {/* Short description */}
               {job.shortDesc ? (
-                <p className="mt-3 text-sm md:text-base text-muted leading-relaxed max-w-3xl">
+                <p className="mt-3 text-sm md:text-base text-muted leading-relaxed max-w-3xl text-justify">
                   {job.shortDesc}
                 </p>
               ) : null}
@@ -184,7 +184,7 @@ function JobCard({ job, index }) {
                   </div>
                 )
               ) : (
-                <p className="text-sm text-muted">
+                <p className="text-sm text-muted text-justify">
                   Full role details will be shared during the application
                   process. Reach out if you would like more information.
                 </p>
@@ -251,7 +251,7 @@ export default function Careers({ jobs }) {
             <h2 className="text-2xl md:text-3xl font-bold text-ink font-[var(--font-heading)] tracking-[-0.02em] mb-3">
               Work with us
             </h2>
-            <p className="text-muted leading-relaxed">
+            <p className="text-muted leading-relaxed text-justify">
               We are always looking for exceptional talent. If you don&apos;t
               see a role that fits but believe you belong at ARIFA, please send
               us your CV anyway.

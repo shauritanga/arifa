@@ -111,7 +111,7 @@ export default function IndustryEngagement({ sponsors = [] }) {
                   / Annually
                 </span>{" "}
               </div>{" "}
-              <p className="text-muted mb-8 font-medium">
+              <p className="text-muted mb-8 font-medium text-justify">
                 {" "}
                 Pricing plan for Digital Transformation{" "}
               </p>{" "}
@@ -183,7 +183,7 @@ export default function IndustryEngagement({ sponsors = [] }) {
                   / Annually
                 </span>{" "}
               </div>{" "}
-              <p className="text-white/70 mb-8 font-medium">
+              <p className="text-white/70 mb-8 font-medium text-justify">
                 {" "}
                 All ARIFA Level 1 Partner opportunities, plus:{" "}
               </p>{" "}
@@ -250,7 +250,7 @@ export default function IndustryEngagement({ sponsors = [] }) {
                   / Annually
                 </span>{" "}
               </div>{" "}
-              <p className="text-muted mb-8 font-medium">
+              <p className="text-muted mb-8 font-medium text-justify">
                 {" "}
                 All ARIFA Level 2 Partner opportunities, plus:{" "}
               </p>{" "}
