@@ -220,7 +220,7 @@ export default function About() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-2xl">
                 <Image
                   src="/images/about/about3.jpg"
-                  alt="Africa Research Institute for AI"
+                  alt="Africa Research Institute For AI"
                   fill
                   className="object-cover"
                 />
@@ -232,10 +232,10 @@ export default function About() {
                 Why Choose Us
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-ink font-[var(--font-heading)] leading-tight mb-5">
-                Africa Research Institute for AI
+                Africa Research Institute For AI
               </h2>
               <p className="mb-10 leading-relaxed text-muted text-justify">
-                At Africa Research Institute for AI, we are committed to shaping
+                At Africa Research Institute For AI, we are committed to shaping
                 the future of artificial intelligence on the continent through a
                 holistic, ethical, and innovative approach. Here&apos;s why we
                 stand out:

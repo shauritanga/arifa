@@ -72,7 +72,7 @@ export default function Footer() {
               className="h-14 w-auto mb-5 brightness-0 invert opacity-95"
             />
             <p className="text-sm leading-relaxed mb-6 text-white/60">
-              The Africa Research Institute for AI is dedicated to advancing
+              The Africa Research Institute For AI is dedicated to advancing
               artificial intelligence research, training, and innovation across
               the African continent.
             </p>
@@ -168,7 +168,7 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-md flex items-center justify-center bg-white/6 border border-white/10 text-white/70 shrink-0 text-xs">
                   <i className="fas fa-clock" />
                 </div>
-                <p>Mon – Sat: 8:00 AM – 7:00 PM</p>
+                <p>Mon – Sat: 8:00 AM – 5:00 PM</p>
               </div>
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center py-6 text-xs text-white/40 gap-3">
           <p>
-            &copy; {new Date().getFullYear()} Africa Research Institute for AI
+            &copy; {new Date().getFullYear()} Africa Research Institute For AI
             (ARIFA). All rights reserved.
           </p>
           <div className="flex gap-6">

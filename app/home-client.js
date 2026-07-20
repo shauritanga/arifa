@@ -228,7 +228,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
           <div className="max-w-[42rem] mx-auto text-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 mb-7 animate-fadeInUp">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/25 bg-black/25 text-white text-xs font-semibold tracking-[0.14em] uppercase backdrop-blur-sm">
-                Africa Research Institute for AI
+                Africa Research Institute For AI
               </div>
               {isIcaFowCampaignActive() && (
                 <a
@@ -262,7 +262,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
               >
                 Artificial Intelligence
               </span>
-              <span style={{ color: "#ffffff" }}> Research for Africa</span>
+              <span style={{ color: "#ffffff" }}> Research For Africa</span>
             </h1>
             <p
               className="text-base md:text-lg leading-relaxed mb-10 max-w-[34rem] mx-auto animate-fadeInUp animate-delay-200"
@@ -385,7 +385,7 @@ export default function HomeClient({ boardMembers = [], sponsors = [] }) {
                 Shaping Africa&apos;s AI Future Through Research & Innovation
               </h2>
               <p className="text-base md:text-[1.0625rem] text-muted mb-8 leading-[1.75] prose-institute max-w-[38rem] text-justify">
-                The Africa Research Institute for AI (ARIFA) is a pioneering
+                The Africa Research Institute For AI (ARIFA) is a pioneering
                 institution dedicated to advancing artificial intelligence
                 research, training, and innovation across the African continent.
                 Based in Dar es Salaam, Tanzania, we bridge the gap between

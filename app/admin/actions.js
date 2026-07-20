@@ -170,7 +170,7 @@ export async function updateProfile(formData) {
 
 const SITE_SETTING_DEFAULTS = {
   siteName: "ARIFA",
-  siteTagline: "Africa Research Institute for AI",
+  siteTagline: "Africa Research Institute For AI",
   contactEmail: "info@arifa.org",
   contactPhone: "",
   contactAddress: "",

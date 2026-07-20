@@ -110,7 +110,7 @@ export default function SettingsClient({ settings }) {
                   name="siteTagline"
                   defaultValue={settings.siteTagline}
                   className={INPUT}
-                  placeholder="Africa Research Institute for AI"
+                  placeholder="Africa Research Institute For AI"
                 />
               </Field>
               <div className="grid gap-4 sm:grid-cols-2">
