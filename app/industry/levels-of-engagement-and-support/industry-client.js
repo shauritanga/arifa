@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import SponsorMarquee from "../../components/SponsorMarquee";
+import { startPayment } from "../../../lib/client/start-payment";
+import { TZS_PER_USD, formatShillings } from "../../../lib/currency";
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -31,7 +32,193 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
     </div>
   );
 }
+
+const INPUT =
+  "w-full px-4 py-3 rounded-lg border border-line focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all";
+const LABEL = "block text-sm font-bold text-black mb-2";
+
+/**
+ * Sponsorship form for one fixed-price package. Posts straight to the Selcom
+ * initiate route with the package's amount — the visitor never sees the
+ * general /support-us pledge form or has to re-enter what they are paying.
+ */
+function SponsorForm({ pkg, onCancel }) {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const shillingsDue = Math.round(pkg.usd * TZS_PER_USD);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+    setError("");
+    setSubmitting(true);
+    try {
+      // Navigates away to Selcom on success, so `submitting` stays true.
+      await startPayment({
+        ...data,
+        paymentType: "sponsorship",
+        packageName: pkg.label,
+        amount: shillingsDue,
+      });
+    } catch (err) {
+      setError(err.message);
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit} className="space-y-5">
+      <div className="grid gap-5 md:grid-cols-2">
+        <div>
+          <label htmlFor="name" className={LABEL}>
+            Full Name <span className="text-primary">*</span>
+          </label>
+          <input id="name" name="name" type="text" required className={INPUT} />
+        </div>
+        <div>
+          <label htmlFor="email" className={LABEL}>
+            Email Address <span className="text-primary">*</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            maxLength={50}
+            className={INPUT}
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className={LABEL}>
+            Phone Number <span className="text-primary">*</span>
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            placeholder="0712 345 678"
+            className={INPUT}
+          />
+        </div>
+        <div>
+          <label htmlFor="organization" className={LABEL}>
+            Organization / Company <span className="text-primary">*</span>
+          </label>
+          <input
+            id="organization"
+            name="organization"
+            type="text"
+            required
+            className={INPUT}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="message" className={LABEL}>
+          Message (optional)
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={3}
+          maxLength={180}
+          className={`${INPUT} resize-y`}
+        />
+      </div>
+
+      {error && (
+        <div role="alert" className="rounded-xl bg-red-50 px-5 py-4 text-red-700">
+          {error}
+        </div>
+      )}
+
+      <div className="flex flex-col-reverse sm:flex-row gap-3 pt-2">
+        <button
+          type="button"
+          onClick={onCancel}
+          disabled={submitting}
+          className="w-full sm:w-auto rounded-xl border border-line px-6 py-3.5 font-bold text-muted disabled:opacity-70"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          disabled={submitting}
+          className="flex flex-1 items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-70"
+        >
+          {submitting
+            ? "Taking you to Selcom…"
+            : `Pay USD ${pkg.usd.toLocaleString("en-US")}`}
+        </button>
+      </div>
+
+      <p className="text-center text-sm text-black/50">
+        Payment is handled by Selcom. Card, M-Pesa, Tigo Pesa and Airtel Money
+        are accepted on the next screen.
+      </p>
+    </form>
+  );
+}
+
+/** Modal wrapper around SponsorForm, opened from a package's "Choose" button. */
+function SponsorModal({ pkg, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/60 p-4 py-10 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Sponsor — ${pkg.label}`}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-[600px] rounded-xl bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-9"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-black/60 transition-colors hover:bg-black/10 hover:text-black"
+        >
+          <i className="fas fa-times" />
+        </button>
+
+        <div className="text-xs font-bold uppercase tracking-[2px] text-primary">
+          Sponsorship
+        </div>
+        <h2 className="mt-1 text-2xl font-bold text-ink font-[var(--font-heading)]">
+          {pkg.label}
+        </h2>
+        <p className="mt-2 mb-7 text-sm text-black/60">
+          You will pay{" "}
+          <strong className="text-black">
+            USD {pkg.usd.toLocaleString("en-US")}
+          </strong>
+          , charged as {formatShillings(Math.round(pkg.usd * TZS_PER_USD))} via
+          Selcom.
+        </p>
+
+        <SponsorForm pkg={pkg} onCancel={onClose} />
+      </div>
+    </div>
+  );
+}
+
 export default function IndustryEngagement({ sponsors = [] }) {
+  const [active, setActive] = useState(null);
+
   return (
     <>
       {" "}
@@ -148,13 +335,14 @@ export default function IndustryEngagement({ sponsors = [] }) {
                   </span>{" "}
                 </li>{" "}
               </ul>{" "}
-              <Link
-                href="/support-us?package=basic#pledge-form"
+              <button
+                type="button"
+                onClick={() => setActive({ id: "basic", label: "Basic Package", usd: 25000 })}
                 className="w-full py-4 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition-all"
               >
                 {" "}
                 Choose Basic{" "}
-              </Link>{" "}
+              </button>{" "}
             </RevealOnScroll>{" "}
             {/* Standard Package */}{" "}
             <RevealOnScroll
@@ -219,13 +407,16 @@ export default function IndustryEngagement({ sponsors = [] }) {
                   </span>{" "}
                 </li>{" "}
               </ul>{" "}
-              <Link
-                href="/support-us?package=standard#pledge-form"
+              <button
+                type="button"
+                onClick={() =>
+                  setActive({ id: "standard", label: "Standard Package", usd: 50000 })
+                }
                 className="w-full py-4 bg-primary text-white rounded-xl font-bold text-center hover:bg-primary transition-all"
               >
                 {" "}
                 Choose Standard{" "}
-              </Link>{" "}
+              </button>{" "}
             </RevealOnScroll>{" "}
             {/* Premium Package */}{" "}
             <RevealOnScroll
@@ -275,17 +466,21 @@ export default function IndustryEngagement({ sponsors = [] }) {
                   <span>Pre-Access to papers before publication.</span>{" "}
                 </li>{" "}
               </ul>{" "}
-              <Link
-                href="/support-us?package=premium#pledge-form"
+              <button
+                type="button"
+                onClick={() =>
+                  setActive({ id: "premium", label: "Premium Package", usd: 100000 })
+                }
                 className="w-full py-4 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition-all"
               >
                 {" "}
                 Choose Premium{" "}
-              </Link>{" "}
+              </button>{" "}
             </RevealOnScroll>{" "}
           </div>{" "}
         </div>{" "}
       </section>{" "}
+      {active && <SponsorModal pkg={active} onClose={() => setActive(null)} />}
     </>
   );
 }
