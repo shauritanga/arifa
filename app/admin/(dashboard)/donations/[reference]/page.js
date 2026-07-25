@@ -106,7 +106,7 @@ export default async function DonationDetailPage({ params }) {
         <div className="space-y-6">
           <Card title="Gateway">
             <Row label="Order ID" value={donation.gatewayOrderId || "—"} mono />
-            <Row label="AirPay txn" value={donation.gatewayTransId || "—"} mono />
+            <Row label="Selcom txn" value={donation.gatewayTransId || "—"} mono />
             <Row label="Attempts" value={String(donation.attempt)} />
             {donation.failureReason && (
               <Row label="Last error" value={donation.failureReason} />
@@ -116,7 +116,7 @@ export default async function DonationDetailPage({ params }) {
           <div className="rounded-2xl border border-black/10 bg-white p-6">
             <h2 className="mb-2 font-extrabold text-black">Status check</h2>
             <p className="mb-4 text-sm text-black/60">
-              Asks AirPay directly. A donation is only ever marked paid by the
+              Asks Selcom directly. A donation is only ever marked paid by the
               gateway, and only if the amount matches.
             </p>
             <ReverifyButton reference={donation.reference} />

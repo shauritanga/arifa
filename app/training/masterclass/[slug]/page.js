@@ -144,7 +144,7 @@ export default async function MasterclassSessionPage({ params }) {
             <>
               <p className="mb-8 text-muted text-justify">
                 Complete the form to reserve your seat. You will be taken to
-                AirPay to pay{" "}
+                Selcom to pay{" "}
                 <strong className="text-black">
                   {formatUsd(
                     usdHeadline({

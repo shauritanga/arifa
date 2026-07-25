@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 /**
- * Where Airpay lands a Masterclass registrant after checkout. The record is a
+ * Where Selcom lands a Masterclass registrant after checkout. The record is a
  * Donation row of type TRAINING, so the polling/retry component is the one the
  * donation status page uses — only the wording around it differs.
  */

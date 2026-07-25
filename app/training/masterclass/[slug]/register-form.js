@@ -9,7 +9,7 @@ const LABEL = "block text-sm font-bold text-black mb-2";
 
 /**
  * `usd` is the headline price shown on the button; `fee` is the shilling amount
- * Airpay actually bills. Both are passed in so the button cannot disagree with
+ * Selcom actually bills. Both are passed in so the button cannot disagree with
  * the price quoted on the page around it.
  */
 export default function RegisterForm({ slug, city, fee, usd }) {
@@ -24,7 +24,7 @@ export default function RegisterForm({ slug, city, fee, usd }) {
 
     try {
       // The amount is never sent: the server prices the seat from `slug`. On
-      // success this navigates away to Airpay, so `submitting` stays true.
+      // success this navigates away to Selcom, so `submitting` stays true.
       await startPayment({ ...data, slug }, "/api/masterclass/register");
     } catch (err) {
       setError(err.message);
@@ -120,12 +120,12 @@ export default function RegisterForm({ slug, city, fee, usd }) {
         className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary px-6 py-4 font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-70"
       >
         {submitting
-          ? "Taking you to AirPay…"
+          ? "Taking you to Selcom…"
           : `Register for ${city} — pay TSh ${fee.toLocaleString("en-TZ")}`}
       </button>
 
       <p className="text-center text-sm text-black/50">
-        Payment is handled by AirPay. Card, M-Pesa, Tigo Pesa and Airtel Money
+        Payment is handled by Selcom. Card, M-Pesa, Tigo Pesa and Airtel Money
         are accepted on the next screen.
       </p>
     </form>

@@ -17,7 +17,7 @@ const COLUMNS = [
   ["organisation", (d) => d.organization ?? ""],
   ["package", (d) => d.packageName ?? ""],
   ["message", (d) => d.message ?? ""],
-  ["airpay_txn", (d) => d.gatewayTransId ?? ""],
+  ["selcom_txn", (d) => d.gatewayTransId ?? ""],
   ["created_at", (d) => d.createdAt.toISOString()],
   ["paid_at", (d) => (d.paidAt ? d.paidAt.toISOString() : "")],
 ];

@@ -19,7 +19,7 @@ const OPEN = ["PENDING", "PROCESSING"];
 const PAID_BY_KIND = {
   training: {
     title: "Your seat is confirmed.",
-    body: "AirPay has confirmed your payment. We have emailed you a receipt, and our team will follow up with joining details before the session.",
+    body: "Selcom has confirmed your payment. We have emailed you a receipt, and our team will follow up with joining details before the session.",
     tone: "bg-green-50 text-green-700",
   },
 };
@@ -27,7 +27,7 @@ const PAID_BY_KIND = {
 const COPY = {
   PAID: {
     title: "Thank you — your gift is confirmed.",
-    body: "AirPay has confirmed your payment. ARIFA is grateful for your support.",
+    body: "Selcom has confirmed your payment. ARIFA is grateful for your support.",
     tone: "bg-green-50 text-green-700",
   },
   PROCESSING: {
@@ -75,7 +75,7 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
       }
       try {
         const res = await fetch(
-          `/api/airpay/verify?reference=${encodeURIComponent(donation.reference)}`,
+          `/api/selcom/verify?reference=${encodeURIComponent(donation.reference)}`,
           { cache: "no-store" },
         );
         if (!res.ok) return;
@@ -129,7 +129,7 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
         </div>
         {donation.transId && (
           <div>
-            <dt className="font-bold text-black">AirPay Reference</dt>
+            <dt className="font-bold text-black">Selcom Reference</dt>
             <dd>{donation.transId}</dd>
           </div>
         )}
@@ -137,7 +137,7 @@ export default function PaymentStatus({ donation, kind = "donation" }) {
 
       {isOpen && (
         <p className="mt-8 text-sm text-black/50">
-          Checking with AirPay… you can safely keep this page open.
+          Checking with Selcom… you can safely keep this page open.
         </p>
       )}
 

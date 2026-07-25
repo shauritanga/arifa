@@ -54,7 +54,7 @@ function EnrollForm({ course, fee }) {
     setSubmitting(true);
     try {
       // The amount is never sent: the server prices the course from `slug`. On
-      // success this navigates away to Airpay, so `submitting` stays true.
+      // success this navigates away to Selcom, so `submitting` stays true.
       await startPayment({ ...data, slug: course.id }, "/api/courses/register");
     } catch (err) {
       setError(err.message);
@@ -122,12 +122,12 @@ function EnrollForm({ course, fee }) {
         className="flex w-full items-center justify-center gap-2.5 rounded-lg bg-primary px-6 py-3.5 font-bold text-white transition-all hover:-translate-y-0.5 disabled:opacity-70"
       >
         {submitting
-          ? "Taking you to AirPay…"
+          ? "Taking you to Selcom…"
           : `Enroll — ${formatUsd(usdFromShillings(fee))}`}
       </button>
 
       <p className="text-center text-sm text-black/50">
-        Payment is handled by AirPay. Card, M-Pesa, Tigo Pesa and Airtel Money
+        Payment is handled by Selcom. Card, M-Pesa, Tigo Pesa and Airtel Money
         are accepted on the next screen.
       </p>
     </form>
@@ -184,7 +184,7 @@ function EnrollModal({ course, onClose }) {
           <strong className="text-black">
             {formatUsd(usdFromShillings(feeInShillings(course)))}
           </strong>
-          , charged as {formatShillings(feeInShillings(course))} via AirPay.
+          , charged as {formatShillings(feeInShillings(course))} via Selcom.
         </p>
 
         <EnrollForm course={course} fee={feeInShillings(course)} />

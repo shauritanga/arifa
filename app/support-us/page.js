@@ -49,7 +49,7 @@ export default function SupportUsPage({ searchParams }) {
       : "",
   });
   const isPayment = ["financial", "sponsorship"].includes(formData.supportType);
-  /* The payer quotes dollars; Airpay only settles shillings, so the entered
+  /* The payer quotes dollars; Selcom only settles shillings, so the entered
      USD is converted here and the shilling figure is the only amount sent. */
   const usdEntered = parseUsd(formData.amount);
   const shillingsDue = usdEntered
@@ -77,7 +77,7 @@ export default function SupportUsPage({ searchParams }) {
     }
 
     try {
-      // Navigates away to AirPay on success, so isSubmitting stays true.
+      // Navigates away to Selcom on success, so isSubmitting stays true.
       await startPayment({
         ...formData,
         amount: shillingsDue,
@@ -419,7 +419,7 @@ export default function SupportUsPage({ searchParams }) {
               <p className="text-lg text-muted leading-relaxed">
                 {" "}
                 Fill out the form below to process your financial contribution
-                or sponsorship via AirPay, or to initiate a corporate
+                or sponsorship via Selcom, or to initiate a corporate
                 partnership discussion.{" "}
               </p>{" "}
             </div>{" "}
@@ -553,7 +553,7 @@ export default function SupportUsPage({ searchParams }) {
                         placeholder="500"
                       />{" "}
                     </div>{" "}
-                    {/* The USD figure is the headline, but Airpay settles in
+                    {/* The USD figure is the headline, but Selcom settles in
                         shillings — show the billed figure here rather than
                         surprising them at checkout. */}
                     {shillingsDue ? (
@@ -610,7 +610,7 @@ export default function SupportUsPage({ searchParams }) {
                         <>
                           {" "}
                           <i className="fas fa-lock opacity-70" /> Proceed to
-                          AirPay Secure Payment{" "}
+                          Selcom Secure Payment{" "}
                           <i className="fas fa-arrow-right opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all absolute right-8" />{" "}
                         </>
                       )}{" "}
@@ -633,7 +633,7 @@ export default function SupportUsPage({ searchParams }) {
                         Encrypted
                       </span>{" "}
                       <span>
-                        <i className="fas fa-bolt text-secondary mr-1" /> AirPay
+                        <i className="fas fa-bolt text-secondary mr-1" /> Selcom
                         Powered
                       </span>{" "}
                     </div>

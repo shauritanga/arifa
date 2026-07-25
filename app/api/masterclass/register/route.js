@@ -5,7 +5,7 @@ import { clientIp, isRateLimited } from "../../../../lib/rate-limit";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** Airpay caps buyer_email at 50 chars and rejects the transaction if longer. */
+/** Selcom's billing block requires an email; keep buyer fields sane length. */
 const MAX_EMAIL = 50;
 
 /**
@@ -16,8 +16,8 @@ const MAX_EMAIL = 50;
  * what they pay, which is the one thing the donation route must allow and this
  * one must not.
  *
- * Returns the Airpay checkout form for the browser to POST, exactly like
- * /api/airpay/initiate — settlement, retries and the status page are then the
+ * Returns the Selcom checkout URL for the browser to redirect to, exactly like
+ * /api/selcom/initiate — settlement, retries and the status page are then the
  * shared donation lifecycle.
  */
 export async function POST(request) {
@@ -72,8 +72,7 @@ export async function POST(request) {
       return Response.json({ error: result.error }, { status: 400 });
     }
     return Response.json({
-      paymentUrl: result.paymentUrl,
-      fields: result.fields,
+      checkoutUrl: result.checkoutUrl,
       reference: result.reference,
     });
   } catch (err) {

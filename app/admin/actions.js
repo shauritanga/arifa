@@ -7,7 +7,7 @@ import { requireAdmin } from "../../lib/auth";
 import { verifyDonation } from "../../lib/donations";
 
 /**
- * Re-ask Airpay for the authoritative status of a donation.
+ * Re-ask Selcom for the authoritative status of a donation.
  *
  * This does not decide anything itself — it delegates to verifyDonation, which
  * is the only path allowed to mark a donation PAID and which checks the amount
@@ -24,14 +24,14 @@ export async function reverifyDonation(reference) {
   revalidatePath("/admin/donations");
   revalidatePath(`/admin/donations/${reference}`);
 
-  if (!res) return { ok: false, error: "Could not reach AirPay. Try again." };
+  if (!res) return { ok: false, error: "Could not reach Selcom. Try again." };
   if (res.unresolved) {
-    return { ok: false, error: "AirPay did not answer. The donation is unchanged." };
+    return { ok: false, error: "Selcom did not answer. The donation is unchanged." };
   }
   if (res.mismatch) {
     return {
       ok: false,
-      error: "AirPay reported a different amount. Flagged for review — not settled.",
+      error: "Selcom reported a different amount. Flagged for review — not settled.",
     };
   }
   return { ok: true, status: res.status };

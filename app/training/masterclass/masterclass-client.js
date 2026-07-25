@@ -92,7 +92,7 @@ const MODULES = [
 ];
 
 /**
- * Priced cities go to their registration + AirPay checkout page; an unpriced one
+ * Priced cities go to their registration + Selcom checkout page; an unpriced one
  * has nothing it could legitimately charge, so it asks for an enquiry instead.
  * An explicit Register URL on the session overrides both.
  */
@@ -186,7 +186,7 @@ function RegisterModal({ session, onClose }) {
               }),
             )}
           </strong>
-          , charged as {formatShillings(session.fee)} via AirPay.
+          , charged as {formatShillings(session.fee)} via Selcom.
         </p>
 
         <RegisterForm
@@ -362,7 +362,7 @@ export default function Masterclass({ sessions }) {
                         )}
                         {session.fee != null && (
                           /* The USD figure is the headline, but shillings are
-                             what AirPay will actually charge — say so here
+                             what Selcom will actually charge — say so here
                              rather than surprising them at checkout. */
                           <span className="w-full text-[0.8rem] font-medium text-[#4f6f8f]">
                             Charged as TSh{" "}

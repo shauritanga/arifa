@@ -12,7 +12,7 @@ export async function GET(request) {
   }
 
   // Only hit the gateway while the donation is still open; once settled the
-  // local record is authoritative (avoids hammering Airpay's verify endpoint).
+  // local record is authoritative (avoids hammering Selcom's order-status).
   const current = await prisma.donation.findUnique({ where: { reference } });
   if (!current) {
     return Response.json({ error: "Not found" }, { status: 404 });

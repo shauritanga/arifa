@@ -3,16 +3,15 @@ import { initiateDonation, retryDonation } from "../../../../lib/donations";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** Airpay caps buyer_email at 50 chars, and rejects the transaction if longer. */
+/** Selcom's billing block requires an email; keep buyer fields sane length. */
 const MAX_EMAIL = 50;
 
 /**
- * Start a donation payment. Returns the Airpay checkout form for the browser to
- * POST — Airpay has no hosted-checkout URL to redirect to, so the client builds
- * a hidden form from these fields and submits it.
+ * Start a donation payment. Returns the Selcom hosted-checkout URL for the
+ * browser to redirect to.
  *
- * Two shapes: `{ reference }` re-opens an existing unpaid donation (the donor's
- * "try again"), anything else creates a new one from the pledge form.
+ * Two shapes: `{ reference }` re-opens an existing unpaid donation (the
+ * donor's "try again"), anything else creates a new one from the pledge form.
  */
 export async function POST(request) {
   let body;
@@ -31,8 +30,7 @@ export async function POST(request) {
   }
 
   return Response.json({
-    paymentUrl: result.paymentUrl,
-    fields: result.fields,
+    checkoutUrl: result.checkoutUrl,
     reference: result.reference,
   });
 }
@@ -55,12 +53,12 @@ async function createFromForm(body) {
   try {
     return await initiateDonation(input);
   } catch (err) {
-    console.error("[airpay] initiate failed", err);
+    console.error("[selcom] initiate failed", err);
     return { ok: false, error: "Payment could not be started. Please try again." };
   }
 }
 
-/** Airpay bills whole Tanzanian shillings; TZS has no subunit in practice. */
+/** Selcom bills whole Tanzanian shillings; TZS has no subunit in practice. */
 function toWholeShillings(value) {
   const parsed = Number(String(value ?? "").replace(/,/g, ""));
   if (!Number.isFinite(parsed)) return NaN;
