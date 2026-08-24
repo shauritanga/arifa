@@ -48,7 +48,7 @@ function feeInShillings(course) {
 
 function EnrollButton({ course }) {
   const className =
-    "rounded-[5px] bg-[#800000] px-3.5 py-2 text-sm font-semibold text-white transition-all hover:bg-primary";
+    "inline-flex w-full items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-light";
   const href = `/training/short-courses/${course.id}`;
 
   if (feeInShillings(course) == null) {
@@ -60,7 +60,7 @@ function EnrollButton({ course }) {
   }
   return (
     <Link href={href} className={className}>
-      Enroll
+      Enroll and pay
     </Link>
   );
 }
@@ -145,7 +145,7 @@ export default function ShortCourses({ courses }) {
           <div className="min-w-0 flex-1">
             <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
               {visible.map((course, idx) => (
-                <RevealOnScroll key={course.id} delay={(idx % 3) * 80}>
+                <RevealOnScroll key={course.id} delay={(idx % 3) * 80} className="h-full">
                   <article className="flex h-full flex-col overflow-hidden rounded-[10px] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.12)]">
                     <div className="relative h-[120px] w-full bg-[#e9edf2]">
                       {course.image && (
@@ -158,7 +158,7 @@ export default function ShortCourses({ courses }) {
                         />
                       )}
                     </div>
-                    <div className="flex flex-1 flex-col px-5 py-4">
+                    <div className="flex flex-1 flex-col px-5 pt-4 pb-3">
                       <h3 className="mb-2.5 text-lg font-bold text-black">
                         {course.title}
                       </h3>
@@ -185,33 +185,35 @@ export default function ShortCourses({ courses }) {
                           {course.desc}
                         </p>
                       )}
-                      <div className="mt-auto pt-4">
-                        <div className="flex items-center justify-between">
-                          <span className="font-bold text-[#800000]">
-                            {course.price ? (
-                              course.price
-                            ) : usdFromShillings(feeInShillings(course)) !=
-                              null ? (
-                              <>
-                                {formatUsd(
+                    </div>
+                    <div className="mt-auto border-t border-line bg-[#fafaf8] px-5 py-4">
+                      <div className="mb-3">
+                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-muted">
+                          Fee
+                        </p>
+                        <p className="text-base font-bold leading-tight text-primary">
+                          {course.price
+                            ? course.price
+                            : usdFromShillings(feeInShillings(course)) != null
+                              ? formatUsd(
                                   usdFromShillings(feeInShillings(course)),
-                                )}
-                                <span className="block text-[0.7rem] font-medium text-black/50">
-                                  Charged as{" "}
-                                  {formatShillings(feeInShillings(course))}
-                                </span>
-                              </>
-                            ) : null}
-                          </span>
-                          <EnrollButton course={course} />
-                        </div>
-                        <ShareBar
-                          compact
-                          path={`/training/short-courses/${course.id}`}
-                          title={`${course.title} | ARIFA`}
-                          text={`Enroll in ${course.title} at ARIFA. ${course.desc || ""}`.trim()}
-                        />
+                                )
+                              : "—"}
+                        </p>
+                        {!course.price &&
+                          feeInShillings(course) != null && (
+                            <p className="text-[0.7rem] font-medium text-black/50">
+                              Charged as {formatShillings(feeInShillings(course))}
+                            </p>
+                          )}
                       </div>
+                      <EnrollButton course={course} />
+                      <ShareBar
+                        compact
+                        path={`/training/short-courses/${course.id}`}
+                        title={`${course.title} | ARIFA`}
+                        text={`Enroll in ${course.title} at ARIFA. ${course.desc || ""}`.trim()}
+                      />
                     </div>
                   </article>
                 </RevealOnScroll>
