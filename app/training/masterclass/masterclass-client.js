@@ -33,7 +33,7 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
 }
 
 const STATS = [
-  { number: "05", label: "African City Hub" },
+  { number: "05", label: "African City Hubs" },
   { number: "2", label: "Intensive Days" },
   { number: "500+", label: "Senior Leaders Expected" },
   { number: "15+", label: "Expert Facilitators" },
