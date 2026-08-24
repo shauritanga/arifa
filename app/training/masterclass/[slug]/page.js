@@ -79,7 +79,9 @@ export default async function MasterclassSessionPage({ params }) {
             <DetailRow
               icon="fas fa-map-marker-alt"
               label="Location"
-              value={`${session.title}, ${session.country}`}
+              value={
+                session.venue || `${session.title}, ${session.country}`
+              }
             />
             <DetailRow
               icon="fas fa-calendar-check"

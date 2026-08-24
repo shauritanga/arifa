@@ -2079,6 +2079,27 @@
   },
   {
     "collection": "MASTERCLASS",
+    "slug": "AIforHR",
+    "title": "AI Powered HR",
+    "image": "/program-training.png",
+    "group": "Featured",
+    "data": {
+      "country": "Tanzania",
+      "date": "02–03 October 2026",
+      "venue": "KingJada Hotel, Dar es Salaam",
+      "format": "2-day intensive",
+      "early_price": "",
+      "standard_price": "",
+      "group_price": "",
+      "desc": "Transform HR. Empower people. Lead the AI revolution. A two-day masterclass for HR professionals on using AI to recruit, develop, and lead people.",
+      "register_url": "/training/masterclass/AIforHR",
+      "fee_tzs": "500000"
+    },
+    "position": -1,
+    "published": true
+  },
+  {
+    "collection": "MASTERCLASS",
     "slug": "dar-es-salaam",
     "title": "Dar es Salaam",
     "image": "/images/masterclass/daressalaam.jpg",
