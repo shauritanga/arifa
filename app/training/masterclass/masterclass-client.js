@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import RegisterForm from "./[slug]/register-form";
-import { formatShillings, formatUsd, parseUsd, usdHeadline } from "@/lib/currency";
+import { useEffect, useRef } from "react";
+import ShareBar from "./share-bar";
+import { formatShillings } from "@/lib/currency";
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -96,9 +96,10 @@ const MODULES = [
  * has nothing it could legitimately charge, so it asks for an enquiry instead.
  * An explicit Register URL on the session overrides both.
  */
-function RegisterButton({ session, onRegister }) {
+function RegisterButton({ session }) {
   const className =
     "mt-auto flex w-full items-center justify-center gap-2.5 rounded-[10px] bg-[#5f0202] px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[0.97] hover:bg-primary";
+  const href = `/training/masterclass/${session.id}`;
 
   if (session.register_url) {
     return (
@@ -121,95 +122,16 @@ function RegisterButton({ session, onRegister }) {
     );
   }
 
-  // Open the payment form in a modal rather than navigating to the detail page.
   return (
-    <button
-      type="button"
-      onClick={() => onRegister(session)}
-      className={className}
-    >
+    <Link href={href} className={className}>
       {session.early_price
         ? `Register interest — Early Bird ${session.early_price}`
-        : session.fee != null
-          ? `Register interest — ${formatShillings(session.fee)}`
-          : "Register interest"}
-    </button>
-  );
-}
-
-/** Modal wrapper around the shared RegisterForm, opened from a city card. */
-function RegisterModal({ session, onClose }) {
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/60 p-4 py-10 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Register for ${session.title} Masterclass`}
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-[640px] rounded-xl bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-9"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-black/5 text-black/60 transition-colors hover:bg-black/10 hover:text-black"
-        >
-          <i className="fas fa-times" />
-        </button>
-
-        <div className="text-xs font-bold uppercase tracking-[2px] text-primary">
-          {session.country} · Executive Session
-        </div>
-        <h2 className="mt-1 text-2xl font-bold text-ink font-[var(--font-heading)]">
-          Register — {session.title}
-        </h2>
-        <p className="mt-2 mb-7 text-sm text-black/60">
-          <i className="fa-solid fa-calendar-days mr-1.5 text-primary" />
-          {session.date}
-          {session.venue
-            ? ` · ${session.venue}`
-            : session.format
-              ? ` · ${session.format}`
-              : ""}{" "}
-          · You will pay{" "}
-          <strong className="text-black">
-            {parseUsd(session.early_price)
-              ? `${formatUsd(
-                  usdHeadline({
-                    usdPrice: session.early_price,
-                    shillings: session.fee,
-                  }),
-                )}, charged as ${formatShillings(session.fee)}`
-              : formatShillings(session.fee)}
-          </strong>{" "}
-          via Selcom.
-        </p>
-
-        <RegisterForm
-          slug={String(session.id)}
-          city={session.title}
-          fee={session.fee}
-        />
-      </div>
-    </div>
+        : `Register interest — ${formatShillings(session.fee)}`}
+    </Link>
   );
 }
 
 export default function Masterclass({ sessions }) {
-  const [activeSession, setActiveSession] = useState(null);
   return (
     <>
       {/* ====== Page Header ====== */}
@@ -396,9 +318,13 @@ export default function Masterclass({ sessions }) {
                       {session.desc}
                     </p>
 
-                    <RegisterButton
-                      session={session}
-                      onRegister={setActiveSession}
+                    <RegisterButton session={session} />
+
+                    <ShareBar
+                      compact
+                      path={`/training/masterclass/${session.id}`}
+                      title={`${session.title} Masterclass | ARIFA`}
+                      text={`Register for the ARIFA ${session.title} Masterclass. ${session.desc}`}
                     />
                   </div>
                 </article>
@@ -445,13 +371,6 @@ export default function Masterclass({ sessions }) {
           </div>
         </div>
       </section>
-
-      {activeSession && (
-        <RegisterModal
-          session={activeSession}
-          onClose={() => setActiveSession(null)}
-        />
-      )}
     </>
   );
 }
