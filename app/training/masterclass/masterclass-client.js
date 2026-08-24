@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import RegisterForm from "./[slug]/register-form";
-import { formatShillings, formatUsd, usdHeadline } from "@/lib/currency";
+import { formatShillings, formatUsd, parseUsd, usdHeadline } from "@/lib/currency";
 
 function RevealOnScroll({ children, className = "", delay = 0 }) {
   const ref = useRef(null);
@@ -101,14 +101,6 @@ function RegisterButton({ session, onRegister }) {
     "mt-auto flex w-full items-center justify-center gap-2.5 rounded-[10px] bg-[#5f0202] px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[0.97] hover:bg-primary";
 
   if (session.register_url) {
-    const internal = session.register_url.startsWith("/");
-    if (internal) {
-      return (
-        <Link href={session.register_url} className={className}>
-          Register and pay online
-        </Link>
-      );
-    }
     return (
       <a
         href={session.register_url}
@@ -138,7 +130,9 @@ function RegisterButton({ session, onRegister }) {
     >
       {session.early_price
         ? `Register interest — Early Bird ${session.early_price}`
-        : "Register interest"}
+        : session.fee != null
+          ? `Register interest — ${formatShillings(session.fee)}`
+          : "Register interest"}
     </button>
   );
 }
@@ -185,16 +179,23 @@ function RegisterModal({ session, onClose }) {
         <p className="mt-2 mb-7 text-sm text-black/60">
           <i className="fa-solid fa-calendar-days mr-1.5 text-primary" />
           {session.date}
-          {session.format ? ` · ${session.format}` : ""} · You will pay{" "}
+          {session.venue
+            ? ` · ${session.venue}`
+            : session.format
+              ? ` · ${session.format}`
+              : ""}{" "}
+          · You will pay{" "}
           <strong className="text-black">
-            {formatUsd(
-              usdHeadline({
-                usdPrice: session.early_price,
-                shillings: session.fee,
-              }),
-            )}
-          </strong>
-          , charged as {formatShillings(session.fee)} via Selcom.
+            {parseUsd(session.early_price)
+              ? `${formatUsd(
+                  usdHeadline({
+                    usdPrice: session.early_price,
+                    shillings: session.fee,
+                  }),
+                )}, charged as ${formatShillings(session.fee)}`
+              : formatShillings(session.fee)}
+          </strong>{" "}
+          via Selcom.
         </p>
 
         <RegisterForm
@@ -305,34 +306,8 @@ export default function Masterclass({ sessions }) {
             case studies, global frameworks, and an executive certificate.
           </p>
 
-          {sessions.some((s) => s.id === "AIforHR") && (
-            <Link
-              href="/training/masterclass/AIforHR"
-              className="mt-10 flex flex-col gap-4 rounded-[28px] bg-[#12382a] p-7 text-white shadow-[0_20px_35px_-12px_rgba(18,56,42,0.45)] transition-transform hover:-translate-y-0.5 md:flex-row md:items-center md:justify-between"
-            >
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e8c547]">
-                  New · HR professionals
-                </p>
-                <h3 className="mt-1 text-2xl font-bold font-[var(--font-heading)]">
-                  AI Powered HR Masterclass
-                </h3>
-                <p className="mt-2 text-white/80">
-                  02–03 October 2026 · KingJada Hotel, Dar es Salaam · TZS
-                  500,000 · Register and pay online
-                </p>
-              </div>
-              <span className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#d4a017] px-5 py-3 text-sm font-bold text-[#1a2e1a]">
-                Open landing page
-                <i className="fas fa-arrow-right text-xs" />
-              </span>
-            </Link>
-          )}
-
           <div className="mt-12 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
-            {sessions
-            .filter((session) => session.id !== "AIforHR")
-            .map((session, idx) => (
+            {sessions.map((session, idx) => (
               <RevealOnScroll
                 key={session.id}
                 delay={(idx % 3) * 100}
@@ -372,6 +347,12 @@ export default function Masterclass({ sessions }) {
                       {session.date}
                       {session.format ? ` | ${session.format}` : ""}
                     </div>
+                    {session.venue && (
+                      <div className="mt-1.5 flex items-center gap-2 text-sm font-medium text-[#2c5a6e]">
+                        <i className="fa-solid fa-location-dot" />
+                        {session.venue}
+                      </div>
+                    )}
 
                     {(session.early_price ||
                       session.standard_price ||

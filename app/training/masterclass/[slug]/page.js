@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { feeInShillings, getSession } from "@/lib/masterclass";
-import { formatShillings, formatUsd, usdHeadline } from "@/lib/currency";
+import { formatShillings, formatUsd, parseUsd, usdHeadline } from "@/lib/currency";
 import RegisterForm from "./register-form";
+import ShareBar from "../share-bar";
 
 export const dynamic = "force-dynamic";
 
@@ -52,6 +53,11 @@ export default async function MasterclassSessionPage({ params }) {
         <h1 className="mt-2 text-4xl md:text-5xl font-bold text-ink font-[var(--font-heading)]">
           {session.title}
         </h1>
+        <ShareBar
+          path={`/training/masterclass/${session.id}`}
+          title={`${session.title} Masterclass | ARIFA`}
+          text={session.desc}
+        />
 
         <div className="mt-10 grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-start">
           <div>
@@ -100,17 +106,21 @@ export default async function MasterclassSessionPage({ params }) {
               label="Fee"
               value={
                 <>
-                  {session.early_price && (
+                  {session.early_price ? (
                     <span className="font-bold text-primary">
                       {session.early_price}
                     </span>
-                  )}
+                  ) : fee != null ? (
+                    <span className="font-bold text-primary">
+                      {formatShillings(fee)}
+                    </span>
+                  ) : null}
                   {session.standard_price && (
                     <span className="ml-2 text-black/50 line-through">
                       {session.standard_price}
                     </span>
                   )}
-                  {fee != null && (
+                  {fee != null && session.early_price && (
                     <span className="block text-sm text-black/60">
                       Charged as {formatShillings(fee)}
                     </span>
@@ -148,14 +158,16 @@ export default async function MasterclassSessionPage({ params }) {
                 Complete the form to reserve your seat. You will be taken to
                 Selcom to pay{" "}
                 <strong className="text-black">
-                  {formatUsd(
-                    usdHeadline({
-                      usdPrice: session.early_price,
-                      shillings: fee,
-                    }),
-                  )}
+                  {parseUsd(session.early_price)
+                    ? `${formatUsd(
+                        usdHeadline({
+                          usdPrice: session.early_price,
+                          shillings: fee,
+                        }),
+                      )}, charged as ${formatShillings(fee)}`
+                    : formatShillings(fee)}
                 </strong>
-                , charged as {formatShillings(fee)}, by card or mobile money.
+                , by card or mobile money.
               </p>
               <RegisterForm
                 slug={String(session.id)}
