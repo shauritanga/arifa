@@ -34,7 +34,6 @@ const navItems = [
       { label: "Certifications", href: "/training/certifications" },
       { label: "Short Courses", href: "/training/short-courses" },
       { label: "Masterclass", href: "/training/masterclass" },
-      { label: "AI for HR", href: "/training/masterclass/AIforHR" },
       { label: "Annual Calendar", href: "/calendar" },
     ],
   },

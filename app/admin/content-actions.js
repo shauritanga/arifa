@@ -17,6 +17,7 @@ const PUBLIC_PATHS = {
   PUBLICATION: ["/publications"],
   // detail revalidated via slug below
   COURSE: ["/training/short-courses"],
+  MASTERCLASS: ["/training/masterclass"],
   JOB: ["/opportunities/careers"],
   EVENT: ["/events", "/events/engagements"],
   SPONSOR: ["/", "/industry/levels-of-engagement-and-support"],

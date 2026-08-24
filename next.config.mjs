@@ -30,6 +30,11 @@ const nextConfig = {
         destination: "https://aimarathon.arifa.org",
         permanent: false,
       },
+      {
+        source: "/training/masterclass/AIforHR",
+        destination: "/training/short-courses/AIforHR",
+        permanent: false,
+      },
     ];
   },
 };
