@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "../../../../../lib/prisma";
 import StatusPill from "../../status-pill";
 import ReverifyButton from "./reverify-button";
+import DonationRowActions from "../donation-row-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -120,6 +121,20 @@ export default async function DonationDetailPage({ params }) {
               gateway, and only if the amount matches.
             </p>
             <ReverifyButton reference={donation.reference} />
+          </div>
+
+          <div className="rounded-2xl border border-black/10 bg-white p-6">
+            <h2 className="mb-2 font-extrabold text-black">Record actions</h2>
+            <p className="mb-4 text-sm text-black/60">
+              Failed checkouts can get a new payment link. Failed and cancelled
+              records can be deleted. Paid records stay.
+            </p>
+            <DonationRowActions
+              reference={donation.reference}
+              status={donation.status}
+              email={donation.email}
+              donorName={donation.donorName}
+            />
           </div>
         </div>
       </div>

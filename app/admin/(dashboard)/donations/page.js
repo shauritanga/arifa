@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { prisma } from "../../../../lib/prisma";
 import StatusPill from "../status-pill";
+import DonationsToolbar from "./donations-toolbar";
+import DonationRowActions from "./donation-row-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +35,7 @@ export default async function DonationsPage({ searchParams }) {
       : {}),
   };
 
-  const [donations, total] = await Promise.all([
+  const [donations, total, openCount, cancelledCount] = await Promise.all([
     prisma.donation.findMany({
       where,
       orderBy: { createdAt: "desc" },
@@ -41,6 +43,10 @@ export default async function DonationsPage({ searchParams }) {
       take: PAGE_SIZE,
     }),
     prisma.donation.count({ where }),
+    prisma.donation.count({
+      where: { status: { in: ["PROCESSING", "PENDING"] } },
+    }),
+    prisma.donation.count({ where: { status: "CANCELLED" } }),
   ]);
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -96,6 +102,11 @@ export default async function DonationsPage({ searchParams }) {
         </button>
       </form>
 
+      <DonationsToolbar
+        openCount={openCount}
+        cancelledCount={cancelledCount}
+      />
+
       <div className="overflow-x-auto rounded-2xl border border-black/10 bg-white">
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead className="border-b border-black/10 text-xs uppercase tracking-wider text-black/50">
@@ -106,12 +117,13 @@ export default async function DonationsPage({ searchParams }) {
               <th className="px-5 py-4 text-right font-bold">Amount</th>
               <th className="px-5 py-4 font-bold">Status</th>
               <th className="px-5 py-4 font-bold">Date</th>
+              <th className="px-5 py-4 text-right font-bold">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-black/5">
             {donations.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-5 py-12 text-center text-black/50">
+                <td colSpan={7} className="px-5 py-12 text-center text-black/50">
                   No donations match this filter.
                 </td>
               </tr>
@@ -141,6 +153,15 @@ export default async function DonationsPage({ searchParams }) {
                 </td>
                 <td className="px-5 py-4 text-black/60">
                   {d.createdAt.toLocaleDateString("en-GB")}
+                </td>
+                <td className="px-5 py-4">
+                  <DonationRowActions
+                    compact
+                    reference={d.reference}
+                    status={d.status}
+                    email={d.email}
+                    donorName={d.donorName}
+                  />
                 </td>
               </tr>
             ))}

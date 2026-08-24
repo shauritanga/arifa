@@ -228,6 +228,53 @@ export async function toggleContentPublished(collection, id) {
   return { ok: true };
 }
 
+export async function duplicateContentItem(collection, id) {
+  await requireAdmin();
+  if (!isCollection(collection)) return { ok: false, error: "Unknown collection." };
+
+  const item = await prisma.contentItem.findUnique({ where: { id } });
+  if (!item || item.collection !== collection) {
+    return { ok: false, error: "Item not found." };
+  }
+
+  const last = await prisma.contentItem.findFirst({
+    where: { collection },
+    orderBy: { position: "desc" },
+    select: { position: true },
+  });
+
+  let slug = item.slug;
+  if (slug) {
+    const base = `${slug}-copy`.slice(0, 70);
+    slug = base;
+    let n = 2;
+    while (
+      await prisma.contentItem.findFirst({
+        where: { collection, slug },
+      })
+    ) {
+      slug = `${base}-${n}`.slice(0, 80);
+      n += 1;
+    }
+  }
+
+  const copy = await prisma.contentItem.create({
+    data: {
+      collection,
+      slug: slug || null,
+      title: `${item.title} (copy)`,
+      image: item.image,
+      group: item.group,
+      data: item.data ?? {},
+      position: (last?.position ?? -1) + 1,
+      published: false,
+    },
+  });
+
+  revalidateFor(collection, copy.slug);
+  return { ok: true, id: copy.id };
+}
+
 /**
  * Move an item one place up or down, by swapping positions with its neighbour.
  * Ordering is per-collection and drives the order on the public page.

@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 import { prisma } from "../../lib/prisma";
 import { requireAdmin } from "../../lib/auth";
-import { verifyDonation } from "../../lib/donations";
+import { retryDonation, verifyDonation } from "../../lib/donations";
 
 /**
  * Re-ask Selcom for the authoritative status of a donation.
@@ -35,6 +35,127 @@ export async function reverifyDonation(reference) {
     };
   }
   return { ok: true, status: res.status };
+}
+
+function publicOrigin() {
+  return (
+    process.env.AUTH_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://arifa.org"
+  ).replace(/\/$/, "");
+}
+
+function statusPagePath(donation) {
+  return donation.type === "TRAINING"
+    ? `/training/masterclass/payment/${encodeURIComponent(donation.reference)}`
+    : `/support-us/payment/${encodeURIComponent(donation.reference)}`;
+}
+
+function revalidateDonation(reference) {
+  revalidatePath("/admin/donations");
+  if (reference) revalidatePath(`/admin/donations/${reference}`);
+}
+
+/**
+ * Open a new Selcom checkout for an unpaid donation and return links the
+ * admin can copy or email. Does not create a second donor row.
+ */
+export async function resendDonationLink(reference) {
+  await requireAdmin();
+
+  const donation = await prisma.donation.findUnique({ where: { reference } });
+  if (!donation) return { ok: false, error: "Donation not found." };
+  if (donation.status === "PAID" || donation.status === "REFUNDED") {
+    return { ok: false, error: "This payment is already settled." };
+  }
+
+  const res = await retryDonation(reference);
+  revalidateDonation(reference);
+
+  if (!res.ok) return { ok: false, error: res.error || "Could not start checkout." };
+
+  const origin = publicOrigin();
+  return {
+    ok: true,
+    checkoutUrl: res.checkoutUrl,
+    statusUrl: `${origin}${statusPagePath(donation)}`,
+    email: donation.email,
+    donorName: donation.donorName,
+    reference: donation.reference,
+  };
+}
+
+const DELETABLE = new Set(["FAILED", "CANCELLED"]);
+
+export async function deleteDonation(reference) {
+  await requireAdmin();
+
+  const donation = await prisma.donation.findUnique({ where: { reference } });
+  if (!donation) return { ok: false, error: "Donation not found." };
+  if (!DELETABLE.has(donation.status)) {
+    return {
+      ok: false,
+      error: `Cannot delete a ${donation.status.toLowerCase()} payment. Only failed or cancelled records can be removed.`,
+    };
+  }
+
+  await prisma.donation.delete({ where: { id: donation.id } });
+  revalidateDonation(reference);
+  return { ok: true };
+}
+
+export async function deleteCancelledDonations() {
+  await requireAdmin();
+
+  const result = await prisma.donation.deleteMany({
+    where: { status: "CANCELLED" },
+  });
+  revalidatePath("/admin/donations");
+  return { ok: true, deleted: result.count };
+}
+
+/** Re-ask Selcom for every PROCESSING (and PENDING) checkout still open. */
+export async function reverifyProcessingDonations() {
+  await requireAdmin();
+
+  const open = await prisma.donation.findMany({
+    where: { status: { in: ["PROCESSING", "PENDING"] } },
+    select: { reference: true },
+    orderBy: { createdAt: "asc" },
+  });
+
+  const stats = { checked: 0, paid: 0, failed: 0, cancelled: 0, stillOpen: 0, errors: 0 };
+
+  for (const row of open) {
+    const res = await verifyDonation(row.reference, "MANUAL").catch((err) => {
+      console.error("[admin] bulk reverify failed", row.reference, err);
+      return null;
+    });
+    stats.checked++;
+    if (!res || res.unresolved || res.mismatch) {
+      stats.errors++;
+      continue;
+    }
+    if (res.status === "PAID") stats.paid++;
+    else if (res.status === "FAILED") stats.failed++;
+    else if (res.status === "CANCELLED") stats.cancelled++;
+    else stats.stillOpen++;
+  }
+
+  revalidatePath("/admin/donations");
+  return { ok: true, ...stats };
+}
+
+export async function countCancelledDonations() {
+  await requireAdmin();
+  return prisma.donation.count({ where: { status: "CANCELLED" } });
+}
+
+export async function countOpenDonations() {
+  await requireAdmin();
+  return prisma.donation.count({
+    where: { status: { in: ["PROCESSING", "PENDING"] } },
+  });
 }
 
 export async function createAdminUser(formData) {
@@ -253,6 +374,23 @@ export async function setSubmissionStatus(kind, id, status) {
     revalidatePath("/admin/messages");
   } else if (kind === "application") {
     await prisma.application.update({ where: { id }, data: { status } });
+    revalidatePath("/admin/applications");
+  } else {
+    return { ok: false, error: "Unknown submission type." };
+  }
+
+  revalidatePath("/admin");
+  return { ok: true };
+}
+
+export async function deleteSubmission(kind, id) {
+  await requireAdmin();
+
+  if (kind === "message") {
+    await prisma.contactMessage.delete({ where: { id } });
+    revalidatePath("/admin/messages");
+  } else if (kind === "application") {
+    await prisma.application.delete({ where: { id } });
     revalidatePath("/admin/applications");
   } else {
     return { ok: false, error: "Unknown submission type." };

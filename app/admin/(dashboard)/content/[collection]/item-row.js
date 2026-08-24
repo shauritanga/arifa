@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import {
   deleteContentItem,
+  duplicateContentItem,
   moveContentItem,
   toggleContentPublished,
 } from "../../../content-actions";
@@ -12,7 +13,7 @@ import ConfirmDialog from "../../../components/confirm-dialog";
 export default function ItemRow({ collection, item, isFirst, isLast, hasImage }) {
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState("");
-  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirm, setConfirm] = useState(null);
 
   const run = (fn) => {
     setError("");
@@ -28,11 +29,37 @@ export default function ItemRow({ collection, item, isFirst, isLast, hasImage })
       const res = await deleteContentItem(collection, item.id);
       if (res && !res.ok) {
         setError(res.error);
-        setConfirmOpen(false);
+        setConfirm(null);
         return;
       }
-      setConfirmOpen(false);
+      setConfirm(null);
     });
+  };
+
+  const confirmUnpublish = () => {
+    setError("");
+    startTransition(async () => {
+      const res = await toggleContentPublished(collection, item.id);
+      if (res && !res.ok) setError(res.error);
+      setConfirm(null);
+    });
+  };
+
+  const confirmDuplicate = () => {
+    setError("");
+    startTransition(async () => {
+      const res = await duplicateContentItem(collection, item.id);
+      if (res && !res.ok) setError(res.error);
+      setConfirm(null);
+    });
+  };
+
+  const onTogglePublished = () => {
+    if (item.published) {
+      setConfirm("unpublish");
+      return;
+    }
+    run(() => toggleContentPublished(collection, item.id));
   };
 
   return (
@@ -118,9 +145,7 @@ export default function ItemRow({ collection, item, isFirst, isLast, hasImage })
           <button
             type="button"
             disabled={pending}
-            onClick={() =>
-              run(() => toggleContentPublished(collection, item.id))
-            }
+            onClick={onTogglePublished}
             className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.65rem] font-semibold normal-case tracking-normal transition-colors disabled:opacity-50 ${
               item.published
                 ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200/80"
@@ -151,6 +176,15 @@ export default function ItemRow({ collection, item, isFirst, isLast, hasImage })
         {/* Actions — Edit = neutral/brand-safe, Delete = destructive red */}
         <td className="px-3 py-3 align-middle">
           <div className="flex items-center justify-end gap-2">
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => setConfirm("duplicate")}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-2.5 py-1.5 text-xs font-semibold text-black/70 shadow-sm transition-colors hover:border-black/20 hover:bg-black/[0.03] hover:text-black"
+            >
+              <i className="fas fa-copy text-[0.65rem] text-black/40" />
+              Duplicate
+            </button>
             <Link
               href={`/admin/content/${collection}/${item.id}`}
               className="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-2.5 py-1.5 text-xs font-semibold text-black/70 shadow-sm transition-colors hover:border-black/20 hover:bg-black/[0.03] hover:text-black"
@@ -161,7 +195,7 @@ export default function ItemRow({ collection, item, isFirst, isLast, hasImage })
             <button
               type="button"
               disabled={pending}
-              onClick={() => setConfirmOpen(true)}
+              onClick={() => setConfirm("delete")}
               aria-label="Delete"
               className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-2.5 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100 disabled:opacity-50"
             >
@@ -173,7 +207,7 @@ export default function ItemRow({ collection, item, isFirst, isLast, hasImage })
       </tr>
 
       <ConfirmDialog
-        open={confirmOpen}
+        open={confirm === "delete"}
         destructive
         busy={pending}
         title="Delete this entry?"
@@ -189,8 +223,41 @@ export default function ItemRow({ collection, item, isFirst, isLast, hasImage })
         }
         confirmLabel="Delete forever"
         cancelLabel="Keep it"
-        onCancel={() => !pending && setConfirmOpen(false)}
+        onCancel={() => !pending && setConfirm(null)}
         onConfirm={confirmDelete}
+      />
+      <ConfirmDialog
+        open={confirm === "unpublish"}
+        busy={pending}
+        title="Hide this from the public site?"
+        description={
+          <>
+            “{item.title || "Untitled"}” will be unpublished. You can publish it
+            again later.
+          </>
+        }
+        confirmLabel="Unpublish"
+        cancelLabel="Keep live"
+        onCancel={() => !pending && setConfirm(null)}
+        onConfirm={confirmUnpublish}
+      />
+      <ConfirmDialog
+        open={confirm === "duplicate"}
+        busy={pending}
+        title="Duplicate this entry?"
+        description={
+          <>
+            Creates a draft copy of{" "}
+            <span className="font-semibold text-black">
+              “{item.title || "Untitled"}”
+            </span>
+            . The original stays published if it already is.
+          </>
+        }
+        confirmLabel="Create draft copy"
+        cancelLabel="Cancel"
+        onCancel={() => !pending && setConfirm(null)}
+        onConfirm={confirmDuplicate}
       />
     </>
   );

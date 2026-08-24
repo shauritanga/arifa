@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "../../../../../../lib/prisma";
 import { COLLECTIONS, isCollection } from "../../../../../../lib/content";
 import ContentForm from "./content-form";
+import ContentEditActions from "./content-edit-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -60,6 +61,9 @@ export default async function EditContentPage({ params }) {
       </div>
 
       <ContentForm collection={collection} spec={spec} item={item} />
+      {!isNew && (
+        <ContentEditActions collection={collection} item={item} />
+      )}
     </div>
   );
 }

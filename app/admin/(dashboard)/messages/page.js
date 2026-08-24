@@ -74,7 +74,12 @@ export default async function MessagesPage({ searchParams }) {
                   <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
                     {m.subject}
                   </span>
-                  <StatusActions kind="message" id={m.id} status={m.status} />
+                  <StatusActions
+                    kind="message"
+                    id={m.id}
+                    status={m.status}
+                    label={`${m.firstName} ${m.lastName}`}
+                  />
                 </div>
               </div>
               <p className="whitespace-pre-wrap text-sm leading-relaxed text-black/70">

@@ -86,7 +86,12 @@ export default async function ApplicationsPage({ searchParams }) {
                     <span>{a.createdAt.toLocaleString("en-GB")}</span>
                   </div>
                 </div>
-                <StatusActions kind="application" id={a.id} status={a.status} />
+                <StatusActions
+                  kind="application"
+                  id={a.id}
+                  status={a.status}
+                  label={`${a.firstName} ${a.lastName}`}
+                />
               </div>
 
               <div className="mb-3 rounded-xl bg-primary/5 px-4 py-2 text-sm font-bold text-primary">

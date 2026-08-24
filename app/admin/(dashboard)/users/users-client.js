@@ -2,11 +2,13 @@
 
 import { useState, useTransition } from "react";
 import { createAdminUser, deleteAdminUser } from "../../actions";
+import ConfirmDialog from "../components/confirm-dialog";
 
 export default function UsersClient({ users, currentEmail }) {
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState("");
   const [adding, setAdding] = useState(false);
+  const [removeTarget, setRemoveTarget] = useState(null);
 
   const onCreate = (formData) => {
     setError("");
@@ -17,13 +19,12 @@ export default function UsersClient({ users, currentEmail }) {
     });
   };
 
-  const onDelete = (id, email) => {
-    if (!confirm(`Remove ${email}? They will lose dashboard access immediately.`)) {
-      return;
-    }
+  const onDelete = () => {
+    if (!removeTarget) return;
     setError("");
     startTransition(async () => {
-      const res = await deleteAdminUser(id);
+      const res = await deleteAdminUser(removeTarget.id);
+      setRemoveTarget(null);
       if (!res.ok) setError(res.error);
     });
   };
@@ -131,7 +132,7 @@ export default function UsersClient({ users, currentEmail }) {
                   {u.email !== currentEmail && (
                     <button
                       type="button"
-                      onClick={() => onDelete(u.id, u.email)}
+                      onClick={() => setRemoveTarget({ id: u.id, email: u.email })}
                       disabled={pending}
                       className="text-sm font-bold text-red-600 hover:underline disabled:opacity-50"
                     >
@@ -144,6 +145,22 @@ export default function UsersClient({ users, currentEmail }) {
           </tbody>
         </table>
       </div>
+
+      <ConfirmDialog
+        open={!!removeTarget}
+        destructive
+        busy={pending}
+        title="Remove this admin?"
+        description={
+          <>
+            {removeTarget?.email} will lose dashboard access immediately.
+          </>
+        }
+        confirmLabel="Remove user"
+        cancelLabel="Keep them"
+        onCancel={() => !pending && setRemoveTarget(null)}
+        onConfirm={onDelete}
+      />
     </div>
   );
 }
