@@ -33,7 +33,7 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
 }
 
 const STATS = [
-  { number: "10", label: "Countries Covered" },
+  { number: "05", label: "Countries Covered" },
   { number: "2", label: "Intensive Days" },
   { number: "500+", label: "Senior Leaders Expected" },
   { number: "15+", label: "Expert Facilitators" },
@@ -73,12 +73,12 @@ const CERT_NOTES = [
   {
     icon: "fa-users",
     title: "Group discounts available",
-    text: "3+ participants from USD 650/person",
+    text: "3+ participants from USD 950/person",
   },
   {
     icon: "fa-globe",
     title: "Government/NGO rates",
-    text: "From USD 600/person (Early Bird)",
+    text: "From USD 900/person (Early Bid)",
   },
 ];
 
@@ -290,7 +290,7 @@ export default function Masterclass({ sessions }) {
       <section className="py-20 bg-white min-h-[60vh]">
         <div className="max-w-[1200px] mx-auto px-6">
           <h2 className="relative inline-block text-2xl font-bold text-ink font-[var(--font-heading)] after:absolute after:-bottom-3 after:left-0 after:h-1 after:w-[60px] after:rounded after:bg-primary">
-            2026 Masterclass Tour — Select Your City
+            2026/2027 Masterclass Tour — Select Your City Hub
           </h2>
           <p className="mt-8 max-w-[780px] text-lg text-[#4a627a] text-justify">
             Join a premier session near you. Each Masterclass includes local

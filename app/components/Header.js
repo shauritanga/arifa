@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ICAFOW, isIcaFowCampaignActive } from "@/lib/icafow";
@@ -83,7 +83,12 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSub, setOpenSub] = useState(null);
   const [desktopOpen, setDesktopOpen] = useState(null);
+  const [desktopIndicator, setDesktopIndicator] = useState(null);
+  const desktopNavRef = useRef(null);
+  const desktopItemRefs = useRef({});
+  const desktopCloseTimeoutRef = useRef(null);
   const campaignOn = isIcaFowCampaignActive();
+  const activeDesktopItem = navItems.find((item) => item.label === desktopOpen);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -99,8 +104,56 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    return () => clearDesktopCloseTimeout();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!desktopOpen || !desktopNavRef.current) {
+      setDesktopIndicator(null);
+      return;
+    }
+
+    const updateIndicator = () => {
+      const navRect = desktopNavRef.current?.getBoundingClientRect();
+      const itemRect =
+        desktopItemRefs.current[desktopOpen]?.getBoundingClientRect();
+
+      if (!navRect || !itemRect) return;
+
+      setDesktopIndicator({
+        left: itemRect.left - navRect.left,
+        width: itemRect.width,
+        center: itemRect.left - navRect.left + itemRect.width / 2,
+      });
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [desktopOpen, scrolled]);
+
   const toggleSub = (label) => {
     setOpenSub(openSub === label ? null : label);
+  };
+
+  const clearDesktopCloseTimeout = () => {
+    if (desktopCloseTimeoutRef.current) {
+      clearTimeout(desktopCloseTimeoutRef.current);
+      desktopCloseTimeoutRef.current = null;
+    }
+  };
+
+  const openDesktopItem = (label) => {
+    clearDesktopCloseTimeout();
+    setDesktopOpen(label);
+  };
+
+  const closeDesktopItem = () => {
+    clearDesktopCloseTimeout();
+    desktopCloseTimeoutRef.current = setTimeout(() => {
+      setDesktopOpen(null);
+    }, 90);
   };
 
   const closeMobileNav = () => {
@@ -115,11 +168,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`relative z-50 w-full transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-line shadow-[0_1px_0_rgba(15,20,25,0.04)]"
-            : "bg-transparent"
-        }`}
+        className="relative z-50 w-full bg-transparent transition-all duration-300"
       >
         <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[4.5rem] px-6">
           <Link href="/" aria-label="ARIFA Home" className="relative z-10">
@@ -136,95 +185,132 @@ export default function Header() {
           </Link>
 
           <nav
-            className="hidden lg:flex items-center gap-0.5"
+            ref={desktopNavRef}
+            className={`arifa-desktop-nav hidden lg:flex items-center gap-0.5 rounded-full p-1.5 ${
+              scrolled
+                ? "bg-white/90 shadow-[0_10px_30px_rgba(15,20,25,0.08)] ring-1 ring-line backdrop-blur-md"
+                : "bg-white/10 shadow-[0_10px_30px_rgba(15,20,25,0.08)] ring-1 ring-white/20 backdrop-blur-md"
+            }`}
             aria-label="Main Navigation"
+            onMouseEnter={clearDesktopCloseTimeout}
+            onMouseLeave={closeDesktopItem}
           >
+            <span
+              className={`arifa-nav-indicator ${
+                desktopIndicator ? "opacity-100" : "opacity-0"
+              } ${
+                scrolled
+                  ? "bg-surface-alt"
+                  : "bg-white/15 ring-1 ring-white/20"
+              }`}
+              style={
+                desktopIndicator
+                  ? {
+                      width: `${desktopIndicator.width}px`,
+                      transform: `translate3d(${desktopIndicator.left}px, 0, 0)`,
+                    }
+                  : undefined
+              }
+              aria-hidden="true"
+            />
             {navItems.map((item) => {
               const isDesktopOpen = desktopOpen === item.label;
 
               return (
                 <div
                   key={item.label}
-                  className="relative"
+                  ref={(node) => {
+                    if (node) {
+                      desktopItemRefs.current[item.label] = node;
+                    }
+                  }}
+                  className="relative z-10"
                   onMouseEnter={() =>
-                    item.children && setDesktopOpen(item.label)
+                    openDesktopItem(item.children ? item.label : null)
                   }
-                  onMouseLeave={() => setDesktopOpen(null)}
-                  onFocus={() => item.children && setDesktopOpen(item.label)}
+                  onFocus={() =>
+                    openDesktopItem(item.children ? item.label : null)
+                  }
                   onBlur={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setDesktopOpen(null);
+                    if (!desktopNavRef.current?.contains(event.relatedTarget)) {
+                      closeDesktopItem();
                     }
                   }}
                 >
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className={`flex items-center gap-1 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide ${linkTone}`}
-                      onClick={() => setDesktopOpen(null)}
+                      className={`relative flex items-center gap-1 rounded-full px-3 py-2 text-[0.8125rem] font-semibold tracking-wide ${linkTone}`}
+                      onClick={() => openDesktopItem(null)}
                     >
                       {item.label}
                     </Link>
                   ) : (
                     <button
                       type="button"
-                      className={`flex items-center gap-1.5 px-3 py-2 text-[0.8125rem] font-semibold tracking-wide cursor-default ${linkTone}`}
+                      className={`relative flex items-center gap-1.5 rounded-full px-3 py-2 text-[0.8125rem] font-semibold tracking-wide cursor-default ${linkTone}`}
                       aria-haspopup="true"
                       aria-expanded={isDesktopOpen}
                       onClick={() =>
-                        setDesktopOpen(isDesktopOpen ? null : item.label)
+                        openDesktopItem(isDesktopOpen ? null : item.label)
                       }
                     >
                       {item.label}
                       <i
-                        className={`fas fa-chevron-down text-[0.55em] opacity-60 transition-transform ${
-                          isDesktopOpen ? "rotate-180" : ""
+                        className={`fas fa-chevron-down text-[0.55em] opacity-60 transition-transform duration-300 ${
+                          isDesktopOpen ? "scale-y-[-1]" : "scale-y-100"
                         }`}
                       />
                     </button>
                   )}
-
-                  {item.children && (
-                    <ul
-                      className={`absolute top-full left-0 z-10 min-w-[14.5rem] rounded-lg border border-line bg-white py-2 shadow-[0_16px_40px_rgba(15,20,25,0.1)] transition-all duration-200 ${
-                        isDesktopOpen
-                          ? "visible translate-y-0 opacity-100"
-                          : "invisible translate-y-1 opacity-0"
-                      }`}
-                    >
-                      {item.children.map((child) => (
-                        <li key={child.label}>
-                          {child.external ? (
-                            <a
-                              href={child.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
-                              onClick={() => setDesktopOpen(null)}
-                            >
-                              <span className="inline-flex items-center">
-                                {child.label}
-                                <NavBadge label={child.badge} />
-                              </span>
-                              <i className="fas fa-arrow-up-right-from-square text-[0.65em] opacity-40" />
-                            </a>
-                          ) : (
-                            <Link
-                              href={child.href}
-                              className="flex items-center px-4 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-alt hover:text-primary"
-                              onClick={() => setDesktopOpen(null)}
-                            >
-                              {child.label}
-                              <NavBadge label={child.badge} />
-                            </Link>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               );
             })}
+            {activeDesktopItem?.children && desktopIndicator && (
+              <div
+                className="arifa-nav-dropdown pointer-events-auto opacity-100"
+                style={{
+                  left: `${desktopIndicator.center}px`,
+                }}
+              >
+                <div className="arifa-nav-dropdown-panel scale-100">
+                  <ul className="py-2">
+                    {activeDesktopItem.children.map((child, index) => (
+                      <li
+                        key={`${activeDesktopItem.label}-${child.label}`}
+                        className="arifa-nav-dropdown-item"
+                        style={{ transitionDelay: `${50 * (index + 1)}ms` }}
+                      >
+                        {child.external ? (
+                          <a
+                            href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative flex items-center justify-center rounded-full px-4 py-2.5 text-center text-sm font-semibold text-ink-soft hover:bg-surface-alt hover:text-primary"
+                            onClick={() => openDesktopItem(null)}
+                          >
+                            <span className="inline-flex items-center justify-center">
+                              {child.label}
+                              <NavBadge label={child.badge} />
+                            </span>
+                            <i className="fas fa-arrow-up-right-from-square absolute right-4 text-[0.65em] opacity-40" />
+                          </a>
+                        ) : (
+                          <Link
+                            href={child.href}
+                            className="flex items-center justify-center rounded-full px-4 py-2.5 text-center text-sm font-semibold text-ink-soft hover:bg-surface-alt hover:text-primary"
+                            onClick={() => openDesktopItem(null)}
+                          >
+                            {child.label}
+                            <NavBadge label={child.badge} />
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">

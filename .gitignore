@@ -42,3 +42,4 @@ Conference Opening_ICAFoW2025_High.mp4
 *.tsbuildinfo
 next-env.d.ts
 public/uploads/
+server-credential.json
