@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { createAdminUser, deleteAdminUser } from "../../actions";
-import ConfirmDialog from "../components/confirm-dialog";
+import ConfirmDialog from "../../components/confirm-dialog";
 
 export default function UsersClient({ users, currentEmail }) {
   const [pending, startTransition] = useTransition();
