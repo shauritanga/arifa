@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import ConferenceAnnouncementBar from "./ConferenceAnnouncementBar";
+import ChatWidget from "./ChatWidget";
 
 /**
  * The public header/footer must not appear on the admin dashboard, but both live
@@ -27,6 +28,7 @@ export default function SiteChrome({ header, footer, children }) {
         {children}
       </main>
       {!isAdmin && footer}
+      {!isAdmin && <ChatWidget />}
     </>
   );
 }

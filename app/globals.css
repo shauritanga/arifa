@@ -602,3 +602,18 @@ html[data-announcement="1"] #hero {
 .institute-input::placeholder {
   color: var(--color-subtle);
 }
+
+/* Short-course tutor portraits. Plain CSS (not Tailwind classes in the HTML)
+   so the look survives TipTap editor round-trips, which reset image classes. */
+.course-tutors img {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.course-tutors img:first-child {
+  margin-top: 0.5rem;
+}

@@ -2,11 +2,19 @@
 
 import { useState } from "react";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://arifa.org";
+
+/** Stable URL used for anything rendered into HTML, so SSR and hydration agree. */
 function shareUrl(path) {
+  return `${SITE_URL}${path}`;
+}
+
+/** Actual browser URL, for copy/native-share actions (client-only, never rendered). */
+function liveUrl(path) {
   if (typeof window !== "undefined") {
     return `${window.location.origin}${path}`;
   }
-  return `https://arifa.org${path}`;
+  return shareUrl(path);
 }
 
 export default function ShareBar({ path, title, text, compact = false }) {
@@ -15,7 +23,7 @@ export default function ShareBar({ path, title, text, compact = false }) {
   const copyLink = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const url = shareUrl(path);
+    const url = liveUrl(path);
     try {
       await navigator.clipboard.writeText(url);
     } catch {
@@ -28,7 +36,7 @@ export default function ShareBar({ path, title, text, compact = false }) {
   const shareNative = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const url = shareUrl(path);
+    const url = liveUrl(path);
     if (typeof navigator.share === "function") {
       try {
         await navigator.share({ title, text, url });

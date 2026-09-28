@@ -90,6 +90,13 @@ export default function Header() {
   const campaignOn = isIcaFowCampaignActive();
   const activeDesktopItem = navItems.find((item) => item.label === desktopOpen);
 
+  const clearDesktopCloseTimeout = () => {
+    if (desktopCloseTimeoutRef.current) {
+      clearTimeout(desktopCloseTimeoutRef.current);
+      desktopCloseTimeoutRef.current = null;
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -135,13 +142,6 @@ export default function Header() {
 
   const toggleSub = (label) => {
     setOpenSub(openSub === label ? null : label);
-  };
-
-  const clearDesktopCloseTimeout = () => {
-    if (desktopCloseTimeoutRef.current) {
-      clearTimeout(desktopCloseTimeoutRef.current);
-      desktopCloseTimeoutRef.current = null;
-    }
   };
 
   const openDesktopItem = (label) => {

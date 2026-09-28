@@ -149,7 +149,7 @@ export default function AdminShell({ user, children }) {
     ? "bg-zinc-800 text-zinc-100"
     : "bg-slate-100 text-slate-700";
 
-  const NavList = ({ compact = false }) => (
+  const renderNavList = (compact = false) => (
     <ul className="space-y-1 px-2">
       {NAV.map((item) => {
         const active = isActive(item.href);
@@ -234,7 +234,7 @@ export default function AdminShell({ user, children }) {
         )}
 
         <nav className="flex-1 overflow-y-auto py-4">
-          <NavList compact={collapsed} />
+          {renderNavList(collapsed)}
         </nav>
 
         <div className={`border-t p-3 ${borderSoft}`}>
@@ -279,7 +279,7 @@ export default function AdminShell({ user, children }) {
           </button>
         </div>
         <nav className="flex-1 overflow-y-auto py-4">
-          <NavList />
+          {renderNavList()}
         </nav>
       </aside>
 

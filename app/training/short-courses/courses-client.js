@@ -143,7 +143,7 @@ export default function ShortCourses({ courses }) {
 
           {/* Cards */}
           <div className="min-w-0 flex-1">
-            <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
+            <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(280px,380px))]">
               {visible.map((course, idx) => (
                 <RevealOnScroll key={course.id} delay={(idx % 3) * 80} className="h-full">
                   <article className="flex h-full flex-col overflow-hidden rounded-[10px] bg-white shadow-[0_4px_10px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.12)]">
