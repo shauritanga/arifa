@@ -537,6 +537,14 @@ html[data-announcement="1"] #hero {
   min-height: 280px;
 }
 
+/* Selected image/node feedback — ProseMirror adds this class but ships no
+   visible style for it, so a clicked image looked unselected. */
+.ProseMirror .ProseMirror-selectednode {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
